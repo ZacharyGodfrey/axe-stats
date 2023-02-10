@@ -4,7 +4,8 @@
 	"private": true,
 	"scripts": {
 		"test": "echo \"No tests yet.\" && exit 0",
-		"build": "echo \"No build needed.\" && exit 0"
+		"build": "echo \"No build needed.\" && exit 0",
+		"local": "node _scripts/start.js"
 	},
 	"dependencies": {
 		"aws-serverless-express": "^3.4.0",

@@ -6,11 +6,11 @@
   publish = "dist"
 
 [functions]
-  directory = "deploy/server"
+  directory = "_deploy"
 
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/index"
+  to = "/.netlify/functions/handler"
   status = 301
   force = true
 

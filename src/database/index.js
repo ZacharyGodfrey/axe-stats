@@ -4,5 +4,5 @@ module.exports = async () => {
 
 	return {
 		listProfiles: require('./queries/list-profiles')(connection)
-	}
+	};
 };
