@@ -1,12 +1,8 @@
-const requireDir = require('require-dir');
+module.exports = async () => {
+	// TODO: Add real database connection
+	const connection = await Promise.resolve({});
 
-const resolvers = requireDir('./resolvers');
-
-module.exports = () => {
-	const db = {};
-
-	return Object.entries(resolvers).reduce((wrapped, [name, resolver]) => ({
-		...wrapped,
-		[name]: () => resolver.apply(null, [db, ...arguments])
-	}), {});
+	return {
+		listProfiles: require('./queries/list-profiles')(connection)
+	}
 };
