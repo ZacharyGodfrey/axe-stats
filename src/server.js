@@ -27,8 +27,12 @@ module.exports = async () => {
 		res.status(200).type('html').send(body);
 	});
 
-	server.use((_, res) => {
-		res.status(404).type('text').send('404 Not Found');
+	server.use((req, res) => {
+		res.status(404).send({
+			method: req.method,
+			url: req.originalUrl,
+			body: req.body
+		});
 	});
 
 	return server;
