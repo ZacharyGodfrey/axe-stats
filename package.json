@@ -1,0 +1,15 @@
+{
+	"name": "axe-stats",
+	"version": "1.0.0",
+	"private": true,
+	"scripts": {
+		"test": "echo \"No tests yet.\" && exit 0",
+		"build": "echo \"No build needed.\" && exit 0"
+	},
+	"dependencies": {
+		"express": "^4.18.2",
+		"fs-extra": "^11.1.0",
+		"mustache": "^4.2.0",
+		"require-dir": "^1.2.0"
+	}
+}

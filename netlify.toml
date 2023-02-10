@@ -1,0 +1,19 @@
+# Documentation:
+# https://docs.netlify.com/configure-builds/file-based-configuration
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[functions]
+  directory = "deploy/server"
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/index"
+  status = 301
+  force = true
+
+[dev]
+  port = 8080
+  autoLaunch = true

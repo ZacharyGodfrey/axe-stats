@@ -1,0 +1,30 @@
+const express = require('express');
+
+const database = require('./database')();
+// const api = require('./api')(database);
+const client = require('./client')(database);
+
+module.exports = () => {
+	const server = express();
+
+	server.set('json spaces', 2);
+	server.use(express.urlencoded({ extended: false }));
+	server.use(express.json());
+
+	server.use(({ method }, res, next) => {
+		res.header('Access-Control-Allow-Origin', '*');
+		res.header('Access-Control-Allow-Headers', '*');
+		res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,POST');
+		res.header('x-powered-by', '');
+
+		method === 'OPTIONS' ? res.status(200).end() : next();
+	});
+
+	server.use(async (req, res, next) => {
+		next();
+	});
+
+	server.use((_, res) => res.status(404).end());
+
+	return server;
+};
