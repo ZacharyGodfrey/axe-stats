@@ -8,10 +8,9 @@
 		"dev": "node _scripts/start.js"
 	},
 	"dependencies": {
-		"@vendia/serverless-express": "^4.10.1",
 		"express": "^4.18.2",
 		"fs-extra": "^11.1.0",
 		"mustache": "^4.2.0",
-		"require-dir": "^1.2.0"
+		"serverless-http": "^3.1.1"
 	}
 }

@@ -1,4 +1,4 @@
-const serverlessExpress = require('@vendia/serverless-express');
+const serverless = require('serverless-http');
 
 const createServer = require('../src/server');
 
@@ -8,7 +8,7 @@ module.exports.handler = async (event, context) => {
   if (!instance) {
     const app = await createServer();
 
-    instance = serverlessExpress({ app });
+    instance = serverless(app);
   }
 
   return instance(event, context);
