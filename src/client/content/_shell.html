@@ -55,6 +55,7 @@
 
       header {
         padding: 1rem;
+        text-align: center;
       }
 
       main {
@@ -64,6 +65,7 @@
 
       footer {
         padding: 2rem 1rem;
+        text-align: center;
         color: var(--white);
         background: var(--dark);
       }
@@ -148,6 +150,16 @@
       .text-center { text-align: center; }
       .text-right { text-align: right; }
       .text-indent { text-indent: 4ch; }
+
+      @media screen and (min-width: 1200px) {
+        header {
+          text-align: inherit;
+        }
+
+        footer {
+          text-align: inherit;
+        }
+      }
     </style>
   </head>
   <body>
@@ -169,11 +181,9 @@
       <section>
         <h2>Axe Charts</h2>
 
-        <ul>
-          <li><a href="#">Link One</a></li>
-          <li><a href="#">Link Two</a></li>
-          <li><a href="#">Link Three</a></li>
-        </ul>
+        <p><a href="#">Link One</a></p>
+        <p><a href="#">Link Two</a></p>
+        <p><a href="#">Link Three</a></p>
 
         <h3>Contact</h3>
 
