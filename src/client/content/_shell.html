@@ -10,7 +10,7 @@
     {{#page.title}}<title>Axe Charts | {{page.title}}</title>{{/page.title}}
     {{^page.title}}<title>Axe Charts</title>{{/page.title}}
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <style>
       @font-face {
         font-family: "Source Code Pro";
@@ -48,6 +48,11 @@
         --color: #41A541;
       }
 
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
       header,
       main,
       footer {
@@ -58,6 +63,10 @@
       footer {
         color: #F8F8F8;
         background: #303030;
+      }
+
+      main {
+        flex: 1;
       }
 
       section {
