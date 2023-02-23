@@ -1,3 +1,3 @@
 module.exports = {
-	home: require('./pages/home')
+  home: require('./pages/home')
 };

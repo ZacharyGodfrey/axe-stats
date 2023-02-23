@@ -1,16 +1,16 @@
 {
-	"name": "axe-stats",
-	"version": "1.0.0",
-	"private": true,
-	"scripts": {
-		"test": "echo \"No tests yet.\" && exit 0",
-		"build": "node _scripts/build.js",
-		"dev": "node _scripts/start.js"
-	},
-	"dependencies": {
-		"express": "^4.18.2",
-		"fs-extra": "^11.1.0",
-		"mustache": "^4.2.0",
-		"serverless-http": "^3.1.1"
-	}
+  "name": "axe-stats",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests yet.\" && exit 0",
+    "build": "node _scripts/build.js",
+    "dev": "node _scripts/start.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "fs-extra": "^11.1.0",
+    "mustache": "^4.2.0",
+    "serverless-http": "^3.1.1"
+  }
 }
