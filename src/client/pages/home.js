@@ -1,16 +1,10 @@
-const fs = require('fs-extra');
-const path = require('path');
+const { readFile, render } = require('../helpers');
 
-const render = require('../helpers/render');
+const page = readFile(`${__dirname}/../content/home.html`);
 
-const page = fs.readFileSync(path.resolve(__dirname, './home.html'), 'utf-8');
+module.exports = async (db) => {
+  const title = 'Home';
+  const profiles = await db.listProfiles();
 
-module.exports = {
-  route: 'home',
-  render: async (db) => {
-    const title = 'Home';
-    const profiles = await db.listProfiles();
-
-    return render(page, { title, profiles });
-  }
+  return render(page, { title, profiles });
 };

@@ -1,11 +1,9 @@
-const fs = require('fs-extra');
-const path = require('path');
+const { readFile, render } = require('../helpers');
 
-const render = require('../helpers/render');
+const page = readFile(`${__dirname}/../content/not-found.html`);
 
-const page = fs.readFileSync(path.resolve(__dirname, './404.html'), 'utf-8');
+module.exports = async () => {
+  const title = 'Not Found';
 
-module.exports = {
-  route: 'not-found',
-  render: async () => render(page, { title: 'Not Found' })
+  return render(page, { title });
 };

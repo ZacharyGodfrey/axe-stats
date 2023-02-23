@@ -3,8 +3,9 @@ const path = require('path');
 const { render } = require('mustache');
 
 const config = require('../config');
+const readFile = require('./read-file');
 
-const layout = fs.readFileSync(path.resolve(__dirname, '../pages/_shell.html'), 'utf-8');
+const layout = readFile(`${__dirname}/../content/_shell.html`);
 
 module.exports = (pageContent, pageData, pagePartials) => {
   const data = {

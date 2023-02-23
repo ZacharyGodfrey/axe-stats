@@ -1,3 +1,4 @@
-module.exports = [
-  require('./pages/home')
-].reduce((pages, { route, render }) => ({ ...pages, [route]: render }), {});
+module.exports = {
+  'home': require('./pages/home'),
+  'not-found': require('./pages/not-found'),
+};
