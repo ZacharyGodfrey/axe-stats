@@ -11,20 +11,16 @@
     {{^page.title}}<title>Axe Charts</title>{{/page.title}}
 
     <style>
-      @font-face {
-        font-family: "custom";
-        src: url("/RobotoMono-Regular.ttf");
-      }
-
       :root {
         --color: #41A541;
-        --dark: #303030;
-        --light: #F8F8F8;
         --white: #FFFFFF;
-        font-family: "custom", monospace;
+        --light: #FAFAFA;
+        --dark: #303030;
+        --black: #000000;
+        font-family: monospace;
         font-size: 18px;
-        color: var(--dark);
-        background: var(--light);
+        color: var(--black);
+        background: var(--white);
       }
 
       * {
@@ -41,8 +37,8 @@
       }
 
       ::selection {
-        color: var(--dark);
-        background: var(--color);
+        color: var(--white);
+        background: var(--dark);
       }
 
       html, body {
@@ -57,19 +53,17 @@
         flex-direction: column;
       }
 
-      header, main, footer {
-        padding: 2rem;
-      }
-
       header {
-        background: var(--white);
+        padding: 1rem;
       }
 
       main {
         flex: 1;
+        padding: 2rem 1rem;
       }
 
       footer {
+        padding: 2rem 1rem;
         color: var(--white);
         background: var(--dark);
       }
