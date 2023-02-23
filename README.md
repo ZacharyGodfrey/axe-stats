@@ -1,6 +1,6 @@
 # axe-charts
 
-A simple app for visualizing IATF axe throwing data
+Axe Charts is a simple site for visualizing IATF axe throwing data
 
 ---
 
