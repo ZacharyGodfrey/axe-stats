@@ -3,6 +3,6 @@ module.exports = async () => {
   const connection = await Promise.resolve({});
 
   return {
-    listProfiles: require('./queries/list-profiles')(connection)
+    topThrowers: require('./queries/top-throwers')(connection)
   };
 };

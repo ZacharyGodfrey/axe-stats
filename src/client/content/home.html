@@ -1,9 +1,11 @@
 <article>
-  <h2>Home Page</h2>
+  <h2>Welcome!</h2>
 
-  <p>This is the home page.</p>
+  <p>Axe Charts was built to give IATF axe throwers a more detailed view of their performance.</p>
 
-  {{#profiles}}
+  {{#page.topThrowers}}
+  <h2>Top 10 Throwers</h2>
+
   <p>{{name}}</p>
-  {{/profiles}}
+  {{/page.topThrowers}}
 </article>
