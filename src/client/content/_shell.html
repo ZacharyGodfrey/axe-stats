@@ -13,12 +13,14 @@
     <style>
       :root {
         --color: #41A541;
-        --black: #000000;
         --white: #FFFFFF;
+        --light: #FAFAFA;
+        --dark: #303030;
+        --black: #000000;
         font-family: monospace;
         font-size: 18px;
         color: var(--black);
-        background: var(--white);
+        background: var(--light);
       }
 
       * {
@@ -51,12 +53,12 @@
         flex-direction: column;
       }
 
-      header, main, footer {
-        padding: 2rem;
+      header {
+        padding: 1rem;
       }
 
-      header {
-        background: var(--white);
+      main, footer {
+        padding: 2rem 1rem;
       }
 
       main {
@@ -65,7 +67,7 @@
 
       footer {
         color: var(--white);
-        background: var(--black);
+        background: var(--dark);
       }
 
       section {
