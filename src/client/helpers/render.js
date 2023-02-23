@@ -14,7 +14,7 @@ module.exports = (pageContent, pageData, pagePartials) => {
 
   const partials = {
     ...(pagePartials || {}),
-    page: pageContent
+    page: `${pageContent}\n`
   };
 
   return render(layout, data, partials);
