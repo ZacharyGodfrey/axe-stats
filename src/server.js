@@ -5,6 +5,9 @@ const client = require('./client');
 
 const pageHandler = async (pageName, req, res, next) => {
   try {
+    console.log(`Requested Page: ${pageName}`);
+    console.log(`Available Pages: ${JSON.stringify(Object.keys(client), null, 2)}`);
+
     if (!client[pageName]) {
       return next();
     }
