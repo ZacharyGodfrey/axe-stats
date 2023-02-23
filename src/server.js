@@ -3,7 +3,7 @@ const express = require('express');
 const database = require('./database');
 const client = require('./client');
 
-const pageHandler = async (pageName, db, req, res, next) => {
+const pageHandler = async (pageName, db, req, res, next, status = 200) => {
   try {
     if (!client[pageName]) {
       return next();
@@ -11,7 +11,7 @@ const pageHandler = async (pageName, db, req, res, next) => {
 
     const body = await client[pageName](db);
 
-    return res.status(200).type('html').send(body);
+    return res.status(status).type('html').send(body);
   } catch (error) {
     return res.status(500).type('html').send(error.message);
   }
@@ -31,11 +31,11 @@ module.exports = async () => {
     return method === 'OPTIONS' ? res.status(200).end() : next();
   });
 
-  server.get('/', (req, res, next) => pageHandler('home', db, req, res, next));
+  server.get('/', (req, res, next) => pageHandler('home', db, req, res, next, 200));
 
-  server.get('/:page', (req, res, next) => pageHandler(req.params.page, db, req, res, next));
+  server.get('/:page', (req, res, next) => pageHandler(req.params.page, db, req, res, next, 200));
 
-  server.use((req, res, next) => pageHandler('not-found', db, req, res, next));
+  server.use((req, res, next) => pageHandler('not-found', db, req, res, next, 404));
 
   server.use((req, res, next) => res.status(404).send('Hard Stop'));
 
