@@ -1,9 +1,3 @@
-# Documentation:
-# https://docs.netlify.com/configure-builds/file-based-configuration
-
-# Example SSR site
-# https://github.com/AaronBeaudoin/vite-plugin-ssr-example-netlify
-
 [build]
   command = "npm run build"
   publish = "dist"
