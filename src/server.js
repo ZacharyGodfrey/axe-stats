@@ -3,7 +3,7 @@ const express = require('express');
 const database = require('./database');
 const client = require('./client');
 
-const pageHandler = async (pageName, req, res, next) => {
+const pageHandler = async (pageName, db, req, res, next) => {
   try {
     console.log(`Requested Page: ${pageName}`);
     console.log(`Available Pages: ${JSON.stringify(Object.keys(client), null, 2)}`);
@@ -34,9 +34,9 @@ module.exports = async () => {
     return method === 'OPTIONS' ? res.status(200).end() : next();
   });
 
-  server.get('/', (req, res, next) => pageHandler('home', req, res, next));
+  server.get('/', (req, res, next) => pageHandler('home', db, req, res, next));
 
-  server.get('/:page', (req, res, next) => pageHandler(req.params.page, req, res, next));
+  server.get('/:page', (req, res, next) => pageHandler(req.params.page, db, req, res, next));
 
   server.use((req, res) => {
     const { method, originalUrl: url, body } = req;
