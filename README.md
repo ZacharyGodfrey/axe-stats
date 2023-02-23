@@ -10,6 +10,8 @@ More details TBD.
 
 https://docs.netlify.com/configure-builds/file-based-configuration
 
+https://docs.netlify.com/site-deploys/overview/#deploy-contexts
+
 https://github.com/AaronBeaudoin/vite-plugin-ssr-example-netlify
 
 https://github.com/vuejs/petite-vue

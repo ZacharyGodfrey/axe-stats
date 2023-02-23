@@ -1,5 +1,5 @@
 const {
-  CONTEXT: environment,
+  NODE_ENV: environment,
   PORT: port
 } = process.env;
 

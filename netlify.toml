@@ -11,6 +11,15 @@
   to = "/.netlify/functions/handler"
   status = 200
 
+[context.production.environment]
+  NODE_ENV = "production"
+
+[context.branch-deploy.environment]
+  NODE_ENV = "branch"
+
+[context.dev.environment]
+  NODE_ENV = "local"
+
 [dev]
   port = 8080
   autoLaunch = true
