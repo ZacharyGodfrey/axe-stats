@@ -4,13 +4,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Axe Charts is a simple site for visualizing IATF axe throwing data">
-    <base href="https://axecharts.com">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png">
+    <base href="{{config.baseUrl}}">
 
-    {{#title}}<title>Axe Charts | {{title}}</title>{{/title}}
-    {{^title}}<title>Axe Charts</title>{{/title}}
+    {{#page.title}}<title>Axe Charts | {{page.title}}</title>{{/page.title}}
+    {{^page.title}}<title>Axe Charts</title>{{/page.title}}
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/alpinejs" defer></script>
     <style>
       * {
         position: relative;
