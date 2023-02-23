@@ -53,14 +53,14 @@
         flex-direction: column;
       }
 
-      header {
-        padding: 1rem;
-        text-align: center;
-      }
-
       main {
         flex: 1;
         padding: 2rem 1rem;
+        min-height: 50vh;
+      }
+
+      #header {
+        text-align: center;
       }
 
       footer {
@@ -71,12 +71,12 @@
       }
 
       #footer-left, #footer-right {
-        margin: 1rem auto;
+        margin: 2rem auto;
       }
 
       section {
         max-width: 100ch;
-        margin: 0 auto;
+        margin: 2rem auto;
       }
 
       hr {
@@ -188,8 +188,8 @@
     </style>
   </head>
   <body>
-    <header>
-      <section class="split">
+    <main>
+      <section id="header" class="split">
         <h1>
           <a href="/">Axe Charts</a>
         </h1>
@@ -198,10 +198,8 @@
           <strong>Menu</strong>
         </nav>
       </section>
-    </header>
 
-    <main>
-      <section>
+      <section id="page">
         {{>page}}
       </section>
     </main>
