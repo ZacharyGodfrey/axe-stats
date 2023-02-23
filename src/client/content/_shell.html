@@ -59,7 +59,7 @@
         min-height: 90vh;
       }
 
-      #header {
+      header {
         text-align: center;
       }
 
@@ -156,11 +156,11 @@
       }
 
       @media screen and (min-width: 1200px) {
-        #header {
+        header {
           text-align: inherit;
         }
 
-        #menu {
+        header nav {
           text-align: right;
         }
 
@@ -198,17 +198,20 @@
   </head>
   <body>
     <main>
-      <section id="header" class="split align-center">
-        <h1>
-          <a href="/">Axe Charts</a>
-        </h1>
+      <section>
+        <header class="split align-center">
+          <h1>
+            <a href="/">Axe Charts</a>
+          </h1>
 
-        <nav id="menu">
-          <strong>Menu</strong>
-        </nav>
-      </section>
+          <nav>
+            <p>
+              <strong>Menu</strong>
+            </p>
+          </nav>
+        </header>
 
-      <section id="page">
+
         {{>page}}
       </section>
     </main>
