@@ -2,11 +2,11 @@ const express = require('express');
 
 const createDatabase = require('./database');
 const client = require('./client');
-const router = require('./router');
+const createRouter = require('./router');
 
 module.exports = async () => {
   const db = await createDatabase();
-  const router = router(client, db);
+  const router = createRouter(client, db);
   const server = express();
 
   server.set('json spaces', 2);
