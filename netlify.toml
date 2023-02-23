@@ -10,6 +10,7 @@
 
 [functions]
   directory = "_deploy"
+  included_files = ["**"]
 
 [[redirects]]
   from = "/*"
