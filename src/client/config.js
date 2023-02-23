@@ -3,10 +3,10 @@ const {
   PORT: port
 } = process.env;
 
-const isProd = environment === 'production';
-const prodUrl = 'https://axe-charts.netlify.app'; // https://axecharts.com
-const localUrl = `http://localhost:${port}`;
-
 module.exports = {
-  baseUrl: isProd ? prodUrl : localUrl
+  baseUrl: {
+    production: 'https://axecharts.com',
+    local: `http://localhost:${port || 8080}`,
+    default: 'https://axe-charts.netlify.app'
+  }[environment || 'default']
 };
