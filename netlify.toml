@@ -1,6 +1,9 @@
 # Documentation:
 # https://docs.netlify.com/configure-builds/file-based-configuration
 
+# Example SSR site
+# https://github.com/AaronBeaudoin/vite-plugin-ssr-example-netlify
+
 [build]
   command = "npm run build"
   publish = "dist"
@@ -11,8 +14,7 @@
 [[redirects]]
   from = "/*"
   to = "/.netlify/functions/handler"
-  status = 301
-  force = true
+  status = 200
 
 [dev]
   port = 8080

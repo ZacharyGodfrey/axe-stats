@@ -12,9 +12,6 @@ module.exports = async () => {
   server.use(express.json());
 
   server.use(({ method }, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', '*');
-    res.header('Access-Control-Allow-Methods', 'OPTIONS,GET,POST');
     res.header('x-powered-by', '');
 
     method === 'OPTIONS' ? res.status(200).end() : next();
@@ -28,11 +25,13 @@ module.exports = async () => {
   });
 
   server.use((req, res) => {
-    res.status(404).send({
+    const body = JSON.stringify({
       method: req.method,
       url: req.originalUrl,
       body: req.body
-    });
+    }, null, 2);
+
+    res.status(404).type('text').send(body);
   });
 
   return server;
