@@ -14,24 +14,31 @@ module.exports = async () => {
   server.use(({ method }, res, next) => {
     res.header('x-powered-by', '');
 
-    method === 'OPTIONS' ? res.status(200).end() : next();
+    return method === 'OPTIONS' ? res.status(200).end() : next();
   });
 
-  server.get('/', async (req, res, next) => {
-    const user = null;
-    const body = await client.home(db, user);
+  server.get('/:page', async (req, res, next) => {
+    try {
+      const page = req.params.page;
 
-    res.status(200).type('html').send(body);
+      console.log(`Requested Page: ${page || '(falsy)'}`);
+
+      if (!client[page]) {
+        return next();
+      }
+
+      const body = await client[page](db);
+
+      return res.status(200).type('html').send(body);
+    } catch (error) {
+      return res.status(500).type('html').send('');
+    }
   });
 
   server.use((req, res) => {
-    const body = JSON.stringify({
-      method: req.method,
-      url: req.originalUrl,
-      body: req.body
-    }, null, 2);
+    const { method, originalUrl: url, body } = req;
 
-    res.status(404).type('text').send(body);
+    return res.status(404).send({ method, url, body });
   });
 
   return server;
