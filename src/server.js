@@ -5,9 +5,6 @@ const client = require('./client');
 
 const pageHandler = async (pageName, db, req, res, next) => {
   try {
-    console.log(`Requested Page: ${pageName}`);
-    console.log(`Available Pages: ${JSON.stringify(Object.keys(client), null, 2)}`);
-
     if (!client[pageName]) {
       return next();
     }
@@ -38,11 +35,9 @@ module.exports = async () => {
 
   server.get('/:page', (req, res, next) => pageHandler(req.params.page, db, req, res, next));
 
-  server.use((req, res) => {
-    const { method, originalUrl: url, body } = req;
+  server.use((req, res, next) => pageHandler('not-found', db, req, res, next));
 
-    return res.status(404).send({ method, url, body });
-  });
+  server.use((req, res, next) => res.status(404).send('Hard Stop'));
 
   return server;
 };
