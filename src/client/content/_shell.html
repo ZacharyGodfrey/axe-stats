@@ -159,6 +159,18 @@
         footer {
           text-align: inherit;
         }
+
+        .split {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: stretch;
+        }
+
+        .split > * {
+          flex: 1;
+        }
       }
     </style>
   </head>
@@ -177,19 +189,23 @@
       </section>
     </main>
 
-    <footer class="text-right">
-      <section>
-        <h2>Axe Charts</h2>
+    <footer>
+      <section class="split">
+        <div>
+          <h2>Axe Charts</h2>
 
-        <p><a href="#">Link One</a></p>
-        <p><a href="#">Link Two</a></p>
-        <p><a href="#">Link Three</a></p>
+          <p><a href="#">Link One</a></p>
+          <p><a href="#">Link Two</a></p>
+          <p><a href="#">Link Three</a></p>
+        </div>
 
-        <h3>Contact</h3>
+        <div>
+          <h3>Contact</h3>
 
-        <p>
-          <a href="mailto:info@axecharts.com">info@axecharts.com</a>
-        </p>
+          <p>
+            <a href="mailto:info@axecharts.com">info@axecharts.com</a>
+          </p>
+        </div>
       </section>
     </footer>
   </body>
