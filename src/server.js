@@ -1,24 +1,12 @@
 const express = require('express');
 
-const database = require('./database');
+const createDatabase = require('./database');
 const client = require('./client');
-
-const pageHandler = async (pageName, db, req, res, next, status = 200) => {
-  try {
-    if (!client[pageName]) {
-      return next();
-    }
-
-    const body = await client[pageName](db);
-
-    return res.status(status).type('html').send(body);
-  } catch (error) {
-    return res.status(500).type('html').send(error.message);
-  }
-};
+const router = require('./router');
 
 module.exports = async () => {
-  const db = await database();
+  const db = await createDatabase();
+  const router = router(client, db);
   const server = express();
 
   server.set('json spaces', 2);
@@ -31,13 +19,11 @@ module.exports = async () => {
     return method === 'OPTIONS' ? res.status(200).end() : next();
   });
 
-  server.get('/', (req, res, next) => pageHandler('home', db, req, res, next, 200));
+  server.get('/', (req, res, next) => router('home', req, res, next, 200));
 
-  server.get('/:page', (req, res, next) => pageHandler(req.params.page, db, req, res, next, 200));
+  server.get('/:page', (req, res, next) => router(req.params.page, req, res, next, 200));
 
-  server.use((req, res, next) => pageHandler('not-found', db, req, res, next, 404));
-
-  server.use((req, res, next) => res.status(404).send('Hard Stop'));
+  server.use((req, res, next) => res.status(500).send('An internal server error has occurred.'));
 
   return server;
 };
