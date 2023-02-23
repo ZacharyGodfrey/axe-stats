@@ -4,6 +4,7 @@ const {
 } = process.env;
 
 module.exports = {
+  environment,
   baseUrl: {
     production: 'https://axecharts.com',
     local: `http://localhost:${port || 8080}`,
