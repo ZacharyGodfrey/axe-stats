@@ -4,17 +4,161 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Axe Charts is a simple site for visualizing IATF axe throwing data">
-    <title>{{#title}}{{title}}{{/title}}{{^title}}Axe Charts{{/title}}</title>
+    <base href="https://axecharts.com">
+
+    {{#title}}<title>Axe Charts | {{title}}</title>{{/title}}
+    {{^title}}<title>Axe Charts</title>{{/title}}
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
+    <style>
+      * {
+        position: relative;
+        box-sizing: border-box;
+      }
+
+      *:first-child {
+        margin-top: 0 !important;
+      }
+
+      *:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      ::selection {
+        color: #303030;
+        background: var(--color);
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        max-width: 100vw;
+        min-height: 100vh;
+        font-family: monospace;
+        font-size: 18px;
+        color: #303030;
+        background: #F8F8F8;
+        --color: #41A541;
+      }
+
+      header,
+      main,
+      footer {
+        padding: 2rem;
+      }
+
+      header,
+      footer {
+        color: #F8F8F8;
+        background: #303030;
+      }
+
+      section {
+        max-width: 100ch;
+        margin: 0 auto;
+      }
+
+      hr {
+        width: 100%;
+        height: 2px;
+        margin: 2rem 0;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: var(--color);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 2rem 0;
+        line-height: 1.5;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: normal;
+        letter-spacing: 2px;
+      }
+
+      h2 {
+        font-size: 2rem;
+        font-weight: normal;
+        letter-spacing: 1px;
+      }
+
+      h3 {
+        font-size: 1.25rem;
+        letter-spacing: 1px;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+        text-decoration-color: var(--color);
+        text-underline-offset: 4px;
+      }
+
+      a:hover {
+        color: var(--color);
+      }
+
+      h1 a {
+        text-decoration: none;
+      }
+
+      ul {
+        margin: 2rem auto;
+        padding: 0;
+        list-style-position: inside;
+      }
+
+      li {
+        line-height: 1.5;
+      }
+
+      iframe {
+        display: block;
+        margin: 2rem auto;
+        padding: 0;
+        border: 2px solid #303030;
+        outline: none;
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        max-height: 800px;
+        aspect-ratio: 3 / 2;
+      }
+    </style>
   </head>
   <body>
-    <header></header>
+    <header>
+      <section>
+        <h1>
+          <a href="/">Axe Charts</a>
+        </h1>
+      </section>
+    </header>
 
     <main>
-      {{>page}}
+      <section>
+        {{>page}}
+      </section>
     </main>
 
-    <footer></footer>
+    <footer>
+      <section>
+        <h2>Axe Charts</h2>
+
+        <hr>
+
+        <p class="text-right">
+          <a href="mailto:info@axecharts.com">info@axecharts.com</a>
+        </p>
+      </section>
+    </footer>
   </body>
 </html>
