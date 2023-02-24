@@ -1,9 +1,9 @@
 const { readFile, render } = require('../helpers');
 
-const page = readFile(`${__dirname}/../content/not-found.html`);
+const page = readFile(`${__dirname}/../content/500.html`);
 
 module.exports = async () => {
-  const title = 'Not Found';
+  const title = 'Server Error';
 
   return render(page, { title });
 };
