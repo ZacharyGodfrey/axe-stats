@@ -19,13 +19,13 @@ const distDir = path.resolve(__dirname, '../dist');
     '500': client['500'],
   };
 
-  await Promise.all(Object.entries(basicPages).map(([name, render]) => {
+  await Promise.all(Object.entries(basicPages).map(async ([name, render]) => {
     const fileName = `${distDir}/${name}.html`;
     const content = await render(db);
 
     console.log(`Writing File: ${fileName}`);
 
-    return fs.outputFile(fileName, content, 'utf-8');
+    await fs.outputFile(fileName, content, 'utf-8');
   }));
 
   // TODO: Query the database and render profile pages based on data
