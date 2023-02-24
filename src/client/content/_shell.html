@@ -19,6 +19,7 @@
         --black: #000000;
         font-family: monospace;
         font-size: 18px;
+        line-height: 1.5;
         color: var(--black);
         background: var(--white);
       }
@@ -81,9 +82,8 @@
         background: var(--color);
       }
 
-      h1, h2, h3, p, nav {
+      h1, h2, h3, p, nav, article, ul, iframe {
         margin: 2rem 0;
-        line-height: 1.5;
       }
 
       h1 {
@@ -120,18 +120,16 @@
       }
 
       ul {
-        margin: 2rem auto;
         padding: 0;
         list-style-position: inside;
       }
 
       li {
-        line-height: 1.5;
+        /* line-height: 1.5; */
       }
 
       iframe {
         display: block;
-        margin: 2rem auto;
         padding: 0;
         border: 2px solid var(--dark);
         outline: none;
@@ -186,6 +184,14 @@
         </nav>
 
         {{>page}}
+
+        <article>
+          <ul>
+            <li>Item One</li>
+            <li>Item Two</li>
+            <li>Item Three</li>
+          </ul>
+        </article>
       </section>
     </main>
 
