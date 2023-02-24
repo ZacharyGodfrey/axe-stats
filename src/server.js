@@ -33,9 +33,9 @@ module.exports = async () => {
     return method === 'OPTIONS' ? res.status(200).end() : next();
   });
 
-  server.get('/s/compare/:leftId/:rightId', handler(async (req) => {
+  server.get('/s/comparison/:leftId/:rightId', handler(async (req) => {
     const { leftId, rightId } = req.params;
-    const html = await client['compare'](db, leftId, rightId);
+    const html = await client['comparison'](db, leftId, rightId);
 
     return { status: 200, html };
   }));

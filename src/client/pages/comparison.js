@@ -1,6 +1,6 @@
 const { readFile, render } = require('../helpers');
 
-const page = readFile(`${__dirname}/../content/compare.html`);
+const page = readFile(`${__dirname}/../content/comparison.html`);
 
 module.exports = async (db, leftId, rightId) => {
   const left = await db.getThrowerById(leftId);
