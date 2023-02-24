@@ -18,11 +18,13 @@
 
       <tbody>
         {{#topThrowers}}
-        <td>{{rank}}</td>
-        <td>{{premierRating}}</td>
-        <td>
-          <a href="/profile/{{id}}">{{name}}</a>
-        </td>
+        <tr>
+          <td>{{rank}}</td>
+          <td>{{premierRating}}</td>
+          <td>
+            <a href="/profile/{{id}}">{{name}}</a>
+          </td>
+        </tr>
         {{/topThrowers}}
       </tbody>
     </table>
