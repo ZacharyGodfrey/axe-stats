@@ -25,7 +25,7 @@ const distDir = path.resolve(__dirname, '../dist');
 
     console.log(`Writing File: ${fileName}`);
 
-    await fs.outputFile(fileName, content, 'utf-8');
+    await fs.outputFile(fileName, `<!-- Generated during build step -->\n${content}`, 'utf-8');
   }));
 
   // TODO: Query the database and render profile pages based on data
