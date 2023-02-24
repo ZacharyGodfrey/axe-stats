@@ -9,7 +9,7 @@ const distDir = path.resolve(__dirname, '../dist');
 (async () => {
   await fs.emptyDir(distDir);
 
-  await fs.copy(`${clientDir}/static`, distDir);
+  await fs.copy(`${clientDir}/assets`, distDir);
 
   const db = await require('../src/database')();
 

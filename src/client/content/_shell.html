@@ -7,8 +7,8 @@
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
     <base href="{{{config.baseUrl}}}">
 
-    {{#page.title}}<title>Axe Charts | {{page.title}}</title>{{/page.title}}
-    {{^page.title}}<title>Axe Charts</title>{{/page.title}}
+    {{#title}}<title>Axe Charts | {{title}}</title>{{/title}}
+    {{^title}}<title>Axe Charts</title>{{/title}}
 
     <style>
       :root {
@@ -172,12 +172,6 @@
         <h1>
           <a href="/">Axe Charts</a>
         </h1>
-
-        <nav>
-          <a href="/">Home</a>
-          <strong>/</strong>
-          <a href="/123456789">Profile: REDACTED</a>
-        </nav>
 
         {{>page}}
       </section>
