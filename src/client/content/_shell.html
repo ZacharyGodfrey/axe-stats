@@ -12,9 +12,10 @@
 
     <style>
       :root {
-        --color: hsl(120, 50%, 50%);
+        --color: hsl(225, 50%, 50%);
         --white: #FFFFFF;
         --light: #FAFAFA;
+        --medium: #CCCCCC;
         --dark: #303030;
         --black: #000000;
         font-family: monospace;
@@ -145,14 +146,16 @@
         width: 100%;
         border-collapse: collapse;
         background: var(--white);
-        border: 2px solid var(--dark);
+      }
+
+      tr:nth-child(2n+1) {
+        background: var(--medium);
       }
 
       th, td {
         padding: 0.5rem;
         white-space: nowrap;
         vertical-align: middle;
-        border: 1px solid var(--dark);
       }
 
       th {
