@@ -35,7 +35,7 @@ module.exports = async () => {
 
   server.get('/s/compare/:leftId/:rightId', handler(async (req) => {
     const { leftId, rightId } = req.params;
-    const html = await client.compare(db, leftId, rightId);
+    const html = await client['compare'](db, leftId, rightId);
 
     return { status: 200, html };
   }));
