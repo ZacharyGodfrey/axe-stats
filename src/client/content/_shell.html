@@ -18,6 +18,7 @@
         --dark: #303030;
         --black: #000000;
         font-family: monospace;
+        font-variant-numeric: slashed-zero tabular-nums;
         font-size: 18px;
         line-height: 1.5;
         color: var(--black);
@@ -137,7 +138,7 @@
       }
 
       figure {
-        overflow-x: scroll;
+        overflow-x: auto;
       }
 
       table, th, td {
@@ -147,6 +148,7 @@
       table {
         width: 100%;
         border-collapse: collapse;
+        background: var(--white);
       }
 
       th, td {
@@ -156,14 +158,15 @@
       }
 
       th {
-        color: var(--black);
-        background: var(--color);
+        color: var(--white);
+        background: var(--dark);
       }
 
-      .text-justify { text-align: justify; }
-      .text-center { text-align: center; }
-      .text-right { text-align: right; }
       .text-indent { text-indent: 4ch; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+      .text-center { text-align: center; }
+      .text-justify { text-align: justify; }
 
       .split > * {
         margin: 2rem auto;
