@@ -3,4 +3,28 @@
     <strong>NOTE:</strong>
     <span>This site is still being constructed. Please chech back later for more features. Thanks!</span>
   </p>
+
+  <h2>Top 10 Throwers</h2>
+
+  <figure>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Rating</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#topThrowers}}
+        <td>{{rank}}</td>
+        <td>{{premierRating}}</td>
+        <td>
+          <a href="/profile/{{id}}">{{name}}</a>
+        </td>
+        {{/topThrowers}}
+      </tbody>
+    </table>
+  </figure>
 </article>
