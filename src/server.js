@@ -8,7 +8,7 @@ const handler = (action) => {
     try {
       const { status, html } = await action(req);
 
-      return res.status(status).type('html').send(html);
+      return res.status(status).type('html').send(`<!-- Rendered by the server -->\n${html}`);
     } catch (error) {
       console.log(JSON.stringify({
         message: error.message,
