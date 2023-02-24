@@ -3,7 +3,8 @@ const { readFile, render } = require('../helpers');
 const page = readFile(`${__dirname}/../content/home.html`);
 
 module.exports = async (db) => {
-  const topThrowers = await db.topThrowers(10);
+  const topPremierThrowers = await db.topThrowers(10, 'premier');
+  const topStandardThrowers = await db.topThrowers(10, 'standard');
 
-  return render(page, { topThrowers });
+  return render(page, { topPremierThrowers, topStandardThrowers });
 };

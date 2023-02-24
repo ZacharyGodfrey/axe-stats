@@ -6,7 +6,7 @@
 
   <hr>
 
-  <h2>Top 10 Throwers</h2>
+  <h2>Top 10 Premier Throwers</h2>
 
   <figure>
     <table>
@@ -19,7 +19,7 @@
       </thead>
 
       <tbody>
-        {{#topThrowers}}
+        {{#topPremierThrowers}}
         <tr>
           <td class="text-center">{{rank}}</td>
           <td class="text-center">{{premierRating}}</td>
@@ -27,7 +27,35 @@
             <a href="/profile/{{id}}">{{name}}</a>
           </td>
         </tr>
-        {{/topThrowers}}
+        {{/topPremierThrowers}}
+      </tbody>
+    </table>
+  </figure>
+
+  <hr>
+
+  <h2>Top 10 Standard Throwers</h2>
+
+  <figure>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Rating</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#topStandardThrowers}}
+        <tr>
+          <td class="text-center">{{rank}}</td>
+          <td class="text-center">{{standardRating}}</td>
+          <td class="text-center">
+            <a href="/profile/{{id}}">{{name}}</a>
+          </td>
+        </tr>
+        {{/topStandardThrowers}}
       </tbody>
     </table>
   </figure>
