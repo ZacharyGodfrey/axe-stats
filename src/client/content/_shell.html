@@ -82,7 +82,7 @@
         background: var(--color);
       }
 
-      h1, h2, h3, p, nav, article, ul, iframe {
+      h1, h2, h3, p, nav, article, ul, iframe, table {
         margin: 2rem 0;
       }
 
@@ -134,6 +134,19 @@
         max-width: 1200px;
         max-height: 800px;
         aspect-ratio: 3 / 2;
+      }
+
+      table, th, td {
+        border: 2px solid var(--dark);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th, td {
+        padding: 0.5rem 1rem;
       }
 
       .text-justify { text-align: justify; }
