@@ -12,10 +12,10 @@
 
     <style>
       :root {
-        --color: #41A541;
+        --color: hsl(120, 50%, 50%);
+        --color-light: hsl(120, 50%, 80%);
         --white: #FFFFFF;
         --light: #FAFAFA;
-        --medium: #CCCCCC;
         --dark: #303030;
         --black: #000000;
         font-family: monospace;
@@ -150,14 +150,14 @@
       }
 
       th, td {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem;
         white-space: nowrap;
         vertical-align: middle;
         border: 1px solid var(--dark);
       }
 
       th {
-        background: var(--medium);
+        background: var(--color-light);
       }
 
       .text-indent { text-indent: 4ch; }
