@@ -23,7 +23,11 @@ module.exports = async () => {
 
   // server.get('/:page', (req, res, next) => router(req.params.page, req, res, next, 200));
 
-  server.use((req, res, next) => res.status(404).send('Hard Stop: No routes matched the request.'));
+  server.use(({ method, path, body }, res, next) => {
+    const message = 'Hard Stop: No routes matched the request.';
+
+    return res.status(404).send({ message, method, path, body });
+  });
 
   return server;
 };
