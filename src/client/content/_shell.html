@@ -17,7 +17,6 @@
         --light: #FAFAFA;
         --dark: #303030;
         --black: #000000;
-        --max-content: 100ch;
         font-family: monospace;
         font-size: 18px;
         color: var(--black);
@@ -72,7 +71,7 @@
       }
 
       section {
-        max-width: var(--max-content);
+        max-width: 100ch;
         margin: 2rem auto;
       }
 
@@ -156,7 +155,7 @@
         margin: 2rem auto;
       }
 
-      @media screen and (min-width: var(--max-content)) {
+      @media screen and (min-width: 100ch) {
         header {
           text-align: inherit;
         }
