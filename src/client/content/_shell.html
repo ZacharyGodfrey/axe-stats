@@ -59,13 +59,9 @@
         min-height: 100vh;
       }
 
-      header {
-        text-align: center;
-      }
-
       footer {
         padding: 2rem 1rem;
-        text-align: center;
+        text-align: right;
         color: var(--white);
         background: var(--dark);
       }
@@ -105,6 +101,10 @@
       h3 {
         font-size: 1.25rem;
         letter-spacing: 1px;
+      }
+
+      strong {
+        color: var(--color);
       }
 
       a {
@@ -155,15 +155,7 @@
         margin: 2rem auto;
       }
 
-      @media screen and (min-width: 100ch) {
-        header {
-          text-align: inherit;
-        }
-
-        footer {
-          text-align: right;
-        }
-
+      @media screen and (min-width: 1000px) {
         .split {
           display: flex;
           flex-direction: row;
