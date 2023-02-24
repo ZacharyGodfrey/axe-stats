@@ -81,7 +81,7 @@
         background: var(--color);
       }
 
-      h1, h2, h3, p {
+      h1, h2, h3, p, nav {
         margin: 2rem 0;
         line-height: 1.5;
       }
@@ -101,10 +101,6 @@
       h3 {
         font-size: 1.25rem;
         letter-spacing: 1px;
-      }
-
-      strong {
-        color: var(--color);
       }
 
       a {
@@ -179,21 +175,15 @@
   <body>
     <main>
       <section>
-        <header>
-          <h1>
-            <a href="/">Axe Charts</a>
-          </h1>
-        </header>
-
-        <hr>
+        <h1>
+          <a href="/">Axe Charts</a>
+        </h1>
 
         <nav>
           <a href="/">Home</a>
           <strong>|</strong>
           <a href="/123456789">Profile: REDACTED</a>
         </nav>
-
-        <hr>
 
         {{>page}}
       </section>
