@@ -10,6 +10,10 @@ const handler = (action) => {
 
       return res.status(status).type('html').send(html);
     } catch (error) {
+      console.log(JSON.stringify({
+        message: error.message,
+        stack: error.stack.split('\n').slice(1)
+      }, null, 2));
       return res.status(500).type('text').send('An internal server error has occurred.');
     }
   };
