@@ -82,7 +82,7 @@
         background: var(--color);
       }
 
-      h1, h2, h3, p, nav, article, ul, iframe, table {
+      h1, h2, h3, p, nav, article, ul, iframe, figure, table {
         margin: 2rem 0;
       }
 
@@ -136,6 +136,10 @@
         aspect-ratio: 3 / 2;
       }
 
+      figure {
+        overflow-x: auto;
+      }
+
       table, th, td {
         border: 2px solid var(--dark);
       }
@@ -147,10 +151,6 @@
 
       th, td {
         padding: 0.5rem 1rem;
-      }
-
-      col {
-        width: 20%;
       }
 
       .text-justify { text-align: justify; }
