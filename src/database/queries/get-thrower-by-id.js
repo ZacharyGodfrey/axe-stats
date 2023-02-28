@@ -1,5 +1,5 @@
-module.exports = (id) => {
+module.exports = (db, id) => {
   const sql = `SELECT * FROM profiles WHERE urlId = ?;`;
 
-  return this.query(sql, [id])[0] || null;
+  return db.query(sql, [id])[0] || null;
 };

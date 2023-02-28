@@ -1,7 +1,7 @@
-module.exports = (count, type) => {
+module.exports = (db, count, type) => {
   const sql = `SELECT * FROM profiles ORDER BY ? DESC LIMIT ?`;
 
-  return this.query(sql, [
+  return db.query(sql, [
     type === 'premier' ? 'premierRating' : 'standardRating',
     count
   ]);

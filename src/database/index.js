@@ -8,8 +8,8 @@ const getThrowerById = require('./queries/get-thrower-by-id');
 let connection = null;
 
 const db = {
-  topThrowers: () => topThrowers.apply(db, arguments),
-  getThrowerById: () => getThrowerById.apply(db, arguments),
+  topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
+  getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
   _connection: () => connection,
   connect: () => {
     connection = connection || new sqlite3.Database(FILE_NAME, (error) => {

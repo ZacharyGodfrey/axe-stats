@@ -1,7 +1,9 @@
 const express = require('express');
 
-const createDatabase = require('./database');
+const db = require('./database');
 const client = require('./client');
+
+db.connect();
 
 const handler = (action) => {
   return async (req, res, next) => {
@@ -19,32 +21,29 @@ const handler = (action) => {
   };
 };
 
-module.exports = async () => {
-  const db = await createDatabase();
-  const server = express();
+const server = express();
 
-  server.set('json spaces', 2);
-  server.use(express.urlencoded({ extended: false }));
-  server.use(express.json());
+server.set('json spaces', 2);
+server.use(express.urlencoded({ extended: false }));
+server.use(express.json());
 
-  server.use(({ method }, res, next) => {
-    res.header('x-powered-by', '');
+server.use(({ method }, res, next) => {
+  res.header('x-powered-by', '');
 
-    return method === 'OPTIONS' ? res.status(200).end() : next();
-  });
+  return method === 'OPTIONS' ? res.status(200).end() : next();
+});
 
-  server.get('/s/comparison/:leftId/:rightId', handler(async (req) => {
-    const { leftId, rightId } = req.params;
-    const html = await client['comparison'](db, leftId, rightId);
+server.get('/s/comparison/:leftId/:rightId', handler(async (req) => {
+  const { leftId, rightId } = req.params;
+  const html = await client['comparison'](db, leftId, rightId);
 
-    return { status: 200, html };
-  }));
+  return { status: 200, html };
+}));
 
-  server.use(({ method, path, query, body }, res, next) => {
-    const message = 'Hard Stop: No routes matched the request.';
+server.use(({ method, path, query, body }, res, next) => {
+  const message = 'Hard Stop: No routes matched the request.';
 
-    return res.status(404).send({ message, method, path, query, body });
-  });
+  return res.status(404).send({ message, method, path, query, body });
+});
 
-  return server;
-};
+module.exports = server;
