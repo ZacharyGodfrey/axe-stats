@@ -11,7 +11,9 @@ const distDir = path.resolve(__dirname, '../dist');
 
   await fs.copy(`${clientDir}/assets`, distDir);
 
-  const db = await require('../src/database')();
+  const db = require('../src/database');
+
+  db.connect();
 
   const basicPages = {
     'index': client['home'],
@@ -29,4 +31,6 @@ const distDir = path.resolve(__dirname, '../dist');
   }));
 
   // TODO: Query the database and render profile pages based on data
+
+  db.disconnect();
 })();

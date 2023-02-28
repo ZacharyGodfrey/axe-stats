@@ -1,7 +1,5 @@
-const profiles = require('../data/throwers');
+module.exports = (id) => {
+  const sql = `SELECT * FROM profiles WHERE urlId = ?;`;
 
-module.exports = (connection) => {
-  return (id) => {
-    return profiles.find(x => x.id === id);
-  };
+  return this.query(sql, [id])[0] || null;
 };

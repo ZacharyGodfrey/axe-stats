@@ -31,3 +31,5 @@ https://github.com/vuejs/petite-vue
 https://pptr.dev
 
 https://techoverflow.net/2019/08/15/minimal-puppeteer-response-interception-example
+
+https://www.sqlitetutorial.net/sqlite-select

@@ -1,11 +1,8 @@
-const { byDescending } = require('../helpers');
+module.exports = (count, type) => {
+  const sql = `SELECT * FROM profiles ORDER BY ? DESC LIMIT ?`;
 
-const profiles = require('../data/throwers');
-
-module.exports = (connection) => {
-  return (count, type) => {
-    const order = byDescending(x => type === 'premier' ? x.premierRating : x.standardRating);
-
-    return profiles.sort(order).slice(0, count);
-  };
+  return this.query(sql, [
+    type === 'premier' ? 'premierRating' : 'standardRating',
+    count
+  ]);
 };

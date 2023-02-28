@@ -1,0 +1,26 @@
+name: Data Scrape Workflow
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 5 * * 3"
+jobs:
+  run-scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Set Up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Run Scrape
+        run: npm install && npm run scrape
+      - name: Commit Database File
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          file_pattern: src/database/data.db
+          commit_message: Update Database File
+          commit_user_name: Scrape Workflow
+          commit_user_email: scrape-workflow-actions@github.com
