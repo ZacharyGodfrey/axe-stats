@@ -1,17 +1,16 @@
 const path = require('path');
 const fs = require('fs-extra');
 
+const db = require('../src/database');
 const client = require('../src/client');
 
 const clientDir = path.resolve(__dirname, '../src/client');
 const distDir = path.resolve(__dirname, '../dist');
 
-(async () => {
-  await fs.emptyDir(distDir);
+try {
+  fs.emptyDirSync(distDir);
 
-  await fs.copy(`${clientDir}/assets`, distDir);
-
-  const db = require('../src/database');
+  fs.copySync(`${clientDir}/assets`, distDir);
 
   db.connect();
 
@@ -21,16 +20,18 @@ const distDir = path.resolve(__dirname, '../dist');
     '500': client['500'],
   };
 
-  await Promise.all(Object.entries(basicPages).map(async ([name, render]) => {
+  Object.entries(basicPages).forEach(([name, render]) => {
     const fileName = `${distDir}/${name}.html`;
-    const content = await render(db);
+    const content = render(db);
 
     console.log(`Writing File: ${fileName}`);
 
-    await fs.outputFile(fileName, `<!-- Rendered during build step -->\n${content}`, 'utf-8');
-  }));
+    fs.outputFileSync(fileName, `<!-- Rendered during build step -->\n${content}`, 'utf-8');
+  })
 
   // TODO: Query the database and render profile pages based on data
-
+} catch (error) {
+  console.log(error);
+} finally {
   db.disconnect();
-})();
+}
