@@ -1,4 +1,6 @@
 module.exports = {
   'home': require('./pages/home'),
-  'not-found': require('./pages/not-found'),
+  '404': require('./pages/404'),
+  '500': require('./pages/500'),
+  'comparison': require('./pages/comparison'),
 };

@@ -7,20 +7,23 @@
     <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
     <base href="{{{config.baseUrl}}}">
 
-    {{#page.title}}<title>Axe Charts | {{page.title}}</title>{{/page.title}}
-    {{^page.title}}<title>Axe Charts</title>{{/page.title}}
+    {{#title}}<title>Axe Charts | {{title}}</title>{{/title}}
+    {{^title}}<title>Axe Charts</title>{{/title}}
 
     <style>
       :root {
-        --color: #41A541;
+        --color: hsl(90, 65%, 35%);
         --white: #FFFFFF;
         --light: #FAFAFA;
+        --medium: #EEEEEE;
         --dark: #303030;
         --black: #000000;
         font-family: monospace;
+        font-variant-numeric: slashed-zero tabular-nums;
         font-size: 18px;
+        line-height: 1.5;
         color: var(--black);
-        background: var(--white);
+        background: var(--light);
       }
 
       * {
@@ -53,24 +56,22 @@
         flex-direction: column;
       }
 
-      header {
-        padding: 1rem;
-      }
-
       main {
         flex: 1;
         padding: 2rem 1rem;
+        min-height: 50vh;
       }
 
       footer {
         padding: 2rem 1rem;
+        text-align: right;
         color: var(--white);
         background: var(--dark);
       }
 
       section {
         max-width: 100ch;
-        margin: 0 auto;
+        margin: 2rem auto;
       }
 
       hr {
@@ -83,9 +84,8 @@
         background: var(--color);
       }
 
-      h1, h2, h3, p {
+      h1, h2, h3, p, nav, article, ul, iframe, figure, table {
         margin: 2rem 0;
-        line-height: 1.5;
       }
 
       h1 {
@@ -106,11 +106,11 @@
       }
 
       a {
-        color: inherit;
+        color: var(--color);
         text-decoration: underline;
-        text-decoration-color: var(--color);
-        text-decoration-thickness: 2px;
-        text-underline-offset: 4px;
+        /* text-decoration-color: var(--color); */
+        /* text-decoration-thickness: 2px; */
+        /* text-underline-offset: 4px; */
       }
 
       a:hover {
@@ -118,22 +118,17 @@
       }
 
       h1 a {
+        color: inherit;
         text-decoration: none;
       }
 
       ul {
-        margin: 2rem auto;
         padding: 0;
         list-style-position: inside;
       }
 
-      li {
-        line-height: 1.5;
-      }
-
       iframe {
         display: block;
-        margin: 2rem auto;
         padding: 0;
         border: 2px solid var(--dark);
         outline: none;
@@ -144,34 +139,78 @@
         aspect-ratio: 3 / 2;
       }
 
-      .text-justify { text-align: justify; }
-      .text-center { text-align: center; }
-      .text-right { text-align: right; }
+      figure {
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: var(--white);
+      }
+
+      tr:nth-child(2n) {
+        background: var(--medium);
+      }
+
+      th, td {
+        padding: 0.5rem;
+        white-space: nowrap;
+        vertical-align: middle;
+      }
+
+      th {
+        color: var(--white);
+        background: var(--color);
+      }
+
       .text-indent { text-indent: 4ch; }
+      .text-left { text-align: left; }
+      .text-right { text-align: right; }
+      .text-center { text-align: center; }
+      .text-justify { text-align: justify; }
+
+      .split > * {
+        margin: 2rem auto;
+      }
+
+      @media screen and (min-width: 1000px) {
+        .split {
+          display: flex;
+          flex-direction: row;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: stretch;
+          gap: 2rem;
+        }
+
+        .split.align-center {
+          align-items: center;
+        }
+
+        .split > * {
+          flex: 1;
+          margin: 0;
+        }
+      }
     </style>
   </head>
   <body>
-    <header>
+    <main>
       <section>
         <h1>
           <a href="/">Axe Charts</a>
         </h1>
-      </section>
-    </header>
 
-    <main>
-      <section>
         {{>page}}
       </section>
     </main>
 
     <footer>
       <section>
-        <h2>Axe Charts</h2>
+        <h3>Axe Charts</h3>
 
-        <hr>
-
-        <p class="text-right">
+        <p>
           <a href="mailto:info@axecharts.com">info@axecharts.com</a>
         </p>
       </section>

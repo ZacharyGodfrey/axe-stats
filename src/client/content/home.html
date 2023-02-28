@@ -1,6 +1,62 @@
 <article>
   <p>
-    <strong>NOTE:</strong>
-    <span>This site is still being constructed. Please chech back later for more features. Thanks!</span>
+    <strong>Note:</strong>
+    <span>This site is still under construction. Please come back later. Thanks!</span>
   </p>
+
+  <hr>
+
+  <h2>Top 10 Premier Throwers</h2>
+
+  <figure>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Rating</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#topPremierThrowers}}
+        <tr>
+          <td class="text-center">{{rank}}</td>
+          <td class="text-center">{{premierRating}}</td>
+          <td class="text-center">
+            <a href="/profile/{{id}}">{{name}}</a>
+          </td>
+        </tr>
+        {{/topPremierThrowers}}
+      </tbody>
+    </table>
+  </figure>
+
+  <hr>
+
+  <h2>Top 10 Standard Throwers</h2>
+
+  <figure>
+    <table>
+      <thead>
+        <tr>
+          <th>Rank</th>
+          <th>Rating</th>
+          <th>Name</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#topStandardThrowers}}
+        <tr>
+          <td class="text-center">{{rank}}</td>
+          <td class="text-center">{{standardRating}}</td>
+          <td class="text-center">
+            <a href="/profile/{{id}}">{{name}}</a>
+          </td>
+        </tr>
+        {{/topStandardThrowers}}
+      </tbody>
+    </table>
+  </figure>
 </article>

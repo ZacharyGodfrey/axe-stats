@@ -6,7 +6,17 @@ Axe Charts is a simple site for visualizing IATF axe throwing data
 
 ---
 
-More details TBD.
+## Roadmap
+
+- Add GitHub Action on a weekly cron schedule
+  - Use Puppeteer to hit AxeScores and intercept API responses
+  - Store captured data in a SQLite database file
+  - Commit database file back to the repo ([example](https://github.com/ZacharyGodfrey/mono/blob/main/.github/workflows/ci-workflow.yml))
+- Update database object to connect to the database file
+  - Add methods for reading and writing data
+- Update build script to iterate database records to generate player profile pages
+
+---
 
 ## References
 
@@ -21,3 +31,5 @@ https://github.com/vuejs/petite-vue
 https://pptr.dev
 
 https://techoverflow.net/2019/08/15/minimal-puppeteer-response-interception-example
+
+https://www.sqlitetutorial.net/sqlite-select
