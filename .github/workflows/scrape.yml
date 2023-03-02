@@ -18,9 +18,9 @@ jobs:
       - name: Run Scrape
         run: npm install && npm run scrape
       - name: Commit Database File
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          file_pattern: src/database/data.db
-          commit_message: Update Database File
-          commit_user_name: Scrape Workflow
-          commit_user_email: scrape-workflow-actions@github.com
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add ./src/database/data.db
+          git commit -m "Update database file"
+          git push
