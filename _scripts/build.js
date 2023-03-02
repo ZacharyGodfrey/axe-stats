@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-const db = require('../src/database');
+const db = require('../src/database')();
 const client = require('../src/client');
 
 const clientDir = path.resolve(__dirname, '../src/client');
@@ -12,8 +12,6 @@ const distDir = path.resolve(__dirname, '../dist');
     await fs.emptyDir(distDir);
 
     await fs.copy(`${clientDir}/assets`, distDir);
-
-    db.connect();
 
     const basicPages = {
       'index': client['home'],
@@ -34,6 +32,6 @@ const distDir = path.resolve(__dirname, '../dist');
   } catch (error) {
     console.log(error);
   } finally {
-    db.disconnect();
+    await db.disconnect();
   }
 })();

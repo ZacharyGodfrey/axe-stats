@@ -8,47 +8,61 @@ const getThrowerById = require('./queries/get-thrower-by-id');
 
 let connection = null;
 
-const db = {
-  topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
-  getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
-  _connection: () => connection,
-  connect: ({ destroyFileFirst = false }) => {
-    if (!connection && destroyFileFirst === true) {
-      console.log('Deleting database file before connecting...');
+module.exports = ({ destroyFileFirst = false }) => {
+  const db = {
+    topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
+    getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
+    _connection: () => connection,
+    connect: () => connection ? Promise.resolve() : new Promise((resolve, reject) => {
+      if (destroyFileFirst === true) {
+        console.log('Deleting database file before connecting...');
 
-      fs.removeSync(FILE_NAME);
-    }
+        fs.removeSync(FILE_NAME);
 
-    connection = connection || new sqlite3.Database(FILE_NAME, (error) => {
-      if (error) {
-        throw error;
-      } else {
-        console.log('Connected to the databse.');
+        console.log(`Deleted: ${FILE_NAME}`);
       }
-    });
-  },
-  query: (sql, params = []) => new Promise((resolve, reject) => {
-    if (!connection) {
-      reject(new Error('Not connected to the database.'));
-    }
 
-    console.log('Executing database query:');
-    console.log(sql);
-    console.log(`Params: ${JSON.stringify(params, null, 2)}`);
+      connection = new sqlite3.Database(FILE_NAME, (error) => {
+        if (error) {
+          reject(error);
+        } else {
+          console.log('Connected to the databse.');
 
-    connection.all(sql, params, (error, rows) => error ? reject(error) : resolve(rows));
-  }),
-  disconnect: () => {
-    connection.close((error) => {
-      if (error) {
-        throw error;
-      } else {
-        console.log('Disconnected from the database.')
-      }
-    });
+          resolve();
+        }
+      });
+    }),
+    query: (sql, params = []) => {
+      return db.connect().then(() => {
+        return new Promise((resolve, reject) => {
+          console.log('Executing database query:');
+          console.log(sql);
+          console.log(`Params: ${JSON.stringify(params, null, 2)}`);
 
-    connection = null;
-  }
+          connection.all(sql, params, (error, rows) => {
+            if (error) {
+              reject(error);
+            } else {
+              resolve(rows);
+            }
+          });
+        });
+      });
+    },
+    disconnect: () => !connection ? Promise.resolve() : new Promise((resolve, reject) => {
+      connection.close((error) => {
+        if (error) {
+          reject(error);
+        } else {
+          connection = null;
+
+          console.log('Disconnected from the database.');
+
+          resolve();
+        }
+      });
+    })
+  };
+
+  return db;
 };
-
-module.exports = db;

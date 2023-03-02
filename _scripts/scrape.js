@@ -1,9 +1,7 @@
-const db = require('../src/database');
+const db = require('../src/database')({ destroyFileFirst: true });
 
 (async () => {
   try {
-    db.connect({ destroyFileFirst: true });
-
     await db.query(`
       CREATE TABLE IF NOT EXISTS profiles (
         id INTEGER PRIMARY KEY,
@@ -46,6 +44,6 @@ const db = require('../src/database');
   } catch (error) {
     console.log(error);
   } finally {
-    db.disconnect();
+    await db.disconnect();
   }
 })();
