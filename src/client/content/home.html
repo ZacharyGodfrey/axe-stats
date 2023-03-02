@@ -6,57 +6,61 @@
 
   <hr>
 
-  <h2>Top 10 Premier Throwers</h2>
+  <details open>
+    <summary>Top 10 Premier Throwers</summary>
 
-  <figure>
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Rating</th>
-          <th>Name</th>
-        </tr>
-      </thead>
+    <figure>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Rating</th>
+            <th>Name</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {{#topPremierThrowers}}
-        <tr>
-          <td class="text-center">{{rank}}</td>
-          <td class="text-center">{{premierRating}}</td>
-          <td class="text-center">
-            <a href="/profile/{{id}}">{{name}}</a>
-          </td>
-        </tr>
-        {{/topPremierThrowers}}
-      </tbody>
-    </table>
-  </figure>
+        <tbody>
+          {{#topPremierThrowers}}
+          <tr>
+            <td class="text-center">{{rank}}</td>
+            <td class="text-center">{{premierRating}}</td>
+            <td class="text-center">
+              <a href="/profile/{{id}}">{{name}}</a>
+            </td>
+          </tr>
+          {{/topPremierThrowers}}
+        </tbody>
+      </table>
+    </figure>
+  </details>
 
   <hr>
 
-  <h2>Top 10 Standard Throwers</h2>
+  <details open>
+    <summary>Top 10 Standard Throwers</summary>
 
-  <figure>
-    <table>
-      <thead>
-        <tr>
-          <th>Rank</th>
-          <th>Rating</th>
-          <th>Name</th>
-        </tr>
-      </thead>
+    <figure>
+      <table>
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th>Rating</th>
+            <th>Name</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {{#topStandardThrowers}}
-        <tr>
-          <td class="text-center">{{rank}}</td>
-          <td class="text-center">{{standardRating}}</td>
-          <td class="text-center">
-            <a href="/profile/{{id}}">{{name}}</a>
-          </td>
-        </tr>
-        {{/topStandardThrowers}}
-      </tbody>
-    </table>
-  </figure>
+        <tbody>
+          {{#topStandardThrowers}}
+          <tr>
+            <td class="text-center">{{rank}}</td>
+            <td class="text-center">{{standardRating}}</td>
+            <td class="text-center">
+              <a href="/profile/{{id}}">{{name}}</a>
+            </td>
+          </tr>
+          {{/topStandardThrowers}}
+        </tbody>
+      </table>
+    </figure>
+  </details>
 </article>

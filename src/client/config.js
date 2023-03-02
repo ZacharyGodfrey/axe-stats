@@ -3,5 +3,6 @@ const {
 } = process.env;
 
 module.exports = {
-  baseUrl
+  baseUrl,
+  updatedAt: new Date().toISOString()
 };
