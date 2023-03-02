@@ -2,8 +2,8 @@ const { readFile, render } = require('../helpers');
 
 const page = readFile(`${__dirname}/../content/comparison.html`);
 
-module.exports = (db, leftId, rightId) => render(page, {
+module.exports = async (db, leftId, rightId) => render(page, {
   title: 'Comparison',
-  left: db.getThrowerById(leftId),
-  right: db.getThrowerById(rightId)
+  left: await db.getThrowerById(leftId),
+  right: await db.getThrowerById(rightId)
 });
