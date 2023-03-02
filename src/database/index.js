@@ -32,6 +32,10 @@ const db = {
       reject(new Error('Not connected to the database.'));
     }
 
+    console.log('Executing database query:');
+    console.log(sql);
+    console.log(`Params: ${JSON.stringify(params, null, 2)}`);
+
     connection.all(sql, params, (error, rows) => error ? reject(error) : resolve(rows));
   }),
   disconnect: () => {
