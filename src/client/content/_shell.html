@@ -244,10 +244,12 @@
           <a href="mailto:info@axecharts.com">info@axecharts.com</a>
         </p>
 
+        {{#updatedAt}}
         <p>
-          <strong>All Data Last Updated:</strong>
-          <span>{{ config.updatedAt }}</span>
+          <strong>Last Updated:</strong>
+          <span>{{ updatedAt }}</span>
         </p>
+        {{/updatedAt}}
       </section>
     </footer>
   </body>

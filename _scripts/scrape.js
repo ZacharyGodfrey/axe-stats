@@ -3,6 +3,17 @@ const db = require('../src/database')({ destroyFileFirst: true });
 (async () => {
   try {
     await db.query(`
+      CREATE TABLE IF NOT EXISTS timestamp (
+        id INTEGER PRIMARY KEY,
+        timestamp TEXT NOT NULL UNIQUE
+      );
+    `);
+
+    await db.query(`INSERT INTO timestamp (timestamp) VALUES(?);`, [
+      new Date().toISOString()
+    ]);
+
+    await db.query(`
       CREATE TABLE IF NOT EXISTS profiles (
         id INTEGER PRIMARY KEY,
         urlId TEXT NOT NULL UNIQUE,

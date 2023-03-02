@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16
       - name: Run Scrape
-        run: npm install && npm run scrape
+        run: npm i && npm run scrape
       - name: Commit Database File
         run: |
           git config user.name "GitHub Actions Bot"
@@ -24,3 +24,4 @@ jobs:
           git add ./src/database/data.db
           git commit -m "Update database file"
           git push
+          git reset --hard

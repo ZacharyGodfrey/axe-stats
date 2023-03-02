@@ -10,6 +10,7 @@ const layout = readFile(`${__dirname}/../content/_shell.html`);
 module.exports = (pageContent, pageData = {}, pagePartials = {}) => {
   const data = {
     config,
+    updatedAt: new Date().toISOString(),
     ...pageData
   };
 
