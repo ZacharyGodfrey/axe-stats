@@ -9,13 +9,15 @@ const timestamp = require('./queries/timestamp');
 
 let connection = null;
 
-module.exports = ({ destroyFileFirst }) => {
+module.exports = (options) => {
   const db = {
     topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
     getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
     timestamp: () => timestamp.apply(null, [db, ...arguments]),
     _connection: () => connection,
     connect: () => connection ? Promise.resolve() : new Promise((resolve, reject) => {
+      const { destroyFileFirst } = options || {};
+
       if (destroyFileFirst === true) {
         console.log('Deleting database file before connecting...');
 
