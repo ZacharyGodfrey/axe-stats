@@ -20,23 +20,13 @@ const db = {
       }
     });
   },
-  query: (sql, params = []) => {
+  query: (sql, params = []) => new Promise((resolve, reject) => {
     if (!connection) {
-      throw new Error('Not connected to the database.');
+      reject(new Error('Not connected to the database.'));
     }
 
-    let results = [];
-
-    connection.all(sql, params, (error, rows) => {
-      if (error) {
-        throw error;
-      } else {
-        results = rows;
-      }
-    });
-
-    return results;
-  },
+    connection.all(sql, params, (error, rows) => error ? reject(error) : resolve(rows));
+  }),
   disconnect: () => {
     connection.close((error) => {
       if (error) {
