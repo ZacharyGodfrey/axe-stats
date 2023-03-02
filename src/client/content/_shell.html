@@ -58,7 +58,7 @@
         flex-direction: column;
       }
 
-      main, aside, footer {
+      main, footer {
         padding: 2rem 1rem;
       }
 
@@ -236,18 +236,17 @@
       </section>
     </main>
 
-    <aside>
-      <section>
-        <p class="text-right">Last Updated: {{ config.updatedAt }}</p>
-      </section>
-    </aside>
-
     <footer>
       <section>
         <h3>Axe Charts</h3>
 
         <p>
           <a href="mailto:info@axecharts.com">info@axecharts.com</a>
+        </p>
+
+        <p>
+          <strong>All Data Last Updated:</strong>
+          <span>{{ config.updatedAt }}</span>
         </p>
       </section>
     </footer>
