@@ -1,6 +1,7 @@
+const fs = require('fs-extra');
 const sqlite3 = require('sqlite3').verbose();
 
-const FILE_NAME = './data.db';
+const FILE_NAME = `${__dirname}/data.db`;
 
 const topThrowers = require('./queries/top-throwers');
 const getThrowerById = require('./queries/get-thrower-by-id');
@@ -11,7 +12,13 @@ const db = {
   topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
   getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
   _connection: () => connection,
-  connect: () => {
+  connect: ({ destroyFileFirst = false }) => {
+    if (!connection && destroyFileFirst === true) {
+      console.log('Deleting database file before connecting...');
+
+      fs.removeSync(FILE_NAME);
+    }
+
     connection = connection || new sqlite3.Database(FILE_NAME, (error) => {
       if (error) {
         throw error;

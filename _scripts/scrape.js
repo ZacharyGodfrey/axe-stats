@@ -2,7 +2,7 @@ const db = require('../src/database');
 
 (async () => {
   try {
-    db.connect();
+    db.connect({ destroyFileFirst: true });
 
     await db.query(`
       CREATE TABLE IF NOT EXISTS profiles (
@@ -11,7 +11,7 @@ const db = require('../src/database');
         name TEXT NOT NULL UNIQUE,
         standardRating INTEGER DEFAULT 0,
         premierRating INTEGER DEFAULT 0
-      ) WITHOUT ROWID;
+      );
     `);
 
     await db.query(`
@@ -23,7 +23,7 @@ const db = require('../src/database');
         ruleset TEXT NOT NULL,
         date TEXT NOT NULL,
         FOREIGN KEY (profileId) REFERENCES profiles (id) ON DELETE CASCADE ON UPDATE NO ACTION
-      ) WITHOUT ROWID;
+      );
     `);
 
     const me = [ '1207260', 'REDACTED', 1509, 1621 ];
