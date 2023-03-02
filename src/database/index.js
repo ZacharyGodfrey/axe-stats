@@ -9,7 +9,7 @@ const timestamp = require('./queries/timestamp');
 
 let connection = null;
 
-module.exports = ({ destroyFileFirst = false }) => {
+module.exports = ({ destroyFileFirst }) => {
   const db = {
     topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
     getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
