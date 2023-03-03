@@ -28,12 +28,8 @@ const scrape = async () => {
 
   await page.goto('https://axescores.com/players/collins-rating');
 
-  await page.waitForResponse(responseHandler(tasks, {
-    status: 200,
-    method: 'GET',
-    url: 'https://api.axescores.com/players',
-    handler: playersHandler
-  }), { timeout });
+  await page.waitForResponse(responseHandler(tasks, playersHandler), { timeout });
+  await page.waitForResponse(responseHandler(tasks, ratingsHandler), { timeout });
 
   await Promise.all(tasks);
 
@@ -50,59 +46,76 @@ const responseHandler = (tasks, { status, method, url, handler }) => async (resp
   return true;
 };
 
-const playersHandler = async ({ ratingsCategories }) => {
-  console.log('[SCRAPE] Handle Players Data');
+const playersHandler = {
+  status: 200,
+  method: 'GET',
+  url: 'https://api.axescores.com/players',
+  handler: async (data) => {
+    console.log('[SCRAPE] Handle Players Data');
 
-  const { players: standard } = ratingsCategories['IATF Standard'];
-  const { players: premier } = ratingsCategories['IATF Premier'];
-  const profilesById = {};
+    const { ratingsCategories } = data;
+    const { players: standard } = ratingsCategories['IATF Standard'];
+    const { players: premier } = ratingsCategories['IATF Premier'];
+    const profilesById = {};
 
-  console.log(`[SCRAPE] Found ${standard.length} Standard Players`);
-  console.log(`[SCRAPE] Found ${premier.length} Premier Players`);
+    console.log(`[SCRAPE] Found ${standard.length} Standard Players`);
+    console.log(`[SCRAPE] Found ${premier.length} Premier Players`);
 
-  standard.forEach(({ id, name, rank, rating }) => {
-    profilesById[id] = profilesById[id] || {
-      id,
-      name,
-      standard: {},
-      premier: {}
-    };
+    standard.forEach(({ id, name, rank, rating }) => {
+      profilesById[id] = profilesById[id] || {
+        id,
+        name,
+        standard: {},
+        premier: {}
+      };
 
-    profilesById[id].standard.rank = rank;
-    profilesById[id].standard.rating = rating;
-  });
+      profilesById[id].standard.rank = rank;
+      profilesById[id].standard.rating = rating;
+    });
 
-  premier.forEach(({ id, name, rank, rating }) => {
-    profilesById[id] = profilesById[id] || {
-      id,
-      name,
-      standard: {},
-      premier: {}
-    };
+    premier.forEach(({ id, name, rank, rating }) => {
+      profilesById[id] = profilesById[id] || {
+        id,
+        name,
+        standard: {},
+        premier: {}
+      };
 
-    profilesById[id].premier.rank = rank;
-    profilesById[id].premier.rating = rating;
-  });
+      profilesById[id].premier.rank = rank;
+      profilesById[id].premier.rating = rating;
+    });
 
-  const uniqueProfiles = Object.values(profilesById);
+    const uniqueProfiles = Object.values(profilesById);
 
-  console.log(`[SCRAPE] Found ${uniqueProfiles.length} Unique Profiles`);
+    console.log(`[SCRAPE] Found ${uniqueProfiles.length} Unique Profiles`);
 
-  await Promise.all(uniqueProfiles.map(async (profile) => {
-    const params = [
-      profile.id,
-      profile.name,
-      profile.standard.rank || 0,
-      profile.standard.rating || 0,
-      profile.premier.rank || 0,
-      profile.premier.rating || 0,
-    ];
+    await Promise.all(uniqueProfiles.map(async (profile) => {
+      const params = [
+        profile.id,
+        profile.name,
+        profile.standard.rank || 0,
+        profile.standard.rating || 0,
+        profile.premier.rank || 0,
+        profile.premier.rating || 0,
+      ];
 
-    await db.query(`
-      INSERT INTO profiles (id, name, standardRank, standardRating, premierRank, premierRating)
-      VALUES (?, ?, ?, ?, ?, ?);
-    `, params);
-  }));
+      await db.query(`
+        INSERT INTO profiles (id, name, standardRank, standardRating, premierRank, premierRating)
+        VALUES (?, ?, ?, ?, ?, ?);
+      `, params);
+    }));
+  }
+};
+
+const ratingsHandler = {
+  status: 200,
+  method: 'GET',
+  url: 'https://api.axescores.com/ratings',
+  handler: async (data) => {
+    const keys = Object.keys(data);
+
+    console.log(`[SCRAPE] Handle Ratings Data: ${JSON.stringify(keys, null, 2)}`);
+  }
 };
 
 (async () => {
