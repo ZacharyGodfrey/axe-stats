@@ -23,10 +23,38 @@ const scrape = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  const tasks = [];
 
-  await storeProfiles(page);
+  await page.goto('https://axescores.com/players/collins-rating');
+  await page.waitForNetworkIdle({ idleTime: 4 * 1000 });
+
+  const profiles = await getProfiles(page, tasks);
 
   await browser.close();
+
+  console.log(`[SCRAPE] Found ${profiles.length} Unique Profiles`);
+
+  profiles.forEach((profile) => {
+    const sql = `
+      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    `;
+
+    const params = [
+      profile.id,
+      profile.name,
+      profile.standard.rank || 0,
+      profile.standard.rating || 0,
+      profile.standard.average || 0,
+      profile.premier.rank || 0,
+      profile.premier.rating || 0,
+      profile.premier.average || 0,
+    ];
+
+    tasks.push(db.query(sql, params));
+  });
+
+  await Promise.all(tasks);
 };
 
 const reactPageState = (page, selector) => {
@@ -37,13 +65,10 @@ const reactPageState = (page, selector) => {
   });
 };
 
-const storeProfiles = async (page) => {
+const getProfiles = async (page) => {
   console.log('[SCRAPE] Store Profiles');
 
   const profilesById = {};
-
-  await page.goto('https://axescores.com/players/collins-rating');
-  await page.waitForNetworkIdle({ idleTime: 4 * 1000 });
 
   const standardProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
 
@@ -81,27 +106,7 @@ const storeProfiles = async (page) => {
     profilesById[id].premier.average = average;
   });
 
-  const uniqueProfiles = Object.values(profilesById);
-
-  console.log(`[SCRAPE] Found ${uniqueProfiles.length} Unique Profiles`);
-
-  await Promise.all(uniqueProfiles.map(async (profile) => {
-    const params = [
-      profile.id,
-      profile.name,
-      profile.standard.rank || 0,
-      profile.standard.rating || 0,
-      profile.standard.average || 0,
-      profile.premier.rank || 0,
-      profile.premier.rating || 0,
-      profile.premier.average || 0,
-    ];
-
-    await db.query(`
-      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-    `, params);
-  }));
+  return Object.values(profilesById);
 };
 
 (async () => {
