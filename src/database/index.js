@@ -51,11 +51,9 @@ const timestamp = async () => {
   return row.timestamp;
 };
 
-const topProfiles = async (count, sortField, sortOrder) => {
-  console.log(`Top Profiles: ${JSON.stringify([count, sortField, sortOrder], null, 2)}`);
-
-  const sql = `SELECT * FROM profiles ORDER BY ? ${sortOrder.toUpperCase()} LIMIT ?`;
-  const rows = await query(sql, [sortField, count]);
+const allProfiles = async () => {
+  const sql = `SELECT * FROM profiles ORDER BY name ASC;`;
+  const rows = await query(sql);
 
   return rows;
 };
@@ -73,6 +71,6 @@ module.exports = {
   query,
   disconnect,
   timestamp,
-  topProfiles,
+  allProfiles,
   getProfileById,
 };
