@@ -15,7 +15,9 @@
           <tr>
             <th>Name</th>
             <th>Premier Rating</th>
+            <th>Premier Average</th>
             <th>Standard Rating</th>
+            <th>Standard Average</th>
           </tr>
         </thead>
 
@@ -26,7 +28,9 @@
               <a href="/profile/{{id}}">{{name}}</a>
             </td>
             <td class="text-center">{{premierRating}} (#{{premierRank}})</td>
+            <td class="text-center">{{premierAverage}}</td>
             <td class="text-center">{{standardRating}} (#{{standardRank}})</td>
+            <td class="text-center">{{standardAverage}}</td>
           </tr>
           {{/allProfiles}}
         </tbody>

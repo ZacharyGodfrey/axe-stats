@@ -55,8 +55,10 @@ const ensureSchema = async () => {
       name TEXT NOT NULL,
       standardRank INTEGER NOT NULL,
       standardRating INTEGER NOT NULL,
+      standardAverage REAL NOT NULL,
       premierRank INTEGER NOT NULL,
-      premierRating INTEGER NOT NULL
+      premierRating INTEGER NOT NULL,
+      premierAverage REAL NOT NULL
     ) WITHOUT ROWID;
   `);
 
