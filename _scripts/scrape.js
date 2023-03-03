@@ -33,7 +33,7 @@ const ensureSchema = async () => {
   await db.query(`
     CREATE TABLE IF NOT EXISTS seasons (
       id INTEGER PRIMARY KEY,
-      urlId TEXT NOT NULL,
+      profileId INTEGER NOT NULL,
       name TEXT NOT NULL,
       ruleset TEXT NOT NULL,
       date TEXT NOT NULL,
