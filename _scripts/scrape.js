@@ -87,26 +87,29 @@ const scrape = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const timeout = 60 * 1000;
+  const timeout = 10 * 1000;
+  let tasks = []; // May not need this...
 
   await page.goto('https://axescores.com/players/collins-rating');
 
-  await page.waitForResponse(responseHandler({
+  await page.waitForResponse(responseHandler(tasks, {
     status: 200,
     method: 'GET',
     url: 'https://api.axescores.com/players',
     handler: playersHandler
   }), { timeout });
 
+  await Promise.all(tasks);
+
   await browser.close();
 };
 
-const responseHandler = ({ status, method, url, handler }) => async (response) => {
+const responseHandler = (tasks, { status, method, url, handler }) => async (response) => {
   if (response.status() !== status) return false;
   if (response.request().method() !== method) return false;
   if (response.url() !== url) return false;
 
-  const data = response.json();
+  const data = await response.json();
 
   return handler(data).then(() => true).catch(() => false);
 };
