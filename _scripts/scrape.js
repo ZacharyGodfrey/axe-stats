@@ -68,10 +68,8 @@ const playersHandler = async ({ ratingsCategories }) => {
       premier: {}
     };
 
-    const stats = profilesById[id].standard;
-
-    stats.rank = rank;
-    stats.rating = rating;
+    profilesById[id].standard.rank = rank;
+    profilesById[id].standard.rating = rating;
   });
 
   premier.forEach(({ id, name, rank, rating }) => {
@@ -82,10 +80,8 @@ const playersHandler = async ({ ratingsCategories }) => {
       premier: {}
     };
 
-    const stats = profilesById[id].premier;
-
-    stats.rank = rank;
-    stats.rating = rating;
+    profilesById[id].premier.rank = rank;
+    profilesById[id].premier.rating = rating;
   });
 
   const uniqueProfiles = Object.values(profilesById);
@@ -99,7 +95,7 @@ const playersHandler = async ({ ratingsCategories }) => {
       profile.standard.rank || 0,
       profile.standard.rating || 0,
       profile.premier.rank || 0,
-      profile.premier.rank || 0,
+      profile.premier.rating || 0,
     ];
 
     await db.query(`
