@@ -52,7 +52,7 @@ const timestamp = async () => {
 };
 
 const topProfiles = async (count, sortField, sortOrder) => {
-  console.log(`Top Throwers: ${JSON.stringify([...arguments], null, 2)}`);
+  console.log(`Top Throwers: ${JSON.stringify([count, sortField, sortOrder], null, 2)}`);
 
   const sql = `SELECT * FROM profiles ORDER BY ? ? LIMIT ?`;
   const rows = await query(sql, [sortField, sortOrder.toUpperCase(), count]);
