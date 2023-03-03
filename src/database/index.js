@@ -3,7 +3,7 @@ const sqlite3 = require('sqlite3').verbose();
 
 const FILE_NAME = `${__dirname}/data.db`;
 
-const topThrowers = require('./queries/top-throwers');
+const topProfiles = require('./queries/top-profiles');
 const getThrowerById = require('./queries/get-thrower-by-id');
 const timestamp = require('./queries/timestamp');
 
@@ -11,10 +11,9 @@ let connection = null;
 
 module.exports = (options) => {
   const db = {
-    topThrowers: () => topThrowers.apply(null, [db, ...arguments]),
-    getThrowerById: () => getThrowerById.apply(null, [db, ...arguments]),
-    timestamp: () => timestamp.apply(null, [db, ...arguments]),
-    _connection: () => connection,
+    topProfiles: (count, sortField, sortOrder) => topProfiles(db, count, sortField, sortOrder),
+    getThrowerById: (id) => getThrowerById(db, id),
+    timestamp: () => timestamp(db),
     connect: () => connection ? Promise.resolve() : new Promise((resolve, reject) => {
       const { destroyFileFirst } = options || {};
 
