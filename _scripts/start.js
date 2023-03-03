@@ -1,4 +1,4 @@
-const db = require('../src/database')();
+const db = require('../src/database');
 const client = require('../src/client');
 const server = require('../src/server');
 

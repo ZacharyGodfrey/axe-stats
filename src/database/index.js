@@ -2,70 +2,77 @@ const fs = require('fs-extra');
 const sqlite3 = require('sqlite3').verbose();
 
 const FILE_NAME = `${__dirname}/data.db`;
-
-const topProfiles = require('./queries/top-profiles');
-const getThrowerById = require('./queries/get-thrower-by-id');
-const timestamp = require('./queries/timestamp');
-
 let connection = null;
 
-module.exports = (options) => {
-  const db = {
-    topProfiles: (count, sortField, sortOrder) => topProfiles(db, count, sortField, sortOrder),
-    getThrowerById: (id) => getThrowerById(db, id),
-    timestamp: () => timestamp(db),
-    connect: () => connection ? Promise.resolve() : new Promise((resolve, reject) => {
-      const { destroyFileFirst } = options || {};
+const connect = () => connection ? Promise.resolve() : new Promise((resolve, reject) => {
+  connection = new sqlite3.Database(FILE_NAME, (error) => {
+    if (error) {
+      reject(error);
+    } else {
+      console.log('Connected to the databse.');
 
-      if (destroyFileFirst === true) {
-        console.log('Deleting database file before connecting...');
+      resolve();
+    }
+  });
+});
 
-        fs.removeSync(FILE_NAME);
+const query = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
+  console.log('Executing database query:');
+  console.log(sql);
+  console.log(`Params: ${JSON.stringify(params, null, 2)}`);
 
-        console.log(`Deleted: ${FILE_NAME}`);
-      }
+  connection.all(sql, params, (error, rows) => {
+    if (error) {
+      reject(error);
+    } else {
+      resolve(rows);
+    }
+  });
+}));
 
-      connection = new sqlite3.Database(FILE_NAME, (error) => {
-        if (error) {
-          reject(error);
-        } else {
-          console.log('Connected to the databse.');
+const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve, reject) => {
+  connection.close((error) => {
+    if (error) {
+      reject(error);
+    } else {
+      connection = null;
 
-          resolve();
-        }
-      });
-    }),
-    query: (sql, params = []) => {
-      return db.connect().then(() => {
-        return new Promise((resolve, reject) => {
-          console.log('Executing database query:');
-          console.log(sql);
-          console.log(`Params: ${JSON.stringify(params, null, 2)}`);
+      console.log('Disconnected from the database.');
 
-          connection.all(sql, params, (error, rows) => {
-            if (error) {
-              reject(error);
-            } else {
-              resolve(rows);
-            }
-          });
-        });
-      });
-    },
-    disconnect: () => !connection ? Promise.resolve() : new Promise((resolve, reject) => {
-      connection.close((error) => {
-        if (error) {
-          reject(error);
-        } else {
-          connection = null;
+      resolve();
+    }
+  });
+});
 
-          console.log('Disconnected from the database.');
+const timestamp = async () => {
+  const sql = `SELECT * FROM timestamp;`;
+  const [row] = await query(sql);
 
-          resolve();
-        }
-      });
-    })
-  };
+  return row.timestamp;
+};
 
-  return db;
+const topProfiles = async (count, sortField, sortOrder) => {
+  console.log(`Top Throwers: ${JSON.stringify([...arguments], null, 2)}`);
+
+  const sql = `SELECT * FROM profiles ORDER BY ? ? LIMIT ?`;
+  const rows = await query(sql, [sortField, sortOrder.toUpperCase(), count]);
+
+  return rows;
+};
+
+const getProfileById = async (id) => {
+  const sql = `SELECT * FROM profiles WHERE urlId = ?;`;
+  const [profile] = await query(sql, [id]);
+
+  return profile || null;
+};
+
+module.exports = {
+  _fileName: FILE_NAME,
+  connect,
+  query,
+  disconnect,
+  timestamp,
+  topProfiles,
+  getProfileById,
 };

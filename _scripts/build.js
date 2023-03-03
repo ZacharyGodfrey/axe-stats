@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs-extra');
 
-const db = require('../src/database')();
+const db = require('../src/database');
 const client = require('../src/client');
 
 const clientDir = path.resolve(__dirname, '../src/client');
@@ -31,7 +31,7 @@ const distDir = path.resolve(__dirname, '../dist');
     // TODO: Query the database and render profile pages based on data
   } catch (error) {
     console.log(error);
-  } finally {
-    await db.disconnect();
+
+    process.exit(1);
   }
 })();
