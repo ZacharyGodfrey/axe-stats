@@ -8,15 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           ref: ${{ github.head_ref }}
       - name: Set Up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
+      - name: Install Dependencies
+        run: npm i
       - name: Run Scrape
-        run: npm i && npm run scrape
+        run: npm run scrape
       - name: Commit Database File
         run: |
           git config user.name "GitHub Actions Bot"
