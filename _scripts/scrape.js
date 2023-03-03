@@ -88,7 +88,7 @@ const scrape = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const timeout = 10 * 1000;
-  let tasks = []; // May not need this...
+  let tasks = [];
 
   await page.goto('https://axescores.com/players/collins-rating');
 
@@ -109,9 +109,9 @@ const responseHandler = (tasks, { status, method, url, handler }) => async (resp
   if (response.request().method() !== method) return false;
   if (response.url() !== url) return false;
 
-  const data = await response.json();
+  tasks.push(response.json().then(handler));
 
-  return handler(data).then(() => true).catch(() => false);
+  return true;
 };
 
 const playersHandler = async ({ ratingsCategories }) => {
