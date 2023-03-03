@@ -87,7 +87,7 @@ const scrape = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const timeout = 10 * 1000;
+  const timeout = 60 * 1000;
 
   await page.goto('https://axescores.com/players/collins-rating');
 
