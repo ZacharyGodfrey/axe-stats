@@ -9,39 +9,6 @@ const deleteDatabase = async () => {
   await fs.remove(db._fileName);
 };
 
-const ensureSchema = async () => {
-  console.log('[SCRAPE] Ensure Schema');
-
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS timestamp (
-      id INTEGER PRIMARY KEY,
-      timestamp TEXT NOT NULL UNIQUE
-    );
-  `);
-
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS profiles (
-      id INTEGER PRIMARY KEY,
-      name TEXT NOT NULL,
-      standardRank INTEGER NOT NULL,
-      standardRating INTEGER NOT NULL,
-      premierRank INTEGER NOT NULL,
-      premierRating INTEGER NOT NULL
-    ) WITHOUT ROWID;
-  `);
-
-  await db.query(`
-    CREATE TABLE IF NOT EXISTS seasons (
-      id INTEGER PRIMARY KEY,
-      profileId INTEGER NOT NULL,
-      name TEXT NOT NULL,
-      ruleset TEXT NOT NULL,
-      date TEXT NOT NULL,
-      FOREIGN KEY (profileId) REFERENCES profiles (id) ON DELETE CASCADE ON UPDATE NO ACTION
-    ) WITHOUT ROWID;
-  `);
-};
-
 const seedTables = async () => {
   console.log('[SCRAPE] Seed Tables');
 
@@ -145,7 +112,7 @@ const playersHandler = async ({ ratingsCategories }) => {
 (async () => {
   try {
     await deleteDatabase();
-    await ensureSchema();
+    await db.ensureSchema();
     await seedTables();
     await scrape();
 

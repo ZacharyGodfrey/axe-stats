@@ -39,6 +39,39 @@ const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve,
   });
 });
 
+const ensureSchema = async () => {
+  console.log('[DATABASE] Ensure Schema');
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS timestamp (
+      id INTEGER PRIMARY KEY,
+      timestamp TEXT NOT NULL UNIQUE
+    );
+  `);
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS profiles (
+      id INTEGER PRIMARY KEY,
+      name TEXT NOT NULL,
+      standardRank INTEGER NOT NULL,
+      standardRating INTEGER NOT NULL,
+      premierRank INTEGER NOT NULL,
+      premierRating INTEGER NOT NULL
+    ) WITHOUT ROWID;
+  `);
+
+  await query(`
+    CREATE TABLE IF NOT EXISTS seasons (
+      id INTEGER PRIMARY KEY,
+      profileId INTEGER NOT NULL,
+      name TEXT NOT NULL,
+      ruleset TEXT NOT NULL,
+      date TEXT NOT NULL,
+      FOREIGN KEY (profileId) REFERENCES profiles (id) ON DELETE CASCADE ON UPDATE NO ACTION
+    ) WITHOUT ROWID;
+  `);
+};
+
 const timestamp = async () => {
   const sql = `SELECT * FROM timestamp;`;
   const [row] = await query(sql);
@@ -65,6 +98,7 @@ module.exports = {
   connect,
   query,
   disconnect,
+  ensureSchema,
   timestamp,
   allProfiles,
   getProfileById,

@@ -23,10 +23,10 @@
           {{#allProfiles}}
           <tr>
             <td class="text-center">
-              <a href="/profile/{{urlId}}">{{name}}</a>
+              <a href="/profile/{{id}}">{{name}}</a>
             </td>
-            <td class="text-center">{{premierRating}}</td>
-            <td class="text-center">{{standardRating}}</td>
+            <td class="text-center">{{premierRating}} (#{{premierRank}})</td>
+            <td class="text-center">{{standardRating}} (#{{standardRank}})</td>
           </tr>
           {{/allProfiles}}
         </tbody>
