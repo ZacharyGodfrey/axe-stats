@@ -22,7 +22,7 @@ const ensureSchema = async () => {
   await db.query(`
     CREATE TABLE IF NOT EXISTS profiles (
       id INTEGER PRIMARY KEY,
-      name TEXT NOT NULL UNIQUE,
+      name TEXT NOT NULL,
       standardRank INTEGER NOT NULL,
       standardRating INTEGER NOT NULL,
       premierRank INTEGER NOT NULL,
