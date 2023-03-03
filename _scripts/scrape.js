@@ -42,19 +42,18 @@ const scrape = async () => {
   await page.goto('https://axescores.com/players/collins-rating');
   await page.waitForNetworkIdle({ idleTime: 10 * 1000 });
 
-  console.log(JSON.stringify(pageState(page), null, 2));
+  console.log(JSON.stringify(reactPageState(page), null, 2));
 
   await Promise.all(tasks);
 
   await browser.close();
 };
 
-const pageState = (page) => {
-  const rootElement = page.$('#root');
+const reactPageState = (page) => page.$eval('#root', (rootElement) => {
   const { getState } = rootElement._reactRootContainer._internalRoot.current.memoizedState.element.props.store;
 
   return getState();
-};
+});
 
 const playersHandler = {
   status: 200,
