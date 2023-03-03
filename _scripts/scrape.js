@@ -42,7 +42,9 @@ const scrape = async () => {
   await page.goto('https://axescores.com/players/collins-rating');
   await page.waitForNetworkIdle({ idleTime: 10 * 1000 });
 
-  console.log(JSON.stringify(reactPageState(page), null, 2));
+  const pageState = await reactPageState(page);
+
+  console.log(JSON.stringify(pageState, null, 2));
 
   await Promise.all(tasks);
 
