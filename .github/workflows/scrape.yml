@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16
       - name: Run Scrape
-        run: npm i && npm run scrape
+        run: npm ci && npm run scrape
       - name: Commit Database File
         run: |
           git config user.name "GitHub Actions Bot"
