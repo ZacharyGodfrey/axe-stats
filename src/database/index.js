@@ -8,7 +8,7 @@ const connect = () => connection ? Promise.resolve() : new Promise((resolve, rej
     if (error) {
       reject(error);
     } else {
-      console.log('Connected to the databse.');
+      console.log('[DATABASE] Connected to the databse.');
 
       resolve();
     }
@@ -16,10 +16,6 @@ const connect = () => connection ? Promise.resolve() : new Promise((resolve, rej
 });
 
 const query = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
-  console.log('Executing database query:');
-  console.log(sql);
-  console.log(`Params: ${JSON.stringify(params, null, 2)}`);
-
   connection.all(sql, params, (error, rows) => {
     if (error) {
       reject(error);
@@ -36,7 +32,7 @@ const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve,
     } else {
       connection = null;
 
-      console.log('Disconnected from the database.');
+      console.log('[DATABASE] Disconnected from the database.');
 
       resolve();
     }

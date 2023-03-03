@@ -45,41 +45,10 @@ const ensureSchema = async () => {
 const seedTables = async () => {
   console.log('[SCRAPE] Seed Tables');
 
-  const now = new Date().toISOString();
-
-  const me = [
-    '1207260',
-    'REDACTED',
-    1509,
-    1621
-  ];
-
-  const seasons = [
-    [
-      '267739',
-      'Axe Champs Tuesday Purple 2023 Spring premier',
-      'Premier',
-      '2023-01-11'
-    ],
-    [
-      '251574',
-      'Valhalla Fleming Island Saturday Yellow 2022 NYE Marathon League',
-      'Premier',
-      '2022-12-31'
-    ]
-  ];
-
-  await db.query(`INSERT INTO timestamp (timestamp) VALUES(?);`, [now]);
-
-  // const [profile] = await db.query(`
-  //   INSERT INTO profiles (urlId, name, standardRating, premierRating)
-  //   VALUES (?, ?, ?, ?) RETURNING *;
-  // `, me);
-
-  // await Promise.all(seasons.map(season => db.query(`
-  //   INSERT INTO seasons (profileId, urlId, name, ruleset, date)
-  //   VALUES (?, ?, ?, ?, ?);
-  // `, [profile.id, ...season])));
+  await db.query(`
+    INSERT INTO timestamp (timestamp)
+    VALUES (?);
+  `, [new Date().toISOString()]);
 };
 
 const scrape = async () => {
@@ -167,7 +136,7 @@ const playersHandler = async ({ ratingsCategories }) => {
     ];
 
     await db.query(`
-      INSER INTO profiles (id, name, standardRank, standardRating, premierRank, premierRating)
+      INSERT INTO profiles (id, name, standardRank, standardRating, premierRank, premierRating)
       VALUES (?, ?, ?, ?, ?, ?);
     `, params);
   }));
