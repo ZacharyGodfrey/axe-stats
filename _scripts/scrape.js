@@ -23,27 +23,28 @@ const scrape = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const timeout = 10 * 1000;
-  let tasks = [];
+  const handlers = [playersHandler, ratingsHandler];
+  const tasks = [];
+
+  page.on('response', async (response) => {
+    const status = response.status();
+    const method = response.request().method();
+    const url = response.url();
+    const { handler } = handlers.find(x => {
+      return x.status === status && x.method === method && x.url === url;
+    }) || {};
+
+    if (handler) {
+      tasks.push(response.json().then(handler));
+    }
+  });
 
   await page.goto('https://axescores.com/players/collins-rating');
-
-  await page.waitForResponse(responseHandler(tasks, playersHandler), { timeout });
-  await page.waitForResponse(responseHandler(tasks, ratingsHandler), { timeout });
+  await page.waitForNetworkIdle({ idleTime: 10 * 1000 });
 
   await Promise.all(tasks);
 
   await browser.close();
-};
-
-const responseHandler = (tasks, { status, method, url, handler }) => async (response) => {
-  if (response.status() !== status) return false;
-  if (response.request().method() !== method) return false;
-  if (response.url() !== url) return false;
-
-  tasks.push(response.json().then(handler));
-
-  return true;
 };
 
 const playersHandler = {
