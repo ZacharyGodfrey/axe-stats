@@ -30,31 +30,33 @@ const scrape = async () => {
 
   const profiles = await getProfiles(page, tasks);
 
-  await browser.close();
-
   console.log(`[SCRAPE] Found ${profiles.length} Unique Profiles`);
 
-  profiles.forEach((profile) => {
-    const sql = `
-      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-    `;
+  await fs.outputFile(db._fileName.replace('data.db', 'profiles.json'), JSON.stringify(profiles, null, 2), 'utf-8');
 
-    const params = [
-      profile.id,
-      profile.name,
-      profile.standard.rank || 0,
-      profile.standard.rating || 0,
-      profile.standard.average || 0,
-      profile.premier.rank || 0,
-      profile.premier.rating || 0,
-      profile.premier.average || 0,
-    ];
+  // profiles.forEach((profile) => {
+  //   const sql = `
+  //     INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
+  //     VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+  //   `;
 
-    tasks.push(db.query(sql, params));
-  });
+  //   const params = [
+  //     profile.id,
+  //     profile.name,
+  //     profile.standard.rank || 0,
+  //     profile.standard.rating || 0,
+  //     profile.standard.average || 0,
+  //     profile.premier.rank || 0,
+  //     profile.premier.rating || 0,
+  //     profile.premier.average || 0,
+  //   ];
+
+  //   tasks.push(db.query(sql, params));
+  // });
 
   await Promise.all(tasks);
+
+  await browser.close();
 };
 
 const reactPageState = (page, selector) => {
