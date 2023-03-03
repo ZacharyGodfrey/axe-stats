@@ -1,3 +1,4 @@
+const fs = require('fs-extra');
 const db = require('../src/database');
 
 const ensureSchema = async (db) => {

@@ -1,4 +1,3 @@
-const fs = require('fs-extra');
 const sqlite3 = require('sqlite3').verbose();
 
 const FILE_NAME = `${__dirname}/data.db`;
