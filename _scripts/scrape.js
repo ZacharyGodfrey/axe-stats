@@ -23,7 +23,7 @@ const scrape = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const handlers = [playersHandler, ratingsHandler];
+  const handlers = []; // [playersHandler, ratingsHandler];
   const tasks = [];
 
   page.on('response', async (response) => {
@@ -42,9 +42,18 @@ const scrape = async () => {
   await page.goto('https://axescores.com/players/collins-rating');
   await page.waitForNetworkIdle({ idleTime: 10 * 1000 });
 
+  console.log(JSON.stringify(pageState(page), null, 2));
+
   await Promise.all(tasks);
 
   await browser.close();
+};
+
+const pageState = (page) => {
+  const rootElement = page.$('#root');
+  const { getState } = rootElement._reactRootContainer._internalRoot.current.memoizedState.element.props.store;
+
+  return getState();
 };
 
 const playersHandler = {
