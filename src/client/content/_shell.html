@@ -20,7 +20,8 @@
         --medium: #EEEEEE;
         --dark: #303030;
         --black: #000000;
-        --v-space: 2rem;
+        --v-space: 4vmin;
+        --content-width: 120ch;
         font-family: monospace;
         font-variant-numeric: slashed-zero tabular-nums;
         font-size: 18px;
@@ -76,7 +77,7 @@
       }
 
       section {
-        max-width: 100ch;
+        max-width: var(--content-width);
         margin: var(--v-space) auto;
       }
 
