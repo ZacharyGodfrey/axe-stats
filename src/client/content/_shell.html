@@ -20,6 +20,7 @@
         --medium: #EEEEEE;
         --dark: #303030;
         --black: #000000;
+        --v-space: 2rem;
         font-family: monospace;
         font-variant-numeric: slashed-zero tabular-nums;
         font-size: 18px;
@@ -60,7 +61,7 @@
       }
 
       main, footer {
-        padding: 2rem 1rem;
+        padding: var(--v-space) 1rem;
       }
 
       main {
@@ -76,13 +77,13 @@
 
       section {
         max-width: 100ch;
-        margin: 2rem auto;
+        margin: var(--v-space) auto;
       }
 
       hr {
         width: 100%;
         height: 2px;
-        margin: 2rem 0;
+        margin: var(--v-space) 0;
         padding: 0;
         border: none;
         outline: none;
@@ -90,7 +91,7 @@
       }
 
       h1, h2, h3, p, nav, article, ul, iframe, figure, table, details {
-        margin: 2rem 0;
+        margin: var(--v-space) 0;
       }
 
       h1 {
