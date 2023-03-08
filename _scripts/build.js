@@ -33,9 +33,9 @@ const distDir = path.resolve(__dirname, '../dist');
       SELECT *
       FROM profiles
       ORDER BY
-        premierRank DESC,
+        premierRank ASC,
         premierAverage DESC,
-        standardRank DESC,
+        standardRank ASC,
         standardAverage DESC
       LIMIT 256;
     `);
