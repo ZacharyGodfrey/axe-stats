@@ -8,8 +8,11 @@ module.exports = async (db) => {
     SELECT *
     FROM profiles
     ORDER BY
-      premierRating DESC,
-      standardRating DESC;
+      premierRank DESC,
+      premierAverage DESC,
+      standardRank DESC,
+      standardAverage DESC
+    LIMIT 256;
   `);
 
   return render(page, { allProfiles, updatedAt });

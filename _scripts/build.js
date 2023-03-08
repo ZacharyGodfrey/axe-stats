@@ -29,8 +29,16 @@ const distDir = path.resolve(__dirname, '../dist');
       await fs.outputFile(fileName, `${filePrefix}\n${content}`, 'utf-8');
     }));
 
-    // TODO: Query the database and render profile pages based on data
-    const allProfiles = await db.query(`SELECT * FROM profiles ORDER BY premierRating DESC LIMIT 256;`);
+    const allProfiles = await db.query(`
+      SELECT *
+      FROM profiles
+      ORDER BY
+        premierRank DESC,
+        premierAverage DESC,
+        standardRank DESC,
+        standardAverage DESC
+      LIMIT 256;
+    `);
 
     await Promise.all(allProfiles.map(async (profile) => {
       const fileName = `${distDir}/profile/${profile.id}/index.html`;
