@@ -7,32 +7,81 @@
   <hr>
 
   <details open>
-    <summary>Profiles</summary>
+    <summary>Global Stats</summary>
 
     <figure>
-      <table>
+      <table class="text-center">
+        <tbody>
+          <tr>
+            <td>Standard</td>
+            <th>Average Score</th>
+            <td>Premier</td>
+          </tr>
+          <tr>
+            <td>{{standard.average}}</td>
+            <th>Average Score</th>
+            <td>{{premier.average}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+  </details>
+
+  <details>
+    <summary>Top 256 Premier</summary>
+
+    <figure>
+      <table class="text-center">
         <thead>
           <tr>
             <th>Name</th>
-            <th>Premier Rating</th>
-            <th>Premier Average</th>
-            <th>Standard Rating</th>
-            <th>Standard Average</th>
+            <th>Rank</th>
+            <th>Collins Rating</th>
+            <th>Average Score</th>
           </tr>
         </thead>
 
         <tbody>
-          {{#allProfiles}}
+          {{#premier.top256}}
           <tr>
-            <td class="text-center">
+            <td>
               <a href="/profile/{{id}}">{{name}}</a>
             </td>
-            <td class="text-center">{{premierRating}} (#{{premierRank}})</td>
-            <td class="text-center">{{premierAverage}}</td>
-            <td class="text-center">{{standardRating}} (#{{standardRank}})</td>
-            <td class="text-center">{{standardAverage}}</td>
+            <td>{{premierRank}}</td>
+            <td>{{premierRating}}</td>
+            <td>{{premierAverage}}</td>
           </tr>
-          {{/allProfiles}}
+          {{/premier.top256}}
+        </tbody>
+      </table>
+    </figure>
+  </details>
+
+  <details>
+    <summary>Top 256 Standard</summary>
+
+    <figure>
+      <table class="text-center">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Rank</th>
+            <th>Collins Rating</th>
+            <th>Average Score</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {{#standard.top256}}
+          <tr>
+            <td>
+              <a href="/profile/{{id}}">{{name}}</a>
+            </td>
+            <td>{{premierRank}}</td>
+            <td>{{premierRating}}</td>
+            <td>{{premierAverage}}</td>
+          </tr>
+          {{/standard.top256}}
         </tbody>
       </table>
     </figure>
