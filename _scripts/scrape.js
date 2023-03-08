@@ -93,7 +93,7 @@ const getProfiles = async (page) => {
 
   console.log(`[SCRAPE] Found ${standardProfiles.length} Standard Profiles`);
 
-  standardProfiles.slice(0, 100).forEach(({ id, name, rank, rating, average }) => {
+  standardProfiles.slice(0, 1000).forEach(({ id, name, rank, rating, average }) => {
     profilesById[id] = profilesById[id] || {
       id,
       name,
