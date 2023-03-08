@@ -40,13 +40,16 @@ const scrape = async () => {
   const tasks = [];
 
   await page.goto('https://axescores.com/players/collins-rating');
-  await page.waitForNetworkIdle({ idleTime: 4 * 1000 });
+  await page.waitForNetworkIdle({ idleTime: 2 * 1000 });
 
   const profiles = await getProfiles(page, tasks);
 
   console.log(`[SCRAPE] Found ${profiles.length} Unique Profiles`);
 
-  await fs.outputFile(db._fileName.replace('data.db', 'profiles.json'), JSON.stringify(profiles, null, 2), 'utf-8');
+  const jsonFile = db._fileName.replace('data.db', 'profiles.json');
+  const jsonContent = JSON.stringify(profiles, null, 2);
+
+  await fs.outputFile(jsonFile, jsonContent, 'utf-8');
 
   // profiles.forEach((profile) => {
   //   const sql = `
@@ -90,7 +93,7 @@ const getProfiles = async (page) => {
 
   console.log(`[SCRAPE] Found ${standardProfiles.length} Standard Profiles`);
 
-  standardProfiles.forEach(({ id, name, rank, rating, average }) => {
+  standardProfiles.slice(0, 100).forEach(({ id, name, rank, rating, average }) => {
     profilesById[id] = profilesById[id] || {
       id,
       name,
@@ -103,24 +106,24 @@ const getProfiles = async (page) => {
     profilesById[id].standard.average = average;
   });
 
-  page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
+  // page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
 
-  const premierProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
+  // const premierProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
 
-  console.log(`[SCRAPE] Found ${premierProfiles.length} Premier Profiles`);
+  // console.log(`[SCRAPE] Found ${premierProfiles.length} Premier Profiles`);
 
-  premierProfiles.forEach(({ id, name, rank, rating, average }) => {
-    profilesById[id] = profilesById[id] || {
-      id,
-      name,
-      standard: {},
-      premier: {}
-    };
+  // premierProfiles.forEach(({ id, name, rank, rating, average }) => {
+  //   profilesById[id] = profilesById[id] || {
+  //     id,
+  //     name,
+  //     standard: {},
+  //     premier: {}
+  //   };
 
-    profilesById[id].premier.rank = rank;
-    profilesById[id].premier.rating = rating;
-    profilesById[id].premier.average = average;
-  });
+  //   profilesById[id].premier.rank = rank;
+  //   profilesById[id].premier.rating = rating;
+  //   profilesById[id].premier.average = average;
+  // });
 
   return Object.values(profilesById);
 };
@@ -130,7 +133,7 @@ const getProfiles = async (page) => {
     await deleteDatabase();
     await db.ensureSchema();
     await seedTables();
-    // await scrape();
+    await scrape();
 
     console.log('[SCRAPE] All steps completed successfully.');
   } catch (error) {
