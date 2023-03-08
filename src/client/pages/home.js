@@ -6,11 +6,11 @@ module.exports = async (db) => {
   return render(page, {
     updatedAt: await db.timestamp(),
     standard: {
-      average: await db.query(`
-        SELECT ROUND(AVG(standardAverage), 3)
+      average: (await db.get(`
+        SELECT ROUND(AVG(standardAverage), 3) AS "average"
         FROM profiles
         WHERE standardAverage > 0;
-      `),
+      `)).average,
       top256: await db.query(`
         SELECT *
         FROM profiles
@@ -20,11 +20,11 @@ module.exports = async (db) => {
       `)
     },
     premier: {
-      average: await db.query(`
-        SELECT ROUND(AVG(premierAverage), 3)
+      average: (await db.get(`
+        SELECT ROUND(AVG(premierAverage), 3) AS "average"
         FROM profiles
         WHERE premierAverage > 0;
-      `),
+      `)).average,
       top256: await db.query(`
         SELECT *
         FROM profiles

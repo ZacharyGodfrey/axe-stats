@@ -25,6 +25,16 @@ const query = (sql, params = []) => connect().then(() => new Promise((resolve, r
   });
 }));
 
+const get = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
+  connection.get(sql, params, (error, row) => {
+    if (error) {
+      reject(error);
+    } else {
+      resolve(row);
+    }
+  });
+}));
+
 const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve, reject) => {
   connection.close((error) => {
     if (error) {
@@ -99,6 +109,7 @@ module.exports = {
   _fileName: FILE_NAME,
   connect,
   query,
+  get,
   disconnect,
   ensureSchema,
   timestamp,
