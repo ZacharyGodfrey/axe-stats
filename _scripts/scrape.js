@@ -44,12 +44,7 @@ const scrape = async () => {
 
   const profiles = await getProfiles(page, tasks);
 
-  console.log(`[SCRAPE] Found ${profiles.length} Unique Profiles`);
-
-  // const jsonFile = db._fileName.replace('data.db', 'profiles.json');
-  // const jsonContent = JSON.stringify(profiles, null, 2);
-
-  // await fs.outputFile(jsonFile, jsonContent, 'utf-8');
+  console.log(`[SCRAPE] Found ${profiles.length} Ranked Profiles`);
 
   profiles.forEach((profile) => {
     const sql = `
@@ -60,12 +55,12 @@ const scrape = async () => {
     const params = [
       profile.id,
       profile.name,
-      profile.standard.rank || 0,
-      profile.standard.rating || 0,
-      profile.standard.average || 0,
-      profile.premier.rank || 0,
-      profile.premier.rating || 0,
-      profile.premier.average || 0,
+      profile.standardRank || 0,
+      profile.standardRating || 0,
+      profile.standardAverage || 0,
+      profile.premierRank || 0,
+      profile.premierRating || 0,
+      profile.premierAverage || 0,
     ];
 
     tasks.push(db.query(sql, params));
@@ -97,13 +92,17 @@ const getProfiles = async (page) => {
     profilesById[id] = profilesById[id] || {
       id,
       name,
-      standard: {},
-      premier: {}
+      standardRank,
+      standardRating,
+      standardAverage,
+      premierRank,
+      premierRating,
+      premierAverage,
     };
 
-    profilesById[id].standard.rank = rank;
-    profilesById[id].standard.rating = rating;
-    profilesById[id].standard.average = average;
+    profilesById[id].standardRank = rank;
+    profilesById[id].standardRating = rating;
+    profilesById[id].standardAverage = average;
   });
 
   await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
@@ -117,16 +116,28 @@ const getProfiles = async (page) => {
     profilesById[id] = profilesById[id] || {
       id,
       name,
-      standard: {},
-      premier: {}
+      standardRank,
+      standardRating,
+      standardAverage,
+      premierRank,
+      premierRating,
+      premierAverage,
     };
 
-    profilesById[id].premier.rank = rank;
-    profilesById[id].premier.rating = rating;
-    profilesById[id].premier.average = average;
+    profilesById[id].premierRank = rank;
+    profilesById[id].premierRating = rating;
+    profilesById[id].premierAverage = average;
   });
 
-  return Object.values(profilesById);
+  const allProfiles = Object.values(profilesById);
+
+  console.log(`[SCRAPE] Found ${allProfiles.length} Unique Profiles`);
+
+  return allProfiles.filter((profile) => {
+    if (!profile.standardRank && !profile.premierRank) return false;
+
+    return true;
+  });
 };
 
 (async () => {
