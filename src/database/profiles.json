@@ -1,0 +1,1002 @@
+[
+  {
+    "id": 347,
+    "name": "Markus ",
+    "standard": {
+      "rank": null,
+      "rating": 1935,
+      "average": 67.602
+    },
+    "premier": {}
+  },
+  {
+    "id": 517,
+    "name": "Stjepan Richtaritsch",
+    "standard": {
+      "rank": null,
+      "rating": 1854,
+      "average": 71.431
+    },
+    "premier": {}
+  },
+  {
+    "id": 1304,
+    "name": "Julio ",
+    "standard": {
+      "rank": null,
+      "rating": 1818,
+      "average": 72.68
+    },
+    "premier": {}
+  },
+  {
+    "id": 3521,
+    "name": "jon (MILLER) miller",
+    "standard": {
+      "rank": 56,
+      "rating": 1803,
+      "average": 71.882
+    },
+    "premier": {}
+  },
+  {
+    "id": 13119,
+    "name": "Brian (Starling ⭐️ 🌟 💫) Starling",
+    "standard": {
+      "rank": 13,
+      "rating": 1915,
+      "average": 73.294
+    },
+    "premier": {}
+  },
+  {
+    "id": 19583,
+    "name": "Stefan (SKYNET) Herda",
+    "standard": {
+      "rank": null,
+      "rating": 1927,
+      "average": 74.525
+    },
+    "premier": {}
+  },
+  {
+    "id": 78439,
+    "name": "Andrew (Khaos 🔥) Blouin",
+    "standard": {
+      "rank": 46,
+      "rating": 1814,
+      "average": 67.344
+    },
+    "premier": {}
+  },
+  {
+    "id": 89217,
+    "name": "Sean (Shooter) Coutts",
+    "standard": {
+      "rank": 44,
+      "rating": 1821,
+      "average": 68.756
+    },
+    "premier": {}
+  },
+  {
+    "id": 91909,
+    "name": "Dustin (SPACE⚔️KNIGHT) Mcknight",
+    "standard": {
+      "rank": null,
+      "rating": 1795,
+      "average": 70.386
+    },
+    "premier": {}
+  },
+  {
+    "id": 117983,
+    "name": "John (Jizzle) White",
+    "standard": {
+      "rank": null,
+      "rating": 1796,
+      "average": 61.289
+    },
+    "premier": {}
+  },
+  {
+    "id": 177758,
+    "name": "Aaron Gerrard",
+    "standard": {
+      "rank": null,
+      "rating": 1916,
+      "average": 74.948
+    },
+    "premier": {}
+  },
+  {
+    "id": 177769,
+    "name": "Zach (Tight Pants) Matthews",
+    "standard": {
+      "rank": null,
+      "rating": 1801,
+      "average": 68.576
+    },
+    "premier": {}
+  },
+  {
+    "id": 177870,
+    "name": "Duncan Chisholm",
+    "standard": {
+      "rank": null,
+      "rating": 1889,
+      "average": 67.872
+    },
+    "premier": {}
+  },
+  {
+    "id": 177880,
+    "name": "Stefan (Cappuccino) Cavacciuti",
+    "standard": {
+      "rank": null,
+      "rating": 1874,
+      "average": 72.286
+    },
+    "premier": {}
+  },
+  {
+    "id": 178079,
+    "name": "Bryce Hill",
+    "standard": {
+      "rank": 33,
+      "rating": 1833,
+      "average": 66.057
+    },
+    "premier": {}
+  },
+  {
+    "id": 179583,
+    "name": "Kyle Little",
+    "standard": {
+      "rank": null,
+      "rating": 1814,
+      "average": 67.432
+    },
+    "premier": {}
+  },
+  {
+    "id": 179595,
+    "name": "Tom Martens",
+    "standard": {
+      "rank": null,
+      "rating": 1794,
+      "average": 68.054
+    },
+    "premier": {}
+  },
+  {
+    "id": 183211,
+    "name": "Kendra (ArkyKay) Kolomyja",
+    "standard": {
+      "rank": 22,
+      "rating": 1870,
+      "average": 65.234
+    },
+    "premier": {}
+  },
+  {
+    "id": 183212,
+    "name": "Nick Kolomyja",
+    "standard": {
+      "rank": 2,
+      "rating": 1999,
+      "average": 69.75
+    },
+    "premier": {}
+  },
+  {
+    "id": 185348,
+    "name": "scott (Chain Banger) brown",
+    "standard": {
+      "rank": null,
+      "rating": 1843,
+      "average": 70.889
+    },
+    "premier": {}
+  },
+  {
+    "id": 186603,
+    "name": "David (Clean Dave) Mewett",
+    "standard": {
+      "rank": 16,
+      "rating": 1899,
+      "average": 71.133
+    },
+    "premier": {}
+  },
+  {
+    "id": 186608,
+    "name": "Matthew (Mad Mats) Leblanc",
+    "standard": {
+      "rank": 9,
+      "rating": 1943,
+      "average": 70.864
+    },
+    "premier": {}
+  },
+  {
+    "id": 193228,
+    "name": "Mike (Rupert) Moore",
+    "standard": {
+      "rank": 34,
+      "rating": 1830,
+      "average": 75.766
+    },
+    "premier": {}
+  },
+  {
+    "id": 193231,
+    "name": "Will (Uncle Gritty🧡) Gelatko",
+    "standard": {
+      "rank": 35,
+      "rating": 1830,
+      "average": 75.366
+    },
+    "premier": {}
+  },
+  {
+    "id": 198060,
+    "name": "yash (Yash) desai",
+    "standard": {
+      "rank": null,
+      "rating": 1862,
+      "average": 70.213
+    },
+    "premier": {}
+  },
+  {
+    "id": 199259,
+    "name": "Philippe Lachance",
+    "standard": {
+      "rank": 31,
+      "rating": 1847,
+      "average": 69.523
+    },
+    "premier": {}
+  },
+  {
+    "id": 214473,
+    "name": "jeremy (Jeremy) lacroix",
+    "standard": {
+      "rank": null,
+      "rating": 1854,
+      "average": 71.947
+    },
+    "premier": {}
+  },
+  {
+    "id": 214477,
+    "name": "jacob (Jacob) robbins",
+    "standard": {
+      "rank": null,
+      "rating": 1836,
+      "average": 68.438
+    },
+    "premier": {}
+  },
+  {
+    "id": 226713,
+    "name": "Angry Cabbage",
+    "standard": {
+      "rank": 15,
+      "rating": 1902,
+      "average": 73.291
+    },
+    "premier": {}
+  },
+  {
+    "id": 230309,
+    "name": "Straun Riley",
+    "standard": {
+      "rank": null,
+      "rating": 1968,
+      "average": 76.272
+    },
+    "premier": {}
+  },
+  {
+    "id": 231293,
+    "name": "Steven (Pops) Malvey",
+    "standard": {
+      "rank": 62,
+      "rating": 1795,
+      "average": 72.472
+    },
+    "premier": {}
+  },
+  {
+    "id": 231300,
+    "name": "Vin (Jean-Claude Vin Damme) Crescenzo",
+    "standard": {
+      "rank": 7,
+      "rating": 1960,
+      "average": 74.582
+    },
+    "premier": {}
+  },
+  {
+    "id": 238743,
+    "name": "Paul (Cheer-i🍩!) Rother",
+    "standard": {
+      "rank": null,
+      "rating": 1799,
+      "average": 65.236
+    },
+    "premier": {}
+  },
+  {
+    "id": 244815,
+    "name": "Nathan Ford",
+    "standard": {
+      "rank": null,
+      "rating": 1865,
+      "average": 67.45
+    },
+    "premier": {}
+  },
+  {
+    "id": 246325,
+    "name": "Evan Flak",
+    "standard": {
+      "rank": null,
+      "rating": 1893,
+      "average": 78.058
+    },
+    "premier": {}
+  },
+  {
+    "id": 257522,
+    "name": "julio (El Creepo 💩💩💩) rayneri",
+    "standard": {
+      "rank": 36,
+      "rating": 1830,
+      "average": 69.664
+    },
+    "premier": {}
+  },
+  {
+    "id": 261400,
+    "name": "Michael Applegate",
+    "standard": {
+      "rank": null,
+      "rating": 1868,
+      "average": 67.89
+    },
+    "premier": {}
+  },
+  {
+    "id": 263571,
+    "name": "Rander (Kuya 💦) Marquez",
+    "standard": {
+      "rank": 1,
+      "rating": 2009,
+      "average": 74.997
+    },
+    "premier": {}
+  },
+  {
+    "id": 271724,
+    "name": "Rob (Reck it) Brown",
+    "standard": {
+      "rank": 18,
+      "rating": 1893,
+      "average": 72.292
+    },
+    "premier": {}
+  },
+  {
+    "id": 297821,
+    "name": "Don (Dirty Fuckin' D) Caro",
+    "standard": {
+      "rank": 30,
+      "rating": 1848,
+      "average": 69.116
+    },
+    "premier": {}
+  },
+  {
+    "id": 297952,
+    "name": "Matthew (Spicy Tuna) Kramer",
+    "standard": {
+      "rank": null,
+      "rating": 1825,
+      "average": 72.985
+    },
+    "premier": {}
+  },
+  {
+    "id": 301880,
+    "name": "Tyler (MR TyTY) Sorenson",
+    "standard": {
+      "rank": null,
+      "rating": 1815,
+      "average": 70.411
+    },
+    "premier": {}
+  },
+  {
+    "id": 302297,
+    "name": "Michael (Dumptruck) Dolan",
+    "standard": {
+      "rank": 52,
+      "rating": 1805,
+      "average": 68.36
+    },
+    "premier": {}
+  },
+  {
+    "id": 302445,
+    "name": "Colin (Goose) Blyth",
+    "standard": {
+      "rank": 20,
+      "rating": 1882,
+      "average": 70.385
+    },
+    "premier": {}
+  },
+  {
+    "id": 302642,
+    "name": "Sam (Adaptive Sloth) Carter",
+    "standard": {
+      "rank": 57,
+      "rating": 1803,
+      "average": 71.115
+    },
+    "premier": {}
+  },
+  {
+    "id": 303301,
+    "name": "Dave (Kitty Cato) Brucato",
+    "standard": {
+      "rank": 8,
+      "rating": 1946,
+      "average": 77.154
+    },
+    "premier": {}
+  },
+  {
+    "id": 318638,
+    "name": "Adam Buckley",
+    "standard": {
+      "rank": null,
+      "rating": 1878,
+      "average": 73.903
+    },
+    "premier": {}
+  },
+  {
+    "id": 335382,
+    "name": "Michael (Mikey Kum(p)) Kump",
+    "standard": {
+      "rank": 4,
+      "rating": 1972,
+      "average": 76.676
+    },
+    "premier": {}
+  },
+  {
+    "id": 347266,
+    "name": "Max Machado",
+    "standard": {
+      "rank": null,
+      "rating": 1825,
+      "average": 76.119
+    },
+    "premier": {}
+  },
+  {
+    "id": 352785,
+    "name": "Shiloh (Hi-Lo Shiloh) Frederick",
+    "standard": {
+      "rank": 42,
+      "rating": 1825,
+      "average": 69.543
+    },
+    "premier": {}
+  },
+  {
+    "id": 352793,
+    "name": "Spenny Robinson",
+    "standard": {
+      "rank": 21,
+      "rating": 1872,
+      "average": 75.028
+    },
+    "premier": {}
+  },
+  {
+    "id": 367502,
+    "name": "Mark (MARKSMAN) Overes",
+    "standard": {
+      "rank": 48,
+      "rating": 1809,
+      "average": 73.446
+    },
+    "premier": {}
+  },
+  {
+    "id": 379599,
+    "name": "Vail (Nipples) Cook",
+    "standard": {
+      "rank": 27,
+      "rating": 1854,
+      "average": 70.82
+    },
+    "premier": {}
+  },
+  {
+    "id": 380962,
+    "name": "Mason (PardonMyFrench) French",
+    "standard": {
+      "rank": 39,
+      "rating": 1826,
+      "average": 73.149
+    },
+    "premier": {}
+  },
+  {
+    "id": 388400,
+    "name": "Cody (Codes) Franklin",
+    "standard": {
+      "rank": null,
+      "rating": 1794,
+      "average": 72.759
+    },
+    "premier": {}
+  },
+  {
+    "id": 394237,
+    "name": "James (Bear) Feghali",
+    "standard": {
+      "rank": null,
+      "rating": 1860,
+      "average": 74.537
+    },
+    "premier": {}
+  },
+  {
+    "id": 399969,
+    "name": "Jeff (Cheese 🧀) Schick",
+    "standard": {
+      "rank": null,
+      "rating": 1886,
+      "average": 75.455
+    },
+    "premier": {}
+  },
+  {
+    "id": 420844,
+    "name": "Corben Decker",
+    "standard": {
+      "rank": 19,
+      "rating": 1883,
+      "average": 76.174
+    },
+    "premier": {}
+  },
+  {
+    "id": 422584,
+    "name": "Bret (Hitman Hartman) Hartman",
+    "standard": {
+      "rank": 40,
+      "rating": 1825,
+      "average": 73.651
+    },
+    "premier": {}
+  },
+  {
+    "id": 437750,
+    "name": "Theo (Theology) Nowlin",
+    "standard": {
+      "rank": null,
+      "rating": 1843,
+      "average": 72.827
+    },
+    "premier": {}
+  },
+  {
+    "id": 441761,
+    "name": "Jonathan (💎 Fancy Lad 💎) Morgan",
+    "standard": {
+      "rank": null,
+      "rating": 1883,
+      "average": 70.915
+    },
+    "premier": {}
+  },
+  {
+    "id": 460956,
+    "name": "Curtis (Warner) Baptist",
+    "standard": {
+      "rank": 12,
+      "rating": 1925,
+      "average": 77.356
+    },
+    "premier": {}
+  },
+  {
+    "id": 466953,
+    "name": "Andrew (Just Andr3️⃣w) Mccarthy",
+    "standard": {
+      "rank": 54,
+      "rating": 1803,
+      "average": 74.39
+    },
+    "premier": {}
+  },
+  {
+    "id": 471591,
+    "name": "Jamie (Peanut 🥜) Raider",
+    "standard": {
+      "rank": 37,
+      "rating": 1829,
+      "average": 73.087
+    },
+    "premier": {}
+  },
+  {
+    "id": 494365,
+    "name": "Dave (Canexican) Alviso",
+    "standard": {
+      "rank": null,
+      "rating": 1964,
+      "average": 77.979
+    },
+    "premier": {}
+  },
+  {
+    "id": 523102,
+    "name": "Cameron (⚡Ziggy 👨‍🎤 Stardust⚡) Dubrow",
+    "standard": {
+      "rank": 10,
+      "rating": 1929,
+      "average": 74.862
+    },
+    "premier": {}
+  },
+  {
+    "id": 525910,
+    "name": "Mark (Tish) Tishko",
+    "standard": {
+      "rank": 11,
+      "rating": 1927,
+      "average": 74.379
+    },
+    "premier": {}
+  },
+  {
+    "id": 525949,
+    "name": "Shane (DOOM SAUCE) Shepard",
+    "standard": {
+      "rank": null,
+      "rating": 1863,
+      "average": 73.687
+    },
+    "premier": {}
+  },
+  {
+    "id": 526067,
+    "name": "Brandon (ShowTime) McClester",
+    "standard": {
+      "rank": 6,
+      "rating": 1961,
+      "average": 78.516
+    },
+    "premier": {}
+  },
+  {
+    "id": 526618,
+    "name": "Niko (Bishop) Givas",
+    "standard": {
+      "rank": null,
+      "rating": 1893,
+      "average": 77.096
+    },
+    "premier": {}
+  },
+  {
+    "id": 527291,
+    "name": "Craig (Egg🥚) Ayrheart",
+    "standard": {
+      "rank": null,
+      "rating": 1879,
+      "average": 76.447
+    },
+    "premier": {}
+  },
+  {
+    "id": 530707,
+    "name": "Shane (Shampain Shane) Miller",
+    "standard": {
+      "rank": 25,
+      "rating": 1858,
+      "average": 73.16
+    },
+    "premier": {}
+  },
+  {
+    "id": 531222,
+    "name": "Tim (Big Time) Stivers",
+    "standard": {
+      "rank": 24,
+      "rating": 1863,
+      "average": 74.219
+    },
+    "premier": {}
+  },
+  {
+    "id": 550562,
+    "name": "Adam (Stonecold) Maria",
+    "standard": {
+      "rank": 61,
+      "rating": 1796,
+      "average": 71.658
+    },
+    "premier": {}
+  },
+  {
+    "id": 551472,
+    "name": "Jason (Jester) Howell",
+    "standard": {
+      "rank": 60,
+      "rating": 1797,
+      "average": 66.612
+    },
+    "premier": {}
+  },
+  {
+    "id": 573589,
+    "name": "I'm (Trashbird) Canadian",
+    "standard": {
+      "rank": 45,
+      "rating": 1814,
+      "average": 74.255
+    },
+    "premier": {}
+  },
+  {
+    "id": 573773,
+    "name": "Joseph (Slick Joey Tightass🍀) Roach",
+    "standard": {
+      "rank": 38,
+      "rating": 1828,
+      "average": 73.046
+    },
+    "premier": {}
+  },
+  {
+    "id": 585529,
+    "name": "Danny (Ritzy) Ritz",
+    "standard": {
+      "rank": null,
+      "rating": 1814,
+      "average": 75.521
+    },
+    "premier": {}
+  },
+  {
+    "id": 592225,
+    "name": "Robert (MigGiggles) Migliaccio",
+    "standard": {
+      "rank": 59,
+      "rating": 1799,
+      "average": 70.428
+    },
+    "premier": {}
+  },
+  {
+    "id": 614533,
+    "name": "Darien (D-Coz) Cozart",
+    "standard": {
+      "rank": null,
+      "rating": 1804,
+      "average": 70.496
+    },
+    "premier": {}
+  },
+  {
+    "id": 629572,
+    "name": "Philippe (🌼 Lafleur 🌼) Lafleur",
+    "standard": {
+      "rank": 47,
+      "rating": 1812,
+      "average": 76.489
+    },
+    "premier": {}
+  },
+  {
+    "id": 635288,
+    "name": "Joe (Joey The Hat 🎩) Nessler",
+    "standard": {
+      "rank": 14,
+      "rating": 1907,
+      "average": 77.032
+    },
+    "premier": {}
+  },
+  {
+    "id": 671326,
+    "name": "Harry (Mossbrook) Mossbrook Jr",
+    "standard": {
+      "rank": 23,
+      "rating": 1867,
+      "average": 75.507
+    },
+    "premier": {}
+  },
+  {
+    "id": 675175,
+    "name": "Sean (Fenway) Pardue",
+    "standard": {
+      "rank": 51,
+      "rating": 1806,
+      "average": 73.795
+    },
+    "premier": {}
+  },
+  {
+    "id": 720328,
+    "name": "Charlie (Bain Damage) Bain",
+    "standard": {
+      "rank": 63,
+      "rating": 1795,
+      "average": 68.598
+    },
+    "premier": {}
+  },
+  {
+    "id": 752922,
+    "name": "Marcus (Throwdo Baggins) Artis",
+    "standard": {
+      "rank": 29,
+      "rating": 1849,
+      "average": 73.609
+    },
+    "premier": {}
+  },
+  {
+    "id": 778499,
+    "name": "Austin (Sauce Boss) Campbell",
+    "standard": {
+      "rank": 50,
+      "rating": 1807,
+      "average": 68.756
+    },
+    "premier": {}
+  },
+  {
+    "id": 812238,
+    "name": "Mark (The Pink Ranger) Jobes",
+    "standard": {
+      "rank": 17,
+      "rating": 1895,
+      "average": 75.18
+    },
+    "premier": {}
+  },
+  {
+    "id": 812406,
+    "name": "Mickey (Mickey Lubes 🦄) Gill",
+    "standard": {
+      "rank": 26,
+      "rating": 1857,
+      "average": 74.469
+    },
+    "premier": {}
+  },
+  {
+    "id": 813223,
+    "name": "Dustin (Perple Bunny) Kerr",
+    "standard": {
+      "rank": 3,
+      "rating": 1997,
+      "average": 76.434
+    },
+    "premier": {}
+  },
+  {
+    "id": 824059,
+    "name": "Robert (Bobby 4) Oberley",
+    "standard": {
+      "rank": 32,
+      "rating": 1845,
+      "average": 71.469
+    },
+    "premier": {}
+  },
+  {
+    "id": 825461,
+    "name": "Tyler (Lemillion) Seddon",
+    "standard": {
+      "rank": 55,
+      "rating": 1803,
+      "average": 73.381
+    },
+    "premier": {}
+  },
+  {
+    "id": 877328,
+    "name": "Bob Pryor",
+    "standard": {
+      "rank": 41,
+      "rating": 1825,
+      "average": 71.221
+    },
+    "premier": {}
+  },
+  {
+    "id": 888088,
+    "name": "Austin (Daddy) Agosti",
+    "standard": {
+      "rank": 5,
+      "rating": 1962,
+      "average": 77.922
+    },
+    "premier": {}
+  },
+  {
+    "id": 903512,
+    "name": "Katelyn (Baby Deer Anklez🦌) Causey",
+    "standard": {
+      "rank": 43,
+      "rating": 1821,
+      "average": 70.69
+    },
+    "premier": {}
+  },
+  {
+    "id": 920033,
+    "name": "Cooper (The Hawk) Rogers",
+    "standard": {
+      "rank": 58,
+      "rating": 1801,
+      "average": 75.804
+    },
+    "premier": {}
+  },
+  {
+    "id": 951027,
+    "name": "Austin (Native) O'Brien",
+    "standard": {
+      "rank": 49,
+      "rating": 1809,
+      "average": 72.092
+    },
+    "premier": {}
+  },
+  {
+    "id": 984327,
+    "name": "Stormy (New Axe, Who Dis??) Stormerson",
+    "standard": {
+      "rank": 64,
+      "rating": 1794,
+      "average": 70.396
+    },
+    "premier": {}
+  },
+  {
+    "id": 985096,
+    "name": "Jeff (∞ Jemmi Haxeman ∞) Yateman",
+    "standard": {
+      "rank": 28,
+      "rating": 1852,
+      "average": 74.762
+    },
+    "premier": {}
+  },
+  {
+    "id": 993842,
+    "name": "Neil (Naked Burrito) Rust",
+    "standard": {
+      "rank": 53,
+      "rating": 1804,
+      "average": 73.657
+    },
+    "premier": {}
+  }
+]
