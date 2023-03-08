@@ -89,22 +89,22 @@ const getProfiles = async (page) => {
 
   const profilesById = {};
 
-  // const standardProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
+  const standardProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
 
-  // console.log(`[SCRAPE] Found ${standardProfiles.length} Standard Profiles`);
+  console.log(`[SCRAPE] Found ${standardProfiles.length} Standard Profiles`);
 
-  // standardProfiles.forEach(({ id, name, rank, rating, average }) => {
-  //   profilesById[id] = profilesById[id] || {
-  //     id,
-  //     name,
-  //     standard: {},
-  //     premier: {}
-  //   };
+  standardProfiles.forEach(({ id, name, rank, rating, average }) => {
+    profilesById[id] = profilesById[id] || {
+      id,
+      name,
+      standard: {},
+      premier: {}
+    };
 
-  //   profilesById[id].standard.rank = rank;
-  //   profilesById[id].standard.rating = rating;
-  //   profilesById[id].standard.average = average;
-  // });
+    profilesById[id].standard.rank = rank;
+    profilesById[id].standard.rating = rating;
+    profilesById[id].standard.average = average;
+  });
 
   await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
   await page.waitForNetworkIdle({ idleTime: 2 * 1000 });
