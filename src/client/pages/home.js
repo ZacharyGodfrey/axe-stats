@@ -7,6 +7,7 @@ module.exports = async (db) => {
   const allProfiles = await db.query(`
     SELECT *
     FROM profiles
+    WHERE premierRank > 0
     ORDER BY
       premierRank ASC,
       premierAverage DESC,

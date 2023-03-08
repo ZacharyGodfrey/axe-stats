@@ -32,6 +32,7 @@ const distDir = path.resolve(__dirname, '../dist');
     const allProfiles = await db.query(`
       SELECT *
       FROM profiles
+      WHERE premierRank > 0
       ORDER BY
         premierRank ASC,
         premierAverage DESC,
