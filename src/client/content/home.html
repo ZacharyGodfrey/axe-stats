@@ -25,6 +25,11 @@
         </tbody>
       </table>
     </figure>
+
+    <p>
+      <strong>Total Profile Count:</strong>
+      <span>{{totalProfiles}}</span>
+    </p>
   </details>
 
   <details>
@@ -77,9 +82,9 @@
             <td>
               <a href="/profile/{{id}}">{{name}}</a>
             </td>
-            <td>{{premierRank}}</td>
-            <td>{{premierRating}}</td>
-            <td>{{premierAverage}}</td>
+            <td>{{standardRank}}</td>
+            <td>{{standardRating}}</td>
+            <td>{{standardAverage}}</td>
           </tr>
           {{/standard.top256}}
         </tbody>
