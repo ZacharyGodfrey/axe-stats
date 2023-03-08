@@ -13,8 +13,9 @@ const distDir = path.resolve(__dirname, '../dist');
 
     await fs.copy(`${clientDir}/assets`, distDir);
 
+    const filePrefix = '<!-- Rendered during build step -->';
     const basicPages = {
-      'index': client['home'],
+      'index': client.home,
       '404': client['404'],
       '500': client['500'],
     };
@@ -25,10 +26,20 @@ const distDir = path.resolve(__dirname, '../dist');
 
       console.log(`Writing File: ${fileName}`);
 
-      await fs.outputFile(fileName, `<!-- Rendered during build step -->\n${content}`, 'utf-8');
+      await fs.outputFile(fileName, `${filePrefix}\n${content}`, 'utf-8');
     }));
 
     // TODO: Query the database and render profile pages based on data
+    const allProfiles = await db.query(`SELECT * FROM profiles`);
+
+    await Promise.all(allProfiles.map(async (profile) => {
+      const fileName = `${distDir}/profile/${profile.id}/index.html`;
+      const content = await client.profile(db, profile);
+
+      console.log(`Writing File: ${fileName}`);
+
+      await fs.outputFile(fileName, `${filePrefix}\n${content}`, 'utf-8');
+    }));
   } catch (error) {
     console.log(error);
 
