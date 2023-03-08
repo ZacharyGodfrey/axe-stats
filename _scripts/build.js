@@ -33,7 +33,9 @@ const distDir = path.resolve(__dirname, '../dist');
     const allProfiles = await db.query(`
       SELECT *
       FROM profiles
-      WHERE name LIKE '%REDACTED%';
+      WHERE premierRank > 0
+      ORDER BY premierRank ASC, premierAverage DESC
+      LIMIT 256;
     `);
 
     await Promise.all(allProfiles.map(async (profile) => {
