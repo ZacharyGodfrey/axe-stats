@@ -5,7 +5,7 @@ const page = readFile(`${__dirname}/../content/home.html`);
 module.exports = async (db) => {
   return render(page, {
     updatedAt: await db.timestamp(),
-    totalProfiles = JSON.stringify(await db.get(`SELECT COUNT(*) count FROM profiles;`)),
+    totalProfiles = JSON.stringify(await db.get(`SELECT COUNT(id) profileCount FROM profiles;`)),
     standard: {
       average: (await db.get(`
         SELECT ROUND(AVG(standardAverage), 3) average
