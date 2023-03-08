@@ -29,6 +29,7 @@ const distDir = path.resolve(__dirname, '../dist');
       await fs.outputFile(fileName, `${filePrefix}\n${content}`, 'utf-8');
     }));
 
+    const [{ timestamp }] = await db.query(`SELECT * FROM timestamp LIMIT 1;`);
     const allProfiles = await db.query(`
       SELECT *
       FROM profiles
@@ -36,8 +37,8 @@ const distDir = path.resolve(__dirname, '../dist');
     `);
 
     await Promise.all(allProfiles.map(async (profile) => {
-      const fileName = `${distDir}/profile/${profile.id}/index.html`;
-      const content = await client.profile(db, profile);
+      const fileName = `${distDir}/profile/${profile.id}.html`;
+      const content = await client.profile(profile, timestamp);
 
       console.log(`Writing File: ${fileName}`);
 
