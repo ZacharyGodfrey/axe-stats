@@ -16,20 +16,6 @@ const seedTables = async () => {
     INSERT INTO timestamp (timestamp)
     VALUES (?);
   `, [new Date().toISOString()]);
-
-  await db.query(`
-    INSERT INTO profiles (id, name, standardRating, standardRank, standardAverage, premierRating, premierRank, premierAverage)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-  `, [
-    127008,
-    'REDACTED',
-    1500,
-    184,
-    65.2,
-    1600,
-    40,
-    67.4
-  ]);
 };
 
 const scrape = async () => {
