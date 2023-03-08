@@ -92,12 +92,12 @@ const getProfiles = async (page) => {
     profilesById[id] = profilesById[id] || {
       id,
       name,
-      standardRank,
-      standardRating,
-      standardAverage,
-      premierRank,
-      premierRating,
-      premierAverage,
+      standardRank: 0,
+      standardRating: 0,
+      standardAverage: 0,
+      premierRank: 0,
+      premierRating: 0,
+      premierAverage: 0,
     };
 
     profilesById[id].standardRank = rank;
@@ -116,12 +116,12 @@ const getProfiles = async (page) => {
     profilesById[id] = profilesById[id] || {
       id,
       name,
-      standardRank,
-      standardRating,
-      standardAverage,
-      premierRank,
-      premierRating,
-      premierAverage,
+      standardRank: 0,
+      standardRating: 0,
+      standardAverage: 0,
+      premierRank: 0,
+      premierRating: 0,
+      premierAverage: 0,
     };
 
     profilesById[id].premierRank = rank;
