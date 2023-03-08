@@ -46,30 +46,30 @@ const scrape = async () => {
 
   console.log(`[SCRAPE] Found ${profiles.length} Unique Profiles`);
 
-  const jsonFile = db._fileName.replace('data.db', 'profiles.json');
-  const jsonContent = JSON.stringify(profiles, null, 2);
+  // const jsonFile = db._fileName.replace('data.db', 'profiles.json');
+  // const jsonContent = JSON.stringify(profiles, null, 2);
 
-  await fs.outputFile(jsonFile, jsonContent, 'utf-8');
+  // await fs.outputFile(jsonFile, jsonContent, 'utf-8');
 
-  // profiles.forEach((profile) => {
-  //   const sql = `
-  //     INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
-  //     VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-  //   `;
+  profiles.forEach((profile) => {
+    const sql = `
+      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    `;
 
-  //   const params = [
-  //     profile.id,
-  //     profile.name,
-  //     profile.standard.rank || 0,
-  //     profile.standard.rating || 0,
-  //     profile.standard.average || 0,
-  //     profile.premier.rank || 0,
-  //     profile.premier.rating || 0,
-  //     profile.premier.average || 0,
-  //   ];
+    const params = [
+      profile.id,
+      profile.name,
+      profile.standard.rank || 0,
+      profile.standard.rating || 0,
+      profile.standard.average || 0,
+      profile.premier.rank || 0,
+      profile.premier.rating || 0,
+      profile.premier.average || 0,
+    ];
 
-  //   tasks.push(db.query(sql, params));
-  // });
+    tasks.push(db.query(sql, params));
+  });
 
   await Promise.all(tasks);
 
