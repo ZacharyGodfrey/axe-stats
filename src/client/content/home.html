@@ -1,5 +1,5 @@
 <article>
-  <p>Axe Charts aims to provide IATF axe throwers with detailed views of their stats. All data on this site is pulled from the IATF official source on a weekly basis.</p>
+  <p>Axe Charts aims to provide IATF axe throwers with detailed views of their stats, how they compare with other throwers, and how they stack up globally. All data on this site is pulled from the IATF official source on a weekly basis.</p>
 
   <p>
     <a href="/premier">Premier Throwers List</a>
@@ -8,6 +8,8 @@
   <p>
     <a href="/standard">Standard Throwers List</a>
   </p>
+
+  <h2>Global Stats</h2>
 
   <figure>
     <table class="text-center">
@@ -19,7 +21,7 @@
         </tr>
         <tr>
           <td>{{standard.count}}</td>
-          <th>Player Count</th>
+          <th>Thrower Count</th>
           <td>{{premier.count}}</td>
         </tr>
         <tr>
@@ -37,67 +39,6 @@
   </figure>
 
   <p class="text-right">
-    <strong>Total Player Count:</strong>
+    <strong>Total Thrower Count:</strong>
     <span>{{totalProfiles}}</span>
   </p>
-
-  <details>
-    <summary>Top 256 Premier Players</summary>
-
-    <figure>
-      <table class="text-center">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Global Rank</th>
-            <th>Collins Rating</th>
-            <th>Career Average Score</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {{#premier.top256}}
-          <tr>
-            <td>
-              <a href="/profile/{{id}}">{{name}}</a>
-            </td>
-            <td>{{premierRank}}</td>
-            <td>{{premierRating}}</td>
-            <td>{{premierAverage}}</td>
-          </tr>
-          {{/premier.top256}}
-        </tbody>
-      </table>
-    </figure>
-  </details>
-
-  <details>
-    <summary>Top 256 Standard Players</summary>
-
-    <figure>
-      <table class="text-center">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Global Rank</th>
-            <th>Collins Rating</th>
-            <th>Career Average Score</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {{#standard.top256}}
-          <tr>
-            <td>
-              <a href="/profile/{{id}}">{{name}}</a>
-            </td>
-            <td>{{standardRank}}</td>
-            <td>{{standardRating}}</td>
-            <td>{{standardAverage}}</td>
-          </tr>
-          {{/standard.top256}}
-        </tbody>
-      </table>
-    </figure>
-  </details>
-</article>
