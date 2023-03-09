@@ -34,7 +34,7 @@ const buildProfilePages = async () => {
     FROM profiles
     WHERE premierRank > 0
     ORDER BY premierRank ASC, premierAverage DESC
-    LIMIT 256;
+    LIMIT 100;
   `);
 
   const tasks = allProfiles.map(async (profile) => {
