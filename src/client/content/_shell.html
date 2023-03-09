@@ -61,8 +61,12 @@
         flex-direction: column;
       }
 
-      main, footer {
+      header, main, footer {
         padding: var(--v-space) 1rem;
+      }
+
+      header {
+        background: var(--white);
       }
 
       main {
@@ -245,12 +249,16 @@
     </style>
   </head>
   <body>
-    <main>
+    <header>
       <section>
         <h1>
           <a href="/">Axe Charts</a>
         </h1>
+      </section>
+    </header>
 
+    <main>
+      <section>
         {{>page}}
       </section>
     </main>
