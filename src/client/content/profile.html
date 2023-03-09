@@ -65,30 +65,18 @@
         </tr>
       </thead>
       <tbody>
+        {{#premierSeasons}}
         <tr>
-          <td>Season Name Goes Here</td>
-          <td>1st (#2 Seed)</td>
-          <td>75</td>
-          <td>68.4</td>
-          <td>409 (97.6%)</td>
-          <td>17 (33.3% called, 20.5% hit)</td>
+          <td>
+            <a href="/profile/{{profile.id}}/season/{{id}}">{{name}}</a>
+          </td>
+          <td>{{playoffRank}} ({{playoffSeed}} Seed)</td>
+          <td>{{highScore}}</td>
+          <td>{{averageScore}}</td>
+          <td>{{bullseyeCount}} ({{bullseyePercent}}%)</td>
+          <td>{{clutchCount}} ({{clutchCallPercent}}% called, {{clutchHitPercent}}% hit)</td>
         </tr>
-        <tr>
-          <td>Season Name Goes Here</td>
-          <td>1st (#2 Seed)</td>
-          <td>75</td>
-          <td>68.4</td>
-          <td>409 (97.6%)</td>
-          <td>17 (33.3% called, 20.5% hit)</td>
-        </tr>
-        <tr>
-          <td>Season Name Goes Here</td>
-          <td>1st (#2 Seed)</td>
-          <td>75</td>
-          <td>68.4</td>
-          <td>409 (97.6%)</td>
-          <td>17 (33.3% called, 20.5% hit)</td>
-        </tr>
+        {{/premierSeasons}}
       </tbody>
     </table>
   </figure>
@@ -103,6 +91,33 @@
   {{#profile.standardRating}}
   <h3>Standard Stats</h3>
 
-  <p>Coming soon!</p>
+  <figure>
+    <table class="text-center">
+      <thead>
+        <tr>
+          <th>Season</th>
+          <th>Placement</th>
+          <th>High Score</th>
+          <th>Average Score</th>
+          <th>Bullseyes</th>
+          <th>Clutches</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#standardSeasons}}
+        <tr>
+          <td>
+            <a href="/profile/{{profile.id}}/season/{{id}}">{{name}}</a>
+          </td>
+          <td>1st (#2 Seed)</td>
+          <td>75</td>
+          <td>68.4</td>
+          <td>409 (97.6%)</td>
+          <td>17 (33.3% called, 20.5% hit)</td>
+        </tr>
+        {{/standardSeasons}}
+      </tbody>
+    </table>
+  </figure>
   {{/profile.standardRating}}
 </article>
