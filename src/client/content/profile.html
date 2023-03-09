@@ -11,27 +11,27 @@
         <table class="text-center">
           <thead>
             <tr>
-              <th>Premier</th>
-              <th></th>
               <th>Standard</th>
+              <th></th>
+              <th>Premier</th>
             </tr>
           </thead>
 
           <tbody>
             <tr>
-              <td>{{profile.premierRank}}</td>
-              <th>Global Rank</th>
               <td>{{profile.standardRank}}</td>
+              <th>Global Rank</th>
+              <td>{{profile.premierRank}}</td>
             </tr>
             <tr>
-              <td>{{profile.premierRating}}</td>
-              <th>Collins Rating</th>
               <td>{{profile.standardRating}}</td>
+              <th>Collins Rating</th>
+              <td>{{profile.premierRating}}</td>
             </tr>
             <tr>
-              <td>{{profile.premierAverage}}</td>
-              <th>Career Average Score</th>
               <td>{{profile.standardAverage}}</td>
+              <th>Career Average Score</th>
+              <td>{{profile.premierAverage}}</td>
             </tr>
           </tbody>
         </table>
@@ -50,7 +50,46 @@
   {{#profile.premierRating}}
   <h3>Premier Stats</h3>
 
-  <p>Coming soon!</p>
+  <p>The following table is a placeholder with fake data.</p>
+
+  <figure>
+    <table class="text-center">
+      <thead>
+        <tr>
+          <th>Season</th>
+          <th>Playoff Seed</th>
+          <th>Playoff Finish</th>
+          <th>Average Score</th>
+          <th>High Score</th>
+          <th>Bullseye %</th>
+          <th>Clutch Call %</th>
+          <th>Clutch Hit %</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Season Name Goes Here</td>
+          <td>1st</td>
+          <td>2nd</td>
+          <td>68.7</td>
+          <td>75</td>
+          <td>82.4%</td>
+          <td>33.3%</td>
+          <td>20.5%</td>
+        </tr>
+        <tr>
+          <td>Season Name Goes Here Too</td>
+          <td>2nd</td>
+          <td>3rd</td>
+          <td>64.8</td>
+          <td>75</td>
+          <td>79.4%</td>
+          <td>91.3%</td>
+          <td>19.5%</td>
+        </tr>
+      </tbody>
+    </table>
+  </figure>
   {{/profile.premierRating}}
 
   {{#profile.premierRating}}
