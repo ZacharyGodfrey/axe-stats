@@ -5,13 +5,13 @@ const page = readFile(`${__dirname}/../content/home.html`);
 module.exports = async (db) => {
   return render(page, {
     updatedAt: await db.timestamp(),
-    totalProfiles = JSON.stringify(await db.get(`SELECT COUNT(id) profileCount FROM profiles;`)),
+    totalProfiles: (await db.get(`SELECT COUNT(*) AS total FROM profiles;`)).total,
     standard: {
       average: (await db.get(`
-        SELECT ROUND(AVG(standardAverage), 3) average
+        SELECT ROUND(AVG(standardAverage), 3) AS average
         FROM profiles
         WHERE standardAverage > 0;
-      `))['average'],
+      `)).average,
       top256: await db.query(`
         SELECT *
         FROM profiles
@@ -22,10 +22,10 @@ module.exports = async (db) => {
     },
     premier: {
       average: (await db.get(`
-        SELECT ROUND(AVG(premierAverage), 3) average
+        SELECT ROUND(AVG(premierAverage), 3) AS average
         FROM profiles
         WHERE premierAverage > 0;
-      `))['average'],
+      `)).average,
       top256: await db.query(`
         SELECT *
         FROM profiles
