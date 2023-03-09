@@ -14,6 +14,7 @@ const buildBasicPages = async () => {
     '404': client.error404,
     '500': client.error500,
     'premier': client.premierList,
+    'standard': client.standardList,
   };
 
   await Promise.all(Object.entries(basicPages).map(async ([name, render]) => {
