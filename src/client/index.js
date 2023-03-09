@@ -1,7 +1,8 @@
 module.exports = {
-  'home': require('./pages/home'),
-  '404': require('./pages/404'),
-  '500': require('./pages/500'),
-  'profile': require('./pages/profile'),
-  'comparison': require('./pages/comparison'),
+  error404: require('./pages/404'),
+  error500: require('./pages/500'),
+  home: require('./pages/home'),
+  premierList: require('./pages/premier-list'),
+  profile: require('./pages/profile'),
+  comparison: require('./pages/comparison'),
 };

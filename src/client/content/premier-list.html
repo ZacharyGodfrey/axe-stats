@@ -1,0 +1,35 @@
+<article>
+  <nav>
+    <a href="/">Home</a>
+    <strong>/</strong>
+    <span>Premier Throwers</span>
+  </nav>
+
+  <hr>
+
+  <figure>
+    <table class="text-center">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Global Rank</th>
+          <th>Collins Rating</th>
+          <th>Career Average Score</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#list}}
+        <tr>
+          <td>
+            <a href="/profile/{{id}}">{{name}}</a>
+          </td>
+          <td>{{premierRank}}</td>
+          <td>{{premierRating}}</td>
+          <td>{{premierAverage}}</td>
+        </tr>
+        {{/list}}
+      </tbody>
+    </table>
+  </figure>
+</article>
