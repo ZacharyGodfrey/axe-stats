@@ -195,6 +195,10 @@
       }
 
       th {
+        font-weight: bold;
+      }
+
+      thead th {
         color: var(--white);
         background: var(--color);
       }
@@ -233,9 +237,9 @@
           gap: 2rem;
         }
 
-        .split.valign-center {
-          align-items: center;
-        }
+        .split.valign-start { align-items: start; }
+        .split.valign-center { align-items: center; }
+        .split.valign-end { align-items: end; }
 
         .split > * {
           flex: 1;
