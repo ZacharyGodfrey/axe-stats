@@ -6,7 +6,6 @@ const client = require('../src/client');
 
 const clientDir = path.resolve(__dirname, '../src/client');
 const distDir = path.resolve(__dirname, '../dist');
-const filePrefix = '<!-- Rendered during build step -->';
 
 const buildBasicPages = async () => {
   const basicPages = {
@@ -23,12 +22,11 @@ const buildBasicPages = async () => {
 
     console.log(`Writing File: ${fileName}`);
 
-    await fs.outputFile(fileName, `${filePrefix}\n${content}`, 'utf-8');
+    await fs.outputFile(fileName, content, 'utf-8');
   }));
 };
 
 const buildProfilePages = async () => {
-  const [{ timestamp }] = await db.query(`SELECT * FROM timestamp LIMIT 1;`);
   const allProfiles = await db.query(`
     SELECT *
     FROM profiles
@@ -39,11 +37,11 @@ const buildProfilePages = async () => {
 
   const tasks = allProfiles.map(async (profile) => {
     const fileName = `${distDir}/profile/${profile.id}.html`;
-    const content = await client.profile(profile, timestamp);
+    const content = await client.profile(profile);
 
     console.log(`Writing File: ${fileName}`);
 
-    await fs.outputFile(fileName, `${filePrefix}\n${content}`, 'utf-8');
+    await fs.outputFile(fileName, content, 'utf-8');
   });
 
   return Promise.all(tasks);
