@@ -14,7 +14,11 @@ const ordinal = (value) => {
 
 module.exports = async (profile) => render(page, {
   title: profile.name,
-  profile,
+  profile: {
+    ...profile,
+    premierRank: ordinal(profile.premierRank),
+    standardRank: ordinal(profile.standardRank),
+  },
   premierSeasons: [
     {
       id: 123,

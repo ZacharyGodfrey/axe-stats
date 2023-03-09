@@ -7,37 +7,19 @@
     <div>
       <h2 class="text-center">{{profile.name}}</h2>
 
-      <figure>
-        <table class="text-center">
-          <thead>
-            <tr>
-              <th>Standard</th>
-              <th></th>
-              <th>Premier</th>
-            </tr>
-          </thead>
+      <ul>
+        <li>
+          <strong>Premier:</strong>
+          <span>{{profile.premierRating}}</span>
+          <span>({{profile.premierRank}})</span>
+        </li>
 
-          <tbody>
-            <tr>
-              <td>{{profile.standardRank}}</td>
-              <th>Global Rank</th>
-              <td>{{profile.premierRank}}</td>
-            </tr>
-
-            <tr>
-              <td>{{profile.standardRating}}</td>
-              <th>Collins Rating</th>
-              <td>{{profile.premierRating}}</td>
-            </tr>
-
-            <tr>
-              <td>{{profile.standardAverage}}</td>
-              <th>Career Average Score</th>
-              <td>{{profile.premierAverage}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </figure>
+        <li>
+          <strong>Standard:</strong>
+          <span>{{profile.standardRating}}</span>
+          <span>({{profile.standardRank}})</span>
+        </li>
+      </ul>
     </div>
   </div>
 
