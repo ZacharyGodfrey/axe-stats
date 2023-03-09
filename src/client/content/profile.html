@@ -1,5 +1,5 @@
 <article>
-  <div class="split">
+  <div class="split valign-center">
     <div>
       <img class="profile" src="https://admin.axescores.com/pic/{{profile.id}}">
 
@@ -16,6 +16,41 @@
         <strong>Standard:</strong>
         <span>{{profile.standardRating}} (#{{profile.standardRank}})</span>
       </p>
+
+      <figure>
+        <table>
+          <thead>
+            <tr>
+              <th>Premier</th>
+              <th>Standard</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th colspan="2">Global Rank</th>
+            </tr>
+            <tr>
+              <td>{{profile.premierRank}}</td>
+              <td>{{profile.standardRank}}</td>
+            </tr>
+            <tr>
+              <th colspan="2">Collins Rating</th>
+            </tr>
+            <tr>
+              <td>{{profile.premierRating}}</td>
+              <td>{{profile.standardRating}}</td>
+            </tr>
+            <tr>
+              <th colspan="2">Career Average Score</th>
+            </tr>
+            <tr>
+              <td>{{profile.premierAverage}}</td>
+              <td>{{profile.standardAverage}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
     </div>
   </div>
 
