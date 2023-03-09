@@ -7,20 +7,11 @@
     </div>
 
     <div>
-      <p>
-        <strong>Premier:</strong>
-        <span>{{profile.premierRating}} (#{{profile.premierRank}})</span>
-      </p>
-
-      <p>
-        <strong>Standard:</strong>
-        <span>{{profile.standardRating}} (#{{profile.standardRank}})</span>
-      </p>
-
       <figure>
         <table>
           <thead>
             <tr>
+              <th></th>
               <th>Premier</th>
               <th>Standard</th>
             </tr>
@@ -28,23 +19,17 @@
 
           <tbody>
             <tr>
-              <th colspan="2">Global Rank</th>
-            </tr>
-            <tr>
+              <th>Global Rank</th>
               <td>{{profile.premierRank}}</td>
               <td>{{profile.standardRank}}</td>
             </tr>
             <tr>
-              <th colspan="2">Collins Rating</th>
-            </tr>
-            <tr>
+              <th>Collins Rating</th>
               <td>{{profile.premierRating}}</td>
               <td>{{profile.standardRating}}</td>
             </tr>
             <tr>
-              <th colspan="2">Career Average Score</th>
-            </tr>
-            <tr>
+              <th>Career Average Score</th>
               <td>{{profile.premierAverage}}</td>
               <td>{{profile.standardAverage}}</td>
             </tr>
