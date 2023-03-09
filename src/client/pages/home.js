@@ -12,7 +12,12 @@ module.exports = async (db) => {
         FROM profiles
         WHERE standardRating > 0;
       `)).count,
-      average: (await db.get(`
+      averageRating: (await db.get(`
+        SELECT ROUND(AVG(standardRating), 3) AS average
+        FROM profiles
+        WHERE standardRating > 0;
+      `)).average,
+      averageScore: (await db.get(`
         SELECT ROUND(AVG(standardAverage), 3) AS average
         FROM profiles
         WHERE standardAverage > 0;
@@ -31,7 +36,12 @@ module.exports = async (db) => {
         FROM profiles
         WHERE premierRating > 0;
       `)).count,
-      average: (await db.get(`
+      averageRating: (await db.get(`
+        SELECT ROUND(AVG(premierRating), 3) AS average
+        FROM profiles
+        WHERE premierRating > 0;
+      `)).average,
+      averageScore: (await db.get(`
         SELECT ROUND(AVG(premierAverage), 3) AS average
         FROM profiles
         WHERE premierAverage > 0;

@@ -1,10 +1,8 @@
 <article>
-  <p>
-    <strong>Note:</strong>
-    <span>This site is still under construction. Please come back later. Thanks!</span>
+  <p class="text-right">
+    <strong>Total Player Count:</strong>
+    <span>{{totalProfiles}}</span>
   </p>
-
-  <hr>
 
   <figure>
     <table class="text-center">
@@ -20,21 +18,21 @@
           <td>{{premier.count}}</td>
         </tr>
         <tr>
-          <td>{{standard.average}}</td>
+          <td>{{standard.averageRating}}</td>
+          <th>Average Collins Rating</th>
+          <td>{{premier.averageRating}}</td>
+        </tr>
+        <tr>
+          <td>{{standard.averageScore}}</td>
           <th>Average Score</th>
-          <td>{{premier.average}}</td>
+          <td>{{premier.averageScore}}</td>
         </tr>
       </tbody>
     </table>
   </figure>
 
-  <p class="text-right">
-    <strong>Total Player Count:</strong>
-    <span>{{totalProfiles}}</span>
-  </p>
-
   <details>
-    <summary>Top 256 Premier</summary>
+    <summary>Top 256 Premier Players</summary>
 
     <figure>
       <table class="text-center">
@@ -64,7 +62,7 @@
   </details>
 
   <details>
-    <summary>Top 256 Standard</summary>
+    <summary>Top 256 Standard Players</summary>
 
     <figure>
       <table class="text-center">
