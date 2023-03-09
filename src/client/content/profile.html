@@ -1,38 +1,57 @@
 <article>
   <div class="split align-center">
     <div>
-      <img class="profile" src="https://admin.axescores.com/pic/{{profile.id}}">
+      <h2>{{profile.name}}</h2>
     </div>
 
     <div>
-      <h2>{{profile.name}}</h2>
+      <img class="profile" src="https://admin.axescores.com/pic/{{profile.id}}">
     </div>
   </div>
 
+  {{#profile.premierRating}}
+  <h3>Premier Stats</h3>
+
   <figure>
     <table class="text-center">
+      <thead>
+        <tr>
+          <td>Global Rank</td>
+          <td>Collins Rating</td>
+          <td>Career Average Score</td>
+        </tr>
+      </thead>
       <tbody>
         <tr>
-          <td>Standard</td>
-          <th>Ruleset</th>
-          <td>Premier</td>
-        </tr>
-        <tr>
-          <td>{{profile.standardRank}}</td>
-          <th>Global Rank</th>
           <td>{{profile.premierRank}}</td>
-        </tr>
-        <tr>
-          <td>{{profile.standardRating}}</td>
-          <th>Collins Rating</th>
           <td>{{profile.premierRating}}</td>
-        </tr>
-        <tr>
-          <td>{{profile.standardAverage}}</td>
-          <th>Career Average Score</th>
           <td>{{profile.premierAverage}}</td>
         </tr>
       </tbody>
     </table>
   </figure>
+  {{/profile.premierRating}}
+
+  {{#profile.standardRating}}
+  <h3>Standard Stats</h3>
+
+  <figure>
+    <table class="text-center">
+      <thead>
+        <tr>
+          <td>Global Rank</td>
+          <td>Collins Rating</td>
+          <td>Career Average Score</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{profile.standardRank}}</td>
+          <td>{{profile.standardRating}}</td>
+          <td>{{profile.standardAverage}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </figure>
+  {{/profile.standardRating}}
 </article>
