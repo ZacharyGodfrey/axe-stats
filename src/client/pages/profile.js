@@ -3,11 +3,11 @@ const { readFile, render } = require('../helpers');
 const page = readFile(`${__dirname}/../content/profile.html`);
 
 const ordinal = (value) => {
-  switch (value) {
-    case 0: return 'N/A';
-    case 1: return '1st';
-    case 2: return '2nd';
-    case 3: return '3rd';
+  switch (true) {
+    case value <= 0: return 'N/A';
+    case value % 10 === 1: return `${value}st`;
+    case value % 10 === 2: return `${value}nd`;
+    case value % 10 === 3: return `${value}rd`;
     default: return `${value}th`;
   }
 };
