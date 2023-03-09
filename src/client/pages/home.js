@@ -7,6 +7,11 @@ module.exports = async (db) => {
     updatedAt: await db.timestamp(),
     totalProfiles: (await db.get(`SELECT COUNT(*) AS total FROM profiles;`)).total,
     standard: {
+      count: (await db.get(`
+        SELECT COUNT(*) AS count
+        FROM profiles
+        WHERE standardRating > 0;
+      `)).count,
       average: (await db.get(`
         SELECT ROUND(AVG(standardAverage), 3) AS average
         FROM profiles
@@ -21,6 +26,11 @@ module.exports = async (db) => {
       `)
     },
     premier: {
+      count: (await db.get(`
+        SELECT COUNT(*) AS count
+        FROM profiles
+        WHERE premierRating > 0;
+      `)).count,
       average: (await db.get(`
         SELECT ROUND(AVG(premierAverage), 3) AS average
         FROM profiles
