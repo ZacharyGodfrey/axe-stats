@@ -8,7 +8,7 @@
 
     <div>
       <figure>
-        <table>
+        <table class="text-center">
           <thead>
             <tr>
               <th></th>
@@ -39,28 +39,14 @@
     </div>
   </div>
 
+  <h3>Biography</h3>
+
+  <p>[Not Available]</p>
+
+  <hr>
+
   {{#profile.premierRating}}
   <h3>Premier Stats</h3>
-
-  <figure>
-    <table class="text-center">
-      <thead>
-        <tr>
-          <th>Global Rank</th>
-          <th>Collins Rating</th>
-          <th>Career Average Score</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>{{profile.premierRank}}</td>
-          <td>{{profile.premierRating}}</td>
-          <td>{{profile.premierAverage}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </figure>
 
   <p>More details coming soon!</p>
   {{/profile.premierRating}}
@@ -73,26 +59,6 @@
 
   {{#profile.standardRating}}
   <h3>Standard Stats</h3>
-
-  <figure>
-    <table class="text-center">
-      <thead>
-        <tr>
-          <th>Global Rank</th>
-          <th>Collins Rating</th>
-          <th>Career Average Score</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr>
-          <td>{{profile.standardRank}}</td>
-          <td>{{profile.standardRating}}</td>
-          <td>{{profile.standardAverage}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </figure>
 
   <p>More details coming soon!</p>
   {{/profile.standardRating}}
