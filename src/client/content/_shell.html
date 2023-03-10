@@ -241,8 +241,11 @@
         .split.valign-center { align-items: center; }
         .split.valign-end { align-items: end; }
 
-        .split > * {
+        .split > .grow {
           flex: 1;
+        }
+
+        .split > * {
           margin: 0;
         }
       }
@@ -264,10 +267,10 @@
     </main>
 
     <footer>
-      <section class="text-right">
-        <h3>Axe Charts</h3>
+      <section>
+        <h3 class="text-right">Axe Charts</h3>
 
-        <p>
+        <p class="text-right">
           <a href="mailto:info@axecharts.com">info@axecharts.com</a>
         </p>
       </section>

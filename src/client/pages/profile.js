@@ -18,21 +18,5 @@ module.exports = async (profile) => render(page, {
     ...profile,
     premierRank: ordinal(profile.premierRank),
     standardRank: ordinal(profile.standardRank),
-  },
-  premierSeasons: [
-    {
-      id: 123,
-      name: 'Fake Season Name',
-      playoffSeed: ordinal(5),
-      playoffRank: ordinal(1),
-      highScore: 75,
-      averageScore: 71.2,
-      bullseyeCount: 409,
-      bullseyePercent: 97.6,
-      clutchCount: 25,
-      clutchCallPercent: 33.3,
-      clutchHitPercent: 19.7
-    }
-  ],
-  standardSeasons: [],
+  }
 });

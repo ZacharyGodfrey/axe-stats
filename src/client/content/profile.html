@@ -4,7 +4,7 @@
       <img class="profile" src="https://admin.axescores.com/pic/{{profile.id}}">
     </div>
 
-    <div>
+    <div class="grow">
       <h2>{{profile.name}}</h2>
 
       <p>
@@ -27,77 +27,10 @@
 
   <hr>
 
-  {{#profile.premierRating}}
-  <h3>Premier Stats</h3>
+  <h3>To Do:</h3>
 
-  <p>The following table is a placeholder with fake data.</p>
-
-  <figure>
-    <table class="text-center">
-      <thead>
-        <tr>
-          <th>Season</th>
-          <th>Placement</th>
-          <th>High Score</th>
-          <th>Average Score</th>
-          <th>Bullseyes</th>
-          <th>Clutches</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#premierSeasons}}
-        <tr>
-          <td>
-            <a href="/profile/{{profile.id}}/season/{{id}}">{{name}}</a>
-          </td>
-          <td>{{playoffRank}} ({{playoffSeed}} Seed)</td>
-          <td>{{highScore}}</td>
-          <td>{{averageScore}}</td>
-          <td>{{bullseyeCount}} ({{bullseyePercent}}%)</td>
-          <td>{{clutchCount}} ({{clutchCallPercent}}% called, {{clutchHitPercent}}% hit)</td>
-        </tr>
-        {{/premierSeasons}}
-      </tbody>
-    </table>
-  </figure>
-  {{/profile.premierRating}}
-
-  {{#profile.premierRating}}
-  {{#profile.standardRating}}
-  <hr>
-  {{/profile.standardRating}}
-  {{/profile.premierRating}}
-
-  {{#profile.standardRating}}
-  <h3>Standard Stats</h3>
-
-  <figure>
-    <table class="text-center">
-      <thead>
-        <tr>
-          <th>Season</th>
-          <th>Placement</th>
-          <th>High Score</th>
-          <th>Average Score</th>
-          <th>Bullseyes</th>
-          <th>Clutches</th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#standardSeasons}}
-        <tr>
-          <td>
-            <a href="/profile/{{profile.id}}/season/{{id}}">{{name}}</a>
-          </td>
-          <td>{{playoffRank}} ({{playoffSeed}} Seed)</td>
-          <td>{{highScore}}</td>
-          <td>{{averageScore}}</td>
-          <td>{{bullseyeCount}} ({{bullseyePercent}}%)</td>
-          <td>{{clutchCount}} ({{clutchCallPercent}}% called, {{clutchHitPercent}}% hit)</td>
-        </tr>
-        {{/standardSeasons}}
-      </tbody>
-    </table>
-  </figure>
-  {{/profile.standardRating}}
+  <ul>
+    <li>Add chart for career performance by season</li>
+    <li>Add charts for each season performance by week</li>
+  </ul>
 </article>
