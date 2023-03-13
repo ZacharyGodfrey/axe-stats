@@ -1,13 +1,11 @@
 <article>
   <h2>Why another stats website?</h2>
 
-  <p>Axe Charts was created to address three key issues with <a href="https://axescores.com">AxeScores.com</a>: 1) Premier stats are not given the same visibility as Standard stats, 2) the player comparison is deeply flawed, and 3) the current charts don't provide much detail on performance trends over time.</p>
-
-  <p>Axe Charts aims to provide IATF axe throwers with detailed views of their stats, how they compare with other throwers, and how they stack up globally. All data on this site is pulled from the IATF official source on a weekly basis.</p>
+  <p>Axe Charts was created to address three key issues with <a href="https://axescores.com" target="_blank">AxeScores.com</a>: 1) Premier stats are not given the same visibility as Standard stats, 2) the player comparison is broken, and 3) the current charts don't provide much detail on performance trends over time.</p>
 
   <p>
     <strong>Note:</strong>
-    <span>Only the top 100 Premier throwers have profile pages right now. All other profiles will be added soon.</span>
+    <span>All data on this site is pulled from the official IATF source on a weekly basis. Only the top 100 Premier players have profile pages right now. All other profiles will be added soon.</span>
   </p>
 
   <div class="split">
@@ -15,17 +13,17 @@
       <h3>Premier Stats</h3>
 
       <p>
-        <strong>{{premier.count}}</strong>
+        <strong class="no-break">{{premier.count}}</strong>
         <span>players</span>
       </p>
 
       <p>
-        <strong>{{premier.averageRating}}</strong>
+        <strong class="no-break">{{premier.averageRating}}</strong>
         <span>average Collins Rating</span>
       </p>
 
       <p>
-        <strong>{{premier.averageScore}}</strong>
+        <strong class="no-break">{{premier.averageScore}}</strong>
         <span>average score</span>
       </p>
 
@@ -38,17 +36,17 @@
       <h3>Standard Stats</h3>
 
       <p>
-        <strong>{{standard.count}}</strong>
+        <strong class="no-break">{{standard.count}}</strong>
         <span>players</span>
       </p>
 
       <p>
-        <strong>{{standard.averageRating}}</strong>
+        <strong class="no-break">{{standard.averageRating}}</strong>
         <span>average Collins Rating</span>
       </p>
 
       <p>
-        <strong>{{standard.averageScore}}</strong>
+        <strong class="no-break">{{standard.averageScore}}</strong>
         <span>average score</span>
       </p>
 
@@ -59,10 +57,10 @@
   </div>
 
   <p class="text-right">
-    <span>Total Thrower Count:</span>
-    <strong>{{totalProfiles}}</strong>
+    <span>Total Player Count:</span>
+    <strong class="no-break">{{totalProfiles}}</strong>
     <br>
     <span>Data Last Updated:</span>
-    <strong>{{updatedAt}}</strong>
+    <strong class="no-break">{{updatedAt}}</strong>
   </p>
 </article>
