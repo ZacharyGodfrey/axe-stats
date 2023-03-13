@@ -2,15 +2,15 @@
   command = "npm run build"
   publish = "dist"
 
-[functions]
-  directory = "_deploy"
-  included_files = ["**"]
+#[functions]
+#  directory = "_deploy"
+#  included_files = ["**"]
 
-[[redirects]]
-  from = "/s/*"
-  to = "/.netlify/functions/handler"
-  status = 200
+#[[redirects]]
+#  from = "/s/*"
+#  to = "/.netlify/functions/handler"
+#  status = 200
 
-[dev]
-  port = 8080
-  autoLaunch = true
+#[dev]
+#  port = 8080
+#  autoLaunch = true
