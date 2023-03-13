@@ -1,29 +1,31 @@
-<article>
-  <h2>Standard Throwers</h2>
+<main>
+  <section class="w-limit pad">
+    <h2>Standard Throwers</h2>
 
-  <figure>
-    <table class="text-center">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Global Rank</th>
-          <th>Collins Rating</th>
-          <th>Career Average Score</th>
-        </tr>
-      </thead>
+    <figure>
+      <table class="text-center">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Global Rank</th>
+            <th>Collins Rating</th>
+            <th>Career Average Score</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        {{#list}}
-        <tr>
-          <td>
-            <a href="/profile/{{id}}">{{name}}</a>
-          </td>
-          <td>{{standardRank}}</td>
-          <td>{{standardRating}}</td>
-          <td>{{standardAverage}}</td>
-        </tr>
-        {{/list}}
-      </tbody>
-    </table>
-  </figure>
-</article>
+        <tbody>
+          {{#list}}
+          <tr>
+            <td>
+              <a href="/profile/{{id}}">{{name}}</a>
+            </td>
+            <td>{{standardRank}}</td>
+            <td>{{standardRating}}</td>
+            <td>{{standardAverage}}</td>
+          </tr>
+          {{/list}}
+        </tbody>
+      </table>
+    </figure>
+  </section>
+</main>

@@ -1,72 +1,76 @@
-<article>
-  <div class="split">
-    <div class="card">
-      <h3>Premier Stats</h3>
+<main>
+  <section class="w-limit pad bg-dark">
+    <div class="split">
+      <div class="card">
+        <h3>Premier Stats</h3>
 
-      <ul>
-        <li>
-          <strong class="no-break">{{premier.count}}</strong>
-          <span>players</span>
-        </li>
+        <ul>
+          <li>
+            <strong class="no-break">{{premier.count}}</strong>
+            <span>players</span>
+          </li>
 
-        <li>
-          <strong class="no-break">{{premier.averageRating}}</strong>
-          <span>average Collins Rating</span>
-        </li>
+          <li>
+            <strong class="no-break">{{premier.averageRating}}</strong>
+            <span>average Collins Rating</span>
+          </li>
 
-        <li>
-          <strong class="no-break">{{premier.averageScore}}</strong>
-          <span>average score</span>
-        </li>
-      </ul>
+          <li>
+            <strong class="no-break">{{premier.averageScore}}</strong>
+            <span>average score</span>
+          </li>
+        </ul>
 
-      <p class="text-center">
-        <a class="cta" href="/premier">View Rankings</a>
-      </p>
+        <p class="text-center">
+          <a class="cta" href="/premier">View Rankings</a>
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Standard Stats</h3>
+
+        <ul>
+          <li>
+            <strong class="no-break">{{standard.count}}</strong>
+            <span>players</span>
+          </li>
+
+          <li>
+            <strong class="no-break">{{standard.averageRating}}</strong>
+            <span>average Collins Rating</span>
+          </li>
+
+          <li>
+            <strong class="no-break">{{standard.averageScore}}</strong>
+            <span>average score</span>
+          </li>
+        </ul>
+
+        <p class="text-center">
+          <a class="cta" href="/standard">View Rankings</a>
+        </p>
+      </div>
     </div>
+  </section>
 
-    <div class="card">
-      <h3>Standard Stats</h3>
+  <section class="w-limit pad">
+    <h2>Why another stats website?</h2>
 
-      <ul>
-        <li>
-          <strong class="no-break">{{standard.count}}</strong>
-          <span>players</span>
-        </li>
+    <p>Axe Charts was created to address three key issues with <a href="https://axescores.com" target="_blank">AxeScores.com</a>: 1) Premier stats are not given the same visibility as Standard stats, 2) the player comparison is broken, and 3) the current charts don't provide much detail on performance trends over time.</p>
 
-        <li>
-          <strong class="no-break">{{standard.averageRating}}</strong>
-          <span>average Collins Rating</span>
-        </li>
+    <hr>
 
-        <li>
-          <strong class="no-break">{{standard.averageScore}}</strong>
-          <span>average score</span>
-        </li>
-      </ul>
+    <p>
+      <strong>Note:</strong>
+      <span>All data on this site is pulled from the official IATF source on a weekly basis. Only the top 100 Premier players have profile pages right now. All other profiles will be added soon.</span>
+    </p>
 
-      <p class="text-center">
-        <a class="cta" href="/standard">View Rankings</a>
-      </p>
-    </div>
-  </div>
-
-  <h2>Why another stats website?</h2>
-
-  <p>Axe Charts was created to address three key issues with <a href="https://axescores.com" target="_blank">AxeScores.com</a>: 1) Premier stats are not given the same visibility as Standard stats, 2) the player comparison is broken, and 3) the current charts don't provide much detail on performance trends over time.</p>
-
-  <hr>
-
-  <p>
-    <strong>Note:</strong>
-    <span>All data on this site is pulled from the official IATF source on a weekly basis. Only the top 100 Premier players have profile pages right now. All other profiles will be added soon.</span>
-  </p>
-
-  <p class="text-right">
-    <span>Total Player Count:</span>
-    <strong class="no-break">{{totalProfiles}}</strong>
-    <br>
-    <span>Data Last Updated:</span>
-    <strong class="no-break">{{updatedAt}}</strong>
-  </p>
-</article>
+    <p class="text-right">
+      <span>Total Player Count:</span>
+      <strong class="no-break">{{totalProfiles}}</strong>
+      <br>
+      <span>Data Last Updated:</span>
+      <strong class="no-break">{{updatedAt}}</strong>
+    </p>
+  </section>
+</main>

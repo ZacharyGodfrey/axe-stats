@@ -1,41 +1,43 @@
-<nav>
-  <a href="/">Home</a>
-  <strong>/</strong>
-  <a href="/compare">Compare</a>
-  <strong>/</strong>
-  <span>Comparison</span>
-</nav>
+<main>
+  <section class="w-limit pad">
+    <nav>
+      <a href="/">Home</a>
+      <strong>/</strong>
+      <a href="/compare">Compare</a>
+      <strong>/</strong>
+      <span>Comparison</span>
+    </nav>
 
-<article>
-  <figure>
-    <table>
-      <colgroup>
-        <col span="1">
-        <col span="1">
-        <col span="1">
-      </colgroup>
+    <figure>
+      <table>
+        <colgroup>
+          <col span="1">
+          <col span="1">
+          <col span="1">
+        </colgroup>
 
-      <thead>
-        <tr>
-          <th class="text-right">{{left.name}}</th>
-          <th class="text-center">Name</th>
-          <th class="text-left">{{right.name}}</th>
-        </tr>
-      </thead>
+        <thead>
+          <tr>
+            <th class="text-right">{{left.name}}</th>
+            <th class="text-center">Name</th>
+            <th class="text-left">{{right.name}}</th>
+          </tr>
+        </thead>
 
-      <tbody>
-        <tr>
-          <td class="text-right">{{left.standardRating}}</td>
-          <td class="text-center">Standard Rating</td>
-          <td class="text-left">{{right.standardRating}}</td>
-        </tr>
+        <tbody>
+          <tr>
+            <td class="text-right">{{left.standardRating}}</td>
+            <td class="text-center">Standard Rating</td>
+            <td class="text-left">{{right.standardRating}}</td>
+          </tr>
 
-        <tr>
-          <td class="text-right">{{left.premierRating}}</td>
-          <td class="text-center">Premier Rating</td>
-          <td class="text-left">{{right.premierRating}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </figure>
-</article>
+          <tr>
+            <td class="text-right">{{left.premierRating}}</td>
+            <td class="text-center">Premier Rating</td>
+            <td class="text-left">{{right.premierRating}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
+  </section>
+</main>
