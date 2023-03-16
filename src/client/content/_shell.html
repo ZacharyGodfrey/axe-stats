@@ -301,6 +301,11 @@
       .split:not(.portrait .stack) > .grow {
         flex: 1;
       }
+
+      body:not(.portrait) .mobile-menu-button,
+      .portrait .desktop-menu {
+        display: none;
+      }
     </style>
   </head>
   <body>
@@ -310,7 +315,12 @@
           <a href="/">Axe Charts</a>
         </h1>
 
-        <div>
+        <div class="desktop-menu">
+          <a href="/premier">Premier</a>
+          <a href="/Standard">standard</a>
+        </div>
+
+        <div class="mobile-menu-button">
             <button class="button">Menu</button>
         </div>
       </div>
