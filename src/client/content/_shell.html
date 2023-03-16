@@ -220,7 +220,7 @@
 
       .nav-content {
         min-width: 20vw;
-        text-align: right;
+        /* text-align: right; */
         background: white;
       }
 
@@ -318,6 +318,8 @@
 
     <main>
       <nav class="nav-wrap hide">
+        <div class="nav-dim"></div>
+
         <div class="nav-content">
           <h1 class="x-pad">
             <a href="/">Axe Charts</a>
@@ -327,8 +329,6 @@
 
           <a class="nav-link" href="/standard">Standard Ranking</a>
         </div>
-
-        <div class="nav-dim"></div>
       </nav>
 
       {{>page}}
@@ -344,20 +344,20 @@
     </main>
 
     <script>
-      const setOrientationClass = () => {
-        console.log(screen.orientation.type);
-
-        const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
-        const isPortrait = orientation.includes('portrait');
-
-        if (isPortrait) {
-            document.querySelector('body').classList.add('portrait');
-        } else {
-            document.querySelector('body').classList.remove('portrait');
-        }
-      };
-
       (() => {
+        const setOrientationClass = () => {
+          console.log(screen.orientation.type);
+
+          const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
+          const isPortrait = orientation.includes('portrait');
+
+          if (isPortrait) {
+              document.querySelector('body').classList.add('portrait');
+          } else {
+              document.querySelector('body').classList.remove('portrait');
+          }
+        };
+
         setOrientationClass();
 
         screen.orientation.addEventListener('change', setOrientationClass);
