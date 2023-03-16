@@ -4,7 +4,7 @@ const page = readFile(`${__dirname}/../content/premier-list.html`);
 
 module.exports = async (db) => {
   return render(page, {
-    updatedAt: await db.timestamp(),
+    title: 'Premier Throwers',
     count: (await db.get(`
       SELECT COUNT(*) AS count
       FROM profiles

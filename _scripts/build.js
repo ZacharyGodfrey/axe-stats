@@ -30,9 +30,8 @@ const buildProfilePages = async () => {
   const allProfiles = await db.query(`
     SELECT *
     FROM profiles
-    WHERE premierRank > 0
-    ORDER BY premierRank ASC, premierAverage DESC
-    LIMIT 100;
+    WHERE id = 1207260
+    OR (0 < premierRank AND premierRank <= 10);
   `);
 
   const tasks = allProfiles.map(async (profile) => {
