@@ -13,20 +13,17 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
     <style>
       :root {
-        --color: hsl(90, 65%, 35%);
-        --white: #FFFFFF;
-        --light: #FAFAFA;
-        --medium: #EEEEEE;
-        --dark: #303030;
-        --black: #000000;
-        --v-space: 1rem;
-        --content-width: 100ch;
+        --highlight: hsl(200, 80%, 80%);
+        --cta:       hsl(200, 80%, 40%);
+        --main:      hsl(200, 80%, 20%);
+        --dark:      hsl(200, 80%, 10%);
+        --neutral:    #EEEEEE;
         font-family: monospace;
         font-variant-numeric: slashed-zero tabular-nums;
         font-size: 16px;
         line-height: 1.5;
-        color: var(--black);
-        background: var(--light);
+        color: black;
+        background: var(--neutral);
       }
 
       * {
@@ -44,128 +41,85 @@
       }
 
       ::selection {
-        color: var(--white);
-        background: var(--dark);
+        color: black;
+        background: var(--highlight);
       }
+
+      /* Page Layout */
 
       html, body {
         margin: 0;
         padding: 0;
-        max-width: 100vw;
-        min-height: 100vh;
       }
 
       body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
         display: flex;
         flex-direction: column;
       }
 
       header {
-        background: var(--white);
-        border-bottom: 1px solid var(--color);
+        padding: 0 1rem;
+        background: white;
       }
 
       main {
         flex: 1;
-        min-height: 50vh;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main > :nth-last-child(2) {
+        flex: 1;
+      }
+
+      section {
+        padding: 2rem 1rem;
       }
 
       footer {
-        color: var(--white);
-        background: var(--dark);
+        padding: 2rem 1rem;
+        text-align: right;
       }
 
-      hr {
-        width: 100%;
-        height: 2px;
-        padding: 0;
-        border: none;
-        outline: none;
-        background: var(--color);
+      /* Element Styles */
+
+      h1, h2, h3, p, li, th, td, a, button, summary {
+        line-height: 1.5;
       }
 
-      h1, h2, h3, p, hr, nav, ul, iframe, figure, table, details, .card {
-        margin: var(--v-space) 0;
-      }
-
-      h1, h2, h3 {
-        text-align: center;
+      h1, h2, h3, p, ul {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
       }
 
       h1 {
         font-size: 2.5rem;
-        font-weight: normal;
-        letter-spacing: 2px;
-        color: var(--color);
+        color: var(--main);
       }
 
-      h2, details > summary {
+      h2 {
         font-size: 2rem;
-        font-weight: normal;
-        letter-spacing: 1px;
-      }
-
-      details > * {
-        margin: 0;
-      }
-
-      details > summary {
-        display: inline-block;
-        list-style-type: none;
-        cursor: pointer;
-      }
-
-      details > summary::after {
-        position: relative;
-        display: inline-block;
-        top: -2px;
-        margin-left: 1rem;
-        vertical-align: middle;
-        font-size: 1rem;
-        content: "▶";
-      }
-
-      details[open] > summary::after {
-        content: "▼";
       }
 
       h3 {
-        font-size: 1.25rem;
-        letter-spacing: 1px;
+        font-size: 1.5rem;
       }
 
       a {
-        color: var(--color);
-        text-decoration: underline;
-      }
-
-      a:hover {
-        color: var(--color);
-      }
-
-      a.cta {
-        display: inline-block;
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
-        background: var(--white);
-        border: 1px solid var(--color);
-        font-weight: bold;
-        text-decoration: none;
-      }
-
-      a.cta:hover {
-        color: var(--white);
-        background: var(--color);
+        color: inherit;
       }
 
       h1 a {
-        color: inherit;
         text-decoration: none;
       }
 
       ul {
-        padding: 0;
         list-style-position: inside;
+        padding: 0;
       }
 
       iframe {
@@ -187,8 +141,8 @@
       table {
         width: 100%;
         border-collapse: collapse;
-        background: var(--white);
-        border: 1px solid var(--color)
+        background: white;
+        border: 1px solid var(--main);
       }
 
       tbody > tr:nth-of-type(2n) {
@@ -205,104 +159,206 @@
       }
 
       thead th {
-        color: var(--white);
-        background: var(--color);
-      }
-
-      img.profile {
-        display: block;
-        margin: 0 auto;
-        width: clamp(4rem, 100%, 16rem);
-        height: auto;
-        border-radius: 50%;
-      }
-
-      .w-limit {
-        max-width: var(--content-width);
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .card {
-        padding: 1rem;
-        border-radius: 0.5rem;
-        background: var(--white);
-        border: 1px solid var(--color);
+        color: white;
+        background: var(--main);
       }
 
       [x-cloak] { display: none !important; }
+
+      /* Utility Classes */
+
+      .hide { display: none !important; }
+
+      .text-right { text-align: right; }
+      .text-center { text-align: center; }
+      .no-break { white-space: nowrap; }
 
       .pad, .x-pad {
         padding-left: 1rem;
         padding-right: 1rem;
       }
 
-      .pad, .y-pad {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
+      .x-limit {
+        max-width: 100ch;
+        margin-left: auto;
+        margin-right: auto;
       }
 
-      .text-white { color: var(--white); }
-      .text-indent { text-indent: 4ch; }
-      .text-left { text-align: left; }
-      .text-right { text-align: right; }
-      .text-center { text-align: center; }
-      .text-justify { text-align: justify; }
-      .no-break { white-space: nowrap; }
-
-      .bg-dark { background: var(--dark); }
-
-      .split > * {
-        margin: 2rem auto;
+      .bg-dark {
+        color: white;
+        background: var(--dark);
       }
 
-      @media screen and (min-width: 800px) {
-        h1, h2, h3 {
-          text-align: left;
-        }
+      .bg-main {
+        color: white;
+        background: var(--main);
+      }
 
-        .split {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          justify-content: space-around;
-          align-items: stretch;
-          gap: 2rem;
-        }
+      /* Component Classes */
 
-        .split.valign-start { align-items: start; }
-        .split.valign-center { align-items: center; }
-        .split.valign-end { align-items: end; }
+      .nav-wrap {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        flex-direction: row;
+      }
 
-        .split > .grow {
-          flex: 1;
-        }
+      .nav-content {
+        min-width: 20vw;
+        text-align: right;
+        background: white;
+      }
 
-        .split > * {
-          margin: 0;
-        }
+      .nav-link {
+        display: block;
+        padding: 0.5rem 1rem;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .nav-link:hover {
+        color: white;
+        background: var(--cta);
+      }
+
+      .nav-dim {
+        flex: 1;
+        background: rgba(0, 0, 0, 20%);
+      }
+
+      .button {
+        display: inline-block;
+        padding: 0.5rem;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: inherit;
+        font-size: 1rem;
+        color: white;
+        background: var(--cta);
+        border: 1px solid var(--cta);
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        color: var(--cta);
+        background: white;
+      }
+
+      .profile-image {
+        display: block;
+        margin: 1rem auto;
+        width: clamp(4rem, 100%, 16rem);
+        height: auto;
+        border-radius: 50%;
+      }
+
+      .card {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        color: black;
+        background: white;
+      }
+
+      .split:not(.portrait .stack) {
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        gap: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .split:not(.portrait .stack).x-center {
+        justify-content: center;
+      }
+
+      .split:not(.portrait .stack).y-center {
+        align-items: center;
+      }
+
+      .split:not(.portrait .stack) > * {
+        margin: 0;
+      }
+
+      .split:not(.portrait .stack) > .grow {
+        flex: 1;
       }
     </style>
   </head>
   <body>
-    <header class="x-pad">
-      <section class="w-limit">
-        <h1>
+    <header>
+      <div class="x-limit split y-center">
+        <h1 class="grow">
           <a href="/">Axe Charts</a>
         </h1>
-      </section>
+
+        <div>
+            <button class="button">Menu</button>
+        </div>
+      </div>
     </header>
 
-    {{>page}}
+    <main>
+      <nav class="nav-wrap hide">
+        <div class="nav-content">
+          <h1 class="x-pad">
+            <a href="/">Axe Charts</a>
+          </h1>
 
-    <footer class="pad">
-      <section class="w-limit">
-        <h3 class="text-right">Axe Charts</h3>
+          <a class="nav-link" href="#">Link One</a>
 
-        <p class="text-right">
-          <a href="mailto:info@axecharts.com">info@axecharts.com</a>
-        </p>
-      </section>
-    </footer>
+          <a class="nav-link" href="#">Link Two</a>
+
+          <a class="nav-link" href="#">Link Three</a>
+        </div>
+
+        <div class="nav-dim"></div>
+      </nav>
+
+      {{>page}}
+
+      <footer class="bg-dark">
+        <div class="x-limit">
+          <h2>Axe Charts</h2>
+          <p>
+            <a href="mailto:info@axecharts.com">info@axecharts.com</a>
+          </p>
+        </div>
+      </footer>
+    </main>
+
+    <script>
+      (() => {
+        const setOrientationClass = () => {
+          console.log(screen.orientation.type);
+
+          const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
+          const isPortrait = orientation.includes('portrait');
+
+          if (isPortrait) {
+              document.querySelector('body').classList.add('portrait');
+          } else {
+              document.querySelector('body').classList.remove('portrait');
+          }
+        };
+
+        setOrientationClass();
+
+        screen.orientation.addEventListener('change', setOrientationClass);
+
+        [...document.querySelectorAll('header button, .nav-dim')].forEach((element) => {
+          element.addEventListener('click', () => {
+            document.querySelector('.nav-wrap').classList.toggle('hide');
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
