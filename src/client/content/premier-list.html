@@ -14,8 +14,10 @@
   };
 
   const STATE = (() => ({
+    term: '',
     profiles: DATA.slice(0),
     async search(text) {
+      this.term = text;
       this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
       });
@@ -32,6 +34,11 @@
     <h2>Premier Throwers</h2>
 
     <input type="text" @input="typeAhead($event.target.value)">
+
+    <p>
+      <span>Term:</span>
+      <strong x-text="term"></strong>
+    </p>
 
     <figure>
       <table class="text-center">
