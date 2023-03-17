@@ -1,6 +1,6 @@
 <script>
-  const search = (context) => {
-    console.log(context);
+  const search = (text) => {
+    console.log(text);
   };
 
   ((profiles) => {
@@ -12,7 +12,7 @@
   <div class="x-limit">
     <h2>Premier Throwers</h2>
 
-    <input type="text" @input="search($event)">
+    <input type="text" @input="search($event.target.value)">
 
     <p class="text-right">
       <span>Total Throwers:</span>
