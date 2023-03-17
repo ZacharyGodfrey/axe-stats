@@ -1,12 +1,8 @@
 <script>
   const DATA = {{{JSON}}};
   const STATE = {
-    term: '',
     profiles: DATA.slice(0),
     search(text) {
-      console.log(`Searching: ${text}`);
-
-      this.term = text;
       this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
       });
@@ -14,17 +10,23 @@
   };
 </script>
 
+<section class="bg-main">
+  <div class="x-limit">
+    <h2>IATF Premier Throwers</h2>
+
+    <p>The following list displays IATF throwers who have a global rank in the Premier ruleset.</p>
+  </div>
+</section>
+
 <section x-data="STATE">
   <div class="x-limit">
-    <h2>Premier Throwers</h2>
-
     <div class="split stack y-center">
       <p>
         <strong>Search</strong>
       </p>
 
       <div>
-        <input type="text" @input.debounce.500ms="search($event.target.value)">
+        <input type="text" placeholder="Search" @input.debounce.500ms="search($event.target.value)">
       </div>
     </div>
 
