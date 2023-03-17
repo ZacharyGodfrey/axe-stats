@@ -13,7 +13,7 @@
       console.log(`Finding profiles with name: ${text}`);
 
       this.currentPage = 1;
-      this.searchResult = text.length === 0 ? DATA : DATA.filter(({ name }) => name.includes(text));
+      this.searchResult = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => name.includes(text));
       this.pages = paginate(this.searchResult, this.pageSize);
     },
     firstPage() {
@@ -31,18 +31,14 @@
   };
 
   const debounce = (action, delay) => {
-    let lastRun = 0;
+    let timer = null;
 
     return (...args) => {
-      const now = new Date().getTime();
+      clearTimeout(timer);
 
-      if (lastRun + delay <= now) {
-        lastRun = now;
-
+      timer = setTimeout(() => {
         action.apply(null, args);
-      } else {
-        console.log('skipped by debounce');
-      }
+      }, delay);
     };
   };
 
@@ -60,7 +56,7 @@
     }, [[]]);
   };
 
-  const typeAhead = debounce((text) => STATE.search(text), 1000);
+  const typeAhead = debounce((text) => STATE.search(text), 500);
 </script>
 
 <section x-data="STATE">
