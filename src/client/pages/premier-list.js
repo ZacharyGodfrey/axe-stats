@@ -3,7 +3,7 @@ const { readFile, render } = require('../helpers');
 const page = readFile(`${__dirname}/../content/premier-list.html`);
 
 module.exports = async (db) => {
-  return render(page, {
+  const data = {
     title: 'Premier Throwers',
     count: (await db.get(`
       SELECT COUNT(*) AS count
@@ -26,5 +26,10 @@ module.exports = async (db) => {
       WHERE premierRank > 0
       ORDER BY premierRank ASC, premierAverage DESC;
     `)
+  };
+
+  return render(page, {
+    ...data,
+    JSON: JSON.stringify(data.list, null, 2)
   });
 };
