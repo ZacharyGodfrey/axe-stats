@@ -1,4 +1,8 @@
 <script>
+  const search = (context) => {
+    console.log(context);
+  };
+
   ((profiles) => {
     console.log(profiles);
   })({{{JSON}}});
@@ -7,6 +11,8 @@
 <section>
   <div class="x-limit">
     <h2>Premier Throwers</h2>
+
+    <input type="text" @change="search(this)">
 
     <p class="text-right">
       <span>Total Throwers:</span>
