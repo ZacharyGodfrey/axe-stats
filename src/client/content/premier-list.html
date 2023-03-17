@@ -37,6 +37,8 @@
       const now = new Date().getTime();
 
       if (lastRun + delay <= now) {
+        lastRun = now;
+
         action.apply(null, args);
       } else {
         console.log('skipped by debounce');
