@@ -13,7 +13,9 @@
       console.log(`Finding profiles with name: ${text}`);
 
       this.currentPage = 1;
-      this.searchResult = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => name.includes(text));
+      this.searchResult = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
+        return name.toLowerCase().includes(text.toLowerCase());
+      });
       console.log('All Results:');
       console.log(this.searchResult);
       this.pages = paginate(this.searchResult, this.pageSize);
