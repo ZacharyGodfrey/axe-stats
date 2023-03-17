@@ -1,18 +1,6 @@
 <script>
   const DATA = {{{JSON}}};
 
-  const STATE = (() => ({
-    profiles: DATA.slice(0),
-    async search(text) {
-      this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
-        return name.toLowerCase().includes(text.toLowerCase());
-      });
-    },
-    typeAhead: debounce((text) => {
-      STATE.search(text).then(() => console.log(STATE.profiles));
-    }, 500)
-  }))();
-
   const debounce = (action, delay) => {
     let timer = null;
 
@@ -24,6 +12,19 @@
       }, delay);
     };
   };
+
+  const STATE = (() => ({
+    profiles: DATA.slice(0),
+    async search(text) {
+      this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
+        return name.toLowerCase().includes(text.toLowerCase());
+      });
+    }
+  }))();
+
+  const typeAhead = debounce((text) => {
+    STATE.search(text).then(() => console.log(STATE.profiles));
+  }, 500);
 </script>
 
 <section x-data="STATE">
