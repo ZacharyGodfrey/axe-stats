@@ -31,7 +31,7 @@
   <div class="x-limit">
     <h2>Premier Throwers</h2>
 
-    <input type="text" @input.debounce.500ms="typeAhead($event.target.value)">
+    <input type="text" @input.debounce.500ms="search($event.target.value)">
 
     <p>
       <span>Term:</span>
