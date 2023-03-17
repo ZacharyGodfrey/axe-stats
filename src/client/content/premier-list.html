@@ -9,7 +9,7 @@
     init() {
       this.search('');
     },
-    search(text) {
+    async search(text) {
       console.log(`Finding profiles with name: ${text}`);
 
       this.currentPage = 1;
@@ -56,7 +56,9 @@
     }, [[]]);
   };
 
-  const typeAhead = debounce((text) => STATE.search(text), 500);
+  const typeAhead = debounce((text) => {
+    STATE.search(text).then(() => console.log(STATE.pages[STATE.currentPage - 1]));
+  }, 500);
 </script>
 
 <section x-data="STATE">
