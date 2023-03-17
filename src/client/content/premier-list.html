@@ -15,12 +15,12 @@
 
   const STATE = (() => ({
     term: '',
-    profiles: DATA.slice(0),
+    profiles: DATA.slice(0, 100),
     search(text) {
       this.term = text;
-      // this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
-      //   return name.toLowerCase().includes(text.toLowerCase());
-      // });
+      this.profiles = text.length === 0 ? DATA.slice(100) : DATA.filter(({ name }) => {
+        return name.toLowerCase().includes(text.toLowerCase());
+      });
     }
   }))();
 
@@ -38,6 +38,11 @@
     <p>
       <span>Term:</span>
       <strong x-text="term"></strong>
+    </p>
+
+    <p>
+      <span>Matches:</span>
+      <strong x-text="profiles.length"></strong>
     </p>
 
     <figure>
