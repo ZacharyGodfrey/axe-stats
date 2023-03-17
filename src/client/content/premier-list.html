@@ -45,13 +45,13 @@
 
         <tbody>
           <template x-for="profile in profiles" :key="profile.id">
-            <tr x-data="profile">
+            <tr>
               <td>
-                <a :href="`/profile/${id}`" x-text="name"></a>
+                <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
               </td>
-              <td x-text="premierRank"></td>
-              <td x-text="premierRating"></td>
-              <td x-text="premierAverage"></td>
+              <td x-text="profile.premierRank"></td>
+              <td x-text="profile.premierRating"></td>
+              <td x-text="profile.premierAverage"></td>
             </tr>
           </template>
         </tbody>
