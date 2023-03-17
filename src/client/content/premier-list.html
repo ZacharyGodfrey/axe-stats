@@ -1,13 +1,13 @@
 <script>
   const DATA = {{{JSON}}};
-  const STATE = {
+  const STATE = () => ({
     profiles: DATA.slice(0),
     async search(text) {
       this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
       });
     }
-  };
+  })();
 
   const debounce = (action, delay) => {
     let timer = null;
