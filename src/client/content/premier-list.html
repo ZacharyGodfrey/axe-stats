@@ -14,7 +14,11 @@
 
       this.currentPage = 1;
       this.searchResult = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => name.includes(text));
+      console.log('All Results:');
+      console.log(this.searchResult);
       this.pages = paginate(this.searchResult, this.pageSize);
+      console.log('Pages:');
+      console.log(this.pages);
     },
     firstPage() {
       this.currentPage = 1;
@@ -57,7 +61,10 @@
   };
 
   const typeAhead = debounce((text) => {
-    STATE.search(text).then(() => console.log(STATE.pages[STATE.currentPage - 1]));
+    STATE.search(text).then(() => {
+      console.log('Current Page:');
+      console.log(STATE.pages[STATE.currentPage - 1]);
+    });
   }, 500);
 </script>
 
