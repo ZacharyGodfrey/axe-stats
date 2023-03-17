@@ -17,7 +17,7 @@
     term: '',
     profiles: DATA.slice(0, 100),
     search(text) {
-      console.log('Searching...');
+      console.log(`Searching: ${text}`);
 
       this.term = text;
       this.profiles = text.length === 0 ? DATA.slice(100) : DATA.filter(({ name }) => {
@@ -25,17 +25,13 @@
       });
     }
   };
-
-  const typeAhead = debounce((text) => {
-    STATE.search(text);
-  }, 500);
 </script>
 
 <section x-data="STATE">
   <div class="x-limit">
     <h2>Premier Throwers</h2>
 
-    <input type="text" @input="typeAhead($event.target.value)">
+    <input type="text" @input.debounce.500ms="typeAhead($event.target.value)">
 
     <p>
       <span>Term:</span>
