@@ -1,22 +1,80 @@
 <script>
-  const search = (text) => {
-    console.log(text);
+  const DATA = {{{JSON}}};
+  const STATE = {
+    pageSize: 100,
+    currentPage: 1,
+    totalPages: 1,
+    searchResult: [],
+    pages: [[]],
+    init() {
+      this.search('');
+    },
+    search(text) {
+      console.log(`Finding profiles with name: ${text}`);
+
+      this.currentPage = 1;
+      this.searchResult = text.length === 0 ? DATA : DATA.filter(({ name }) => name.includes(text));
+      this.pages = paginate(this.searchResult, this.pageSize);
+    },
+    firstPage() {
+      this.currentPage = 1;
+    },
+    previousPage() {
+      this.currentPage = Math.max(1, this.currentPage - 1);
+    },
+    nextPage() {
+      this.currentPage = Math.min(this.currentPage + 1, this.pages.length);
+    },
+    lastPage() {
+      this.currentPage = this.pages.length;
+    }
   };
 
-  ((profiles) => {
-    console.log(profiles);
-  })({{{JSON}}});
+  const debounce = (action, delay) => {
+    let lastRun = 0;
+
+    return () => {
+      const now = new Date().getTime();
+
+      if (lastRun + delay <= now) {
+        action.apply(null, arguments);
+      } else {
+        console.log('skipped by debounce');
+      }
+    };
+  };
+
+  const paginate = (data, size) => {
+    return data.reduce((pages, item, index) => {
+      const lastPage = pages[pages.length - 1];
+
+      if (lastPage.length < size) {
+        lastPage.push(item);
+      } else {
+        pages.push([item]);
+      }
+
+      return pages;
+    }, [[]]);
+  };
+
+  const typeAhead = debounce((text) => STATE.search(text), 1000);
 </script>
 
-<section x-data="{}">
+<section x-data="STATE">
   <div class="x-limit">
     <h2>Premier Throwers</h2>
 
-    <input type="text" @input="search($event.target.value)">
+    <input type="text" @input="typeAhead($event.target.value)">
 
     <p class="text-right">
-      <span>Total Throwers:</span>
-      <strong>{{count}}</strong>
+      <span>Page</span>
+      <strong x-text="currentPage"></strong>
+      <span>of</span>
+      <strong x-text="pages.length"></strong>
+      <br>
+      <strong x-text="pageSize"></strong>
+      <span>items per page</span>
     </p>
 
     <figure>
