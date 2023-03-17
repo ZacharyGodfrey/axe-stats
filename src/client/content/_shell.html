@@ -175,10 +175,12 @@
       }
 
       input[type="text"] {
+        display: block;
+        margin: 1rem 0;
+        padding: 0 0.5rem;
         font-family: monospace;
         font-size: 1rem;
         line-height: 1.5;
-        padding: 0.5rem;
         color: black;
         background: white;
         border: 1px solid var(--main);
@@ -288,13 +290,16 @@
         background: white;
       }
 
-      .split:not(.portrait .stack) {
-        display: flex;
+      .split {
         flex-direction: row;
         align-items: start;
         gap: 2rem;
         margin-top: 1rem;
         margin-bottom: 1rem;
+      }
+
+      .split:not(.portrait .stack) {
+        display: flex;
       }
 
       .split:not(.portrait .stack).x-center {
