@@ -1,38 +1,11 @@
 <script>
   const DATA = {{{JSON}}};
   const STATE = {
-    pageSize: 100,
-    currentPage: 1,
-    totalPages: 1,
-    searchResult: [],
-    pages: [[]],
-    init() {
-      this.search('');
-    },
+    profiles: DATA.slice(0),
     async search(text) {
-      console.log(`Finding profiles with name: ${text}`);
-
-      this.currentPage = 1;
-      this.searchResult = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
+      this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
       });
-      console.log('All Results:');
-      console.log(this.searchResult);
-      this.pages = paginate(this.searchResult, this.pageSize);
-      console.log('Pages:');
-      console.log(this.pages);
-    },
-    firstPage() {
-      this.currentPage = 1;
-    },
-    previousPage() {
-      this.currentPage = Math.max(1, this.currentPage - 1);
-    },
-    nextPage() {
-      this.currentPage = Math.min(this.currentPage + 1, this.pages.length);
-    },
-    lastPage() {
-      this.currentPage = this.pages.length;
     }
   };
 
@@ -48,25 +21,8 @@
     };
   };
 
-  const paginate = (data, size) => {
-    return data.reduce((pages, item, index) => {
-      const lastPage = pages[pages.length - 1];
-
-      if (lastPage.length < size) {
-        lastPage.push(item);
-      } else {
-        pages.push([item]);
-      }
-
-      return pages;
-    }, [[]]);
-  };
-
   const typeAhead = debounce((text) => {
-    STATE.search(text).then(() => {
-      console.log('Current Page:');
-      console.log(STATE.pages[STATE.currentPage - 1]);
-    });
+    STATE.search(text).then(() => console.log(STATE.profiles));
   }, 500);
 </script>
 
@@ -75,16 +31,6 @@
     <h2>Premier Throwers</h2>
 
     <input type="text" @input="typeAhead($event.target.value)">
-
-    <p class="text-right">
-      <span>Page</span>
-      <strong x-text="currentPage"></strong>
-      <span>of</span>
-      <strong x-text="pages.length"></strong>
-      <br>
-      <strong x-text="pageSize"></strong>
-      <span>items per page</span>
-    </p>
 
     <figure>
       <table class="text-center">
@@ -98,16 +44,16 @@
         </thead>
 
         <tbody>
-          {{#list}}
-          <tr>
-            <td>
-              <a href="/profile/{{id}}">{{name}}</a>
-            </td>
-            <td>{{premierRank}}</td>
-            <td>{{premierRating}}</td>
-            <td>{{premierAverage}}</td>
-          </tr>
-          {{/list}}
+          <template x-for="profile in profiles" :key="profile.id">
+            <tr x-data="profile">
+              <td>
+                <a :href="`/profile/${id}`" x-text="name"></a>
+              </td>
+              <td x-text="premierRank"></td>
+              <td x-text="premierRating"></td>
+              <td x-text="premierAverage"></td>
+            </tr>
+          </template>
         </tbody>
       </table>
     </figure>
