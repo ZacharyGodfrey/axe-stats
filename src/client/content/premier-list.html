@@ -33,11 +33,11 @@
   const debounce = (action, delay) => {
     let lastRun = 0;
 
-    return () => {
+    return (...args) => {
       const now = new Date().getTime();
 
       if (lastRun + delay <= now) {
-        action.apply(null, arguments);
+        action.apply(null, args);
       } else {
         console.log('skipped by debounce');
       }
