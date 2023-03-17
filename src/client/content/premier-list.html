@@ -17,6 +17,8 @@
     term: '',
     profiles: DATA.slice(0, 100),
     search(text) {
+      console.log('Searching...');
+
       this.term = text;
       this.profiles = text.length === 0 ? DATA.slice(100) : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
