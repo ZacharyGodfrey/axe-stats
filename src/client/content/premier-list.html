@@ -1,26 +1,13 @@
 <script>
   const DATA = {{{JSON}}};
-
-  const debounce = (action, delay) => {
-    let timer = null;
-
-    return (...args) => {
-      clearTimeout(timer);
-
-      timer = setTimeout(() => {
-        action.apply(null, args);
-      }, delay);
-    };
-  };
-
   const STATE = {
     term: '',
-    profiles: DATA.slice(0, 100),
+    profiles: DATA.slice(0),
     search(text) {
       console.log(`Searching: ${text}`);
 
       this.term = text;
-      this.profiles = text.length === 0 ? DATA.slice(100) : DATA.filter(({ name }) => {
+      this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
       });
     }
