@@ -25,7 +25,7 @@
   };
 
   const typeAhead = debounce((text) => {
-    STATE.search(text).then(() => console.log(STATE.profiles));
+    STATE.search(text);
   }, 500);
 </script>
 
