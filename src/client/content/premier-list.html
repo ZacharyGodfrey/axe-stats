@@ -1,7 +1,7 @@
 <script>
   const DATA = {{{JSON}}};
 
-  const STATE = () => ({
+  const STATE = (() => ({
     profiles: DATA.slice(0),
     async search(text) {
       this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
@@ -11,7 +11,7 @@
     typeAhead: debounce((text) => {
       STATE.search(text).then(() => console.log(STATE.profiles));
     }, 500)
-  })();
+  }))();
 
   const debounce = (action, delay) => {
     let timer = null;
