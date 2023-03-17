@@ -30,6 +30,6 @@ module.exports = async (db) => {
 
   return render(page, {
     ...data,
-    JSON: JSON.stringify(data, null, 2)
+    JSON: JSON.stringify(data.list, null, 2)
   });
 };
