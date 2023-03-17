@@ -16,11 +16,11 @@
   const STATE = (() => ({
     term: '',
     profiles: DATA.slice(0),
-    async search(text) {
+    search(text) {
       this.term = text;
-      this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
-        return name.toLowerCase().includes(text.toLowerCase());
-      });
+      // this.profiles = text.length === 0 ? DATA.slice(0) : DATA.filter(({ name }) => {
+      //   return name.toLowerCase().includes(text.toLowerCase());
+      // });
     }
   }))();
 
@@ -33,7 +33,7 @@
   <div class="x-limit">
     <h2>Premier Throwers</h2>
 
-    <input type="text" @input="typeAhead($event.target.value)">
+    <input type="text" @input="search($event.target.value)">
 
     <p>
       <span>Term:</span>
