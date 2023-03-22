@@ -1,3 +1,15 @@
+<script>
+  const DATA = {{{JSON}}};
+  const STATE = {
+    profiles: [],
+    search(text) {
+      this.profiles = text.length === 0 ? [] : DATA.filter(({ name }) => {
+        return name.toLowerCase().includes(text.toLowerCase());
+      });
+    }
+  };
+</script>
+
 <section>
   <div class="x-limit">
     <h2>NOTICE</h2>
@@ -61,6 +73,30 @@
         </p>
       </div>
     </div>
+  </div>
+</section>
+
+<section x-data="STATE">
+  <div class="x-limit">
+    <h2>Find Your Profile</h2>
+
+    <div class="split stack y-center">
+      <p>
+        <strong>Search</strong>
+      </p>
+
+      <div>
+        <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
+      </div>
+    </div>
+
+    <ul>
+      <template x-for="profile in profiles" :key="profile.id">
+        <li>
+          <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
+        </li>
+      </template>
+    </ul>
   </div>
 </section>
 
