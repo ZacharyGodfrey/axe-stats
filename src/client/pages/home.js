@@ -42,6 +42,10 @@ module.exports = async (db) => {
         FROM profiles
         WHERE premierAverage > 0;
       `)).average
-    }
+    },
+    allProfilesJSON: JSON.stringify(await db.query(`
+      SELECT *
+      FROM profiles;
+    `), null, 2)
   });
 };
