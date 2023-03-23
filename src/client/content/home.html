@@ -91,7 +91,7 @@
         </div>
       </div>
 
-      <ul>
+      <ul x-cloak x-show="profiles.length > 0">
         <template x-for="profile in profiles" :key="profile.id">
           <li>
             <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
