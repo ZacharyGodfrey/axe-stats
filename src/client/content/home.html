@@ -80,13 +80,15 @@
   <div class="x-limit">
     <h2>Find Your Profile</h2>
 
-    <div class="split stack y-center">
-      <p>
-        <strong>Search</strong>
-      </p>
+    <div class="card">
+      <div class="split stack y-center">
+        <p>
+          <strong>Search</strong>
+        </p>
 
-      <div>
-        <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
+        <div>
+          <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
+        </div>
       </div>
     </div>
 
