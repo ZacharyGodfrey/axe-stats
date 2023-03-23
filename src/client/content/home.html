@@ -90,8 +90,10 @@
           <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
         </div>
       </div>
+    </div>
 
-      <ul x-cloak x-show="profiles.length > 0">
+    <div class="card" x-cloak x-show="profiles.length > 0">
+      <ul>
         <template x-for="profile in profiles" :key="profile.id">
           <li>
             <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
