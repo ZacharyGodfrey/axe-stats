@@ -10,15 +10,35 @@
   };
 </script>
 
-<section>
+<section class="bg-main" x-data="STATE">
   <div class="x-limit">
-    <h2>NOTICE</h2>
+    <h2>Find Your Profile</h2>
 
-    <p>This website is still under construction. Only the top 10 Premier throwers have profile pages right now. All other profiles will be added soon.</p>
+    <div class="card">
+      <div class="split stack y-center">
+        <p>
+          <strong>Search</strong>
+        </p>
+
+        <div>
+          <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
+        </div>
+      </div>
+    </div>
+
+    <div class="card" x-cloak x-show="profiles.length > 0">
+      <ul>
+        <template x-for="profile in profiles" :key="profile.id">
+          <li>
+            <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
+          </li>
+        </template>
+      </ul>
+    </div>
   </div>
 </section>
 
-<section class="bg-main">
+<section class="bg-dark">
   <div class="x-limit">
     <h2>Global Rankings</h2>
 
@@ -76,56 +96,17 @@
   </div>
 </section>
 
-<section class="bg-dark" x-data="STATE">
-  <div class="x-limit">
-    <h2>Find Your Profile</h2>
-
-    <div class="card">
-      <div class="split stack y-center">
-        <p>
-          <strong>Search</strong>
-        </p>
-
-        <div>
-          <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
-        </div>
-      </div>
-    </div>
-
-    <div class="card" x-cloak x-show="profiles.length > 0">
-      <ul>
-        <template x-for="profile in profiles" :key="profile.id">
-          <li>
-            <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
-          </li>
-        </template>
-      </ul>
-    </div>
-  </div>
-</section>
-
 <section>
   <div class="x-limit">
-    <h2>Why another stats website?</h2>
+    <h2>NOTICE</h2>
 
-    <p>Axe Charts was created to address three key issues with <a href="https://axescores.com" target="_blank">AxeScores.com</a>:</p>
-
-    <ol>
-      <li>Premier stats are not given the same visibility as Standard stats</li>
-      <li>The player comparison is broken</li>
-      <li>The current charts don't provide much detail on performance trends over time</li>
-    </ol>
+    <p>This website is still under construction. Only a few throwers have profile pages right now. All other profiles will be added soon.</p>
 
     <hr>
+
+    <p>All data on this site is pulled from the official IATF source on a weekly basis.</p>
 
     <p>
-      <strong>Note:</strong>
-      <span>All data on this site is pulled from the official IATF source on a weekly basis.</span>
-    </p>
-
-    <hr>
-
-    <p class="text-right">
       <span>Total Thrower Count:</span>
       <strong class="no-break">{{totalProfiles}}</strong>
       <br>
