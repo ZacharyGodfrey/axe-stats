@@ -69,7 +69,9 @@ const getProfiles = async (page) => {
 
   const profilesById = {};
 
-  const standardProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
+  const standardProfiles = (await reactPageState(page, '#root'))
+    .globalStandings.standings.career
+    .filter(({ active }) => active);
 
   console.log(`[SCRAPE] Found ${standardProfiles.length} Standard Profiles`);
 
@@ -95,7 +97,9 @@ const getProfiles = async (page) => {
   await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
   await page.waitForNetworkIdle({ idleTime: 2 * 1000 });
 
-  const premierProfiles = (await reactPageState(page, '#root')).globalStandings.standings.career;
+  const premierProfiles = (await reactPageState(page, '#root'))
+    .globalStandings.standings.career
+    .filter(({ active }) => active);
 
   console.log(`[SCRAPE] Found ${premierProfiles.length} Premier Profiles`);
 
