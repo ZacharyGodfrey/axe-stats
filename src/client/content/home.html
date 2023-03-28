@@ -3,7 +3,7 @@
 
   const search = {
     results: [],
-    exec(value) {
+    execute(value) {
       const term = value.trim().toLowerCase();
 
       this.results = term.length < 1 ? [] : DATA.filter(({ name }) => {
@@ -24,7 +24,7 @@
         </p>
 
         <div>
-          <input type="text" placeholder="Name" @input.debounce.500ms="search($event.target.value)">
+          <input type="text" placeholder="Name" @input.debounce.500ms="execute($event.target.value)">
         </div>
       </div>
     </div>
