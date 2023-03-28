@@ -47,12 +47,11 @@ const buildProfilePages = async () => {
 };
 
 const buildJsonDump = async () => {
-  const allSeasons = await db.query(`SELECT * FROM seasons;`);
-  const allProfiles = await db.query(`
+  const seasons = await db.query(`SELECT * FROM seasons;`);
+  const profiles = await db.query(`
     SELECT *
     FROM profiles
     ORDER BY
-      isActive ASC,
       premierRating DESC,
       premierAverage DESC,
       standardRating DESC,
@@ -61,8 +60,8 @@ const buildJsonDump = async () => {
 
   const fileName = `${distDir}/all-data.json`;
   const fileContent = await JSON.stringify({
-    allSeasons,
-    allProfiles
+    seasons,
+    profiles
   }, null, 2);
 
   console.log(`Writing File: ${fileName}`);

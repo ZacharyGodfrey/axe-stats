@@ -32,8 +32,8 @@ const scrape = async () => {
 
   profiles.forEach((profile) => {
     const sql = `
-      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage, isActive)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
+      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
     const params = [
@@ -44,8 +44,7 @@ const scrape = async () => {
       profile.standardAverage || 0,
       profile.premierRank || 0,
       profile.premierRating || 0,
-      profile.premierAverage || 0,
-      profile.isActive || 0
+      profile.premierAverage || 0
     ];
 
     tasks.push(db.query(sql, params));
@@ -84,14 +83,12 @@ const getProfiles = async (page) => {
       standardAverage: 0,
       premierRank: 0,
       premierRating: 0,
-      premierAverage: 0,
-      isActive: 0
+      premierAverage: 0
     };
 
     profilesById[id].standardRank = rank;
     profilesById[id].standardRating = rating;
     profilesById[id].standardAverage = average;
-    profilesById[id].isActive = profilesById[id].isActive || rank ? 1 : 0;
   });
 
   await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
@@ -112,25 +109,17 @@ const getProfiles = async (page) => {
       standardAverage: 0,
       premierRank: 0,
       premierRating: 0,
-      premierAverage: 0,
-      isActive: 0
+      premierAverage: 0
     };
 
     profilesById[id].premierRank = rank;
     profilesById[id].premierRating = rating;
     profilesById[id].premierAverage = average;
-    profilesById[id].isActive = profilesById[id].isActive || rank ? 1 : 0;
   });
 
   const allProfiles = Object.values(profilesById);
 
   console.log(`[SCRAPE] Found ${allProfiles.length} Unique Profiles`);
-
-  const activeProfiles = allProfiles.filter(({ isActive }) => isActive);
-
-  console.log(`[SCRAPE] Found ${activeProfiles.length} Active Profiles`);
-
-  console.log(`[SCRAPE] Found ${allProfiles.length - activeProfiles.length} Inactive Profiles`);
 
   return allProfiles;
 };
