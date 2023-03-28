@@ -1,12 +1,18 @@
 <script>
-  const DATA = {{{allProfilesJSON}}};
   const STATE = {
-    profiles: [],
+    all: [],
+    results: [],
     async init() {
-      console.log('STATE.init() called');
+      const context = this;
+
+      await fetch('/all-data.json')
+        .then(res => res.json())
+        .then(data => {
+          context.all = data.profiles;
+        });
     },
     search(text) {
-      this.profiles = text.length === 0 ? [] : DATA.filter(({ name }) => {
+      this.results = text.length === 0 ? [] : this.all.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());
       });
     }
