@@ -47,6 +47,7 @@ const buildProfilePages = async () => {
 };
 
 const buildJsonDump = async () => {
+  const timestamp = await db.timestamp();
   const seasons = await db.query(`SELECT * FROM seasons;`);
   const profiles = await db.query(`
     SELECT *
@@ -60,6 +61,7 @@ const buildJsonDump = async () => {
 
   const fileName = `${distDir}/all-data.json`;
   const fileContent = await JSON.stringify({
+    timestamp,
     seasons,
     profiles
   }, null, 2);

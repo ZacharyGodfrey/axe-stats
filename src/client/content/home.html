@@ -2,6 +2,9 @@
   const DATA = {{{allProfilesJSON}}};
   const STATE = {
     profiles: [],
+    async init() {
+      console.log('STATE.init() called');
+    },
     search(text) {
       this.profiles = text.length === 0 ? [] : DATA.filter(({ name }) => {
         return name.toLowerCase().includes(text.toLowerCase());

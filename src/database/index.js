@@ -111,9 +111,9 @@ const ensureSchema = async () => {
 
 const timestamp = async () => {
   const sql = `SELECT * FROM timestamp;`;
-  const [row] = await query(sql);
+  const [{ timestamp }] = await query(sql);
 
-  return row.timestamp;
+  return timestamp;
 };
 
 const allProfiles = async () => {
