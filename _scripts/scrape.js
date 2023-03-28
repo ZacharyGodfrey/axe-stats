@@ -30,8 +30,6 @@ const scrape = async () => {
 
   const profiles = await getProfiles(page, tasks);
 
-  console.log(`[SCRAPE] Found ${profiles.length} Ranked Profiles`);
-
   profiles.forEach((profile) => {
     const sql = `
       INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
@@ -84,11 +82,13 @@ const getProfiles = async (page) => {
       premierRank: 0,
       premierRating: 0,
       premierAverage: 0,
+      isActive: 0
     };
 
     profilesById[id].standardRank = rank;
     profilesById[id].standardRating = rating;
     profilesById[id].standardAverage = average;
+    profilesById[id].isActive = profilesById[id].isActive || rank ? 1 : 0;
   });
 
   await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
@@ -108,22 +108,26 @@ const getProfiles = async (page) => {
       premierRank: 0,
       premierRating: 0,
       premierAverage: 0,
+      isActive: 0
     };
 
     profilesById[id].premierRank = rank;
     profilesById[id].premierRating = rating;
     profilesById[id].premierAverage = average;
+    profilesById[id].isActive = profilesById[id].isActive || rank ? 1 : 0;
   });
 
   const allProfiles = Object.values(profilesById);
 
   console.log(`[SCRAPE] Found ${allProfiles.length} Unique Profiles`);
 
-  return allProfiles.filter((profile) => {
-    if (!profile.standardRank && !profile.premierRank) return false;
+  const activeProfiles = allProfiles.filter(({ isActive }) => isActive);
 
-    return true;
-  });
+  console.log(`[SCRAPE] Found ${activeProfiles.length} Active Profiles`);
+
+  console.log(`[SCRAPE] Found ${allProfiles.length - activeProfiles.length} Inactive Profiles`);
+
+  return allProfiles;
 };
 
 (async () => {

@@ -31,7 +31,7 @@ const buildProfilePages = async () => {
     SELECT *
     FROM profiles
     WHERE id = 1207260
-    OR (0 < premierRank AND premierRank <= 10);
+    OR (1 <= premierRank AND premierRank <= 10);
   `);
 
   const tasks = allProfiles.map(async (profile) => {
@@ -46,12 +46,37 @@ const buildProfilePages = async () => {
   return Promise.all(tasks);
 };
 
+const buildJsonDump = async () => {
+  const allSeasons = await db.query(`SELECT * FROM seasons;`);
+  const allProfiles = await db.query(`
+    SELECT *
+    FROM profiles
+    ORDER BY
+      isActive ASC,
+      premierRating DESC,
+      premierAverage DESC,
+      standardRating DESC,
+      standardAverage DESC;
+  `);
+
+  const fileName = `${distDir}/all-data.json`;
+  const fileContent = await JSON.stringify({
+    allSeasons,
+    allProfiles
+  }, null, 2);
+
+  console.log(`Writing File: ${fileName}`);
+
+  await fs.outputFile(fileName, fileContent, 'utf-8');
+};
+
 (async () => {
   try {
     await fs.emptyDir(distDir);
     await fs.copy(`${clientDir}/assets`, distDir);
     await buildBasicPages();
     await buildProfilePages();
+    await buildJsonDump();
   } catch (error) {
     console.log(error);
 

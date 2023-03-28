@@ -68,7 +68,8 @@ const ensureSchema = async () => {
       standardAverage REAL NOT NULL,
       premierRank INTEGER NOT NULL,
       premierRating INTEGER NOT NULL,
-      premierAverage REAL NOT NULL
+      premierAverage REAL NOT NULL,
+      isActive INTEGER NOT NULL
     ) WITHOUT ROWID;
   `);
 
