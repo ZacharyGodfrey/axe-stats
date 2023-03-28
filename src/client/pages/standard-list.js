@@ -4,7 +4,7 @@ const page = readFile(`${__dirname}/../content/standard-list.html`);
 
 module.exports = async (db) => render(page, {
   title: 'Standard Throwers',
-  JSON: JSON.stringify(await db.query(`
+  profilesJSON: JSON.stringify(await db.query(`
     SELECT *
     FROM profiles
     WHERE standardRank > 0
