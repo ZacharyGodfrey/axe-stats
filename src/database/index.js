@@ -15,6 +15,16 @@ const connect = () => connection ? Promise.resolve() : new Promise((resolve, rej
   });
 });
 
+const run = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
+  connection.run(sql, params, (error) => {
+    if (error) {
+      reject(error);
+    } else {
+      resolve();
+    }
+  });
+}));
+
 const query = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
   connection.all(sql, params, (error, rows) => {
     if (error) {
@@ -34,6 +44,21 @@ const get = (sql, params = []) => connect().then(() => new Promise((resolve, rej
     }
   });
 }));
+
+const insert = (table, entity) => {
+  const keys = [], values = [], placeholders = [];
+
+  Object.entries(entity).forEach(([key, value]) => {
+    keys.push(key);
+    values.push(value);
+    placeholders.push('?');
+  });
+
+  return run(`
+    INSERT INTO ${table} (${keys.join(', ')})
+    VALUES (${placeholders.join(', ')});
+  `, values);
+};
 
 const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve, reject) => {
   connection.close((error) => {
@@ -108,8 +133,10 @@ const getProfileById = async (id) => {
 module.exports = {
   _fileName: FILE_NAME,
   connect,
+  run,
   query,
   get,
+  insert,
   disconnect,
   ensureSchema,
   timestamp,

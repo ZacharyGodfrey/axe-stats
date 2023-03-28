@@ -12,10 +12,9 @@ const deleteDatabase = async () => {
 const seedTables = async () => {
   console.log('[SCRAPE] Seed Tables');
 
-  await db.query(`
-    INSERT INTO timestamp (timestamp)
-    VALUES (?);
-  `, [new Date().toISOString()]);
+  const now = new Date().toISOString();
+
+  await db.run(`INSERT INTO timestamp (timestamp) VALUES (?);`, [now]);
 };
 
 const scrape = async () => {
@@ -24,37 +23,8 @@ const scrape = async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
   const profiles = await getProfiles(page);
-  const groupedProfiles = groupItems(10, profiles);
 
-  await Promise.all(groupItems(10, profiles).map(async (group) => {
-    const valueGroups = group.map((profile) => {
-      const values = [
-        profile.id,
-        `'${profile.name}'`,
-        profile.standardRank,
-        profile.standardRating,
-        profile.standardAverage,
-        profile.premierRank,
-        profile.premierRating,
-        profile.premierAverage,
-      ];
-
-      return `(${values.join(', ')})`;
-    });
-
-    await db.query(`
-      INSERT INTO profiles (
-        id,
-        name,
-        standardRank,
-        standardRating,
-        standardAverage,
-        premierRank,
-        premierRating,
-        premierAverage
-      ) VALUES ${valueGroups.join(', ')};
-    `);
-  }));
+  await Promise.all(profiles.map((profile) => db.insert('profiles', profile)));
 
   await browser.close();
 };
