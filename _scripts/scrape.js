@@ -23,34 +23,38 @@ const scrape = async () => {
 
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
-  const tasks = [];
+  const profiles = await getProfiles(page);
+  const groupedProfiles = groupItems(10, profiles);
 
-  await page.goto('https://axescores.com/players/collins-rating');
-  await page.waitForNetworkIdle({ idleTime: 2 * 1000 });
+  await Promise.all(groupItems(10, profiles).map(async (group) => {
+    const valueGroups = group.map((profile) => {
+      const values = [
+        profile.id,
+        `'${profile.name}'`,
+        profile.standardRank,
+        profile.standardRating,
+        profile.standardAverage,
+        profile.premierRank,
+        profile.premierRating,
+        profile.premierAverage,
+      ];
 
-  const profiles = await getProfiles(page, tasks);
+      return `(${values.join(', ')})`;
+    });
 
-  profiles.forEach((profile) => {
-    const sql = `
-      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
-    `;
-
-    const params = [
-      profile.id,
-      profile.name,
-      profile.standardRank || 0,
-      profile.standardRating || 0,
-      profile.standardAverage || 0,
-      profile.premierRank || 0,
-      profile.premierRating || 0,
-      profile.premierAverage || 0
-    ];
-
-    tasks.push(db.query(sql, params));
-  });
-
-  await Promise.all(tasks);
+    await db.query(`
+      INSERT INTO profiles (
+        id,
+        name,
+        standardRank,
+        standardRating,
+        standardAverage,
+        premierRank,
+        premierRating,
+        premierAverage
+      ) VALUES ${valueGroups.join(', ')};
+    `);
+  }));
 
   await browser.close();
 };
@@ -65,6 +69,9 @@ const reactPageState = (page, selector) => {
 
 const getProfiles = async (page) => {
   console.log('[SCRAPE] Store Profiles');
+
+  await page.goto('https://axescores.com/players/collins-rating');
+  await page.waitForNetworkIdle({ idleTime: 2 * 1000 });
 
   const profilesById = {};
 
@@ -122,6 +129,18 @@ const getProfiles = async (page) => {
   console.log(`[SCRAPE] Found ${allProfiles.length} Unique Profiles`);
 
   return allProfiles;
+};
+
+const groupItems = (size, items) => {
+  return items.reduce((groups) => {
+    const group = groups[groups.length - 1];
+
+    if (group.length < size) {
+      group.push(item);
+    } else {
+      groups.push([item]);
+    }
+  }, [[]]);
 };
 
 (async () => {
