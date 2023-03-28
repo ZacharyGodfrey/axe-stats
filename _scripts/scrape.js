@@ -32,8 +32,8 @@ const scrape = async () => {
 
   profiles.forEach((profile) => {
     const sql = `
-      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+      INSERT INTO profiles (id, name, standardRank, standardRating, standardAverage, premierRank, premierRating, premierAverage, isActive)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);
     `;
 
     const params = [
@@ -45,6 +45,7 @@ const scrape = async () => {
       profile.premierRank || 0,
       profile.premierRating || 0,
       profile.premierAverage || 0,
+      profile.isActive || 0
     ];
 
     tasks.push(db.query(sql, params));
