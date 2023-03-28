@@ -140,6 +140,8 @@ const groupItems = (size, items) => {
     } else {
       groups.push([item]);
     }
+
+    return groups;
   }, [[]]);
 };
 
