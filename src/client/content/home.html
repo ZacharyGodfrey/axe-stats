@@ -1,25 +1,19 @@
 <script>
-  const STATE = {
-    all: [],
-    results: [],
-    async init() {
-      const context = this;
+  const DATA = {{{profilesJSON}}};
 
-      await fetch('/all-data.json')
-        .then(res => res.json())
-        .then(data => {
-          context.all = data.profiles;
-        });
-    },
-    search(text) {
-      this.results = text.length === 0 ? [] : this.all.filter(({ name }) => {
-        return name.toLowerCase().includes(text.toLowerCase());
+  const search = {
+    results: [],
+    exec(value) {
+      const term = value.trim().toLowerCase();
+
+      this.results = term.length < 1 ? [] : DATA.filter(({ name }) => {
+        return name.toLowerCase().includes(term);
       });
     }
   };
 </script>
 
-<section class="bg-main" x-data="STATE">
+<section class="bg-main" x-data="search">
   <div class="x-limit">
     <h2>Find Your Profile</h2>
 
@@ -35,15 +29,17 @@
       </div>
     </div>
 
-    <div class="card" x-cloak x-show="profiles.length > 0">
-      <ul>
-        <template x-for="profile in profiles" :key="profile.id">
-          <li>
-            <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
-          </li>
-        </template>
-      </ul>
-    </div>
+    <template x-if="results.length > 0">
+      <div class="card">
+        <ul>
+          <template x-for="profile in results" :key="profile.id">
+            <li>
+              <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
+            </li>
+          </template>
+        </ul>
+      </div>
+    </template>
   </div>
 </section>
 
@@ -114,11 +110,11 @@
       <li>All data on this site is pulled from the official IATF source on a weekly basis.</li>
       <li>
         <span>Total Thrower Count:</span>
-        <strong class="no-break">{{totalProfiles}}</strong>
+        <strong class="no-break">{{totalCount}}</strong>
       </li>
       <li>
         <span>Data Last Updated:</span>
-        <strong class="no-break">{{updatedAt}}</strong>
+        <strong class="no-break">{{timestamp}}</strong>
       </li>
     </ul>
   </div>

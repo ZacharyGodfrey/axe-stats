@@ -1,51 +1,24 @@
-const { readFile, render } = require('../helpers');
+const { readFile, render, sum, average, round } = require('../helpers');
 
 const page = readFile(`${__dirname}/../content/home.html`);
 
-module.exports = async (db) => {
+module.exports = ({ timestamp, profiles }) => {
+  const standard = profiles.filter((x) => x.standardRating > 0);
+  const premier = profiles.filter((x) => x.premierRating > 0);
+
   return render(page, {
-    updatedAt: await db.timestamp(),
-    totalProfiles: (await db.get(`
-      SELECT COUNT(*) AS total
-      FROM profiles;
-    `)).total,
+    timestamp,
+    totalCount: profiles.length,
     standard: {
-      count: (await db.get(`
-        SELECT COUNT(*) AS count
-        FROM profiles
-        WHERE standardRating > 0;
-      `)).count,
-      averageRating: (await db.get(`
-        SELECT ROUND(AVG(standardRating)) AS average
-        FROM profiles
-        WHERE standardRating > 0;
-      `)).average,
-      averageScore: (await db.get(`
-        SELECT ROUND(AVG(standardAverage), 3) AS average
-        FROM profiles
-        WHERE standardAverage > 0;
-      `)).average
+      count: standard.length,
+      averageRating: round(average(standard.map(x => x.standardRating))),
+      averageScore: round(average(standard.map(x => x.standardAverage)), 2),
     },
     premier: {
-      count: (await db.get(`
-        SELECT COUNT(*) AS count
-        FROM profiles
-        WHERE premierRating > 0;
-      `)).count,
-      averageRating: (await db.get(`
-        SELECT ROUND(AVG(premierRating)) AS average
-        FROM profiles
-        WHERE premierRating > 0;
-      `)).average,
-      averageScore: (await db.get(`
-        SELECT ROUND(AVG(premierAverage), 3) AS average
-        FROM profiles
-        WHERE premierAverage > 0;
-      `)).average
+      count: premier.length,
+      averageRating: round(average(premier.map(x => x.premierRating))),
+      averageScore: round(average(premier.map(x => x.premierAverage)), 2),
     },
-    allProfilesJSON: JSON.stringify(await db.query(`
-      SELECT *
-      FROM profiles;
-    `), null, 2)
+    profilesJSON: JSON.stringify(profiles)
   });
 };

@@ -7,77 +7,51 @@ const client = require('../src/client');
 const clientDir = path.resolve(__dirname, '../src/client');
 const distDir = path.resolve(__dirname, '../dist');
 
-const buildBasicPages = async () => {
-  const basicPages = {
-    'index': client.home,
-    '404': client.error404,
-    '500': client.error500,
-    'premier': client.premierList,
-    'standard': client.standardList,
+const getAllData = async () => {
+  return {
+    timestamp: await db.timestamp(),
+    seasons: await db.query(`SELECT * FROM seasons;`),
+    profiles: await db.query(`
+      SELECT *
+      FROM profiles
+      ORDER BY
+        premierRating DESC,
+        premierAverage DESC,
+        standardRating DESC,
+        standardAverage DESC;
+    `)
   };
-
-  await Promise.all(Object.entries(basicPages).map(async ([name, render]) => {
-    const fileName = `${distDir}/${name}.html`;
-    const content = await render(db);
-
-    console.log(`Writing File: ${fileName}`);
-
-    await fs.outputFile(fileName, content, 'utf-8');
-  }));
 };
 
-const buildProfilePages = async () => {
-  const allProfiles = await db.query(`
-    SELECT *
-    FROM profiles
-    WHERE id = 1207260
-    OR (1 <= premierRank AND premierRank <= 10);
-  `);
+const writeFile = (name, content) => {
+  const filePath = `${distDir}/${name}`;
 
-  const tasks = allProfiles.map(async (profile) => {
-    const fileName = `${distDir}/profile/${profile.id}.html`;
-    const content = await client.profile(profile);
+  console.log(`Writing File: ${filePath}`);
 
-    console.log(`Writing File: ${fileName}`);
-
-    await fs.outputFile(fileName, content, 'utf-8');
-  });
-
-  return Promise.all(tasks);
-};
-
-const buildJsonDump = async () => {
-  const timestamp = await db.timestamp();
-  const seasons = await db.query(`SELECT * FROM seasons;`);
-  const profiles = await db.query(`
-    SELECT *
-    FROM profiles
-    ORDER BY
-      premierRating DESC,
-      premierAverage DESC,
-      standardRating DESC,
-      standardAverage DESC;
-  `);
-
-  const fileName = `${distDir}/all-data.json`;
-  const fileContent = await JSON.stringify({
-    timestamp,
-    seasons,
-    profiles
-  }, null, 2);
-
-  console.log(`Writing File: ${fileName}`);
-
-  await fs.outputFile(fileName, fileContent, 'utf-8');
+  return fs.outputFile(filePath, content, 'utf-8');
 };
 
 (async () => {
   try {
     await fs.emptyDir(distDir);
     await fs.copy(`${clientDir}/assets`, distDir);
-    await buildBasicPages();
-    await buildProfilePages();
-    await buildJsonDump();
+
+    const allData = await getAllData();
+
+    await writeFile('data.json', JSON.stringify(allData, null, 2));
+    await writeFile('index.html', client.home(allData));
+    await writeFile('404.html', client.error404());
+    await writeFile('500.html', client.error500());
+    await writeFile('standard.html', await client.standardList(db));
+    await writeFile('premier.html', await client.premierList(db));
+
+    const profiles = allData.profiles.filter(({ id, premierRank }) => {
+      return id === 1207260 || (1 <= premierRank && premierRank <= 10);
+    });
+
+    await Promise.all(profiles.map(async (profile) => {
+      await writeFile(`profile/${profile.id}.html`, client.profile(profile));
+    }));
   } catch (error) {
     console.log(error);
 
