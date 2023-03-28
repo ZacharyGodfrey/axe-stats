@@ -132,7 +132,7 @@ const getProfiles = async (page) => {
 };
 
 const groupItems = (size, items) => {
-  return items.reduce((groups) => {
+  return items.reduce((groups, item) => {
     const group = groups[groups.length - 1];
 
     if (group.length < size) {
