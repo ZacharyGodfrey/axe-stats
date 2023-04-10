@@ -53,6 +53,12 @@
         </thead>
 
         <tbody>
+          <template x-if="$store.search.results.length < 1">
+            <tr>
+              <td colspan="4">No results.</td>
+            </tr>
+          </template>
+
           <template x-for="profile in $store.search.results" :key="profile.id">
             <tr>
               <td>
