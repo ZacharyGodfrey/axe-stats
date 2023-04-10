@@ -21,7 +21,7 @@
   </div>
 </section>
 
-<section x-data="search">
+<section class="bg-dark" x-data="search">
   <div class="x-limit">
     <div class="split stack y-center">
       <p>
@@ -32,7 +32,11 @@
         <input type="text" placeholder="Name" @input.debounce.500ms="execute($event.target.value)">
       </div>
     </div>
+  </div>
+</section>
 
+<section x-data="search">
+  <div class="x-limit">
     <figure>
       <table class="text-center">
         <thead>
