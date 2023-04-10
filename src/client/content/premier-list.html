@@ -1,15 +1,17 @@
 <script>
   const DATA = {{{profilesJSON}}};
 
-  Alpine.store('search', {
-    results: DATA.slice(0),
-    execute(value) {
-      const term = value.trim().toLowerCase();
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('search', {
+      results: DATA.slice(0),
+      execute(value) {
+        const term = value.trim().toLowerCase();
 
-      this.results = term.length < 1 ? DATA.slice(0) : DATA.filter(({ name }) => {
-        return name.toLowerCase().includes(term);
-      });
-    }
+        this.results = term.length < 1 ? DATA.slice(0) : DATA.filter(({ name }) => {
+          return name.toLowerCase().includes(term);
+        });
+      }
+    });
   });
 </script>
 
