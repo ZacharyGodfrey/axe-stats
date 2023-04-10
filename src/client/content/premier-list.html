@@ -25,13 +25,15 @@
 
 <section class="bg-dark" x-data>
   <div class="x-limit">
-    <div class="split stack y-center">
-      <p>
-        <strong>Search</strong>
-      </p>
+    <div class="card">
+      <div class="split stack y-center">
+        <p>
+          <strong>Search</strong>
+        </p>
 
-      <div>
-        <input type="text" placeholder="Name" @input.debounce.500ms="$store.search.execute($event.target.value)">
+        <div>
+          <input type="text" placeholder="Name" @input.debounce.500ms="$store.search.execute($event.target.value)">
+        </div>
       </div>
     </div>
   </div>
