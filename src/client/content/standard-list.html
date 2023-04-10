@@ -1,16 +1,18 @@
 <script>
   const DATA = {{{profilesJSON}}};
 
-  const search = {
-    results: DATA.slice(0),
-    execute(value) {
-      const term = value.trim().toLowerCase();
+  document.addEventListener('alpine:init', () => {
+    Alpine.store('search', {
+      results: DATA.slice(0),
+      execute(value) {
+        const term = value.trim().toLowerCase();
 
-      this.results = term.length < 1 ? DATA.slice(0) : DATA.filter(({ name }) => {
-        return name.toLowerCase().includes(term);
-      });
-    }
-  };
+        this.results = term.length < 1 ? DATA.slice(0) : DATA.filter(({ name }) => {
+          return name.toLowerCase().includes(term);
+        });
+      }
+    });
+  });
 </script>
 
 <section class="bg-main">
@@ -21,18 +23,24 @@
   </div>
 </section>
 
-<section x-data="search">
+<section class="bg-dark" x-data>
   <div class="x-limit">
-    <div class="split stack y-center">
-      <p>
-        <strong>Search</strong>
-      </p>
+    <div class="card">
+      <div class="split stack y-center">
+        <p>
+          <strong>Search</strong>
+        </p>
 
-      <div>
-        <input type="text" placeholder="Name" @input.debounce.500ms="execute($event.target.value)">
+        <div>
+          <input type="text" placeholder="Name" @input.debounce.500ms="$store.search.execute($event.target.value)">
+        </div>
       </div>
     </div>
+  </div>
+</section>
 
+<section x-data>
+  <div class="x-limit">
     <figure>
       <table class="text-center">
         <thead>
@@ -45,7 +53,13 @@
         </thead>
 
         <tbody>
-          <template x-for="profile in results" :key="profile.id">
+          <template x-if="$store.search.results.length < 1">
+            <tr>
+              <td colspan="4">No results.</td>
+            </tr>
+          </template>
+
+          <template x-for="profile in $store.search.results" :key="profile.id">
             <tr>
               <td>
                 <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
