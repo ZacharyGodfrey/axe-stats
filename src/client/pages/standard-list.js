@@ -3,7 +3,7 @@ const { readFile, render } = require('../helpers');
 const page = readFile(`${__dirname}/../content/standard-list.html`);
 
 module.exports = async (db) => render(page, {
-  title: 'Standard Throwers',
+  title: 'IATF Standard Profiles',
   profilesJSON: JSON.stringify(await db.query(`
     SELECT *
     FROM profiles
