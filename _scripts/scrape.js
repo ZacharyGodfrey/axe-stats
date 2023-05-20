@@ -45,29 +45,6 @@ const getProfiles = async (page) => {
 
   const profilesById = {};
 
-  const standardProfiles = (await reactPageState(page, '#root'))
-    .globalStandings.standings.career
-    .filter(({ active }) => active);
-
-  console.log(`[SCRAPE] Found ${standardProfiles.length} Standard Profiles`);
-
-  standardProfiles.forEach(({ id, name, rank, rating, average }) => {
-    profilesById[id] = profilesById[id] || {
-      id,
-      name,
-      standardRank: 0,
-      standardRating: 0,
-      standardAverage: 0,
-      premierRank: 0,
-      premierRating: 0,
-      premierAverage: 0
-    };
-
-    profilesById[id].standardRank = rank;
-    profilesById[id].standardRating = rating;
-    profilesById[id].standardAverage = average;
-  });
-
   await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
   await page.waitForNetworkIdle({ idleTime: 2 * 1000 });
 

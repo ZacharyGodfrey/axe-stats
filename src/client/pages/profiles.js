@@ -1,9 +1,9 @@
 const { readFile, render } = require('../helpers');
 
-const page = readFile(`${__dirname}/../content/premier-list.html`);
+const page = readFile(`${__dirname}/../content/profiles.html`);
 
 module.exports = async (db) => render(page, {
-  title: 'IATF Premier Profiles',
+  title: 'IATF Profiles',
   profilesJSON: JSON.stringify(await db.query(`
     SELECT *
     FROM profiles

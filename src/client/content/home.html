@@ -45,82 +45,35 @@
 
 <section class="bg-dark">
   <div class="x-limit">
-    <h2>Global Rankings</h2>
+    <h2>Global Statistics</h2>
 
-    <div class="split stack">
-      <div class="card grow">
-        <h3>IATF Premier</h3>
+    <div class="card">
+      <ul>
+        <li>
+          <span>IATF Premier Profiles:</span>
+          <strong class="no-break">{{premier.count}}</strong>
+        </li>
 
-        <ul>
-          <li>
-            <strong class="no-break">{{premier.count}}</strong>
-            <span>profiles</span>
-          </li>
+        <li>
+          <span>Average Collins Rating:</span>
+          <strong class="no-break">{{premier.averageRating}}</strong>
+        </li>
 
-          <li>
-            <strong class="no-break">{{premier.averageRating}}</strong>
-            <span>average Collins Rating</span>
-          </li>
+        <li>
+          <span>Average Match Score</span>
+          <strong class="no-break">{{premier.averageScore}}</strong>
+        </li>
+      </ul>
 
-          <li>
-            <strong class="no-break">{{premier.averageScore}}</strong>
-            <span>average score</span>
-          </li>
-        </ul>
-
-        <p class="text-center">
-          <a class="button" href="/premier">View Ranking</a>
-        </p>
-      </div>
-
-      <div class="card grow">
-        <h3>IATF Standard</h3>
-
-        <ul>
-          <li>
-            <strong class="no-break">{{standard.count}}</strong>
-            <span>profiles</span>
-          </li>
-
-          <li>
-            <strong class="no-break">{{standard.averageRating}}</strong>
-            <span>average Collins Rating</span>
-          </li>
-
-          <li>
-            <strong class="no-break">{{standard.averageScore}}</strong>
-            <span>average score</span>
-          </li>
-        </ul>
-
-        <p class="text-center">
-          <a class="button" href="/standard">View Ranking</a>
-        </p>
-      </div>
+      <p class="text-center">
+        <a class="button" href="/profiles">View Ranking</a>
+      </p>
     </div>
   </div>
 </section>
 
 <section>
   <div class="x-limit">
-    <h2>NOTICE</h2>
-
-    <p>This website is still under construction. Only a few profile pages exist right now. All other profiles will be added soon.</p>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <p>All data on this site is pulled from the official IATF source on a weekly basis.</p>
-
-    <p>
-      <span>Total Profile Count:</span>
-      <strong class="no-break">{{totalCount}}</strong>
-    </p>
-
-    <p>
-      <span>Data Last Updated:</span>
-      <strong class="no-break">{{timestamp}}</strong>
-    </p>
+    <p>All data on this site is pulled from the official IATF source. The data was last updated on <strong class="no-break">{{timestamp}}</strong>.</p>
   </div>
 </section>

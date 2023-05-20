@@ -42,12 +42,9 @@ const writeFile = (name, content) => {
     await writeFile('index.html', client.home(allData));
     await writeFile('404.html', client.error404());
     await writeFile('500.html', client.error500());
-    await writeFile('standard.html', await client.standardList(db));
-    await writeFile('premier.html', await client.premierList(db));
+    await writeFile('profiles.html', await client.profiles(db));
 
-    const profiles = allData.profiles.filter(({ id, premierRank }) => {
-      return id === 1207260 || (1 <= premierRank && premierRank <= 10);
-    });
+    const profiles = allData.profiles.filter(({ id }) => id === 1207260);
 
     await Promise.all(profiles.map(async (profile) => {
       await writeFile(`profile/${profile.id}.html`, client.profile(profile));
