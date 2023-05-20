@@ -1,3 +1,4 @@
+const path = require('path');
 const fs = require('fs-extra');
 const puppeteer = require('puppeteer');
 
@@ -58,9 +59,34 @@ const getProfiles = async (page) => {
 
   console.log(`[SCRAPE] Found ${allProfiles.length} Profiles`);
 
-  await Promise.all(allProfiles.map(({ id, name, rank, rating, average }) => {
+  await Promise.all(allProfiles.map(async ({ id, name, rank, rating, average }) => {
+    if (id === 1207260) {
+      await writeProfileJson({ id, name, rank, rating, average });
+    }
+
     return db.insert('profiles', { id, name, rank, rating, average });
   }));
+};
+
+const writeProfileJson = async ({ id, name, rank, rating, average }) => {
+  const filePath = path.resolve(__dirname, `../src/database/profiles/${id}.json`);
+  const exists = await fs.pathExists(filePath);
+  const data = exists ? await fs.readJson(filePath) : {
+    id,
+    name,
+    rank,
+    rating,
+    average,
+    stats: {},
+    matches: []
+  };
+
+  data.name = name;
+  data.rank = rank;
+  data.rating = rating;
+  data.average = average;
+
+  await fs.outputFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
 };
 
 (async () => {
