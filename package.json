@@ -3,10 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "test": "echo \"No tests yet.\" && exit 0",
     "build": "node _scripts/build.js",
-    "scrape": "node _scripts/scrape.js",
-    "dev": "export CONTEXT=local && node _scripts/start.js"
+    "scrape": "node _scripts/scrape.js"
   },
   "dependencies": {
     "express": "^4.18.2",
