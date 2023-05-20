@@ -88,23 +88,9 @@ const ensureSchema = async () => {
     CREATE TABLE IF NOT EXISTS profiles (
       id INTEGER PRIMARY KEY,
       name TEXT NOT NULL,
-      standardRank INTEGER NOT NULL,
-      standardRating INTEGER NOT NULL,
-      standardAverage REAL NOT NULL,
-      premierRank INTEGER NOT NULL,
-      premierRating INTEGER NOT NULL,
-      premierAverage REAL NOT NULL
-    ) WITHOUT ROWID;
-  `);
-
-  await query(`
-    CREATE TABLE IF NOT EXISTS seasons (
-      id INTEGER PRIMARY KEY,
-      profileId INTEGER NOT NULL,
-      name TEXT NOT NULL,
-      ruleset TEXT NOT NULL,
-      date TEXT NOT NULL,
-      FOREIGN KEY (profileId) REFERENCES profiles (id) ON DELETE CASCADE ON UPDATE NO ACTION
+      rank INTEGER NOT NULL,
+      rating INTEGER NOT NULL,
+      average REAL NOT NULL
     ) WITHOUT ROWID;
   `);
 };
