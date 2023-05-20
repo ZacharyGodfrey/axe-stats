@@ -7,10 +7,7 @@ module.exports = async (db) => render(page, {
   profilesJSON: JSON.stringify(await db.query(`
     SELECT *
     FROM profiles
-    WHERE premierRank > 0
-    ORDER BY
-      premierRank ASC,
-      premierRating DESC,
-      premierAverage DESC;
+    WHERE rank > 0
+    ORDER BY rank ASC, rating DESC, average DESC;
   `), null, 2)
 });
