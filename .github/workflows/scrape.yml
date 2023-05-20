@@ -19,7 +19,7 @@ jobs:
         run: npm i
       - name: Run Scrape
         run: npm run scrape
-      - name: Commit Database File
+      - name: Commit File Changes
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"

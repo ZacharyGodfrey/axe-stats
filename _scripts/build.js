@@ -10,15 +10,10 @@ const distDir = path.resolve(__dirname, '../dist');
 const getAllData = async () => {
   return {
     timestamp: await db.timestamp(),
-    seasons: await db.query(`SELECT * FROM seasons;`),
     profiles: await db.query(`
       SELECT *
       FROM profiles
-      ORDER BY
-        premierRating DESC,
-        premierAverage DESC,
-        standardRating DESC,
-        standardAverage DESC;
+      ORDER BY rating DESC, average DESC;
     `)
   };
 };
