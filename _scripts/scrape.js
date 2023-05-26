@@ -84,12 +84,13 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
 
   console.log(`Writing profile data for ID ${id} to the database`);
 
+  await db.run(`INSERT OR IGNORE INTO profiles (id) VALUES (?);`, [id]);
+
   await db.run(`
-    INSERT OR IGNORE INTO profiles (id) VALUES (?);
     UPDATE profiles
     SET ${Object.entries({ name, about, rank, rating, average }).map(([k, v]) => `${k} = ${JSON.stringify(v)}`).join(', ')}
     WHERE id = ?;
-  `, [id, id]);
+  `, [id]);
 
   // Ensure JSON file exists
 

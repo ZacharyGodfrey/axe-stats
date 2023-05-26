@@ -16,6 +16,8 @@ const connect = () => connection ? Promise.resolve() : new Promise((resolve, rej
 });
 
 const run = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
+  console.log(`[DB:Run]\n${sql}`);
+
   connection.run(sql, params, (error) => {
     if (error) {
       reject(error);
@@ -26,6 +28,8 @@ const run = (sql, params = []) => connect().then(() => new Promise((resolve, rej
 }));
 
 const query = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
+  console.log(`[DB:Query]\n${sql}`);
+
   connection.all(sql, params, (error, rows) => {
     if (error) {
       reject(error);
@@ -36,6 +40,8 @@ const query = (sql, params = []) => connect().then(() => new Promise((resolve, r
 }));
 
 const get = (sql, params = []) => connect().then(() => new Promise((resolve, reject) => {
+  console.log(`[DB:Get]\n${sql}`);
+
   connection.get(sql, params, (error, row) => {
     if (error) {
       reject(error);
