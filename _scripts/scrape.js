@@ -264,16 +264,16 @@ const storeMatchData = async (page, matchId) => {
 
     console.log(`There are ${unprocessed} unprocessed matches`);
 
-    const newMatchIds = await db.query(`
+    const newMatches = await db.query(`
       SELECT id
       FROM matches
       WHERE processed = 0
       LIMIT ?;
     `, [BATCH_SIZE]);
 
-    console.log(`Processing ${newMatchIds.length} unprocessed matches`);
+    console.log(`Processing ${newMatches.length} unprocessed matches`);
 
-    await sequentially(newMatchIds, x => storeMatchData(page, x).then(() => delay(TRAFFIC_DELAY)));
+    await sequentially(newMatches, x => storeMatchData(page, x.id).then(() => delay(TRAFFIC_DELAY)));
 
     await fs.outputFile(path.resolve(__dirname, `../src/database/timestamp.json`), JSON.stringify(new Date().toISOString()), 'utf-8');
 
