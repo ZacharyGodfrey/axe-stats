@@ -4,7 +4,7 @@ const puppeteer = require('puppeteer');
 
 const db = require('../src/database');
 
-const IDLE_TIME = 2 * 1000; // 2 seconds
+const IDLE_TIME = 5 * 1000; // 5 seconds
 const TRAFFIC_DELAY = 5 * 1000; // 5 seconds
 const BATCH_SIZE = 100; // matches to process per run
 
@@ -61,8 +61,10 @@ const getProfiles = async (page) => {
 
   console.log(`HTTP GET: ${url}`);
 
-  await page.goto(url).then(() => page.waitForNetworkIdle({ idleTime: IDLE_TIME }));
-  await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier').then(() => page.waitForNetworkIdle({ idleTime: IDLE_TIME }));
+  await page.goto(url);
+  await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
+  await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
+  await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
 
   const state = await reactPageState(page, '#root');
   const profiles = state.globalStandings.standings.career;
@@ -77,7 +79,8 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
 
   console.log(`Go to ${url}`);
 
-  await page.goto(url).then(() => page.waitForNetworkIdle({ idleTime: IDLE_TIME }));
+  await page.goto(url);
+  await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
 
   const state = await reactPageState(page, '#root');
   const { about, leagues } = state.player.playerData;
