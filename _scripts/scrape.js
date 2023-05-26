@@ -110,7 +110,7 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
   // Insert match IDs into database
 
   const premierLeagues = leagues.filter(x => x.performanceName === 'IATF Premier');
-  const weeks = premierLeagues.flatMap(x => seasonWeeks);
+  const weeks = premierLeagues.flatMap(x => x.seasonWeeks);
   const matches = weeks.flatMap(x => x.matches);
 
   console.log(`Writing ${matches.length} match IDs to the database`);
