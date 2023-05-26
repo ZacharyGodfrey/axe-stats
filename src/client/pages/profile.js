@@ -7,5 +7,6 @@ module.exports = (profile) => render(page, {
   profile: {
     ...profile,
     rank: ordinal(profile.rank)
-  }
+  },
+  matches: require(`../../database/profiles/${profile.id}.json`).matches
 });

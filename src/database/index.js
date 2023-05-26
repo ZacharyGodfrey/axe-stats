@@ -45,21 +45,6 @@ const get = (sql, params = []) => connect().then(() => new Promise((resolve, rej
   });
 }));
 
-const insert = (table, entity) => {
-  const keys = [], values = [], placeholders = [];
-
-  Object.entries(entity).forEach(([key, value]) => {
-    keys.push(key);
-    values.push(value);
-    placeholders.push('?');
-  });
-
-  return run(`
-    INSERT INTO ${table} (${keys.join(', ')})
-    VALUES (${placeholders.join(', ')});
-  `, values);
-};
-
 const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve, reject) => {
   connection.close((error) => {
     if (error) {
@@ -74,58 +59,11 @@ const disconnect = () => !connection ? Promise.resolve() : new Promise((resolve,
   });
 });
 
-const ensureSchema = async () => {
-  console.log('[DATABASE] Ensure Schema');
-
-  await query(`
-    CREATE TABLE IF NOT EXISTS timestamp (
-      id INTEGER PRIMARY KEY,
-      timestamp TEXT NOT NULL UNIQUE
-    );
-  `);
-
-  await query(`
-    CREATE TABLE IF NOT EXISTS profiles (
-      id INTEGER PRIMARY KEY,
-      name TEXT NOT NULL,
-      rank INTEGER NOT NULL,
-      rating INTEGER NOT NULL,
-      average REAL NOT NULL
-    ) WITHOUT ROWID;
-  `);
-};
-
-const timestamp = async () => {
-  const sql = `SELECT * FROM timestamp;`;
-  const [{ timestamp }] = await query(sql);
-
-  return timestamp;
-};
-
-const allProfiles = async () => {
-  const sql = `SELECT * FROM profiles ORDER BY name ASC;`;
-  const rows = await query(sql);
-
-  return rows;
-};
-
-const getProfileById = async (id) => {
-  const sql = `SELECT * FROM profiles WHERE urlId = ?;`;
-  const [profile] = await query(sql, [id]);
-
-  return profile || null;
-};
-
 module.exports = {
   _fileName: FILE_NAME,
   connect,
   run,
   query,
   get,
-  insert,
-  disconnect,
-  ensureSchema,
-  timestamp,
-  allProfiles,
-  getProfileById,
+  disconnect
 };

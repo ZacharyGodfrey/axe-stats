@@ -9,11 +9,18 @@ const distDir = path.resolve(__dirname, '../dist');
 
 const getAllData = async () => {
   return {
-    timestamp: await db.timestamp(),
-    profiles: await db.query(`
+    timestamp: require('../src/database/timestamp.json'),
+    profiles: (await db.query(`
       SELECT *
       FROM profiles
       ORDER BY rating DESC, average DESC;
+    `)).map(x => Object.assign(x, {
+      matches: require(`../src/database/profiles/${x.id}.json`).matches
+    })),
+    matches: await db.query(`
+      SELECT *
+      FROM matches
+      ORDER BY id ASC;
     `)
   };
 };
@@ -39,9 +46,7 @@ const writeFile = (name, content) => {
     await writeFile('500.html', client.error500());
     await writeFile('profiles.html', await client.profiles(db));
 
-    const profiles = allData.profiles.filter(({ id }) => id === 1207260);
-
-    await Promise.all(profiles.map(async (profile) => {
+    await Promise.all(allData.profiles.map(async (profile) => {
       await writeFile(`profile/${profile.id}.html`, client.profile(profile));
     }));
   } catch (error) {
