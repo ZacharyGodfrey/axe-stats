@@ -176,7 +176,7 @@ const buildMatch = ({ id, players, rounds }, playerId) => {
   };
 };
 
-const storeMatchData = (page, matchId) => {
+const storeMatchData = async (page, matchId) => {
   const url = `https://api.axescores.com/match/${matchId}`;
 
   console.log(`HTTP GET: ${url}`);
