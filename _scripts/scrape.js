@@ -146,15 +146,11 @@ const roundOutcome = (playerScore, opponentScore) => {
 };
 
 const matchOutcome = (rounds) => {
-  const roundOutcomes = rounds.reduce((result, round) => {
+  const { win, loss } = rounds.reduce((result, round) => {
     return Object.assign(result, {
       [round.outcome]: 1 + (result[round.outcome] || 0)
     });
-  }, {});
-
-  console.log(`Round Outcomes: ${JSON.stringify(roundOutcomes, null, 2)}`);
-
-  const { win, loss } = roundOutcomes;
+  }, { win: 0, loss: 0, tie: 0 });
 
   switch (true) {
     case win - loss > 0: return 'win';
