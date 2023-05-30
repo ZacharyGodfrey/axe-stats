@@ -4,9 +4,9 @@ const puppeteer = require('puppeteer');
 
 const db = require('../src/database');
 
-const IDLE_TIME = 5 * 1000; // 5 seconds
-const TRAFFIC_DELAY = 5 * 1000; // 5 seconds
-const BATCH_SIZE = 100; // matches to process per run
+const IDLE_TIME = 2 * 1000; // 2 seconds
+const TRAFFIC_DELAY = 2 * 1000; // 2 seconds
+const BATCH_SIZE = 5; // matches to process per run
 
 const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -46,6 +46,14 @@ const groupItems = (size, items) => {
   }, [[]]);
 };
 
+const logErrorAndDefault = (defaultValue) => {
+  return (error) => {
+    console.error(error);
+
+    return defaultValue;
+  };
+};
+
 const reactPageState = (page, selector) => {
   const getState = (element) => {
     return element._reactRootContainer._internalRoot.current.memoizedState.element.props.store.getState();
@@ -58,7 +66,7 @@ const getProfiles = async (page) => {
   const url = 'https://axescores.com/players/collins-rating';
   const rulesetSelector = '.sc-gwVKww.fJdgsF select';
 
-  console.log(`HTTP GET: ${url}`);
+  console.log(`Go to ${url}`);
 
   await page.goto(url);
   await page.waitForSelector(rulesetSelector);
@@ -90,7 +98,7 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
 
   await db.run(`
     UPDATE profiles
-    SET ${Object.entries({ name, about, rank, rating, average }).map(([k, v]) => `${k} = ${JSON.stringify(v)}`).join(', ')}
+    SET ${Object.entries({ name, about, rank, rating, average }).map(([k, v]) => `${k} = ${JSON.stringify(v)}`).join(',\n')}
     WHERE id = ?;
   `, [id]);
 
@@ -257,13 +265,19 @@ const storeMatchData = async (page, matchId) => {
     console.log('Getting profiles');
 
     // TODO: Remove filter after testing
-    const profiles = (await getProfiles(page)).filter(x => x.id === 1207260);
+    const _profiles = await getProfiles(page).catch(logErrorAndDefault([]));
+    const profiles = _profiles.filter(x => x.id === 1207260);
 
-    console.log(`Found ${profiles.length} active premier profiles`);
+    console.log(`Found ${_profiles.length} active premier profiles`);
+    console.log(`Keeping ${profiles.length} filtered profiles`);
 
     console.log('Storing profile data');
 
-    await sequentially(profiles, x => storeProfileData(page, x).then(() => delay(TRAFFIC_DELAY)));
+    await sequentially(profiles, profile => {
+      return storeProfileData(page, profile)
+        .catch(logErrorAndDefault(null))
+        .then(() => delay(TRAFFIC_DELAY));
+    });
 
     // Matches
 
@@ -286,7 +300,11 @@ const storeMatchData = async (page, matchId) => {
 
     console.log(`Processing ${newMatches.length} unprocessed matches`);
 
-    await sequentially(newMatches, x => storeMatchData(page, x.id).then(() => delay(TRAFFIC_DELAY)));
+    await sequentially(newMatches, ({ id: matchId }) => {
+      return storeMatchData(page, matchId)
+        .catch(logErrorAndDefault(null))
+        .then(() => delay(TRAFFIC_DELAY));
+    });
 
     await fs.outputFile(path.resolve(__dirname, `../src/database/timestamp.json`), JSON.stringify(new Date().toISOString()), 'utf-8');
 
