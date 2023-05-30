@@ -4,8 +4,8 @@ const puppeteer = require('puppeteer');
 
 const db = require('../src/database');
 
-const IDLE_TIME = 2 * 1000; // 2 seconds
-const TRAFFIC_DELAY = 2 * 1000; // 2 seconds
+const IDLE_TIME = 5 * 1000; // 5 seconds
+const TRAFFIC_DELAY = 5 * 1000; // 5 seconds
 const BATCH_SIZE = 5; // matches to process per run
 
 const randomInt = (min, max) => {
@@ -196,6 +196,8 @@ const storeMatchData = async (page, matchId) => {
   await page.goto(url);
 
   const apiResponse = await page.waitForResponse(response => {
+    console.log(`HTTP Response: ${response.request().method()} ${response.status()} response.url()`);
+
     return [
       response.request().method() === 'GET',
       response.status() === 200,
