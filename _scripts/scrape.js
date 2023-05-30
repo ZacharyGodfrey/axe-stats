@@ -8,6 +8,10 @@ const IDLE_TIME = 5 * 1000; // 5 seconds
 const TRAFFIC_DELAY = 5 * 1000; // 5 seconds
 const BATCH_SIZE = 100; // matches to process per run
 
+const randomInt = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
+
 const delay = (ms) => {
   console.log(`Waiting for ${ms} milliseconds`);
 
@@ -176,14 +180,21 @@ const buildMatch = ({ id, players, rounds }, playerId) => {
 };
 
 const storeMatchData = async (page, matchId) => {
-  const url = `https://axescores.com/player/1/${matchId}`;
+  const url = `https://axescores.com/player/${randomInt(1, 26)}/${matchId}`;
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
   console.log(`Go to ${url}`);
 
   await page.goto(url);
 
-  const apiResponse = await page.waitForResponse(apiUrl, { timeout: IDLE_TIME });
+  const apiResponse = await page.waitForResponse(() => {
+    return [
+      response.request().method() === 'GET',
+      response.status() === 200,
+      response.url() === apiUrl,
+    ].every(x => x);
+  }, { timeout: IDLE_TIME });
+
   const rawMatch = await apiResponse.json();
 
   await sequentially(rawMatch.players, async ({ id: playerId }) => {
