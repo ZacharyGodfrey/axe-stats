@@ -195,7 +195,7 @@ const storeMatchData = async (page, matchId) => {
 
   await page.goto(url);
 
-  const apiResponse = await page.waitForResponse(() => {
+  const apiResponse = await page.waitForResponse(response => {
     return [
       response.request().method() === 'GET',
       response.status() === 200,
