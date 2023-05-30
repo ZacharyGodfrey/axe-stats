@@ -50,20 +50,15 @@ const reactPageState = (page, selector) => {
   return page.$eval(selector, getState);
 };
 
-const pageHttpGetJson = (page, url) => {
-  return page.evaluate((destination) => {
-    return fetch(destination).then(res => res.json());
-  }, url);
-};
-
 const getProfiles = async (page) => {
   const url = 'https://axescores.com/players/collins-rating';
+  const rulesetSelector = '.sc-gwVKww.fJdgsF select';
 
   console.log(`HTTP GET: ${url}`);
 
   await page.goto(url);
-  await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
-  await page.select('.sc-gwVKww.fJdgsF select', 'IATF Premier');
+  await page.waitForSelector(rulesetSelector);
+  await page.select(rulesetSelector, 'IATF Premier');
   await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
 
   const state = await reactPageState(page, '#root');
@@ -181,11 +176,15 @@ const buildMatch = ({ id, players, rounds }, playerId) => {
 };
 
 const storeMatchData = async (page, matchId) => {
-  const url = `https://api.axescores.com/match/${matchId}`;
+  const url = `https://axescores.com/player/1/${matchId}`;
+  const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
-  console.log(`HTTP GET: ${url}`);
+  console.log(`Go to ${url}`);
 
-  const rawMatch = await pageHttpGetJson(page, url);
+  await page.goto(url);
+
+  const apiResponse = await page.waitForResponse(apiUrl, { timeout: IDLE_TIME });
+  const rawMatch = await apiResponse.json();
 
   await sequentially(rawMatch.players, async ({ id: playerId }) => {
     const filePath = path.resolve(__dirname, `../src/database/profiles/${playerId}.json`);
