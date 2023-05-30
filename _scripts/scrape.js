@@ -6,9 +6,8 @@ const db = require('../src/database');
 
 // Settings
 
-const IDLE_TIME = 5 * 1000; // 5 seconds
-const TRAFFIC_DELAY = 1 * 1000; // 1 seconds
 const BATCH_SIZE = 100; // matches to process per run
+const ACTION_TIMEOUT = 5 * 1000; // 5 seconds
 
 // Helper Functions
 
@@ -77,7 +76,7 @@ const getProfiles = async (page) => {
   await page.goto(url);
   await page.waitForSelector(rulesetSelector);
   await page.select(rulesetSelector, 'IATF Premier');
-  await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
+  await page.waitForNetworkIdle();
 
   const state = await reactPageState(page, '#root');
   const profiles = state.globalStandings.standings.career;
@@ -93,7 +92,7 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
   console.log(`Go to ${url}`);
 
   await page.goto(url);
-  await page.waitForNetworkIdle({ idleTime: IDLE_TIME });
+  await page.waitForNetworkIdle();
 
   const state = await reactPageState(page, '#root');
   const { about, leagues } = state.player.playerData;
@@ -212,7 +211,7 @@ const storeMatchData = async (page, matchId) => {
   console.log(`Go to ${url}`);
 
   const [apiResponse] = await Promise.all([
-    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: IDLE_TIME }),
+    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: ACTION_TIMEOUT }),
     page.goto(url)
   ]);
 
@@ -289,9 +288,7 @@ const storeMatchData = async (page, matchId) => {
     await sequentially(profiles, (profile, index) => {
       console.log(`[${index + 1} / ${profiles.length}] Processing profile ID ${profile.id}`);
 
-      return storeProfileData(page, profile)
-        .catch(logErrorAndDefault(null))
-        .then(() => delay(TRAFFIC_DELAY));
+      return storeProfileData(page, profile).catch(logErrorAndDefault(null));
     });
 
     // Matches
@@ -320,9 +317,7 @@ const storeMatchData = async (page, matchId) => {
     await sequentially(newMatches, ({ id: matchId }, index) => {
       console.log(`[${index + 1} / ${newMatches.length}] Processing match ID ${matchId}`);
 
-      return storeMatchData(page, matchId)
-        .catch(logErrorAndDefault(null))
-        .then(() => delay(TRAFFIC_DELAY));
+      return storeMatchData(page, matchId).catch(logErrorAndDefault(null));
     });
 
     const endTime = Date.now();
