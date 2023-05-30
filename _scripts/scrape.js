@@ -187,23 +187,24 @@ const buildMatch = ({ id, players, rounds }, playerId) => {
   };
 };
 
+const isDesiredResponse = (method, status, url) => {
+  return (response) => {
+    console.log(`HTTP Response: ${response.request().method()} ${response.status()} response.url()`);
+
+    return response.request().method() === method && response.status() === status && response.url() === url;
+  };
+};
+
 const storeMatchData = async (page, matchId) => {
   const url = `https://axescores.com/player/${randomInt(1, 26)}/${matchId}`;
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
   console.log(`Go to ${url}`);
 
-  await page.goto(url);
-
-  const apiResponse = await page.waitForResponse(response => {
-    console.log(`HTTP Response: ${response.request().method()} ${response.status()} response.url()`);
-
-    return [
-      response.request().method() === 'GET',
-      response.status() === 200,
-      response.url() === apiUrl,
-    ].every(x => x);
-  }, { timeout: IDLE_TIME });
+  const [apiResponse] = await Promise.all([
+    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: IDLE_TIME }),
+    page.goto(url)
+  ]);
 
   const rawMatch = await apiResponse.json();
 
