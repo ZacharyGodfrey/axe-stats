@@ -23,8 +23,8 @@ const delay = (ms) => {
 };
 
 const sequentially = async (items, action) => {
-  return items.reduce((prev, item) => {
-    return prev.then(() => action(item));
+  return items.reduce((prev, item, index) => {
+    return prev.then(() => action(item, index));
   }, Promise.resolve());
 };
 
@@ -286,7 +286,9 @@ const storeMatchData = async (page, matchId) => {
 
     console.log('Storing profile data');
 
-    await sequentially(profiles, profile => {
+    await sequentially(profiles, (profile, index) => {
+      console.log(`[${index + 1} / ${profiles.length}] Processing profile ID ${profile.id}`);
+
       return storeProfileData(page, profile)
         .catch(logErrorAndDefault(null))
         .then(() => delay(TRAFFIC_DELAY));
@@ -313,11 +315,20 @@ const storeMatchData = async (page, matchId) => {
 
     console.log(`Processing ${newMatches.length} unprocessed matches`);
 
-    await sequentially(newMatches, ({ id: matchId }) => {
+    const startTime = Date.now();
+
+    await sequentially(newMatches, ({ id: matchId }, index) => {
+      console.log(`[${index + 1} / ${newMatches.length}] Processing match ID ${matchId}`);
+
       return storeMatchData(page, matchId)
         .catch(logErrorAndDefault(null))
         .then(() => delay(TRAFFIC_DELAY));
     });
+
+    const endTime = Date.now();
+    const duration = Math.ceil((endTime - startTime) / 1000);
+
+    console.log(`Processed ${newMatches.length} matches in ${duration} seconds.`);
 
     await fs.outputFile(path.resolve(__dirname, `../src/database/timestamp.json`), JSON.stringify(new Date().toISOString()), 'utf-8');
 
