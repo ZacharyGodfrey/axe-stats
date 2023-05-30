@@ -7,8 +7,8 @@ const db = require('../src/database');
 // Settings
 
 const IDLE_TIME = 5 * 1000; // 5 seconds
-const TRAFFIC_DELAY = 5 * 1000; // 5 seconds
-const BATCH_SIZE = 5; // matches to process per run
+const TRAFFIC_DELAY = 1 * 1000; // 1 seconds
+const BATCH_SIZE = 100; // matches to process per run
 
 // Helper Functions
 
