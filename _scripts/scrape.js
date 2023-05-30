@@ -4,9 +4,13 @@ const puppeteer = require('puppeteer');
 
 const db = require('../src/database');
 
+// Settings
+
 const IDLE_TIME = 5 * 1000; // 5 seconds
 const TRAFFIC_DELAY = 5 * 1000; // 5 seconds
 const BATCH_SIZE = 5; // matches to process per run
+
+// Helper Functions
 
 const randomInt = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -61,6 +65,8 @@ const reactPageState = (page, selector) => {
 
   return page.$eval(selector, getState);
 };
+
+// Scrape Logic
 
 const getProfiles = async (page) => {
   const url = 'https://axescores.com/players/collins-rating';
@@ -140,7 +146,15 @@ const roundOutcome = (playerScore, opponentScore) => {
 };
 
 const matchOutcome = (rounds) => {
-  const { win, loss } = rounds.reduce((res, r) => Object.assign(res, { [r.outcome]: 1 + (res[r.outcome] || 0) }), {});
+  const roundOutcomes = rounds.reduce((result, round) => {
+    return Object.assign(result, {
+      [round.outcome]: 1 + (result[round.outcome] || 0)
+    });
+  }, {});
+
+  console.log(`Round Outcomes: ${JSON.stringify(roundOutcomes, null, 2)}`);
+
+  const { win, loss } = roundOutcomes;
 
   switch (true) {
     case win - loss > 0: return 'win';
