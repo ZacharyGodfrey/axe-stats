@@ -189,9 +189,9 @@ const buildMatch = ({ id, players, rounds }, playerId) => {
 
 const isDesiredResponse = (method, status, url) => {
   return (response) => {
-    console.log(`HTTP Response: ${response.request().method()} ${response.status()} response.url()`);
-
-    return response.request().method() === method && response.status() === status && response.url() === url;
+    return response.request().method() === method
+      && response.status() === status
+      && response.url() === url;
   };
 };
 
