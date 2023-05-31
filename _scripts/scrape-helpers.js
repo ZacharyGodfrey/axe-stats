@@ -1,6 +1,6 @@
 const db = require('../src/database');
 
-export const ensureTables = async () => {
+const ensureTables = async () => {
   await db.run(`
     CREATE TABLE IF NOT EXISTS profiles (
       id INTEGER PRIMARY KEY,
@@ -20,16 +20,22 @@ export const ensureTables = async () => {
   `);
 };
 
-export const sequentially = async (items, action) => {
+const sequentially = async (items, action) => {
   return items.reduce((prev, item, index) => {
     return prev.then(() => action(item, index));
   }, Promise.resolve());
 };
 
-export const logErrorAndDefault = (defaultValue) => {
+const logErrorAndDefault = (defaultValue) => {
   return (error) => {
     console.error(error);
 
     return defaultValue;
   };
+};
+
+module.exports = {
+  ensureTables,
+  sequentially,
+  logErrorAndDefault
 };
