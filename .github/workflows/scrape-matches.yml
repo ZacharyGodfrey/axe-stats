@@ -1,0 +1,28 @@
+name: Matches Scrape Workflow
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "30 12 * * 3"
+jobs:
+  run-scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Branch
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
+      - name: Set Up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npm i
+      - name: Run Scrape
+        run: npm run scrape-matches
+      - name: Commit File Changes
+        run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+          git add .
+          git commit -m "Matches Data Scrape"
+          git push

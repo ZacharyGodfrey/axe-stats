@@ -1,8 +1,8 @@
-name: Data Scrape Workflow
+name: Profiles Scrape Workflow
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 5 * * 3"
+    - cron: "30 6 * * 3"
 jobs:
   run-scrape:
     runs-on: ubuntu-latest
@@ -18,11 +18,11 @@ jobs:
       - name: Install Dependencies
         run: npm i
       - name: Run Scrape
-        run: npm run scrape
+        run: npm run scrape-profiles
       - name: Commit File Changes
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
           git add .
-          git commit -m "Data Scrape"
+          git commit -m "Profiles Data Scrape"
           git push

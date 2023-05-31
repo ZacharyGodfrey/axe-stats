@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "node _scripts/build.js",
-    "scrape": "node _scripts/scrape.js"
+    "scrape-profiles": "node _scripts/scrape-profiles.js",
+    "scrape-matches": "node _scripts/scrape-matches.js"
   },
   "dependencies": {
     "express": "^4.18.2",
