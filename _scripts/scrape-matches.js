@@ -5,6 +5,8 @@ const puppeteer = require('puppeteer');
 const db = require('../src/database');
 const { ensureTables, sequentially, logErrorAndDefault } = require('./scrape-helpers');
 
+let httpRequestCount = 0;
+
 const BATCH_SIZE = 1000; // matches to process per run
 const TIMEOUT = 5 * 1000; // 5 seconds
 
@@ -18,6 +20,8 @@ const storeMatchData = async (page, matchId) => {
     page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: TIMEOUT }),
     page.goto(url)
   ]);
+
+  httpRequestCount++;
 
   const rawMatch = await apiResponse.json();
 
@@ -124,6 +128,10 @@ const matchOutcome = (rounds) => {
 };
 
 (async () => {
+  const startTime = Date.now();
+
+  let exitCode = 0;
+
   try {
     console.log('Ensuring database tables exist');
 
@@ -135,8 +143,6 @@ const matchOutcome = (rounds) => {
     const page = await browser.newPage();
 
     console.log('Getting match data');
-
-    const startTime = Date.now();
 
     const { unprocessed } = await db.get(`SELECT COUNT(id) AS "unprocessed" FROM matches WHERE processed = 0;`);
 
@@ -152,10 +158,7 @@ const matchOutcome = (rounds) => {
       return storeMatchData(page, matchId).catch(logErrorAndDefault(null));
     });
 
-    const endTime = Date.now();
-    const duration = Math.ceil((endTime - startTime) / 1000);
-
-    console.log(`Processed ${newMatches.length} matches in ${duration} seconds.`);
+    console.log(`Processed ${newMatches.length} matches.`);
 
     const timestampFile = path.resolve(__dirname, `../src/database/timestamp.json`);
     const timestampValue = JSON.stringify(new Date().toISOString());
@@ -171,6 +174,14 @@ const matchOutcome = (rounds) => {
   } catch (error) {
     console.log(error);
 
-    process.exit(1);
+    exitCode = 1;
+  } finally {
+    const endTime = Date.now();
+    const duration = Math.ceil((endTime - startTime) / 1000);
+    const requestRate = Math.round(httpRequestCount / duration);
+
+    console.log(`Made ${httpRequestCount} HTTP requests in ${duration} seconds (${requestRate} per second)`);
+
+    process.exit(exitCode);
   }
 })();
