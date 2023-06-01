@@ -5,19 +5,27 @@ const puppeteer = require('puppeteer');
 const db = require('../src/database');
 const { ensureTables, sequentially, logErrorAndDefault } = require('./scrape-helpers');
 
-let httpRequestCount = 0;
+const BATCH_SIZE = 100; // matches to process per run
 
-const BATCH_SIZE = 1000; // matches to process per run
-const TIMEOUT = 5 * 1000; // 5 seconds
+let httpRequestCount = 0;
+let processedMatchCount = 0;
+
+const toMilliseconds = (hours, minutes, seconds) => {
+  const m = (60 * hours) + minutes;
+  const s = (60 * m) + seconds;
+
+  return 1000 * s;
+};
 
 const storeMatchData = async (page, matchId) => {
   const url = `https://axescores.com/player/${randomInt(1, 26)}/${matchId}`;
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
+  const timeout = toMilliseconds(0, 0, 5); // 5 seconds
 
   console.log(`Go to ${url}`);
 
   const [apiResponse] = await Promise.all([
-    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: TIMEOUT }),
+    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout }),
     page.goto(url)
   ]);
 
@@ -129,6 +137,7 @@ const matchOutcome = (rounds) => {
 
 (async () => {
   const startTime = Date.now();
+  const maxRunTime = startTime + toMilliseconds(0, 5, 0); // 5 minutes
 
   let exitCode = 0;
 
@@ -150,15 +159,19 @@ const matchOutcome = (rounds) => {
     console.log(`There are ${totalMatches} total matches`);
     console.log(`There are ${unprocessed} unprocessed matches`);
 
-    const newMatches = await db.query(`SELECT id FROM matches WHERE processed = 0 LIMIT ${BATCH_SIZE};`);
+    let newMatchIds = [];
 
-    console.log(`Processing ${newMatches.length} unprocessed matches`);
+    do {
+      newMatchIds = await db.query(`SELECT id FROM matches WHERE processed = 0 LIMIT ${BATCH_SIZE};`);
 
-    await sequentially(newMatches, ({ id: matchId }, index) => {
-      console.log(`[${index + 1} / ${newMatches.length}] Processing match ID ${matchId}`);
+      await sequentially(newMatchIds, ({ id: matchId }, index) => {
+        console.log(`[${index + 1} / ${newMatchIds.length}] Processing match ID ${matchId}`);
 
-      return storeMatchData(page, matchId).catch(logErrorAndDefault(null));
-    });
+        await storeMatchData(page, matchId).catch(logErrorAndDefault(null));
+
+        processedMatchCount++;
+      });
+    } while (Date.now() < maxRunTime && newMatchIds.length > 0);
 
     const timestampFile = path.resolve(__dirname, `../src/database/timestamp.json`);
     const timestampValue = JSON.stringify(new Date().toISOString());
@@ -180,6 +193,7 @@ const matchOutcome = (rounds) => {
     const duration = Math.ceil((endTime - startTime) / 1000);
     const requestRate = Math.round(httpRequestCount / duration);
 
+    console.log(`Processed ${processedMatchCount} matches in ${duration} seconds`);
     console.log(`Made ${httpRequestCount} HTTP requests in ${duration} seconds (${requestRate} per second)`);
 
     process.exit(exitCode);
