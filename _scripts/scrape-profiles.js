@@ -56,15 +56,10 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
 
   Object.entries({ name, about, rank, rating, average }).forEach(([k, v]) => {
     placeholderPairs.push(`${k} = ?`);
-    values.push(JSON.stringify(v));
+    values.push(v);
   });
 
-  const profileSql = `UPDATE profiles SET ${placeholderPairs.join(',\n')} WHERE id = ${id};`;
-
-  console.log(profileSql);
-  console.log(values);
-
-  await db.run(profileSql, values);
+  await db.run(`UPDATE profiles SET ${placeholderPairs.join(',\n')} WHERE id = ${id};`, values);
 
   const filePath = path.resolve(__dirname, `../src/database/profiles/${id}.json`);
   const exists = await fs.pathExists(filePath);
