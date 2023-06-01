@@ -1,3 +1,5324 @@
 {
-  "matches": {}
+  "matches": {
+    "6912767": {
+      "id": 6912767,
+      "opponentId": 994726,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912767-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 11,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912767-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 14,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912767-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 11,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912770": {
+      "id": 6912770,
+      "opponentId": 994725,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912770-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912770-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 15,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 13,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912770-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 11,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 10,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912776": {
+      "id": 6912776,
+      "opponentId": 446259,
+      "outcome": "loss",
+      "rounds": [
+        {
+          "id": "6912776-1",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912776-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 14,
+            "throws": [
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912776-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912781": {
+      "id": 6912781,
+      "opponentId": 638994,
+      "outcome": "loss",
+      "rounds": [
+        {
+          "id": "6912781-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912781-2",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912781-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 15,
+            "throws": [
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912790": {
+      "id": 6912790,
+      "opponentId": 531144,
+      "outcome": "loss",
+      "rounds": [
+        {
+          "id": "6912790-1",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 14,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 7,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912790-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912790-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912795": {
+      "id": 6912795,
+      "opponentId": 812657,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912795-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912795-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912795-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912799": {
+      "id": 6912799,
+      "opponentId": 530834,
+      "outcome": "loss",
+      "rounds": [
+        {
+          "id": "6912799-1",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912799-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912799-3",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912803": {
+      "id": 6912803,
+      "opponentId": 875787,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912803-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 9,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912803-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912803-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 15,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 5,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912807": {
+      "id": 6912807,
+      "opponentId": 1242,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912807-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912807-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 13,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912807-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 7,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 20,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": {
+        "id": "6912807-4",
+        "outcome": "win",
+        "isBigAxe": true,
+        "self": {
+          "score": 5,
+          "throws": [
+            {
+              "score": 5,
+              "isClutch": false
+            }
+          ]
+        },
+        "opponent": {
+          "score": 1,
+          "throws": [
+            {
+              "score": 1,
+              "isClutch": false
+            }
+          ]
+        }
+      }
+    },
+    "6912814": {
+      "id": 6912814,
+      "opponentId": 728026,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912814-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 9,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912814-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 20,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 6,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912814-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 7,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912822": {
+      "id": 6912822,
+      "opponentId": 994726,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912822-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912822-2",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912822-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 11,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": {
+        "id": "6912822-4",
+        "outcome": "win",
+        "isBigAxe": true,
+        "self": {
+          "score": 3,
+          "throws": [
+            {
+              "score": 0,
+              "isClutch": false
+            },
+            {
+              "score": 3,
+              "isClutch": false
+            }
+          ]
+        },
+        "opponent": {
+          "score": 1,
+          "throws": [
+            {
+              "score": 0,
+              "isClutch": false
+            },
+            {
+              "score": 1,
+              "isClutch": false
+            }
+          ]
+        }
+      }
+    },
+    "6912825": {
+      "id": 6912825,
+      "opponentId": 994725,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912825-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912825-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912825-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 13,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912831": {
+      "id": 6912831,
+      "opponentId": 446259,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912831-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 8,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912831-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 5,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912831-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912836": {
+      "id": 6912836,
+      "opponentId": 638994,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912836-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912836-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912836-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912845": {
+      "id": 6912845,
+      "opponentId": 531144,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912845-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912845-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912845-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912850": {
+      "id": 6912850,
+      "opponentId": 812657,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912850-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912850-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912850-3",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": {
+        "id": "6912850-4",
+        "outcome": "win",
+        "isBigAxe": true,
+        "self": {
+          "score": 17,
+          "throws": [
+            {
+              "score": 5,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": false
+            },
+            {
+              "score": 5,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 7,
+              "isClutch": true
+            }
+          ]
+        },
+        "opponent": {
+          "score": 10,
+          "throws": [
+            {
+              "score": 5,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": false
+            },
+            {
+              "score": 5,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            }
+          ]
+        }
+      }
+    },
+    "6912854": {
+      "id": 6912854,
+      "opponentId": 530834,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912854-1",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912854-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912854-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 7,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912858": {
+      "id": 6912858,
+      "opponentId": 875787,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912858-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 13,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 5,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912858-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 9,
+            "throws": [
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912858-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912862": {
+      "id": 6912862,
+      "opponentId": 1242,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912862-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912862-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 7,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912862-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912869": {
+      "id": 6912869,
+      "opponentId": 728026,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912869-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 9,
+            "throws": [
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912869-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 10,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 1,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912869-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 10,
+            "throws": [
+              {
+                "score": 1,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912877": {
+      "id": 6912877,
+      "opponentId": 994726,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912877-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912877-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912877-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 14,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912880": {
+      "id": 6912880,
+      "opponentId": 994725,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912880-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 14,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912880-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912880-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912886": {
+      "id": 6912886,
+      "opponentId": 446259,
+      "outcome": "otl",
+      "rounds": [
+        {
+          "id": "6912886-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912886-2",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912886-3",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": {
+        "id": "6912886-4",
+        "outcome": "loss",
+        "isBigAxe": true,
+        "self": {
+          "score": 1,
+          "throws": [
+            {
+              "score": 1,
+              "isClutch": false
+            }
+          ]
+        },
+        "opponent": {
+          "score": 3,
+          "throws": [
+            {
+              "score": 3,
+              "isClutch": false
+            }
+          ]
+        }
+      }
+    },
+    "6912891": {
+      "id": 6912891,
+      "opponentId": 638994,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912891-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 14,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912891-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 21,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 15,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912891-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 12,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912900": {
+      "id": 6912900,
+      "opponentId": 531144,
+      "outcome": "loss",
+      "rounds": [
+        {
+          "id": "6912900-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 20,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 20,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912900-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 19,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912900-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912905": {
+      "id": 6912905,
+      "opponentId": 812657,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912905-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912905-2",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912905-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": {
+        "id": "6912905-4",
+        "outcome": "win",
+        "isBigAxe": true,
+        "self": {
+          "score": 4,
+          "throws": [
+            {
+              "score": 1,
+              "isClutch": false
+            },
+            {
+              "score": 3,
+              "isClutch": false
+            }
+          ]
+        },
+        "opponent": {
+          "score": 2,
+          "throws": [
+            {
+              "score": 1,
+              "isClutch": false
+            },
+            {
+              "score": 1,
+              "isClutch": false
+            }
+          ]
+        }
+      }
+    },
+    "6912909": {
+      "id": 6912909,
+      "opponentId": 530834,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912909-1",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912909-2",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912909-3",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 18,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          },
+          "opponent": {
+            "score": 17,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": null
+    },
+    "6912913": {
+      "id": 6912913,
+      "opponentId": 875787,
+      "outcome": "win",
+      "rounds": [
+        {
+          "id": "6912913-1",
+          "outcome": "tie",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912913-2",
+          "outcome": "win",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 16,
+            "throws": [
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 0,
+                "isClutch": true
+              }
+            ]
+          }
+        },
+        {
+          "id": "6912913-3",
+          "outcome": "loss",
+          "isBigAxe": false,
+          "self": {
+            "score": 23,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 3,
+                "isClutch": false
+              }
+            ]
+          },
+          "opponent": {
+            "score": 25,
+            "throws": [
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              },
+              {
+                "score": 5,
+                "isClutch": false
+              }
+            ]
+          }
+        }
+      ],
+      "bigAxe": {
+        "id": "6912913-4",
+        "outcome": "win",
+        "isBigAxe": true,
+        "self": {
+          "score": 15,
+          "throws": [
+            {
+              "score": 3,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": false
+            },
+            {
+              "score": 5,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 7,
+              "isClutch": true
+            }
+          ]
+        },
+        "opponent": {
+          "score": 8,
+          "throws": [
+            {
+              "score": 3,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": false
+            },
+            {
+              "score": 5,
+              "isClutch": false
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            },
+            {
+              "score": 0,
+              "isClutch": true
+            }
+          ]
+        }
+      }
+    }
+  }
 }
