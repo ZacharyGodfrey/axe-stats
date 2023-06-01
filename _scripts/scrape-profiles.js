@@ -118,12 +118,6 @@ const storeProfileData = async (page, { id, name, rank, rating, average }) => {
       return storeProfileData(page, profile).catch(logErrorAndDefault(null));
     });
 
-    const { totalMatches } = await db.query(`SELECT COUNT(id) AS "totalMatches" FROM matches;`);
-    const { newMatches } = await db.query(`SELECT COUNT(id) AS "newMatches" FROM matches WHERE processed = 0;`);
-    const { totalProfiles } = await db.query(`SELECT COUNT(id) AS "totalProfiles" FROM profiles;`);
-
-    console.log(`There are ${newMatches} of ${totalMatches} unprocessed matches from ${totalProfiles} profiles.`);
-
     const timestampFile = path.resolve(__dirname, `../src/database/timestamp.json`);
     const timestampValue = JSON.stringify(new Date().toISOString());
 

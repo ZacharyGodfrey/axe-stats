@@ -144,8 +144,10 @@ const matchOutcome = (rounds) => {
 
     console.log('Getting match data');
 
+    const { totalMatches } = await db.get(`SELECT COUNT(id) AS "totalMatches" FROM matches;`);
     const { unprocessed } = await db.get(`SELECT COUNT(id) AS "unprocessed" FROM matches WHERE processed = 0;`);
 
+    console.log(`There are ${totalMatches} total matches`);
     console.log(`There are ${unprocessed} unprocessed matches`);
 
     const newMatches = await db.query(`SELECT id FROM matches WHERE processed = 0 LIMIT ${BATCH_SIZE};`);
@@ -157,8 +159,6 @@ const matchOutcome = (rounds) => {
 
       return storeMatchData(page, matchId).catch(logErrorAndDefault(null));
     });
-
-    console.log(`Processed ${newMatches.length} matches.`);
 
     const timestampFile = path.resolve(__dirname, `../src/database/timestamp.json`);
     const timestampValue = JSON.stringify(new Date().toISOString());
