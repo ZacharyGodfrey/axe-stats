@@ -23,6 +23,7 @@ jobs:
         run: |
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
+          git pull
           git add .
           git commit -m "Matches Data Scrape"
           git push
