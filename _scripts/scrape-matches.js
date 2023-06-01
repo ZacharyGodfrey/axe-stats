@@ -164,7 +164,7 @@ const matchOutcome = (rounds) => {
     do {
       newMatchIds = await db.query(`SELECT id FROM matches WHERE processed = 0 LIMIT ${BATCH_SIZE};`);
 
-      await sequentially(newMatchIds, ({ id: matchId }, index) => {
+      await sequentially(newMatchIds, async ({ id: matchId }, index) => {
         console.log(`[${index + 1} / ${newMatchIds.length}] Processing match ID ${matchId}`);
 
         await storeMatchData(page, matchId).catch(logErrorAndDefault(null));
