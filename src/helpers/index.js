@@ -24,16 +24,29 @@ const sequentially = async (items, action) => {
   }, Promise.resolve());
 };
 
+const logError = (error) => {
+  console.log('**********');
+
+  console.log(JSON.stringify({
+    message: error.message,
+    stack: error.stack.split('\n').slice(1)
+  }, null, 2));
+
+  console.log('**********');
+};
+
 const logErrorAndDefault = (defaultValue) => {
   return (error) => {
-    console.error(error);
+    logError(error);
 
     return defaultValue;
   };
 };
 
 module.exports = {
+  db: require('./database'),
   ensureTables,
   sequentially,
+  logError,
   logErrorAndDefault
 };
