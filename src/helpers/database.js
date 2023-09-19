@@ -1,6 +1,6 @@
 const sqlite3 = require('sqlite3').verbose();
 
-const FILE_NAME = `${__dirname}/data.db`;
+const FILE_NAME = `${__dirname}/../../data.db`;
 let connection = null;
 
 const connect = () => connection ? Promise.resolve() : new Promise((resolve, reject) => {
