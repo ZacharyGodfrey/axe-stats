@@ -17,7 +17,7 @@ const getProfiles = async (page, profileIdSet) => {
   return profiles.filter(x => profileIdSet.has(x.id));
 };
 
-const storeProfile = async ({ id, rank, rating }) => {
+const processProfile = async (page, { id, rank, rating }) => {
   await page.goto(`https://axescores.com/player/${id}`);
   await page.waitForNetworkIdle();
 
@@ -56,7 +56,7 @@ const storeProfile = async ({ id, rank, rating }) => {
     const profileIdSet = new Set(config.profileIds);
     const profiles = await getProfiles(page, profileIdSet);
 
-    await sequentially(profiles, storeProfile);
+    await sequentially(profiles, async (profile) => processProfile(page, profile));
     await browser.close();
     await db.disconnect();
   } catch (error) {

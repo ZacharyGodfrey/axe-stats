@@ -5,13 +5,13 @@ const ensureTables = async (db) => {
       name TEXT DEFAULT '',
       about TEXT DEFAULT '',
       rank INTEGER DEFAULT 0,
-      rating INTEGER DEFAULT 0,
-      average REAL DEFAULT 0
+      rating INTEGER DEFAULT 0
     ) WITHOUT ROWID;
   `);
 
   await db.run(`
     CREATE TABLE IF NOT EXISTS matches (
+      profileId INTEGER 
       id INTEGER PRIMARY KEY,
       processed INTEGER DEFAULT 0
     ) WITHOUT ROWID;
