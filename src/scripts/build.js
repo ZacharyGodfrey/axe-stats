@@ -2,16 +2,16 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
-const DB = require('../helpers/database');
+const { db, logError } = require('../helpers');
 
-const CWD = process.cwd();
-const CLIENT_DIR = path.resolve(CWD, '/src/client');
-const DIST_DIR = path.resolve(CWD, '/dist');
+const cwd = process.cwd();
+const CLIENT_DIR = path.resolve(cwd, '/src/client');
+const DIST_DIR = path.resolve(cwd, '/dist');
 
 const getProfiles = () => {
   console.log('Get Profiles');
 
-  return DB.query(`
+  return db.query(`
     SELECT *
     FROM profiles
     ORDER BY id ASC;
@@ -87,13 +87,10 @@ const buildProfilePage = async (shell, profile) => {
         return buildProfilePage(shell, profile).then(page => writeFile(`${DIST_DIR}/${profile.id}/index.html`, page))
       })
     ]);
+
+    await db.disconnect();
   } catch (error) {
-    console.log('**********');
-    console.log(JSON.stringify({
-      message: error.message,
-      stack: error.stack.split('\n').slice(1)
-    }, null, 2));
-    console.log('**********');
+    logError(error);
 
     process.exit(1);
   }

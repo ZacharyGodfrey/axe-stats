@@ -24,6 +24,14 @@ const sequentially = async (items, action) => {
   }, Promise.resolve());
 };
 
+const reactPageState = (page, selector) => {
+  const getState = (element) => {
+    return element._reactRootContainer._internalRoot.current.memoizedState.element.props.store.getState();
+  };
+
+  return page.$eval(selector, getState);
+};
+
 const logError = (error) => {
   console.log('**********');
 
@@ -47,6 +55,7 @@ module.exports = {
   db: require('./database'),
   ensureTables,
   sequentially,
+  reactPageState,
   logError,
   logErrorAndDefault
 };
