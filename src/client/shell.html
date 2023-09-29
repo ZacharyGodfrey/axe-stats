@@ -153,8 +153,9 @@
       table {
         width: 100%;
         border-collapse: collapse;
+        color: black;
         background: white;
-        border: 1px solid var(--main);
+        border: 1px solid black;
       }
 
       tbody > tr:nth-of-type(2n) {
@@ -172,24 +173,8 @@
 
       thead th {
         color: white;
-        background: var(--main);
+        background: var(--dark);
       }
-
-      input[type="text"] {
-        display: block;
-        margin: 1rem 0;
-        padding: 0 0.5rem;
-        width: 100%;
-        font-family: monospace;
-        font-size: 1rem;
-        line-height: 1.5;
-        color: black;
-        background: white;
-        border: 1px solid var(--main);
-        border-radius: 0.25rem;
-      }
-
-      [x-cloak] { display: none !important; }
 
       /* Utility Classes */
 
