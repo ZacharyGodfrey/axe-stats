@@ -11,9 +11,31 @@ const ensureTables = async (db) => {
 
   await db.run(`
     CREATE TABLE IF NOT EXISTS matches (
-      profileId INTEGER 
-      id INTEGER PRIMARY KEY,
-      processed INTEGER DEFAULT 0
+      profileId INTEGER NOT NULL,
+      id INTEGER NOT NULL,
+      processed INTEGER DEFAULT 0,
+      total INTEGER DEFAULT 0,
+      win INTEGER DEFAULT 0,
+      loss INTEGER DEFAULT 0,
+      otl INTEGER DEFAULT 0,
+      hatchetWin INTEGER DEFAULT 0,
+      hatchetLoss INTEGER DEFAULT 0,
+      hatchetTie INTEGER DEFAULT 0,
+      hatchetClutchCall INTEGER DEFAULT 0,
+      hatchetClutchHit INTEGER DEFAULT 0,
+      hatchetFive INTEGER DEFAULT 0,
+      hatchetThree INTEGER DEFAULT 0,
+      hatchetOne INTEGER DEFAULT 0,
+      hatchetDrop INTEGER DEFAULT 0,
+      bigAxeWin INTEGER DEFAULT 0,
+      bigAxeLoss INTEGER DEFAULT 0,
+      bigAxeClutchCall INTEGER DEFAULT 0,
+      bigAxeClutchHit INTEGER DEFAULT 0,
+      bigAxeFive INTEGER DEFAULT 0,
+      bigAxeThree INTEGER DEFAULT 0,
+      bigAxeOne INTEGER DEFAULT 0,
+      bigAxeDrop INTEGER DEFAULT 0,
+      PRIMARY KEY (profileId, id)
     ) WITHOUT ROWID;
   `);
 };
