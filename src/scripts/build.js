@@ -4,9 +4,9 @@ const { render } = require('mustache');
 
 const { db, sum, round, logError } = require('../helpers');
 
-const cwd = process.cwd();
-const CLIENT_DIR = path.resolve(cwd, '/src/client');
-const DIST_DIR = path.resolve(cwd, '/dist');
+const CWD = process.cwd();
+const CLIENT_DIR = path.resolve(CWD, '/src/client');
+const DIST_DIR = path.resolve(CWD, '/dist');
 
 const transformProfile = (profile) => {
   const matchCount = sum([
@@ -110,6 +110,11 @@ const buildProfilePage = async (shell, profile) => {
 (async () => {
   try {
     console.log('# Build Site');
+    console.log(JSON.stringify({
+      CWD,
+      CLIENT_DIR,
+      DIST_DIR
+    }, null, 2));
 
     await fs.emptyDir(DIST_DIR);
     await fs.copy(`${CLIENT_DIR}/static`, DIST_DIR);
