@@ -3,22 +3,18 @@
     <h2>Thrower Profiles</h2>
 
     <figure>
-      <table>
+      <table style="table-layout: fixed;">
         <thead>
-          <tr class="text-center">
-            <th>Premier Global Rank</th>
-            <th colspan="2">Name</th>
-            <th>Premier Collins Rating</th>
+          <tr>
+            <th class="text-center">Rank</th>
+            <th>Name</th>
+            <th class="text-center">Collins Rating</th>
           </tr>
         </thead>
         <tbody>
           {{#profiles}}
           <tr>
             <td class="text-center">{{rank}}</td>
-
-            <td>
-              <img class="profile-image" src="https://admin.axescores.com/pic/{{id}}" style="max-width:4rem;">
-            </td>
 
             <td>
               <a href="/{{id}}">{{name}}</a>
