@@ -103,7 +103,7 @@ const matchStats = (rawMatch, profileId) => {
 const processMatch = async (page, matchId, profileIds) => {
   const url = `https://axescores.com/player/1/${matchId}`;
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
-  const timeout = toMilliseconds(0, 0, 5); // 5 seconds
+  const timeout = 5 * 1000; // 5 seconds
 
   const [apiResponse] = await Promise.all([
     page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout }),
