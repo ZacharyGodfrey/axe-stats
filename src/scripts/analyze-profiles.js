@@ -104,7 +104,7 @@ const analyzeProfile = async (id) => {
   });
 
   await db.run(`
-    UPDATE profile
+    UPDATE profiles
     SET ${Object.keys(stats).map(x => `${x} = ?`).join(',\n')}
     WHERE id = ?
   `, [
