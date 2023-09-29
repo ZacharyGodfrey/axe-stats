@@ -1,0 +1,31 @@
+<section class="bg-main">
+  <div class="x-limit">
+    <h2>Thrower Profiles</h2>
+
+    <figure>
+      <table class="text-center">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th colspan="2">Name</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#profiles}}
+          <tr>
+            <td>{{rank}}</td>
+            <td>
+              <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
+            </td>
+            <td>
+              <a href="/{{id}}">{{name}}</a>
+            </td>
+            <td>{{rating}}</td>
+          </tr>
+          {{/profiles}}
+        </tbody>
+      </table>
+    </figure>
+  </div>
+</section>

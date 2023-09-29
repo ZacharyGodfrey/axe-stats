@@ -1,7 +1,3 @@
 [build]
-  command = "npm run build"
+  command = "node src/scripts/build.js"
   publish = "dist"
-
-#[dev]
-#  port = 8080
-#  autoLaunch = true

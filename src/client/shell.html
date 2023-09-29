@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Axe Charts provides an alternative view of IATF axe throwing data.">
+    <link rel="shortcut icon" type="image/ico" href="/favicon.ico">
+
+    {{#title}}<title>Axe Charts | {{title}}</title>{{/title}}
+    {{^title}}<title>Axe Charts</title>{{/title}}
+
+    <!-- <script src="https://unpkg.com/alpinejs" defer></script> -->
+    <style>
+      :root {
+        --highlight: hsl(200, 80%, 80%);
+        --cta:       hsl(200, 80%, 60%);
+        --main:      hsl(200, 50%, 40%);
+        --dark:      hsl(200, 50%, 20%);
+        --neutral:    #EEEEEE;
+        font-family: monospace;
+        font-variant-numeric: slashed-zero tabular-nums;
+        font-size: 16px;
+        line-height: 1.5;
+        color: black;
+        background: var(--neutral);
+      }
+
+      * {
+        position: relative;
+        box-sizing: border-box;
+        transition: all 0.25s;
+      }
+
+      *:first-child {
+        margin-top: 0 !important;
+      }
+
+      *:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      ::selection {
+        color: black;
+        background: var(--highlight);
+      }
+
+      /* Page Layout */
+
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+      }
+
+      header {
+        padding: 0 1rem;
+        background: white;
+      }
+
+      main {
+        flex: 1;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+      }
+
+      main > :nth-last-child(2) {
+        flex: 1;
+      }
+
+      section {
+        padding: 2rem 1rem;
+      }
+
+      footer {
+        padding: 2rem 1rem;
+        text-align: right;
+      }
+
+      /* Element Styles */
+
+      h1, h2, h3, p, li, th, td, a, button {
+        line-height: 1.5;
+      }
+
+      h1, h2, h3, p, ul, ol {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: var(--main);
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: var(--main);
+        text-decoration-thickness: 2px;
+      }
+
+      h1 a {
+        text-decoration: none;
+      }
+
+      ul, ol {
+        list-style-position: inside;
+        padding: 0;
+      }
+
+      hr {
+        width: 100%;
+        height: 2px;
+        padding: 0;
+        border: none;
+        outline: none;
+        background: var(--main);
+      }
+
+      iframe {
+        display: block;
+        padding: 0;
+        border: 2px solid var(--dark);
+        outline: none;
+        width: 100%;
+        height: 100%;
+        max-width: 1200px;
+        max-height: 800px;
+        aspect-ratio: 3 / 2;
+      }
+
+      figure {
+        width: 100%;
+        margin: 1rem 0;
+        overflow-x: auto;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border: 1px solid var(--main);
+      }
+
+      tbody > tr:nth-of-type(2n) {
+        background: var(--neutral);
+      }
+
+      th, td {
+        padding: 0.5rem;
+        vertical-align: middle;
+      }
+
+      th {
+        font-weight: bold;
+      }
+
+      thead th {
+        color: white;
+        background: var(--main);
+      }
+
+      input[type="text"] {
+        display: block;
+        margin: 1rem 0;
+        padding: 0 0.5rem;
+        width: 100%;
+        font-family: monospace;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: black;
+        background: white;
+        border: 1px solid var(--main);
+        border-radius: 0.25rem;
+      }
+
+      [x-cloak] { display: none !important; }
+
+      /* Utility Classes */
+
+      .hide { display: none !important; }
+
+      .text-right { text-align: right; }
+      .text-center { text-align: center; }
+      .no-break { white-space: nowrap; }
+
+      .pad, .x-pad {
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+
+      .x-limit {
+        max-width: 100ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .bg-dark {
+        color: white;
+        background: var(--dark);
+      }
+
+      .bg-main {
+        color: white;
+        background: var(--main);
+      }
+
+      .split {
+        flex-direction: row;
+        align-items: start;
+        gap: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .split:not(.portrait .stack) {
+        display: flex;
+      }
+
+      .split:not(.portrait .stack).x-center {
+        justify-content: center;
+      }
+
+      .split:not(.portrait .stack).y-center {
+        align-items: center;
+      }
+
+      .split:not(.portrait .stack) > * {
+        margin: 0;
+      }
+
+      .split:not(.portrait .stack) > .grow {
+        flex: 1;
+      }
+
+      /* Component Classes */
+
+      .button {
+        display: inline-block;
+        padding: 0.5rem;
+        text-decoration: none;
+        font-weight: bold;
+        font-family: inherit;
+        font-size: 1rem;
+        background: var(--cta);
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+      }
+
+      .button:hover {
+        background: var(--highlight);
+      }
+
+      .profile-image {
+        display: block;
+        margin: 1rem auto;
+        width: clamp(4rem, 100%, 16rem);
+        height: auto;
+        border-radius: 50%;
+      }
+
+      .card {
+        margin: 1rem 0;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        color: black;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="x-limit">
+        <h1>
+          <a href="/">Axe Charts</a>
+        </h1>
+      </div>
+    </header>
+
+    <main>
+      {{>page}}
+
+      <footer class="bg-dark">
+        <div class="x-limit">
+          <h2>Axe Charts</h2>
+
+          <p>
+            <a href="mailto:info@axecharts.com">info@axecharts.com</a>
+          </p>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>
