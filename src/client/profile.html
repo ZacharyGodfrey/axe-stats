@@ -1,30 +1,26 @@
-<section class="bg-dark">
+<section class="bg-main">
   <div class="x-limit split stack y-center">
     <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
 
     <div class="grow">
       <h2>{{profile.name}}</h2>
 
-      <figure>
-        <table>
-          <tbody>
-            <tr>
-              <th>Collins Rating</th>
-              <td>{{profile.rating}} (#{{profile.rank}})</td>
-            </tr>
+      <p>
+        <strong>Collins Rating:</strong>
+        <span>{{profile.rating}} (#{{profile.rank}})</span>
+      </p>
 
-            <tr>
-              <th>Collins Rating</th>
-              <td>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </figure>
+      <p>
+        <strong>Career Record (W-L-OTL):</strong>
+        <span>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</span>
+      </p>
+
+      <p>{{profile.about}}</p>
     </div>
   </div>
 </section>
 
-<section class="bg-main">
+<section>
   <div class="x-limit">
     <h2>Performance Overview</h2>
 
