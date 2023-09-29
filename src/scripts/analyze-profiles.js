@@ -117,12 +117,12 @@ const analyzeProfile = async (id) => {
   try {
     console.log('# Analyze Profiles');
 
-    const profileIds = await db.query(`
+    const profiles = await db.query(`
       SELECT id
       FROM profiles;
     `);
 
-    await sequentially(profileIds, analyzeProfile);
+    await sequentially(profiles, ({ id }) => analyzeProfile(id));
     await db.disconnect();
   } catch (error) {
     logError(error);
