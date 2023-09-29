@@ -62,6 +62,8 @@ const writeFile = (filePath, content) => {
 };
 
 const buildHomePage = async (shell, profiles) => {
+  console.log('Building home page');
+
   const page = await readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
@@ -72,6 +74,8 @@ const buildHomePage = async (shell, profiles) => {
 };
 
 const build404Page = async (shell) => {
+  console.log('Building 404 page');
+
   const page = await readFile(`${CLIENT_DIR}/404.html`);
   const data = {
     title: 'Not Found'
@@ -81,6 +85,8 @@ const build404Page = async (shell) => {
 };
 
 const build500Page = async (shell) => {
+  console.log('Building 500 page');
+
   const page = await readFile(`${CLIENT_DIR}/500.html`);
   const data = {
     title: 'Error',
@@ -90,6 +96,8 @@ const build500Page = async (shell) => {
 };
 
 const buildProfilePage = async (shell, profile) => {
+  console.log(`Building profile page for profile ID ${profile.id}`);
+
   const page = await readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
@@ -101,7 +109,7 @@ const buildProfilePage = async (shell, profile) => {
 
 (async () => {
   try {
-    console.log('Build Site');
+    console.log('# Build Site');
 
     await fs.emptyDir(DIST_DIR);
     await fs.copy(`${CLIENT_DIR}/static`, DIST_DIR);
