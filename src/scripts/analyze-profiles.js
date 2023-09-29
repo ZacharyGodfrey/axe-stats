@@ -1,6 +1,8 @@
 const { db, sequentially, sum, average, logError } = require('../helpers');
 
 const analyzeProfile = async (id) => {
+  console.log(`Analyzing profile ID ${id}`);
+
   const matches = await db.query(`
     SELECT *
     FROM matches
@@ -113,7 +115,7 @@ const analyzeProfile = async (id) => {
 
 (async () => {
   try {
-    console.log('Analyze Profiles');
+    console.log('# Analyze Profiles');
 
     const profileIds = await db.query(`
       SELECT id

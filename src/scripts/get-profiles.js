@@ -4,6 +4,8 @@ const config = require('../../_config.json');
 const { db, ensureTables, sequentially, reactPageState, logError } = require('../helpers');
 
 const getProfiles = async (page, profileIdSet) => {
+  console.log('Scraping all profile data...');
+
   const rulesetSelector = '.sc-gwVKww.fJdgsF select';
 
   await page.goto('https://axescores.com/players/collins-rating');
@@ -18,6 +20,8 @@ const getProfiles = async (page, profileIdSet) => {
 };
 
 const processProfile = async (page, { id, rank, rating }) => {
+  console.log(`Scraping additional profile data for ID ${id}...`);
+
   await page.goto(`https://axescores.com/player/${id}`);
   await page.waitForNetworkIdle();
 
@@ -47,7 +51,8 @@ const processProfile = async (page, { id, rank, rating }) => {
 
 (async () => {
   try {
-    console.log('Get Profiles');
+    console.log('# Get Profiles');
+    console.log('Config: ', JSON.stringify(config, null, 2));
 
     await ensureTables(db);
 

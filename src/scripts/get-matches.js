@@ -114,6 +114,8 @@ const processMatch = async (page, matchId, profileIds) => {
   const players = rawMatch.players.filter(x => profileIds.has(x.id));
 
   await sequentially(players, async ({ id: profileId }) => {
+    console.log(`Processing match details for match ID ${matchId} profile ID ${profileId}`);
+
     const stats = matchStats(rawMatch, profileId);
 
     await db.run(`
@@ -130,7 +132,7 @@ const processMatch = async (page, matchId, profileIds) => {
 
 (async () => {
   try {
-    console.log('Get Matches');
+    console.log('# Get Matches');
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
