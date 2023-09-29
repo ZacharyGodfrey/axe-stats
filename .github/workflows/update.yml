@@ -15,8 +15,6 @@ jobs:
         run: node src/scripts/get-profiles.js
       - name: Get Matches
         run: node src/scripts/get-matches.js
-      - name: Analyze Matches
-        run: node src/scripts/analyze-matches.js
       - name: Analyze Profiles
         run: node src/scripts/analyze-profiles.js
       - name: Commit File Changes

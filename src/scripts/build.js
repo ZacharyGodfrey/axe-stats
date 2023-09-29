@@ -2,20 +2,53 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
-const { db, logError } = require('../helpers');
+const { db, sum, round, logError } = require('../helpers');
 
 const cwd = process.cwd();
 const CLIENT_DIR = path.resolve(cwd, '/src/client');
 const DIST_DIR = path.resolve(cwd, '/dist');
 
-const getProfiles = () => {
+const transformProfile = (profile) => {
+  const matchCount = sum([
+    profile.matchWin,
+    profile.matchLoss,
+    profile.matchOTL
+  ]);
+
+  const hatchetRoundCount = sum([
+    profile.hatchetRoundWin,
+    profile.hatchetRoundLoss,
+    profile.hatchetRoundTie
+  ]);
+
+  const bigAxeRoundCount = sum([
+    profile.bigAxeRoundWin,
+    profile.bigAxeRoundLoss
+  ]);
+
+  return {
+    ...profile,
+    matchCount,
+    matchWinPercent: round(profile.matchWin / matchCount, 3),
+    hatchetRoundCount,
+    hatchetWinPercent: round(profile.hatchetRoundWin / hatchetRoundCount, 3),
+    hatchetScorePerThrow: round(profile.hatchetTotalScore / profile.hatchetThrowCount, 3),
+    bigAxeRoundCount,
+    bigAxeWinPercent: round(profile.bigAxeRoundWin / bigAxeRoundCount, 3),
+    bigAxeScorePerThrow: round(profile.bigAxeTotalScore / profile.bigAxeThrowCount, 3)
+  };
+};
+
+const getProfiles = async () => {
   console.log('Get Profiles');
 
-  return db.query(`
+  const profiles = await db.query(`
     SELECT *
     FROM profiles
-    ORDER BY id ASC;
+    ORDER BY rank ASC, rating DESC;
   `);
+
+  return profiles.map(x => transformProfile(x));
 };
 
 const readFile = (filePath) => {

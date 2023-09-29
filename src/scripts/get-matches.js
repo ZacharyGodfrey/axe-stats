@@ -70,23 +70,29 @@ const matchStats = (rawMatch, profileId) => {
   const isWin = !isLoss && !isOTL;
 
   return {
-    total: matchScore,
-    win: isWin ? 1 : 0,
-    loss: isLoss ? 1 : 0,
-    otl: isOTL ? 1 : 0,
-    hatchetWin: hatchet.win,
-    hatchetLoss: hatchet.loss,
-    hatchetTie: hatchet.tie,
+    matchWin: isWin ? 1 : 0,
+    matchLoss: isLoss ? 1 : 0,
+    matchOTL: isOTL ? 1 : 0,
+    matchTotalScore: matchScore,
+
+    hatchetRoundWin: hatchet.win,
+    hatchetRoundLoss: hatchet.loss,
+    hatchetRoundTie: hatchet.tie,
+
     hatchetClutchCall: hatchet.clutchCall,
     hatchetClutchHit: hatchet.clutchHit,
+
     hatchetFive: hatchet.five,
     hatchetThree: hatchet.three,
     hatchetOne: hatchet.one,
     hatchetDrop: hatchet.drop,
-    bigAxeWin: bigAxe.win,
-    bigAxeLoss: bigAxe.loss,
+
+    bigAxeRoundWin: bigAxe.win,
+    bigAxeRoundLoss: bigAxe.loss,
+
     bigAxeClutchCall: bigAxe.clutchCall,
     bigAxeClutchHit: bigAxe.clutchHit,
+
     bigAxeFive: bigAxe.five,
     bigAxeThree: bigAxe.three,
     bigAxeOne: bigAxe.one,
