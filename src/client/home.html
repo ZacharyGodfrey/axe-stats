@@ -1,81 +1,31 @@
-<script>
-  const DATA = {{{profilesJSON}}};
-
-  const search = {
-    results: [],
-    execute(value) {
-      const term = value.trim().toLowerCase();
-
-      this.results = term.length < 1 ? [] : DATA.filter(({ name }) => {
-        return name.toLowerCase().includes(term);
-      });
-    }
-  };
-</script>
-
-<section class="bg-main" x-data="search">
+<section class="bg-main">
   <div class="x-limit">
-    <h2>Find Your Profile</h2>
+    <h2>Thrower Profiles</h2>
 
-    <div class="card">
-      <div class="split stack y-center">
-        <p>
-          <strong>Search</strong>
-        </p>
-
-        <div>
-          <input type="text" placeholder="Name" @input.debounce.500ms="execute($event.target.value)">
-        </div>
-      </div>
-    </div>
-
-    <template x-if="results.length > 0">
-      <div class="card">
-        <ul>
-          <template x-for="profile in results" :key="profile.id">
-            <li>
-              <a :href="`/profile/${profile.id}`" x-text="profile.name"></a>
-            </li>
-          </template>
-        </ul>
-      </div>
-    </template>
-  </div>
-</section>
-
-<section class="bg-dark">
-  <div class="x-limit">
-    <h2>Global Statistics</h2>
-
-    <div class="card">
-      <ul>
-        <li>
-          <span>IATF Premier Profiles:</span>
-          <strong class="no-break">{{stats.count}}</strong>
-        </li>
-
-        <li>
-          <span>Average Collins Rating:</span>
-          <strong class="no-break">{{stats.averageRating}}</strong>
-        </li>
-
-        <li>
-          <span>Average Match Score</span>
-          <strong class="no-break">{{stats.averageScore}}</strong>
-        </li>
-      </ul>
-
-      <p class="text-center">
-        <a class="button" href="/profiles">View Ranking</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <p>All data on this site is pulled from the official IATF source.</p>
-
-    <p>The data was last updated on <strong class="no-break">{{timestamp}}</strong>.</p>
+    <figure>
+      <table class="text-center">
+        <thead>
+          <tr>
+            <th>Rank</th>
+            <th colspan="2">Name</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#profiles}}
+          <tr>
+            <td>{{rank}}</td>
+            <td>
+              <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
+            </td>
+            <td>
+              <a href="/{{id}}">{{name}}</a>
+            </td>
+            <td>{{rating}}</td>
+          </tr>
+          {{/profiles}}
+        </tbody>
+      </table>
+    </figure>
   </div>
 </section>

@@ -9,7 +9,7 @@
     {{#title}}<title>Axe Charts | {{title}}</title>{{/title}}
     {{^title}}<title>Axe Charts</title>{{/title}}
 
-    <script src="https://unpkg.com/alpinejs" defer></script>
+    <!-- <script src="https://unpkg.com/alpinejs" defer></script> -->
     <style>
       :root {
         --highlight: hsl(200, 80%, 80%);
@@ -220,40 +220,35 @@
         background: var(--main);
       }
 
-      /* Component Classes */
-
-      .nav-wrap {
-        position: fixed;
-        z-index: 1;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: flex;
+      .split {
         flex-direction: row;
+        align-items: start;
+        gap: 2rem;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
       }
 
-      .nav-content {
-        min-width: 20vw;
-        background: white;
+      .split:not(.portrait .stack) {
+        display: flex;
       }
 
-      .nav-link {
-        display: block;
-        padding: 0.5rem 1rem;
-        font-weight: bold;
-        text-decoration: none;
-        cursor: pointer;
+      .split:not(.portrait .stack).x-center {
+        justify-content: center;
       }
 
-      .nav-link:hover {
-        background: var(--cta);
+      .split:not(.portrait .stack).y-center {
+        align-items: center;
       }
 
-      .nav-dim {
+      .split:not(.portrait .stack) > * {
+        margin: 0;
+      }
+
+      .split:not(.portrait .stack) > .grow {
         flex: 1;
-        background: rgba(0, 0, 0, 20%);
       }
+
+      /* Component Classes */
 
       .button {
         display: inline-block;
@@ -287,110 +282,29 @@
         color: black;
         background: white;
       }
-
-      .split {
-        flex-direction: row;
-        align-items: start;
-        gap: 2rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .split:not(.portrait .stack) {
-        display: flex;
-      }
-
-      .split:not(.portrait .stack).x-center {
-        justify-content: center;
-      }
-
-      .split:not(.portrait .stack).y-center {
-        align-items: center;
-      }
-
-      .split:not(.portrait .stack) > * {
-        margin: 0;
-      }
-
-      .split:not(.portrait .stack) > .grow {
-        flex: 1;
-      }
-
-      body:not(.portrait) .mobile-menu-button,
-      .portrait .desktop-menu {
-        display: none;
-      }
     </style>
   </head>
   <body>
     <header>
-      <div class="x-limit split y-center">
-        <h1 class="grow">
+      <div class="x-limit">
+        <h1>
           <a href="/">Axe Charts</a>
         </h1>
-
-        <div class="desktop-menu">
-          <div class="split">
-            <a class="nav-link" href="/profiles">Profiles</a>
-          </div>
-        </div>
-
-        <div class="mobile-menu-button">
-            <button class="button">Menu</button>
-        </div>
       </div>
     </header>
 
     <main>
-      <nav class="nav-wrap hide">
-        <div class="nav-dim"></div>
-
-        <div class="nav-content">
-          <h1 class="x-pad">
-            <a href="/">Axe Charts</a>
-          </h1>
-
-          <a class="nav-link" href="/profiles">Profiles</a>
-        </div>
-      </nav>
-
       {{>page}}
 
       <footer class="bg-dark">
         <div class="x-limit">
           <h2>Axe Charts</h2>
+
           <p>
             <a href="mailto:info@axecharts.com">info@axecharts.com</a>
           </p>
         </div>
       </footer>
     </main>
-
-    <script>
-      (() => {
-        const setOrientationClass = () => {
-          console.log(screen.orientation.type);
-
-          const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
-          const isPortrait = orientation.includes('portrait');
-
-          if (isPortrait) {
-              document.querySelector('body').classList.add('portrait');
-          } else {
-              document.querySelector('body').classList.remove('portrait');
-          }
-        };
-
-        setOrientationClass();
-
-        screen.orientation.addEventListener('change', setOrientationClass);
-
-        [...document.querySelectorAll('header button, .nav-dim')].forEach((element) => {
-          element.addEventListener('click', () => {
-            document.querySelector('.nav-wrap').classList.toggle('hide');
-          });
-        });
-      })();
-    </script>
   </body>
 </html>
