@@ -1,6 +1,6 @@
 <section class="bg-main">
   <div class="x-limit">
-    <div class="split stack y-center">
+    <div class="split stack">
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
@@ -13,6 +13,14 @@
           <strong>Collins Rating:</strong>
           <span>{{profile.rating}}</span>
         </p>
+
+        {{#profile.about}}
+        <p>
+          <strong>Biography</strong>
+          <br>
+          <span>{{profile.about}}</span>
+        </p>
+        {{/profile.about}}
       </div>
 
       <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
@@ -20,15 +28,39 @@
   </div>
 </section>
 
-{{#profile.about}}
 <section class="bg-dark">
   <div class="x-limit">
-    <h3>Biography</h3>
+    <div class="split stack">
+      <div class="grow stretch card text-center">
+        <p class="text-lg">{{profile.matchAverageScore}}</p>
 
-    <p>{{profile.about}}</p>
+        <p>
+          <strong>Average Score</strong>
+        </p>
+      </div>
+
+      <div class="grow stretch card text-center">
+        <p class="text-lg">{{profile.percentage.matchWin}}</p>
+
+        <p>
+          <strong>Win Rate</strong>
+          <br>
+          <span>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</span>
+        </p>
+      </div>
+
+      <div class="grow stretch card text-center">
+        <p class="text-lg">{{profile.percentage.bigAxeWin}}</p>
+
+        <p>
+          <strong>Tie Break</strong>
+          <br>
+          <span>{{profile.bigAxeRoundWin}}-{{profile.bigAxeRoundLoss}}</span>
+        </p>
+      </div>
+    </div>
   </div>
 </section>
-{{/profile.about}}
 
 <section>
   <div class="x-limit">
@@ -63,26 +95,6 @@
         </p>
       </div>
     </div>
-
-    <figure>
-      <table class="text-center" style="table-layout:fixed;">
-        <thead>
-          <tr>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>OTLs</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>{{profile.matchWin}}</td>
-            <td>{{profile.matchLoss}}</td>
-            <td>{{profile.matchOTL}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
 
     <h2>Accuracy</h2>
 
