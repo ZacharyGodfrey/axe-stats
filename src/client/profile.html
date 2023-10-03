@@ -1,7 +1,9 @@
 <section class="bg-main">
   <div class="x-limit">
     <div class="split stack y-center">
-      <div class="grow text-right">
+      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
+
+      <div class="grow">
         <h2>{{profile.name}}</h2>
 
         <p>
@@ -14,17 +16,7 @@
           <span>{{profile.rating}}</span>
         </p>
       </div>
-
-      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
     </div>
-
-    {{#profile.about}}
-    <p>
-      <strong>Biography</strong>
-      <br>
-      <span>{{profile.about}}</span>
-    </p>
-    {{/profile.about}}
   </div>
 </section>
 
@@ -66,7 +58,13 @@
 
 <section>
   <div class="x-limit">
-    <h2>Accuracy</h2>
+    {{#profile.about}}
+    <h2>Biography</h2>
+
+    <p>{{profile.about}}</p>
+    {{/profile.about}}
+
+    <h2>Statistics</h2>
 
     <figure>
       <table class="text-center" style="table-layout: fixed;">
