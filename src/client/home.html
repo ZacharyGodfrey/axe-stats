@@ -9,25 +9,28 @@
 <section>
   <div class="x-limit">
     <figure>
-      <table style="table-layout: fixed;">
+      <table class="text-center" style="table-layout: fixed;">
         <thead>
           <tr>
-            <th class="text-center">Rank</th>
-            <th class="text-center">Name</th>
-            <th class="text-center">Collins Rating</th>
+            <th>Rank</th>
+            <th>Name</th>
+            <th>Collins Rating</th>
+            <th>Average Score</th>
           </tr>
         </thead>
 
         <tbody>
           {{#profiles}}
           <tr>
-            <td class="text-center">{{rank}}</td>
+            <td>{{rank}}</td>
 
-            <td class="text-center">
+            <td>
               <a href="/{{id}}">{{name}}</a>
             </td>
 
-            <td class="text-center">{{rating}}</td>
+            <td>{{rating}}</td>
+
+            <td>matchAverageScore</td>
           </tr>
           {{/profiles}}
         </tbody>
