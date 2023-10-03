@@ -123,6 +123,8 @@ const buildProfilePage = async (shell, profile) => {
       readFile(`${CLIENT_DIR}/shell.html`)
     ]);
 
+    console.log(JSON.stringify(profiles, null, 2));
+
     await Promise.all([
       writeFile(`${DIST_DIR}/data.json`, JSON.stringify(profiles, null, 2)),
       buildHomePage(shell, profiles).then(page => writeFile(`${DIST_DIR}/index.html`, page)),
