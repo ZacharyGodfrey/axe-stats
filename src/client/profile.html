@@ -10,13 +10,30 @@
           <strong>Collins Rating:</strong>
           <span>{{profile.rating}} (#{{profile.rank}})</span>
         </p>
-
-        <p>
-          <strong>Career Record (W-L-OTL):</strong>
-          <span>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</span>
-        </p>
       </div>
     </div>
+
+    <h3>Career Record</h3>
+
+    <figure>
+      <table class="text-center">
+        <thead>
+          <tr>
+            <th>Wins</th>
+            <th>Losses</th>
+            <th>OTLs</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{profile.matchWin}}</td>
+            <td>{{profile.matchLoss}}</td>
+            <td>{{profile.matchOTL}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
 
     <h3>Biography</h3>
 
@@ -26,49 +43,35 @@
 
 <section>
   <div class="x-limit">
-    <h2>Performance Overview</h2>
+    <h2>Accuracy</h2>
 
     <div class="split stack">
       <div class="grow">
-        <h3>Hatchet</h3>
+        <h3 class="text-center">Hatchet</h3>
 
-        <figure>
-          <table class="text-center">
-            <thead>
-              <tr>
-                <th>High Score</th>
-                <th>Average Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>TBD</td>
-                <td>TBD</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
+        <p>TBD</p>
       </div>
 
       <div class="grow">
-        <h3>Big Axe</h3>
+        <h3 class="text-center">Big Axe</h3>
 
-        <figure>
-          <table class="text-center">
-            <thead>
-              <tr>
-                <th>High Score</th>
-                <th>Average Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>TBD</td>
-                <td>TBD</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
+        <p>TBD</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="x-limit">
+    <h2>Wins and Losses</h2>
+
+    <div class="split stack">
+      <div class="grow">
+        <h3 class="text-center">Hatchet</h3>
+      </div>
+
+      <div class="grow">
+        <h3 class="text-center">Big Axe</h3>
       </div>
     </div>
   </div>
