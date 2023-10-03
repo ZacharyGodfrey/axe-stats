@@ -30,20 +30,10 @@
       <p>{{profile.about}}</p>
     </div>
     {{/profile.about}}
-
-    <div class="split stack">
-      <div class="grow">
-        <div class="card">
-        </div>
-      </div>
-
-      <div class="grow">
-      </div>
-    </div>
   </div>
 </section>
 
-<section class="bg-dark">
+<section>
   <div class="x-limit">
     <h2>Career Record</h2>
 
@@ -71,7 +61,7 @@
 
 <section>
   <div class="x-limit">
-    <h2 class="text-center">Accuracy</h2>
+    <h2>Accuracy</h2>
 
     <figure>
       <table class="text-center" style="table-layout:fixed;">
@@ -83,21 +73,21 @@
           </tr>
 
           <tr>
+            <td>{{profile.hatchetScorePerThrow}}</td>
+            <th>Score Per Throw</th>
+            <td>{{profile.bigAxeScorePerThrow}}</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.hatchetClutchCallPercent}}</td>
+            <th>Clutch Call Rate</th>
+            <td>{{profile.bigAxeClutchCallPercent}}</td>
+          </tr>
+
+          <tr>
             <td>{{profile.hatchetClutchHit}}</td>
             <th>Clutches</th>
             <td>{{profile.bigAxeClutchHit}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetScorePerThrow}}</td>
-            <th>Score Per Throw</th>
-            <td>{{profile.bigAxeScorePerThrow}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetScorePerThrow}}</td>
-            <th>Score Per Throw</th>
-            <td>{{profile.bigAxeScorePerThrow}}</td>
           </tr>
 
           <tr>
@@ -131,7 +121,7 @@
 
 <section>
   <div class="x-limit">
-    <h2 class="text-center">Round Wins and Losses</h2>
+    <h2>Round Wins and Losses</h2>
 
     <figure>
       <table class="text-center" style="table-layout:fixed;">
