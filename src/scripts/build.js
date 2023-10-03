@@ -33,9 +33,13 @@ const transformProfile = (profile) => {
     hatchetRoundCount,
     hatchetWinPercent: round(profile.hatchetRoundWin / hatchetRoundCount, 3),
     hatchetScorePerThrow: round(profile.hatchetTotalScore / profile.hatchetThrowCount, 3),
+    hatchetClutchCallPercent: round(profile.hatchetClutchCall / (matchCount * 3), 3),
+    hatchetClutchHitPercent: round(profile.hatchetClutchHit / profile.hatchetClutchCall, 3),
     bigAxeRoundCount,
     bigAxeWinPercent: round(profile.bigAxeRoundWin / bigAxeRoundCount, 3),
-    bigAxeScorePerThrow: round(profile.bigAxeTotalScore / profile.bigAxeThrowCount, 3)
+    bigAxeScorePerThrow: round(profile.bigAxeTotalScore / profile.bigAxeThrowCount, 3),
+    bigAxeClutchCallPercent: round(profile.bigAxeClutchCall / (matchCount * 3), 3),
+    bigAxeClutchHitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 3)
   };
 };
 
@@ -122,8 +126,6 @@ const buildProfilePage = async (shell, profile) => {
       getProfiles(),
       readFile(`${CLIENT_DIR}/shell.html`)
     ]);
-
-    console.log(JSON.stringify(profiles, null, 2));
 
     await Promise.all([
       writeFile(`${DIST_DIR}/data.json`, JSON.stringify(profiles, null, 2)),

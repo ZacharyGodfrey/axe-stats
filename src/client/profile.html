@@ -6,20 +6,22 @@
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
-        <p>
-          <strong>Global Rank:</strong>
-          <span>#{{profile.rank}}</span>
-        </p>
+        <div class="card bg-dark">
+          <p>
+            <strong>Global Rank:</strong>
+            <span>#{{profile.rank}}</span>
+          </p>
 
-        <p>
-          <strong>Collins Rating:</strong>
-          <span>{{profile.rating}}</span>
-        </p>
+          <p>
+            <strong>Collins Rating:</strong>
+            <span>{{profile.rating}}</span>
+          </p>
 
-        <p>
-          <strong>Average Score:</strong>
-          <span>{{profile.matchAverageScore}}</span>
-        </p>
+          <p>
+            <strong>Average Score:</strong>
+            <span>{{profile.matchAverageScore}}</span>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -70,6 +72,18 @@
             <th>Hatchet</th>
             <th></th>
             <th>Big Axe</th>
+          </tr>
+
+          <tr>
+            <td>{{profile.hatchetClutchHit}}</td>
+            <th>Clutches</th>
+            <td>{{profile.bigAxeClutchHit}}</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.hatchetScorePerThrow}}</td>
+            <th>Score Per Throw</th>
+            <td>{{profile.bigAxeScorePerThrow}}</td>
           </tr>
 
           <tr>
