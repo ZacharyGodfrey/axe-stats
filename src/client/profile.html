@@ -1,53 +1,55 @@
 <section class="bg-main">
   <div class="x-limit">
     <div class="split stack y-center">
-      <div class="grow text-right">
-        <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
-      </div>
+      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
 
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
-        <p>
-          <strong>Global Rank:</strong>
-          <span>#{{profile.rank}}</span>
-        </p>
+        <div class="card">
+          <p>
+            <strong>Global Rank:</strong>
+            <span>#{{profile.rank}}</span>
+          </p>
 
-        <p>
-          <strong>Collins Rating:</strong>
-          <span>{{profile.rating}}</span>
-        </p>
+          <p>
+            <strong>Collins Rating:</strong>
+            <span>{{profile.rating}}</span>
+          </p>
 
-        <p>
-          <strong>Average Score:</strong>
-          <span>{{profile.matchAverageScore}}</span>
-        </p>
+          <p>
+            <strong>Average Score:</strong>
+            <span>{{profile.matchAverageScore}}</span>
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="split stack">
-      <div class="card grow">
-        <h3>Career Record</h3>
+      <div class="grow">
+        <div class="card">
+          <h3>Career Record</h3>
 
-        <figure>
-          <table class="text-center" style="table-layout:fixed;">
-            <thead>
-              <tr>
-                <th>Wins</th>
-                <th>Losses</th>
-                <th>OTLs</th>
-              </tr>
-            </thead>
+          <figure>
+            <table class="text-center" style="table-layout:fixed;">
+              <thead>
+                <tr>
+                  <th>Wins</th>
+                  <th>Losses</th>
+                  <th>OTLs</th>
+                </tr>
+              </thead>
 
-            <tbody>
-              <tr>
-                <td>{{profile.matchWin}}</td>
-                <td>{{profile.matchLoss}}</td>
-                <td>{{profile.matchOTL}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
+              <tbody>
+                <tr>
+                  <td>{{profile.matchWin}}</td>
+                  <td>{{profile.matchLoss}}</td>
+                  <td>{{profile.matchOTL}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
       </div>
 
       <div class="grow">
