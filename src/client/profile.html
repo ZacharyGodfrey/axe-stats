@@ -1,31 +1,20 @@
 <section class="bg-main">
   <div class="x-limit">
-    <div class="split stack">
-      <div class="grow">
-        <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
-      </div>
+    <div class="split stack y-center">
+      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
 
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
-        <div class="card text-center">
-          <p class="text-lg">#{{profile.rank}}</p>
+        <p>
+          <strong>Global Rank</strong>
+          <span>#{{profile.rank}}</span>
+        </p>
 
-          <p>
-            <strong>Global Rank</strong>
-          </p>
-        </div>
-      </div>
-
-      <div class="grow">
-        <div class="card text-center">
-          <p class="text-lg">{{profile.rating}}</p>
-
-          <p>
-            <strong>Collins Rating</strong>
-          </p>
-        </div>
-      </div>
+        <p>
+          <strong>Collins Rating</strong>
+          <span>{{profile.rating}}</span>
+        </p>
     </div>
   </div>
 </section>
