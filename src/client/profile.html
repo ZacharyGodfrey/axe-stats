@@ -22,20 +22,38 @@
         </p>
       </div>
     </div>
-
-    {{#profile.about}}
-    <div class="card">
-      <h3>Biography</h3>
-
-      <p>{{profile.about}}</p>
-    </div>
-    {{/profile.about}}
   </div>
 </section>
 
-<section>
+<section class="bg-dark">
   <div class="x-limit">
-    <h2>Career Record</h2>
+    <h2>Career Statistics</h2>
+
+    <div class="split stack">
+      <div class="grow stretch card">
+        <h3>Title</h3>
+
+        <p>TBD</p>
+      </div>
+
+      <div class="grow stretch card">
+        <h3>Title</h3>
+
+        <p>TBD</p>
+      </div>
+
+      <div class="grow stretch card">
+        <h3>Title</h3>
+
+        <p>TBD</p>
+      </div>
+
+      <div class="grow stretch card">
+        <h3>Title</h3>
+
+        <p>TBD</p>
+      </div>
+    </div>
 
     <figure>
       <table class="text-center" style="table-layout:fixed;">
@@ -61,6 +79,12 @@
 
 <section>
   <div class="x-limit">
+    {{#profile.about}}
+    <h3>Biography</h3>
+
+    <p>{{profile.about}}</p>
+    {{/profile.about}}
+
     <h2>Accuracy</h2>
 
     <figure>
