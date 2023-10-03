@@ -7,13 +7,13 @@
         <h2>{{profile.name}}</h2>
 
         <p>
-          <strong>Collins Rating:</strong>
-          <span>{{profile.rating}}</span>
+          <strong>Global Rank:</strong>
+          <span>#{{profile.rank}}</span>
         </p>
 
         <p>
-          <strong>Global Rank:</strong>
-          <span>#{{profile.rank}}</span>
+          <strong>Collins Rating:</strong>
+          <span>{{profile.rating}}</span>
         </p>
       </div>
     </div>
@@ -44,9 +44,11 @@
       </div>
 
       <div class="grow">
+        {{#profile.about}}
         <h3>Biography</h3>
 
         <p>{{profile.about}}</p>
+        {{/profile.about}}
       </div>
     </div>
   </div>
