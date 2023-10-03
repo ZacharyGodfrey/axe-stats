@@ -87,27 +87,21 @@
 
         <tbody>
           <tr>
-            <td>{{profile.percentage.hatchetFive}}</td>
-            <td>
-              <strong>Bullseye Hit Rate</strong>
-            </td>
-            <td>{{profile.percentage.bigAxeFive}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.percentage.hatchetClutchHit}}</td>
-            <td>
-              <strong>Clutch Hit Rate</strong>
-            </td>
-            <td>{{profile.percentage.bigAxeClutchHit}}</td>
-          </tr>
-
-          <tr>
             <td>{{profile.hatchetScorePerThrow}}</td>
-            <td>
-              <strong>Score Per Axe</strong>
-            </td>
+            <th>Score Per Axe</th>
             <td>{{profile.bigAxeScorePerThrow}}</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.hatchetClutchHit}} ({{profile.percentage.hatchetClutchHit}})</td>
+            <th>Clutches</th>
+            <td>{{profile.bigAxeClutchHit}} ({{profile.percentage.bigAxeClutchHit}})</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.hatchetFive}} ({{profile.percentage.hatchetFive}})</td>
+            <th>Bullseyes</th>
+            <td>{{profile.bigAxeFive}} ({{profile.percentage.bigAxeFive}})</td>
           </tr>
         </tbody>
       </table>
