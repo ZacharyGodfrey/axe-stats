@@ -1,6 +1,8 @@
 <section class="bg-main">
   <div class="x-limit">
     <div class="split stack">
+      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
+
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
@@ -22,8 +24,6 @@
         </p>
         {{/profile.about}}
       </div>
-
-      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
     </div>
   </div>
 </section>
@@ -64,39 +64,29 @@
 
 <section>
   <div class="x-limit">
-    <h2>Career Statistics</h2>
+    <h2>Accuracy</h2>
 
     <div class="split stack">
-      <div class="grow stretch card text-center">
-        <p class="text-lg">{{profile.matchAverageScore}}</p>
+      <div class="grow stretch card">
+        <h3 class="text-center">Hatchet</h3>
 
         <p>
-          <strong>Average Score</strong>
+          <span class="text-lg">{{profile.percentage.hatchetFive}}</span>
+          <br>
+          <strong>Bullseye</strong>
+        </p>
+
+        <p>
+          <span class="text-lg">{{profile.percentage.hatchetClutchHit}}</span>
+          <br>
+          <strong>Clutch</strong>
         </p>
       </div>
 
-      <div class="grow stretch card text-center">
-        <p class="text-lg">{{profile.percentage.matchWin}}</p>
-
-        <p>
-          <strong>Win Rate</strong>
-          <br>
-          <span>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</span>
-        </p>
-      </div>
-
-      <div class="grow stretch card text-center">
-        <p class="text-lg">{{profile.percentage.bigAxeWin}}</p>
-
-        <p>
-          <strong>Tie Break</strong>
-          <br>
-          <span>{{profile.bigAxeRoundWin}}-{{profile.bigAxeRoundLoss}}</span>
-        </p>
+      <div class="grow stretch card">
+        <h3 class="text-center">Big Axe</h3>
       </div>
     </div>
-
-    <h2>Accuracy</h2>
 
     <figure>
       <table class="text-center" style="table-layout:fixed;">
@@ -105,12 +95,6 @@
             <th>Hatchet</th>
             <th></th>
             <th>Big Axe</th>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetScorePerThrow}}</td>
-            <th>Score Per Throw</th>
-            <td>{{profile.bigAxeScorePerThrow}}</td>
           </tr>
 
           <tr>
