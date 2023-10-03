@@ -74,7 +74,7 @@
 
           <tr>
             <td>{{profile.hatchetFive}}</td>
-            <th>Bullseye</th>
+            <th>Bullseyes</th>
             <td>{{profile.bigAxeFive}}</td>
           </tr>
 
@@ -103,20 +103,36 @@
 
 <section>
   <div class="x-limit">
-    <h2 class="text-center">Wins and Losses</h2>
+    <h2 class="text-center">Round Wins and Losses</h2>
 
-    <div class="split stack">
-      <div class="grow">
-        <h3 class="text-center">Hatchet</h3>
+    <figure>
+      <table class="text-center" style="table-layout:fixed;">
+        <tbody>
+          <tr>
+            <th>Hatchet</th>
+            <th></th>
+            <th>Big Axe</th>
+          </tr>
 
-        <p>TBD</p>
-      </div>
+          <tr>
+            <td>{{profile.hatchetWin}}</td>
+            <th>Wins</th>
+            <td>{{profile.bigAxeWin}}</td>
+          </tr>
 
-      <div class="grow">
-        <h3 class="text-center">Big Axe</h3>
+          <tr>
+            <td>{{profile.hatchetLoss}}</td>
+            <th>Losses</th>
+            <td>{{profile.bigAxeLoss}}</td>
+          </tr>
 
-        <p>TBD</p>
-      </div>
-    </div>
+          <tr>
+            <td>{{profile.hatchetTie}}</td>
+            <th>Ties</th>
+            <td>N/A</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
   </div>
 </section>
