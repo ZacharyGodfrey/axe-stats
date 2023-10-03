@@ -6,15 +6,13 @@
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
+        {{#profile.about}}
         <p>
-          <strong>Global Rank</strong>
-          <span>#{{profile.rank}}</span>
+          <strong>Biography</strong>
         </p>
 
-        <p>
-          <strong>Collins Rating</strong>
-          <span>{{profile.rating}}</span>
-        </p>
+        <p>{{profile.about}}</p>
+        {{/profile.about}}
     </div>
 
     <div>
