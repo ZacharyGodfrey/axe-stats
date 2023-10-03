@@ -28,6 +28,7 @@ const transformProfile = (profile) => {
   return {
     ...profile,
     matchCount,
+    matchAverageScore: round(profile.matchTotalScore / matchCount, 3),
     matchWinPercent: round(profile.matchWin / matchCount, 3),
     hatchetRoundCount,
     hatchetWinPercent: round(profile.hatchetRoundWin / hatchetRoundCount, 3),
