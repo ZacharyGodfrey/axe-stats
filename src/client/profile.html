@@ -13,31 +13,37 @@
       </div>
     </div>
 
-    <h3>Career Record</h3>
+    <div class="split stack">
+      <div class="grow">
+        <h3>Career Record</h3>
 
-    <figure>
-      <table class="text-center">
-        <thead>
-          <tr>
-            <th>Wins</th>
-            <th>Losses</th>
-            <th>OTLs</th>
-          </tr>
-        </thead>
+        <figure>
+          <table class="text-center">
+            <thead>
+              <tr>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>OTLs</th>
+              </tr>
+            </thead>
 
-        <tbody>
-          <tr>
-            <td>{{profile.matchWin}}</td>
-            <td>{{profile.matchLoss}}</td>
-            <td>{{profile.matchOTL}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
+            <tbody>
+              <tr>
+                <td>{{profile.matchWin}}</td>
+                <td>{{profile.matchLoss}}</td>
+                <td>{{profile.matchOTL}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
 
-    <h3>Biography</h3>
+      <div class="grow">
+        <h3>Biography</h3>
 
-    <p>{{profile.about}}</p>
+        <p>{{profile.about}}</p>
+      </div>
+    </div>
   </div>
 </section>
 
