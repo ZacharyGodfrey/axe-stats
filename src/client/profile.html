@@ -1,6 +1,6 @@
 <section class="bg-main">
   <div class="x-limit">
-    <div class="split stack">
+    <div class="split stack y-center">
       <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
 
       <div class="grow">
@@ -15,16 +15,16 @@
           <strong>Collins Rating:</strong>
           <span>{{profile.rating}}</span>
         </p>
-
-        {{#profile.about}}
-        <p>
-          <strong>Biography</strong>
-          <br>
-          <span>{{profile.about}}</span>
-        </p>
-        {{/profile.about}}
       </div>
     </div>
+
+    {{#profile.about}}
+    <p>
+      <strong>Biography</strong>
+      <br>
+      <span>{{profile.about}}</span>
+    </p>
+    {{/profile.about}}
   </div>
 </section>
 
@@ -104,28 +104,6 @@
       </table>
     </figure>
 
-    <div class="split stack">
-      <div class="grow stretch card">
-        <h3 class="text-center">Hatchet</h3>
-
-        <p>
-          <span class="text-lg">{{profile.percentage.hatchetFive}}</span>
-          <br>
-          <strong>Bullseye</strong>
-        </p>
-
-        <p>
-          <span class="text-lg">{{profile.percentage.hatchetClutchHit}}</span>
-          <br>
-          <strong>Clutch</strong>
-        </p>
-      </div>
-
-      <div class="grow stretch card">
-        <h3 class="text-center">Big Axe</h3>
-      </div>
-    </div>
-
     <figure>
       <table class="text-center" style="table-layout:fixed;">
         <tbody>
@@ -169,42 +147,6 @@
             <td>{{profile.hatchetDrop}}</td>
             <th>Drops</th>
             <td>{{profile.bigAxeDrop}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <h2>Round Wins and Losses</h2>
-
-    <figure>
-      <table class="text-center" style="table-layout:fixed;">
-        <tbody>
-          <tr>
-            <th>Hatchet</th>
-            <th></th>
-            <th>Big Axe</th>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetRoundWin}}</td>
-            <th>Wins</th>
-            <td>{{profile.bigAxeRoundWin}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetRoundLoss}}</td>
-            <th>Losses</th>
-            <td>{{profile.bigAxeRoundLoss}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetRoundTie}}</td>
-            <th>Ties</th>
-            <td>N/A</td>
           </tr>
         </tbody>
       </table>
