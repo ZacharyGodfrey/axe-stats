@@ -63,61 +63,42 @@
   <div class="x-limit">
     <h2 class="text-center">Accuracy</h2>
 
-    <div class="split stack">
-      <div class="grow">
-        <h3 class="text-center">Hatchet</h3>
+    <figure>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">Hatchet</th>
+            <th colspan="2">Big Axe</th>
+          </tr>
+        </thead>
 
-        <figure>
-          <table class="text-center" style="table-layout:fixed;">
-            <tbody>
-              <tr>
-                <th>Bullseyes</th>
-                <td>{{profile.hatchetFive}}</td>
-              </tr>
-              <tr>
-                <th>Threes</th>
-                <td>{{profile.hatchetThree}}</td>
-              </tr>
-              <tr>
-                <th>Ones</th>
-                <td>{{profile.hatchetOne}}</td>
-              </tr>
-              <tr>
-                <th>Drops</th>
-                <td>{{profile.hatchetDrop}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
-      </div>
+        <tbody>
+          <tr>
+            <td>{{profile.hatchetFive}}</td>
+            <th colspan="2">Bullseye</th>
+            <td>{{profile.bigAxeFive}}</td>
+          </tr>
 
-      <div class="grow">
-        <h3 class="text-center">Big Axe</h3>
+          <tr>
+            <td>{{profile.hatchetThree}}</td>
+            <th colspan="2">Threes</th>
+            <td>{{profile.bigAxeThree}}</td>
+          </tr>
 
-        <figure>
-          <table class="text-center" style="table-layout:fixed;">
-            <tbody>
-              <tr>
-                <td>{{profile.bigAxeFive}}</td>
-                <th>Bullseyes</th>
-              </tr>
-              <tr>
-                <td>{{profile.bigAxeThree}}</td>
-                <th>Threes</th>
-              </tr>
-              <tr>
-                <td>{{profile.bigAxeOne}}</td>
-                <th>Ones</th>
-              </tr>
-              <tr>
-                <td>{{profile.bigAxeDrop}}</td>
-                <th>Drops</th>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
-      </div>
-    </div>
+          <tr>
+            <td>{{profile.hatchetOne}}</td>
+            <th colspan="2">Ones</th>
+            <td>{{profile.bigAxeOne}}</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.hatchetDrop}}</td>
+            <th colspan="2">Drops</th>
+            <td>{{profile.bigAxeDrop}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
   </div>
 </section>
 
