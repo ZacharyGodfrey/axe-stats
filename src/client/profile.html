@@ -70,18 +70,29 @@
       <table>
         <thead>
           <tr>
-            <th colspan="4">Hatchet</th>
-            <th colspan="4">Big Axe</th>
-          </tr>
-
-          <tr>
-            <th colspan="2">Target</th>
-            <th colspan="2">Clutch</th>
+            <th colspan="2">Hatchet</th>
+            <th colspan="2">Big Axe</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr></tr>
+          <tr>
+            <td>{{profile.percentage.hatchetFive}}</td>
+            <th colspan="2">Bullseye Hit Rate</th>
+            <td>{{profile.percentage.bigAxeFive}}</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.percentage.hatchetClutchHit}}</td>
+            <th colspan="2">Clutch Hit Rate</th>
+            <td>{{profile.percentage.bigAxeClutchHit}}</td>
+          </tr>
+
+          <tr>
+            <td>{{profile.percentage.hatchetScorePerThrow}}</td>
+            <th colspan="2">Score Per Axe</th>
+            <td>{{profile.percentage.bigAxeScorePerThrow}}</td>
+          </tr>
         </tbody>
       </table>
     </figure>
