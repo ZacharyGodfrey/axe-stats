@@ -40,7 +40,7 @@
     <h2>Career Statistics</h2>
 
     <div class="split stack">
-      <div class="grow stretch card">
+      <div class="grow stretch card text-center">
         <p class="text-lg">{{profile.hatchetScorePerThrow}}</p>
 
         <p>
@@ -48,7 +48,7 @@
         </p>
       </div>
 
-      <div class="grow stretch card">
+      <div class="grow stretch card text-center">
         <p class="text-lg">{{profile.percentage.matchWin}}</p>
 
         <p>
@@ -58,16 +58,14 @@
         </p>
       </div>
 
-      <div class="grow stretch card">
-        <h3>Title</h3>
+      <div class="grow stretch card text-center">
+        <p class="text-lg">{{profile.percentage.bigAxeWin}}</p>
 
-        <p>TBD</p>
-      </div>
-
-      <div class="grow stretch card">
-        <h3>Title</h3>
-
-        <p>TBD</p>
+        <p>
+          <strong>Big Axe Win Rate</strong>
+          <br>
+          <span>{{profile.bigAxeWin}}-{{profile.bigAxeLoss}}</span>
+        </p>
       </div>
     </div>
 
