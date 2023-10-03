@@ -1,9 +1,7 @@
 <section class="bg-main">
   <div class="x-limit">
     <div class="split stack y-center">
-      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
-
-      <div class="grow">
+      <div class="grow text-right">
         <h2>{{profile.name}}</h2>
 
         <p>
@@ -16,6 +14,8 @@
           <span>{{profile.rating}}</span>
         </p>
       </div>
+
+      <img class="profile-image" src="https://admin.axescores.com/pic/{{profile.id}}">
     </div>
 
     {{#profile.about}}
@@ -96,11 +96,11 @@
           </tr>
 
           <tr>
-            <td>{{profile.percentage.hatchetScorePerThrow}}</td>
+            <td>{{profile.hatchetScorePerThrow}}</td>
             <td>
               <strong>Score Per Axe</strong>
             </td>
-            <td>{{profile.percentage.bigAxeScorePerThrow}}</td>
+            <td>{{profile.bigAxeScorePerThrow}}</td>
           </tr>
         </tbody>
       </table>
