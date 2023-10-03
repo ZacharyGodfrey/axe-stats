@@ -25,29 +25,37 @@
   </div>
 </section>
 
+{{#profile.about}}
 <section class="bg-dark">
+  <div class="x-limit">
+    <h3>Biography</h3>
+
+    <p>{{profile.about}}</p>
+  </div>
+</section>
+{{/profile.about}}
+
+<section>
   <div class="x-limit">
     <h2>Career Statistics</h2>
 
     <div class="split stack">
       <div class="grow stretch card">
-        <h3>Average Throw</h3>
+        <p class="text-lg">{{profile.hatchetScorePerThrow}}</p>
 
         <p>
-          <strong>Hatchet:</strong>
-          <span>{{profile.hatchetScorePerThrow}}</span>
-        </p>
-
-        <p>
-          <strong>Big Axe:</strong>
-          <span>{{profile.bigAxeScorePerThrow}}</span>
+          <strong>Average Throw</strong>
         </p>
       </div>
 
       <div class="grow stretch card">
-        <h3>Title</h3>
+        <p class="text-lg">{{profile.percentage.matchWin}}</p>
 
-        <p>TBD</p>
+        <p>
+          <strong>Win Rate</strong>
+          <br>
+          <span>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</span>
+        </p>
       </div>
 
       <div class="grow stretch card">
@@ -82,16 +90,6 @@
         </tbody>
       </table>
     </figure>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    {{#profile.about}}
-    <h3>Biography</h3>
-
-    <p>{{profile.about}}</p>
-    {{/profile.about}}
 
     <h2>Accuracy</h2>
 

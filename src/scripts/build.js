@@ -29,7 +29,7 @@ const transformProfile = (profile) => {
     ...profile,
     matchCount,
     matchAverageScore: round(profile.matchTotalScore / matchCount, 3),
-    matchWinPercent: round(profile.matchWin / matchCount, 3),
+    matchWinPercent: round(profile.matchWin / matchCount, 4),
     hatchetRoundCount,
     hatchetWinPercent: round(profile.hatchetRoundWin / hatchetRoundCount, 3),
     hatchetScorePerThrow: round(profile.hatchetTotalScore / profile.hatchetThrowCount, 3),
@@ -39,7 +39,10 @@ const transformProfile = (profile) => {
     bigAxeWinPercent: round(profile.bigAxeRoundWin / bigAxeRoundCount, 3),
     bigAxeScorePerThrow: round(profile.bigAxeTotalScore / profile.bigAxeThrowCount, 3),
     bigAxeClutchCallPercent: round(profile.bigAxeClutchCall / (matchCount * 3), 3),
-    bigAxeClutchHitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 3)
+    bigAxeClutchHitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 3),
+    percentage: {
+      matchWin: `${100 * round(profile.matchWin / matchCount, 4)}%`
+    }
   };
 };
 
