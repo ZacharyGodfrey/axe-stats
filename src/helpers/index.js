@@ -89,9 +89,13 @@ const sequentially = async (items, action) => {
 
 const sum = (values) => values.reduce((t, v) => t + v, 0);
 
-const round = (value, places) => Math.round(value * (10 ** places)) / (10 ** places);
+const round = (value, places) => {
+  const factor = 10 ** places;
 
-const average = (values) => sum(values) / values.length || 1;
+  return Math.round(value * factor) / factor;
+};
+
+const average = (values) => sum(values) / Math.max(1, values.length);
 
 const reactPageState = (page, selector) => {
   const getState = (element) => {
