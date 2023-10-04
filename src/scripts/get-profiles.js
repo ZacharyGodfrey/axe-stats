@@ -38,7 +38,7 @@ const processProfile = async (page, { id, rank, rating }) => {
 
   await db.run(`
     UPDATE profiles
-    SET name = ?, about = ?, rank = ?, rating = ?, image =
+    SET name = ?, about = ?, rank = ?, rating = ?, image = ?
     WHERE id = ?;
   `, [name, about, rank, rating, image, id]);
 
