@@ -12,8 +12,8 @@ const connect = () => connection ? Promise.resolve() : new Promise((resolve, rej
 
       resolve();
     }
-  }).then(ensureTables);
-});
+  });
+}).then(ensureTables);
 
 const ensureTables = async () => {
   console.log('Ensuring tables exist...');
