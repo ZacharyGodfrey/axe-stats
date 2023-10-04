@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 const { db, sequentially, reactPageState, logError } = require('../helpers');
 
-const timeout = 5 * 1000; // 5 seconds
+const timeout = 2 * 1000; // 2 seconds
 
 const isDesiredResponse = (method, status, url) => {
   return (response) => {

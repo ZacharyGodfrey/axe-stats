@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer');
 const config = require('../../_config.json');
 const { db, ensureTables, sequentially, reactPageState, waitMilliseconds, logError } = require('../helpers');
 
-const timeout = 5 * 1000; // 5 seconds
+const timeout = 2 * 1000; // 2 seconds
 
 const getProfiles = async (page, profileIdSet) => {
   console.log('Scraping all profile data...');
