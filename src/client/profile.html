@@ -23,33 +23,33 @@
   <div class="x-limit">
     <div class="split stack">
       <div class="grow stretch card text-center no-break">
-        <p class="text-lg">{{profile.matchAverageScore}}</p>
+        <p class="text-lg">{{profile.match.averageScore}}</p>
 
         <p>
           <strong>Average Score</strong>
         </p>
 
-        <p>{{profile.matchCount}} Matches</p>
+        <p>{{profile.match.count}} Matches</p>
       </div>
 
       <div class="grow stretch card text-center no-break">
-        <p class="text-lg">{{profile.percentage.matchWin}}</p>
+        <p class="text-lg">{{profile.match.winPercent}}%</p>
 
         <p>
           <strong>Win Rate</strong>
         </p>
 
-        <p>{{profile.matchWin}}-{{profile.matchLoss}}-{{profile.matchOTL}}</p>
+        <p>{{profile.match.win}}-{{profile.match.loss}}-{{profile.match.otl}}</p>
       </div>
 
       <div class="grow stretch card text-center no-break">
-        <p class="text-lg">{{profile.percentage.bigAxeWin}}</p>
+        <p class="text-lg">{{profile.bigAxe.winPercent}}%</p>
 
         <p>
           <strong>Big Axe Win Rate</strong>
         </p>
 
-        <p>{{profile.bigAxeRoundWin}}-{{profile.bigAxeRoundLoss}}</p>
+        <p>{{profile.bigAxe.roundWin}}-{{profile.bigAxe.roundLoss}}</p>
       </div>
     </div>
   </div>
@@ -65,7 +65,7 @@
           <div class="clutch">
             <div class="dot"></div>
 
-            <span>{{profile.hatchetClutchHit}}</span>
+            <span>{{profile.hatchet.clutch.hit}}</span>
 
             <div class="dot"></div>
           </div>
@@ -80,19 +80,19 @@
                 <span class="label">&nbsp;</span>
 
                 <div class="ring five">
-                  <span class="label">{{profile.hatchetFive}}</span>
+                  <span class="label">{{profile.hatchet.five}}</span>
                 </div>
 
-                <span class="label">{{profile.hatchetThree}}</span>
+                <span class="label">{{profile.hatchet.three}}</span>
               </div>
 
-              <span class="label">{{profile.hatchetOne}}</span>
+              <span class="label">{{profile.hatchet.one}}</span>
             </div>
           </div>
 
           <br>
 
-          <span class="label">{{profile.hatchetDrop}}</span>
+          <span class="label">{{profile.hatchet.drop}}</span>
         </div>
       </div>
 
@@ -103,7 +103,7 @@
           <div class="clutch">
             <div class="dot"></div>
 
-            <span>{{profile.bigAxeClutchHit}}</span>
+            <span>{{profile.bigAxe.clutch.hit}}</span>
 
             <div class="dot"></div>
           </div>
@@ -118,19 +118,19 @@
                 <span class="label">&nbsp;</span>
 
                 <div class="ring five">
-                  <span class="label">{{profile.bigAxeFive}}</span>
+                  <span class="label">{{profile.bigAxe.five}}</span>
                 </div>
 
-                <span class="label">{{profile.bigAxeThree}}</span>
+                <span class="label">{{profile.bigAxe.three}}</span>
               </div>
 
-              <span class="label">{{profile.bigAxeOne}}</span>
+              <span class="label">{{profile.bigAxe.one}}</span>
             </div>
           </div>
 
           <br>
 
-          <span class="label">{{profile.bigAxeDrop}}</span>
+          <span class="label">{{profile.bigAxe.drop}}</span>
         </div>
       </div>
     </div>
@@ -147,27 +147,27 @@
 
         <tbody>
           <tr>
-            <td>{{profile.hatchetScorePerThrow}}</td>
+            <td>{{profile.hatchet.scorePerThrow}}</td>
             <th>Score Per Axe</th>
-            <td>{{profile.bigAxeScorePerThrow}}</td>
+            <td>{{profile.bigAxe.scorePerThrow}}</td>
           </tr>
 
           <tr>
-            <td>{{profile.percentage.hatchetFive}}</td>
+            <td>{{profile.hatchet.FivePercent}}</td>
             <th>Bullseye Accuracy</th>
-            <td>{{profile.percentage.bigAxeFive}}</td>
+            <td>{{profile.bigAxe.FivePercent}}</td>
           </tr>
 
           <tr>
-            <td>{{profile.percentage.hatchetClutchCall}}</td>
+            <td>{{profile.hatchet.clutch.callPercent}}</td>
             <th>Clutch Call Rate</th>
-            <td>{{profile.percentage.bigAxeClutchCall}}</td>
+            <td>N/A</td>
           </tr>
 
           <tr>
-            <td>{{profile.percentage.hatchetClutchHit}}</td>
+            <td>{{profile.hatchet.clutch.hit}}</td>
             <th>Clutch Accuracy</th>
-            <td>{{profile.percentage.bigAxeClutchHit}}</td>
+            <td>{{profile.bigAxe.clutch.hit}}</td>
           </tr>
         </tbody>
       </table>

@@ -8,6 +8,8 @@ const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../../dist');
 
 const transformProfile = (profile) => {
+  const { id, name, about, rank, rating } = profile;
+
   const matchCount = sum([
     profile.matchWin,
     profile.matchLoss,
@@ -26,29 +28,71 @@ const transformProfile = (profile) => {
   ]);
 
   return {
-    ...profile,
-    matchCount,
-    matchAverageScore: round(profile.matchTotalScore / matchCount, 3),
-    matchWinPercent: round(profile.matchWin / matchCount, 4),
-    hatchetRoundCount,
-    hatchetWinPercent: round(profile.hatchetRoundWin / hatchetRoundCount, 3),
-    hatchetScorePerThrow: round(profile.hatchetTotalScore / profile.hatchetThrowCount, 3),
-    hatchetClutchCallPercent: round(profile.hatchetClutchCall / (matchCount * 3), 3),
-    hatchetClutchHitPercent: round(profile.hatchetClutchHit / profile.hatchetClutchCall, 3),
-    bigAxeRoundCount,
-    bigAxeWinPercent: round(profile.bigAxeRoundWin / bigAxeRoundCount, 3),
-    bigAxeScorePerThrow: round(profile.bigAxeTotalScore / profile.bigAxeThrowCount, 3),
-    bigAxeClutchCallPercent: round(profile.bigAxeClutchCall / (matchCount * 3), 3),
-    bigAxeClutchHitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 3),
-    percentage: {
-      matchWin: `${100 * round(profile.matchWin / matchCount, 4)}%`,
-      bigAxeWin: `${100 * round(profile.bigAxeRoundWin / bigAxeRoundCount, 4)}%`,
-      hatchetClutchCall: `${100 * round(profile.hatchetClutchCall / (matchCount * 3), 4)}%`,
-      hatchetClutchHit: `${100 * round(profile.hatchetClutchHit / profile.hatchetClutchCall, 4)}%`,
-      hatchetFive: `${100 * round(profile.hatchetFive / profile.hatchetThrowCount, 4)}%`,
-      bigAxeClutchHit: `${100 * round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 4)}%`,
-      bigAxeFive: `${100 * round(profile.bigAxeFive / profile.bigAxeThrowCount, 4)}%`
-    }
+    id,
+    name,
+    about,
+    rank,
+    rating,
+    match: {
+      win: profile.matchWin,
+      loss: profile.matchLoss,
+      otl: profile.matchOTL,
+      count: profile.matchCount,
+      totalScore: profile.matchTotalScore,
+      averageScore: round(profile.matchTotalScore / matchCount, 2),
+      winPercent: round(profile.matchWin / matchCount, 4) * 100,
+    },
+    hatchet: {
+      roundWin: profile.hatchetRoundWin,
+      roundLoss: profile.hatchetRoundLoss,
+      roundTie: profile.hatchetRoundTie,
+      roundCount: hatchetRoundCount,
+      winPercent: round(profile.hatchetRoundWin / hatchetRoundCount, 4) * 100,
+      totalScore: profile.hatchetTotalScore,
+      throwCount: profile.hatchetThrowCount,
+      scorePerThrow: round(profile.hatchetTotalScore / profile.hatchetThrowCount, 2),
+      clutch: {
+        call: profile.hatchetClutchCall,
+        hit: profile.hatchetClutchHit,
+        callPercent: round(profile.hatchetClutchCall / (matchCount * 3), 4) * 100,
+        hitPercent: round(profile.hatchetClutchHit / profile.hatchetClutchCall, 4) * 100,
+      },
+      target: {
+        five: profile.hatchetFive,
+        three: profile.hatchetThree,
+        one: profile.hatchetOne,
+        drop: profile.hatchetDrop,
+        fivePercent: round(profile.hatchetFive / profile.hatchetThrowCount, 4) * 100,
+        threePercent: round(profile.hatchetThree / profile.hatchetThrowCount, 4) * 100,
+        onePercent: round(profile.hatchetOne / profile.hatchetThrowCount, 4) * 100,
+        dropPercent: round(profile.hatchetDrop / profile.hatchetThrowCount, 4) * 100,
+      }
+    },
+    bigAxe: {
+      roundWin: profile.bigAxeRoundWin,
+      roundLoss: profile.bigAxeRoundLoss,
+      roundCount: bigAxeRoundCount,
+      winPercent: round(profile.bigAxeRoundWin / bigAxeRoundCount, 4) * 100,
+      totalScore: profile.bigAxeTotalScore,
+      throwCount: profile.bigAxeThrowCount,
+      scorePerThrow: round(profile.bigAxeTotalScore / profile.bigAxeThrowCount, 2),
+      clutch: {
+        call: profile.bigAxeClutchCall,
+        hit: profile.bigAxeClutchHit,
+        hitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 4) * 100,
+      },
+      target: {
+        five: profile.bigAxeFive,
+        three: profile.bigAxeThree,
+        one: profile.bigAxeOne,
+        drop: profile.bigAxeDrop,
+        fivePercent: round(profile.bigAxeFive / profile.bigAxeThrowCount, 4) * 100,
+        threePercent: round(profile.bigAxeThree / profile.bigAxeThrowCount, 4) * 100,
+        onePercent: round(profile.bigAxeOne / profile.bigAxeThrowCount, 4) * 100,
+        dropPercent: round(profile.bigAxeDrop / profile.bigAxeThrowCount, 4) * 100,
+      }
+    },
+    matches: profile.matches
   };
 };
 
