@@ -8,7 +8,7 @@ const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../../dist');
 
 const transformProfile = (profile) => {
-  const { id, name, about, rank, rating } = profile;
+  const { id, name, about, rank, rating, image } = profile;
 
   const matchCount = sum([
     profile.matchWin,
@@ -33,6 +33,7 @@ const transformProfile = (profile) => {
     about,
     rank,
     rating,
+    image,
     match: {
       win: profile.matchWin,
       loss: profile.matchLoss,

@@ -29,6 +29,7 @@ const processProfile = async (page, { id, rank, rating }) => {
 
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
+  const image = 'DEFAULT VALUE';
 
   await db.run(`
     INSERT OR IGNORE INTO profiles
@@ -37,9 +38,9 @@ const processProfile = async (page, { id, rank, rating }) => {
 
   await db.run(`
     UPDATE profiles
-    SET name = ?, about = ?, rank = ?, rating = ?
+    SET name = ?, about = ?, rank = ?, rating = ?, image =
     WHERE id = ?;
-  `, [name, about, rank, rating, id]);
+  `, [name, about, rank, rating, image, id]);
 
   const premierLeagues = leagues.filter(x => x.performanceName === 'IATF Premier');
   const weeks = premierLeagues.flatMap(x => x.seasonWeeks);
