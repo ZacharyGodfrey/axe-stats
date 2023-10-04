@@ -70,6 +70,7 @@ const getMatches = async () => {
   const matches = await db.query(`
     SELECT *
     FROM matches
+    WHERE processed = 1
     ORDER BY id asc;
   `);
 
