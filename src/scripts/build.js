@@ -37,7 +37,7 @@ const transformProfile = (profile) => {
       win: profile.matchWin,
       loss: profile.matchLoss,
       otl: profile.matchOTL,
-      count: profile.matchCount,
+      count: matchCount,
       totalScore: profile.matchTotalScore,
       averageScore: round(profile.matchTotalScore / matchCount, 2),
       winPercent: round(profile.matchWin / matchCount * 100, 2),
