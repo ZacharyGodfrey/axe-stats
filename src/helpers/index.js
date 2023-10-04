@@ -105,6 +105,14 @@ const reactPageState = (page, selector) => {
   return page.$eval(selector, getState);
 };
 
+const waitMilliseconds = (milliseconds) => {
+  console.log(`Waiting for ${milliseconds} milliseconds...`);
+
+  return new Promise((resolve) => {
+    setTimeout(resolve, milliseconds);
+  });
+};
+
 const logError = (error) => {
   console.log('**********');
 
@@ -132,6 +140,7 @@ module.exports = {
   round,
   average,
   reactPageState,
+  waitMilliseconds,
   logError,
   logErrorAndDefault
 };

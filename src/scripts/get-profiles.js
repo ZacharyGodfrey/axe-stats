@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../../_config.json');
-const { db, ensureTables, sequentially, reactPageState, logError } = require('../helpers');
+const { db, ensureTables, sequentially, reactPageState, waitMilliseconds, logError } = require('../helpers');
 
 const timeout = 5 * 1000; // 5 seconds
 
@@ -25,7 +25,8 @@ const processProfile = async (page, { id, rank, rating }) => {
   console.log(`Scraping additional profile data for ID ${id}...`);
 
   await page.goto(`https://axescores.com/player/${id}`);
-  await page.waitForNetworkIdle({ timeout });
+  await waitMilliseconds(timeout);
+  // await page.waitForNetworkIdle({ timeout });
 
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
