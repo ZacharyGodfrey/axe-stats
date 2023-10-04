@@ -43,6 +43,7 @@ const transformProfile = (profile) => {
     percentage: {
       matchWin: `${100 * round(profile.matchWin / matchCount, 4)}%`,
       bigAxeWin: `${100 * round(profile.bigAxeRoundWin / bigAxeRoundCount, 4)}%`,
+      hatchetClutchCall: `${100 * round(profile.hatchetClutchCall / (matchCount * 3), 4)}%`,
       hatchetClutchHit: `${100 * round(profile.hatchetClutchHit / profile.hatchetClutchCall, 4)}%`,
       hatchetFive: `${100 * round(profile.hatchetFive / profile.hatchetThrowCount, 4)}%`,
       bigAxeClutchHit: `${100 * round(profile.bigAxeClutchHit / profile.bigAxeClutchCall, 4)}%`,

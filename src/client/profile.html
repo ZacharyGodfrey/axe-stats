@@ -59,7 +59,7 @@
   <div class="x-limit">
     <div class="split stack">
       <div class="grow">
-        <h2>Hatchet Accuracy</h2>
+        <h2 class="text-center">Hatchet</h2>
 
         <div class="targetStats">
           <div class="clutch">
@@ -97,7 +97,7 @@
       </div>
 
       <div class="grow">
-        <h2>Big Axe Accuracy</h2>
+        <h2 class="text-center">Big Axe</h2>
 
         <div class="targetStats">
           <div class="clutch">
@@ -135,8 +135,6 @@
       </div>
     </div>
 
-    <h2>Statistics</h2>
-
     <figure>
       <table class="text-center" style="table-layout: fixed;">
         <thead>
@@ -155,51 +153,21 @@
           </tr>
 
           <tr>
-            <td>{{profile.hatchetClutchHit}} ({{profile.percentage.hatchetClutchHit}})</td>
-            <th>Clutches</th>
-            <td>{{profile.bigAxeClutchHit}} ({{profile.percentage.bigAxeClutchHit}})</td>
+            <td>{{profile.percentage.hatchetFive}}</td>
+            <th>Bullseye Accuracy</th>
+            <td>{{profile.percentage.bigAxeFive}}</td>
           </tr>
 
           <tr>
-            <td>{{profile.hatchetFive}} ({{profile.percentage.hatchetFive}})</td>
-            <th>Bullseyes</th>
-            <td>{{profile.bigAxeFive}} ({{profile.percentage.bigAxeFive}})</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetClutchCallPercent}}</td>
+            <td>{{profile.percentage.hatchetClutchCall}}</td>
             <th>Clutch Call Rate</th>
-            <td>{{profile.bigAxeClutchCallPercent}}</td>
+            <td>{{profile.percentage.bigAxeClutchCall}}</td>
           </tr>
 
           <tr>
-            <td>{{profile.hatchetClutchHit}}</td>
-            <th>Clutches</th>
-            <td>{{profile.bigAxeClutchHit}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetFive}}</td>
-            <th>Bullseyes</th>
-            <td>{{profile.bigAxeFive}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetThree}}</td>
-            <th>Threes</th>
-            <td>{{profile.bigAxeThree}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetOne}}</td>
-            <th>Ones</th>
-            <td>{{profile.bigAxeOne}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchetDrop}}</td>
-            <th>Drops</th>
-            <td>{{profile.bigAxeDrop}}</td>
+            <td>{{profile.percentage.hatchetClutchHit}}</td>
+            <th>Clutch Accuracy</th>
+            <td>{{profile.percentage.bigAxeClutchHit}}</td>
           </tr>
         </tbody>
       </table>
