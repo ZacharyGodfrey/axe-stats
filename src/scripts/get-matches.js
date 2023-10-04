@@ -150,7 +150,7 @@ const processMatch = async (page, matchId, profileIds) => {
       matchIds.add(id);
     });
 
-    await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds));
+    await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds).catch(logError));
     await browser.close();
     await db.disconnect();
   } catch (error) {

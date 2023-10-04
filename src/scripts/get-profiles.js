@@ -61,7 +61,7 @@ const processProfile = async (page, { id, rank, rating }) => {
     const profileIdSet = new Set(config.profileIds);
     const profiles = await getProfiles(page, profileIdSet);
 
-    await sequentially(profiles, async (profile) => processProfile(page, profile));
+    await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
     await browser.close();
     await db.disconnect();
   } catch (error) {

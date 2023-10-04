@@ -122,7 +122,7 @@ const analyzeProfile = async (id) => {
       FROM profiles;
     `);
 
-    await sequentially(profiles, ({ id }) => analyzeProfile(id));
+    await sequentially(profiles, ({ id }) => analyzeProfile(id).catch(logError));
     await db.disconnect();
   } catch (error) {
     logError(error);

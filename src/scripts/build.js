@@ -64,6 +64,24 @@ const getProfiles = async () => {
   return profiles.map(x => transformProfile(x));
 };
 
+const getMatches = async () => {
+  console.log('Get Matches');
+
+  const matches = await db.query(`
+    SELECT *
+    FROM matches
+    ORDER BY id asc;
+  `);
+
+  return matches.reduce((result, match) => {
+    result[match.profileId] = result[match.profileId] || [];
+
+    result[match.profileId].push(match);
+
+    return result;
+  }, {});
+};
+
 const readFile = (filePath) => {
   return fs.readFile(filePath, 'utf-8');
 };
@@ -131,10 +149,15 @@ const buildProfilePage = async (shell, profile) => {
     await fs.emptyDir(DIST_DIR);
     await fs.copy(`${CLIENT_DIR}/static`, DIST_DIR);
 
-    const [profiles, shell] = await Promise.all([
+    const [profiles, matches, shell] = await Promise.all([
       getProfiles(),
+      getMatches(),
       readFile(`${CLIENT_DIR}/shell.html`)
     ]);
+
+    profiles.forEach((profile) => {
+      profile.matches = matches[profile.id];
+    });
 
     await Promise.all([
       writeFile(`${DIST_DIR}/data.json`, JSON.stringify(profiles, null, 2)),
