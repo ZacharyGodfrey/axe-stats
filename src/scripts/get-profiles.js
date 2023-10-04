@@ -26,7 +26,6 @@ const processProfile = async (page, { id, rank, rating }) => {
 
   await page.goto(`https://axescores.com/player/${id}`);
   await waitMilliseconds(timeout);
-  // await page.waitForNetworkIdle({ timeout });
 
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
