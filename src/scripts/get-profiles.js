@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../../_config.json');
-const { db, ensureTables, sequentially, reactPageState, waitMilliseconds, logError } = require('../helpers');
+const { db, sequentially, reactPageState, waitMilliseconds, logError } = require('../helpers');
 
 const timeout = 2 * 1000; // 2 seconds
 
@@ -55,8 +55,6 @@ const processProfile = async (page, { id, rank, rating }) => {
   try {
     console.log('# Get Profiles');
     console.log('Config: ', JSON.stringify(config, null, 2));
-
-    await ensureTables(db);
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
