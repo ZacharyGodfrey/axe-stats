@@ -6,31 +6,15 @@
       <div class="grow">
         <h2>{{profile.name}}</h2>
 
-        {{#profile.about}}
-        <p>
-          <strong>Biography</strong>
-        </p>
-
-        <p>{{profile.about}}</p>
-        {{/profile.about}}
-    </div>
-
-    <div>
-      <div class="card text-center no-break">
-        <p class="text-lg">#{{profile.rank}}</p>
-
         <p>
           <strong>Global Rank</strong>
+          <span>#{{profile.rank}}</span>
         </p>
-      </div>
-
-      <div class="card text-center no-break">
-        <p class="text-lg">{{profile.rating}}</p>
 
         <p>
           <strong>Collins Rating</strong>
+          <span>{{profile.rating}}</span>
         </p>
-      </div>
     </div>
   </div>
 </section>
@@ -62,7 +46,7 @@
         <p class="text-lg">{{profile.percentage.bigAxeWin}}</p>
 
         <p>
-          <strong>Tie Break</strong>
+          <strong>Big Axe Win Rate</strong>
         </p>
 
         <p>{{profile.bigAxeRoundWin}}-{{profile.bigAxeRoundLoss}}</p>
@@ -73,6 +57,14 @@
 
 <section>
   <div class="x-limit">
+    <h2>Hatchet Performance</h2>
+
+    <p>TBD</p>
+
+    <h2>Big Axe Performance</h2>
+
+    <p>TBD</p>
+
     <h2>Statistics</h2>
 
     <figure>
@@ -102,18 +94,6 @@
             <td>{{profile.hatchetFive}} ({{profile.percentage.hatchetFive}})</td>
             <th>Bullseyes</th>
             <td>{{profile.bigAxeFive}} ({{profile.percentage.bigAxeFive}})</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
-
-    <figure>
-      <table class="text-center" style="table-layout:fixed;">
-        <tbody>
-          <tr>
-            <th>Hatchet</th>
-            <th></th>
-            <th>Big Axe</th>
           </tr>
 
           <tr>
