@@ -18,7 +18,7 @@
 
         <p>
           <strong>Career Record</strong>
-          <span>{{profile.match.win}} W | {{profile.match.loss}} L | {{profile.match.otl}} OTL</span>
+          <span>{{profile.match.win}} / {{profile.match.loss}} / {{profile.match.otl}}</span>
         </p>
     </div>
   </div>
@@ -110,16 +110,6 @@
       </div>
 
       <div class="card text-center no-break">
-        <p class="text-lg">{{profile.hatchet.target.ev}}%</p>
-
-        <p>
-          <strong>Target EV</strong>
-        </p>
-      </div>
-    </div>
-
-    <div class="split stack x-center y-center">
-      <div class="card text-center no-break">
         <p class="text-lg">{{profile.hatchet.clutch.hitPercent}}%</p>
 
         <p>
@@ -138,6 +128,16 @@
 
         <p>{{profile.hatchet.clutch.call}} / {{profile.hatchet.roundCount}}</p>
       </div>
+    </div>
+
+    <div class="split stack x-center y-center">
+      <div class="card text-center no-break">
+        <p class="text-lg">{{profile.hatchet.target.ev}}%</p>
+
+        <p>
+          <strong>Target EV</strong>
+        </p>
+      </div>
 
       <div class="card text-center no-break">
         <p class="text-lg">{{profile.hatchet.clutch.ev}}%</p>
@@ -148,7 +148,9 @@
       </div>
     </div>
 
-    <h2>Big Axe</h2>
+    <hr>
+
+    <h2 class="text-center">Big Axe</h2>
 
     <div class="targetStats">
       <div class="clutch">
@@ -196,16 +198,6 @@
       </div>
 
       <div class="card text-center no-break">
-        <p class="text-lg">{{profile.bigAxe.target.ev}}%</p>
-
-        <p>
-          <strong>Target EV</strong>
-        </p>
-      </div>
-    </div>
-
-    <div class="split stack x-center y-center">
-      <div class="card text-center no-break">
         <p class="text-lg">{{profile.bigAxe.clutch.hitPercent}}%</p>
 
         <p>
@@ -213,6 +205,16 @@
         </p>
 
         <p>{{profile.bigAxe.clutch.hit}} / {{profile.bigAxe.clutch.call}}</p>
+      </div>
+    </div>
+
+    <div class="split stack x-center y-center">
+      <div class="card text-center no-break">
+        <p class="text-lg">{{profile.bigAxe.target.ev}}%</p>
+
+        <p>
+          <strong>Target EV</strong>
+        </p>
       </div>
 
       <div class="card text-center no-break">
