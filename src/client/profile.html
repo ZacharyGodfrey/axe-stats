@@ -105,46 +105,53 @@
             <tbody>
               <tr>
                 <th>Bullseye Accuracy</th>
-                <td>{{profile.hatchet.target.fivePercent}}%</td>
-                <td>{{profile.hatchet.target.five}} / {{profile.hatchet.target.throwCount}} Attempts</td>
+                <td>
+                  <strong>{{profile.hatchet.target.fivePercent}}%</strong>
+                  <span>({{profile.hatchet.target.five}} / {{profile.hatchet.target.throwCount}} Hit)</span>
+                </td>
               </tr>
 
               <tr>
                 <th>Clutch Accuracy</th>
-                <td>{{profile.hatchet.clutch.hitPercent}}%</td>
-                <td>{{profile.hatchet.clutch.hit}} / {{profile.hatchet.clutch.call}} Called</td>
+                <td>
+                  <strong>{{profile.hatchet.clutch.hitPercent}}%</strong>
+                  <span>{{profile.hatchet.clutch.hit}} / {{profile.hatchet.clutch.call}} Hit</span>
+                </td>
               </tr>
 
               <tr>
                 <th>Clutch Call Rate</th>
-                <td>{{profile.hatchet.clutch.callPercent}}%</td>
-                <td>{{profile.hatchet.clutch.call}} / {{profile.hatchet.roundCount}} Available</td>
-              </tr>
-
-              <tr>
-                <th>Bullseye EV</th>
-                <td>{{profile.hatchet.target.ev}}</td>
-                <td></td>
-              </tr>
-
-              <tr>
-                <th>Clutch EV</th>
-                <td>{{profile.hatchet.clutch.ev}}</td>
-                <td></td>
+                <td>
+                  <strong>{{profile.hatchet.clutch.callPercent}}%</strong>
+                  <span>{{profile.hatchet.clutch.call}} / {{profile.hatchet.roundCount}} Called</span>
+                </td>
               </tr>
 
               <tr>
                 <th>Score Per Axe</th>
-                <td>{{profile.hatchet.scorePerThrow}}</td>
-                <td></td>
+                <td>
+                  <strong>{{profile.hatchet.scorePerThrow}}</strong>
+                </td>
+              </tr>
+
+              <tr>
+                <th>Bullseye EV</th>
+                <td>
+                  <strong>{{profile.hatchet.target.ev}}</strong>
+                </td>
+              </tr>
+
+              <tr>
+                <th>Clutch EV</th>
+                <td>
+                  <strong>{{profile.hatchet.clutch.ev}}</strong>
+                </td>
               </tr>
             </tbody>
           </table>
         </figure>
       </div>
     </div>
-
-    <hr>
 
     <h2>Big Axe</h2>
 
@@ -190,13 +197,19 @@
               <tr>
                 <th>Bullseye Accuracy</th>
                 <td>{{profile.bigAxe.target.fivePercent}}%</td>
-                <td>{{profile.bigAxe.target.five}} / {{profile.bigAxe.target.throwCount}} Attempts</td>
+                <td>{{profile.bigAxe.target.five}} / {{profile.bigAxe.target.throwCount}} Hit</td>
               </tr>
 
               <tr>
                 <th>Clutch Accuracy</th>
                 <td>{{profile.bigAxe.clutch.hitPercent}}%</td>
-                <td>{{profile.bigAxe.clutch.hit}} / {{profile.bigAxe.clutch.call}} Called</td>
+                <td>{{profile.bigAxe.clutch.hit}} / {{profile.bigAxe.clutch.call}} Hit</td>
+              </tr>
+
+              <tr>
+                <th>Score Per Axe</th>
+                <td>{{profile.bigAxe.scorePerThrow}}</td>
+                <td></td>
               </tr>
 
               <tr>
@@ -210,68 +223,10 @@
                 <td>{{profile.bigAxe.clutch.ev}}</td>
                 <td></td>
               </tr>
-
-              <tr>
-                <th>Score Per Axe</th>
-                <td>{{profile.bigAxe.scorePerThrow}}</td>
-                <td></td>
-              </tr>
             </tbody>
           </table>
         </figure>
       </div>
     </div>
-
-    <h2>Additional Statistics</h2>
-
-    <figure>
-      <table class="text-center" style="table-layout: fixed;">
-        <thead>
-          <tr>
-            <th>Hatchet</th>
-            <th></th>
-            <th>Big Axe</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>{{profile.hatchet.scorePerThrow}}</td>
-            <th>Score Per Axe</th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchet.target.ev}}</td>
-            <th>Target EV</th>
-            <td>{{profile.bigAxe.target.ev}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchet.clutch.ev}}</td>
-            <th>Clutch EV</th>
-            <td>{{profile.bigAxe.clutch.ev}}</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchet.target.fivePercent}}%</td>
-            <th>Bullseye Accuracy</th>
-            <td>{{profile.bigAxe.target.fivePercent}}%</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchet.clutch.hitPercent}}%</td>
-            <th>Clutch Accuracy</th>
-            <td>{{profile.bigAxe.clutch.hitPercent}}%</td>
-          </tr>
-
-          <tr>
-            <td>{{profile.hatchet.clutch.callPercent}}%</td>
-            <th>Clutch Call Rate</th>
-            <td>N/A</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
   </div>
 </section>
