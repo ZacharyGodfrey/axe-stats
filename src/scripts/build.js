@@ -139,14 +139,12 @@ const writeFile = (filePath, content) => {
 };
 
 const getShell = async () => {
-  let [shell, robotoFont, sourceCodeProFont] = await Promise.all([
+  let [shell, robotoFont] = await Promise.all([
     readFile(`${CLIENT_DIR}/shell.html`),
     readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64'),
-    readFile(`${CLIENT_DIR}/assets/source-code-pro-mono.ttf`, 'base64'),
   ]);
 
   shell = shell.replace('**robotoFont**', robotoFont);
-  shell = shell.replace('**sourceCodeProFont**', sourceCodeProFont);
 
   return shell;
 };
