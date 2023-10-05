@@ -152,78 +152,82 @@
 
     <h2 class="text-center">Big Axe</h2>
 
-    <div class="targetStats">
-      <div class="clutch">
-        <div class="dot"></div>
+    <div class="split stack">
+      <div class="targetStats">
+        <div class="clutch">
+          <div class="dot"></div>
 
-        <span>{{profile.bigAxe.clutch.hit}}</span>
+          <span>{{profile.bigAxe.clutch.hit}}</span>
 
-        <div class="dot"></div>
-      </div>
+          <div class="dot"></div>
+        </div>
 
-      <br>
+        <br>
 
-      <div class="target">
-        <div class="ring one">
-          <span class="label">&nbsp;</span>
-
-          <div class="ring three">
+        <div class="target">
+          <div class="ring one">
             <span class="label">&nbsp;</span>
 
-            <div class="ring five">
-              <span class="label">{{profile.bigAxe.target.five}}</span>
+            <div class="ring three">
+              <span class="label">&nbsp;</span>
+
+              <div class="ring five">
+                <span class="label">{{profile.bigAxe.target.five}}</span>
+              </div>
+
+              <span class="label">{{profile.bigAxe.target.three}}</span>
             </div>
 
-            <span class="label">{{profile.bigAxe.target.three}}</span>
+            <span class="label">{{profile.bigAxe.target.one}}</span>
           </div>
-
-          <span class="label">{{profile.bigAxe.target.one}}</span>
         </div>
+
+        <br>
+
+        <span class="label">{{profile.bigAxe.target.drop}} Drops</span>
       </div>
 
-      <br>
+      <div class="grow">
+        <figure>
+          <table class="text-center" style="table-layout: fixed;">
+            <tbody>
+              <tr>
+                <th>Bullseye Accuracy</th>
+                <td>
+                  <p class="text-lg">{{profile.bigAxe.target.fivePercent}}%</p>
+                  <p>{{profile.bigAxe.target.five}} / {{profile.bigAxe.target.throwCount}}</p>
+                </td>
+              </tr>
 
-      <span class="label">{{profile.bigAxe.target.drop}} Drops</span>
+              <tr>
+                <th>Clutch Accuracy</th>
+                <td></td>
+              </tr>
+
+              <tr>
+                <th>Clutch Call Rate</th>
+                <td></td>
+              </tr>
+
+              <tr>
+                <th>Bullseye EV</th>
+                <td></td>
+              </tr>
+
+              <tr>
+                <th>Clutch EV</th>
+                <td></td>
+              </tr>
+
+              <tr>
+                <th>Score Per Axe</th>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
     </div>
-
-    <figure>
-      <table>
-        <tbody>
-          <tr>
-            <th>Bullseye Accuracy</th>
-            <td>
-              <p class="text-lg">{{profile.bigAxe.target.fivePercent}}%</p>
-              <p>{{profile.bigAxe.target.five}} / {{profile.bigAxe.target.throwCount}}</p>
-            </td>
-          </tr>
-
-          <tr>
-            <th>Clutch Accuracy</th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th>Clutch Call Rate</th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th>Bullseye EV</th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th>Clutch EV</th>
-            <td></td>
-          </tr>
-
-          <tr>
-            <th>Score Per Axe</th>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
 
     <div class="split stack x-center y-center">
       <div class="card text-center no-break">
