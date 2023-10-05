@@ -25,7 +25,7 @@ const getProfileImage = async (id) => {
   const url = `https://admin.axescores.com/pic/${id}`;
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
-  const base64 = buffer.toString('base64');
+  const base64 = Buffer.from(buffer).toString('base64');
 
   return base64;
 };
@@ -39,6 +39,10 @@ const processProfile = async (page, { id, rank, rating }) => {
   const image = await getProfileImage(id);
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
+
+  console.log(JSON.stringify({
+    name, about, rank, rating, image, id
+  }, null, 2));
 
   await db.run(`
     INSERT OR IGNORE INTO profiles
