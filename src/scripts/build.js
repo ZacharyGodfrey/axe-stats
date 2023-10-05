@@ -7,6 +7,18 @@ const { db, sum, round, logError } = require('../helpers');
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../../dist');
 
+const targetEV = (five, three, one, drop) => {
+  const totalScore = sum([
+    5 * five,
+    3 * three,
+    1 * one,
+  ]);
+
+  const throwCount = sum([five, three, one, drop]);
+
+  return totalScore / throwCount;
+}
+
 const transformProfile = (profile) => {
   const { id, name, about, rank, rating, image } = profile;
 
@@ -57,6 +69,7 @@ const transformProfile = (profile) => {
         hit: profile.hatchetClutchHit,
         callPercent: round(profile.hatchetClutchCall / (matchCount * 3) * 100, 2),
         hitPercent: round(profile.hatchetClutchHit / profile.hatchetClutchCall * 100, 2),
+        ev: round((7 * profile.hatchetClutchHit) / profile.hatchetClutchCall, 2),
       },
       target: {
         five: profile.hatchetFive,
@@ -67,6 +80,7 @@ const transformProfile = (profile) => {
         threePercent: round(profile.hatchetThree / profile.hatchetThrowCount * 100, 2),
         onePercent: round(profile.hatchetOne / profile.hatchetThrowCount * 100, 2),
         dropPercent: round(profile.hatchetDrop / profile.hatchetThrowCount * 100, 2),
+        ev: round(targetEV(profile.hatchetFive, profile.hatchetThree, profile.hatchetOne, profile.hatchetDrop), 2),
       }
     },
     bigAxe: {
@@ -81,6 +95,7 @@ const transformProfile = (profile) => {
         call: profile.bigAxeClutchCall,
         hit: profile.bigAxeClutchHit,
         hitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall * 100, 2),
+        ev: round((7 * profile.bigAxeClutchHit) / profile.bigAxeClutchCall, 2),
       },
       target: {
         five: profile.bigAxeFive,
@@ -91,6 +106,7 @@ const transformProfile = (profile) => {
         threePercent: round(profile.bigAxeThree / profile.bigAxeThrowCount * 100, 2),
         onePercent: round(profile.bigAxeOne / profile.bigAxeThrowCount * 100, 2),
         dropPercent: round(profile.bigAxeDrop / profile.bigAxeThrowCount * 100, 2),
+        ev: round(targetEV(profile.bigAxeFive, profile.bigAxeThree, profile.bigAxeOne, profile.bigAxeDrop), 2),
       }
     },
     matches: profile.matches
