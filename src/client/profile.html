@@ -107,7 +107,7 @@
                 <th class="text-center">Bullseye Accuracy</th>
                 <td>
                   <strong>{{profile.hatchet.target.fivePercent}}%</strong>
-                  <span>({{profile.hatchet.target.five}} / {{profile.hatchet.target.throwCount}} Hit)</span>
+                  <span>({{profile.hatchet.target.five}} Hit / {{profile.hatchet.target.throwCount}} Attempts)</span>
                 </td>
               </tr>
 
@@ -115,7 +115,7 @@
                 <th class="text-center">Clutch Accuracy</th>
                 <td>
                   <strong>{{profile.hatchet.clutch.hitPercent}}%</strong>
-                  <span>({{profile.hatchet.clutch.hit}} / {{profile.hatchet.clutch.call}} Hit)</span>
+                  <span>({{profile.hatchet.clutch.hit}} Hit / {{profile.hatchet.clutch.call}} Attempts)</span>
                 </td>
               </tr>
 
@@ -123,7 +123,7 @@
                 <th class="text-center">Clutch Call Rate</th>
                 <td>
                   <strong>{{profile.hatchet.clutch.callPercent}}%</strong>
-                  <span>({{profile.hatchet.clutch.call}} / {{profile.hatchet.roundCount}} Called)</span>
+                  <span>({{profile.hatchet.clutch.call}} Called / {{profile.hatchet.roundCount}} Rounds)</span>
                 </td>
               </tr>
 
@@ -131,6 +131,7 @@
                 <th class="text-center">Score Per Axe</th>
                 <td>
                   <strong>{{profile.hatchet.scorePerThrow}}</strong>
+                  <span>({{profile.hatchet.totalScore}} Points / {{profile.hatchet.throwCount}} Attempts)</span>
                 </td>
               </tr>
 
@@ -138,6 +139,7 @@
                 <th class="text-center">Bullseye EV</th>
                 <td>
                   <strong>{{profile.hatchet.target.ev}}</strong>
+                  <span>({{profile.hatchet.target.totalScore}} Points / {{profile.hatchet.target.throwCount}} Attempts)</span>
                 </td>
               </tr>
 
@@ -145,6 +147,7 @@
                 <th class="text-center">Clutch EV</th>
                 <td>
                   <strong>{{profile.hatchet.clutch.ev}}</strong>
+                  <span>({{profile.hatchet.clutch.totalScore}} Points / {{profile.hatchet.clutch.call}} Attempts)</span>
                 </td>
               </tr>
             </tbody>
@@ -198,7 +201,7 @@
                 <th class="text-center">Bullseye Accuracy</th>
                 <td>
                   <strong>{{profile.bigAxe.target.fivePercent}}%</strong>
-                  <span>({{profile.bigAxe.target.five}} / {{profile.bigAxe.target.throwCount}} Hit)</span>
+                  <span>({{profile.bigAxe.target.five}} Hit / {{profile.bigAxe.target.throwCount}} Attempts)</span>
                 </td>
               </tr>
 
@@ -206,7 +209,7 @@
                 <th class="text-center">Clutch Accuracy</th>
                 <td>
                   <strong>{{profile.bigAxe.clutch.hitPercent}}%</strong>
-                  <span>({{profile.bigAxe.clutch.hit}} / {{profile.bigAxe.clutch.call}} Hit)</span>
+                  <span>({{profile.bigAxe.clutch.hit}} Hit / {{profile.bigAxe.clutch.call}} Attempts)</span>
                 </td>
               </tr>
 
@@ -214,6 +217,7 @@
                 <th class="text-center">Score Per Axe</th>
                 <td>
                   <strong>{{profile.bigAxe.scorePerThrow}}</strong>
+                  <span>({{profile.bigAxe.totalScore}} Points / {{profile.bigAxe.throwCount}} Attempts)</span>
                 </td>
               </tr>
 
@@ -221,6 +225,7 @@
                 <th class="text-center">Bullseye EV</th>
                 <td>
                   <strong>{{profile.bigAxe.target.ev}}</strong>
+                  <span>({{profile.bigAxe.target.totalScore}} Points / {{profile.bigAxe.target.throwCount}} Attempts)</span>
                 </td>
               </tr>
 
@@ -228,6 +233,7 @@
                 <th class="text-center">Clutch EV</th>
                 <td>
                   <strong>{{profile.bigAxe.clutch.ev}}</strong>
+                  <span>({{profile.bigAxe.clutch.totalScore}} Points / {{profile.bigAxe.clutch.call}} Attempts)</span>
                 </td>
               </tr>
             </tbody>

@@ -7,18 +7,6 @@ const { db, sum, round, logError } = require('../helpers');
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../../dist');
 
-const targetEV = (five, three, one, drop) => {
-  const totalScore = sum([
-    5 * five,
-    3 * three,
-    1 * one,
-  ]);
-
-  const throwCount = sum([five, three, one, drop]);
-
-  return totalScore / throwCount;
-}
-
 const transformProfile = (profile) => {
   const { id, name, about, rank, rating, image } = profile;
 
@@ -34,6 +22,13 @@ const transformProfile = (profile) => {
     profile.hatchetRoundTie
   ]);
 
+  const hatchetClutchScore = 7 * profile.hatchetClutchHit;
+  const hatchetTargetScore = sum([
+    5 * profile.hatchetFive,
+    3 * profile.hatchetThree,
+    1 * profile.hatchetOne,
+  ]);
+
   const hatchetTargetThrowCount = sum([
     profile.hatchetFive,
     profile.hatchetThree,
@@ -44,6 +39,13 @@ const transformProfile = (profile) => {
   const bigAxeRoundCount = sum([
     profile.bigAxeRoundWin,
     profile.bigAxeRoundLoss
+  ]);
+
+  const bigAxeClutchScore = 7 * profile.bigAxeClutchHit;
+  const bigAxeTargetScore = sum([
+    5 * profile.bigAxeFive,
+    3 * profile.bigAxeThree,
+    1 * profile.bigAxeOne,
   ]);
 
   const bigAxeTargetThrowCount = sum([
@@ -81,9 +83,10 @@ const transformProfile = (profile) => {
       clutch: {
         call: profile.hatchetClutchCall,
         hit: profile.hatchetClutchHit,
+        totalScore: hatchetClutchScore,
         callPercent: round(profile.hatchetClutchCall / hatchetRoundCount * 100, 2),
         hitPercent: round(profile.hatchetClutchHit / profile.hatchetClutchCall * 100, 2),
-        ev: round((7 * profile.hatchetClutchHit) / profile.hatchetClutchCall, 2),
+        ev: round(hatchetClutchScore / profile.hatchetClutchCall, 2),
       },
       target: {
         five: profile.hatchetFive,
@@ -94,8 +97,9 @@ const transformProfile = (profile) => {
         threePercent: round(profile.hatchetThree / hatchetTargetThrowCount * 100, 2),
         onePercent: round(profile.hatchetOne / hatchetTargetThrowCount * 100, 2),
         dropPercent: round(profile.hatchetDrop / hatchetTargetThrowCount * 100, 2),
+        totalScore: hatchetTargetScore,
         throwCount: hatchetTargetThrowCount,
-        ev: round(targetEV(profile.hatchetFive, profile.hatchetThree, profile.hatchetOne, profile.hatchetDrop), 2),
+        ev: round(hatchetTargetScore / hatchetTargetThrowCount, 2),
       }
     },
     bigAxe: {
@@ -109,8 +113,9 @@ const transformProfile = (profile) => {
       clutch: {
         call: profile.bigAxeClutchCall,
         hit: profile.bigAxeClutchHit,
+        totalScore: bigAxeClutchScore,
         hitPercent: round(profile.bigAxeClutchHit / profile.bigAxeClutchCall * 100, 2),
-        ev: round((7 * profile.bigAxeClutchHit) / profile.bigAxeClutchCall, 2),
+        ev: round(bigAxeClutchScore / profile.bigAxeClutchCall, 2),
       },
       target: {
         five: profile.bigAxeFive,
@@ -121,8 +126,9 @@ const transformProfile = (profile) => {
         threePercent: round(profile.bigAxeThree / bigAxeTargetThrowCount * 100, 2),
         onePercent: round(profile.bigAxeOne / bigAxeTargetThrowCount * 100, 2),
         dropPercent: round(profile.bigAxeDrop / bigAxeTargetThrowCount * 100, 2),
+        totalScore: bigAxeTargetScore,
         throwCount: bigAxeTargetThrowCount,
-        ev: round(targetEV(profile.bigAxeFive, profile.bigAxeThree, profile.bigAxeOne, profile.bigAxeDrop), 2),
+        ev: round(bigAxeTargetScore / bigAxeTargetThrowCount, 2),
       }
     },
     matches: profile.matches
