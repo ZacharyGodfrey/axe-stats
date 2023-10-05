@@ -128,14 +128,27 @@ const getMatches = async () => {
   }, {});
 };
 
-const readFile = (filePath) => {
-  return fs.readFile(filePath, 'utf-8');
+const readFile = (filePath, encoding = 'utf-8') => {
+  return fs.readFile(filePath, { encoding });
 };
 
 const writeFile = (filePath, content) => {
   console.log(`Write File: ${filePath}`);
 
   return fs.outputFile(filePath, content, 'utf-8');
+};
+
+const getShell = async () => {
+  let [shell, robotoFont, sourceCodeProFont] = await Promise.all([
+    readFile(`${CLIENT_DIR}/shell.html`),
+    readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64'),
+    readFile(`${CLIENT_DIR}/assets/source-code-pro-mono.ttf`, 'base64'),
+  ]);
+
+  shell = shell.replace('**robotoFont**', robotoFont);
+  shell = shell.replace('**sourceCodeProFont**', sourceCodeProFont);
+
+  return shell;
 };
 
 const buildHomePage = async (shell, profiles) => {
@@ -198,7 +211,7 @@ const buildProfilePage = async (shell, profile) => {
     const [profiles, matches, shell] = await Promise.all([
       getProfiles(),
       getMatches(),
-      readFile(`${CLIENT_DIR}/shell.html`)
+      getShell()
     ]);
 
     profiles.forEach((profile) => {

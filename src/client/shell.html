@@ -10,14 +10,25 @@
     {{^title}}<title>Axe Charts</title>{{/title}}
 
     <style>
+      @font-face {
+        font-family: 'roboto';
+        src: url(data:application/x-font-ttf;charset=utf-8;base64**robotoFont**);
+      }
+
+      @font-face {
+        font-family: 'sourceCodePro';
+        src: url(data:application/x-font-ttf;charset=utf-8;base64**sourceCodeProFont**);
+      }
+
       :root {
         --highlight: hsl(200, 80%, 80%);
         --cta:       hsl(200, 80%, 60%);
         --main:      hsl(200, 50%, 40%);
         --dark:      hsl(200, 50%, 20%);
         --neutral:    #EEEEEE;
-        font-family: monospace;
-        font-variant-numeric: slashed-zero tabular-nums;
+        font-family: 'roboto', monospace;
+        font-family: 'sourceCodePro', monospace;
+        /* font-variant-numeric: slashed-zero tabular-nums; */
         font-size: 16px;
         line-height: 1.5;
         color: black;
