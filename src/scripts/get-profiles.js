@@ -24,7 +24,7 @@ const getProfiles = async (page, profileIdSet) => {
 const getProfileImage = async (id) => {
   const url = `https://admin.axescores.com/pic/${id}`;
   const response = await fetch(url);
-  const buffer = await response.buffer();
+  const buffer = await response.arrayBuffer();
   const base64 = buffer.toString('base64');
 
   return base64;
