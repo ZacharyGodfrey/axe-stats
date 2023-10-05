@@ -21,15 +21,24 @@ const getProfiles = async (page, profileIdSet) => {
   return profiles.filter(x => profileIdSet.has(x.id));
 };
 
+const getProfileImage = async (id) => {
+  const url = `https://admin.axescores.com/pic/${id}`;
+  const response = await fetch(url);
+  const buffer = await response.buffer();
+  const base64 = buffer.toString('base64');
+
+  return base64;
+};
+
 const processProfile = async (page, { id, rank, rating }) => {
   console.log(`Scraping additional profile data for ID ${id}...`);
 
   await page.goto(`https://axescores.com/player/${id}`);
   await waitMilliseconds(timeout);
 
+  const image = await getProfileImage(id);
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
-  const image = 'DEFAULT VALUE';
 
   await db.run(`
     INSERT OR IGNORE INTO profiles
