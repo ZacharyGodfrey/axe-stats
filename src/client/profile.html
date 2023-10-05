@@ -15,6 +15,11 @@
           <strong>Collins Rating</strong>
           <span>{{profile.rating}}</span>
         </p>
+
+        <p>
+          <strong>Career Record</strong>
+          <span>{{profile.match.win}}-{{profile.match.loss}}-{{profile.match.otl}}</span>
+        </p>
     </div>
   </div>
 </section>
@@ -29,7 +34,7 @@
           <strong>Average Score</strong>
         </p>
 
-        <p>{{profile.match.count}} Matches</p>
+        <p>{{profile.match.totalScore}} Points / {{profile.match.count}} Matches</p>
       </div>
 
       <div class="grow stretch card text-center no-break">
@@ -39,7 +44,7 @@
           <strong>Win Rate</strong>
         </p>
 
-        <p>{{profile.match.win}}-{{profile.match.loss}}-{{profile.match.otl}}</p>
+        <p>{{profile.match.win}} Wins / {{profile.match.count}} Matches</p>
       </div>
 
       <div class="grow stretch card text-center no-break">
@@ -49,7 +54,7 @@
           <strong>Big Axe Win Rate</strong>
         </p>
 
-        <p>{{profile.bigAxe.roundWin}}-{{profile.bigAxe.roundLoss}}</p>
+        <p>{{profile.bigAxe.roundWin}} Wins / {{profile.bigAxe.roundCount}} Rounds</p>
       </div>
     </div>
   </div>
@@ -59,42 +64,44 @@
   <div class="x-limit">
     <h2>Hatchet</h2>
 
-    <div class="split stack x-center">
-      <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
+    <div class="split stack y-center">
+      <div class="grow">
+        <div class="targetStats">
+          <div class="clutch">
+            <div class="dot"></div>
 
-          <span>{{profile.hatchet.clutch.hit}}</span>
+            <span>{{profile.hatchet.clutch.hit}}</span>
 
-          <div class="dot"></div>
-        </div>
+            <div class="dot"></div>
+          </div>
 
-        <br>
+          <br>
 
-        <div class="target">
-          <div class="ring one">
-            <span class="label">&nbsp;</span>
-
-            <div class="ring three">
+          <div class="target">
+            <div class="ring one">
               <span class="label">&nbsp;</span>
 
-              <div class="ring five">
-                <span class="label">{{profile.hatchet.target.five}}</span>
+              <div class="ring three">
+                <span class="label">&nbsp;</span>
+
+                <div class="ring five">
+                  <span class="label">{{profile.hatchet.target.five}}</span>
+                </div>
+
+                <span class="label">{{profile.hatchet.target.three}}</span>
               </div>
 
-              <span class="label">{{profile.hatchet.target.three}}</span>
+              <span class="label">{{profile.hatchet.target.one}}</span>
             </div>
-
-            <span class="label">{{profile.hatchet.target.one}}</span>
           </div>
+
+          <br>
+
+          <span class="label">{{profile.hatchet.target.drop}} Drops</span>
         </div>
-
-        <br>
-
-        <span class="label">{{profile.hatchet.target.drop}} Drops</span>
       </div>
 
-      <div class="grow">
+      <div>
         <div class="card text-center no-break">
           <p class="text-lg">{{profile.hatchet.target.fivePercent}}%</p>
 
@@ -129,42 +136,44 @@
 
     <h2>Big Axe</h2>
 
-    <div class="split stack x-center">
-      <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
+    <div class="split stack y-center">
+      <div class="grow">
+        <div class="targetStats">
+          <div class="clutch">
+            <div class="dot"></div>
 
-          <span>{{profile.bigAxe.clutch.hit}}</span>
+            <span>{{profile.bigAxe.clutch.hit}}</span>
 
-          <div class="dot"></div>
-        </div>
+            <div class="dot"></div>
+          </div>
 
-        <br>
+          <br>
 
-        <div class="target">
-          <div class="ring one">
-            <span class="label">&nbsp;</span>
-
-            <div class="ring three">
+          <div class="target">
+            <div class="ring one">
               <span class="label">&nbsp;</span>
 
-              <div class="ring five">
-                <span class="label">{{profile.bigAxe.target.five}}</span>
+              <div class="ring three">
+                <span class="label">&nbsp;</span>
+
+                <div class="ring five">
+                  <span class="label">{{profile.bigAxe.target.five}}</span>
+                </div>
+
+                <span class="label">{{profile.bigAxe.target.three}}</span>
               </div>
 
-              <span class="label">{{profile.bigAxe.target.three}}</span>
+              <span class="label">{{profile.bigAxe.target.one}}</span>
             </div>
-
-            <span class="label">{{profile.bigAxe.target.one}}</span>
           </div>
+
+          <br>
+
+          <span class="label">{{profile.bigAxe.target.drop}} Drops</span>
         </div>
-
-        <br>
-
-        <span class="label">{{profile.bigAxe.target.drop}} Drops</span>
       </div>
 
-      <div class="grow">
+      <div>
         <div class="card text-center no-break">
           <p class="text-lg">{{profile.bigAxe.target.fivePercent}}%</p>
 
@@ -184,6 +193,7 @@
 
           <p>{{profile.bigAxe.clutch.hit}} / {{profile.bigAxe.clutch.call}}</p>
         </div>
+      </div>
     </div>
 
     <h2>Expected Value (EV)</h2>
