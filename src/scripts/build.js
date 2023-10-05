@@ -34,9 +34,23 @@ const transformProfile = (profile) => {
     profile.hatchetRoundTie
   ]);
 
+  const hatchetTargetThrowCount = sum([
+    profile.hatchetFive,
+    profile.hatchetThree,
+    profile.hatchetOne,
+    profile.hatchetDrop,
+  ]);
+
   const bigAxeRoundCount = sum([
     profile.bigAxeRoundWin,
     profile.bigAxeRoundLoss
+  ]);
+
+  const bigAxeTargetThrowCount = sum([
+    profile.bigAxeFive,
+    profile.bigAxeThree,
+    profile.bigAxeOne,
+    profile.bigAxeDrop,
   ]);
 
   return {
@@ -67,7 +81,7 @@ const transformProfile = (profile) => {
       clutch: {
         call: profile.hatchetClutchCall,
         hit: profile.hatchetClutchHit,
-        callPercent: round(profile.hatchetClutchCall / (matchCount * 3) * 100, 2),
+        callPercent: round(profile.hatchetClutchCall / hatchetRoundCount * 100, 2),
         hitPercent: round(profile.hatchetClutchHit / profile.hatchetClutchCall * 100, 2),
         ev: round((7 * profile.hatchetClutchHit) / profile.hatchetClutchCall, 2),
       },
@@ -80,6 +94,7 @@ const transformProfile = (profile) => {
         threePercent: round(profile.hatchetThree / profile.hatchetThrowCount * 100, 2),
         onePercent: round(profile.hatchetOne / profile.hatchetThrowCount * 100, 2),
         dropPercent: round(profile.hatchetDrop / profile.hatchetThrowCount * 100, 2),
+        throwCount: hatchetTargetThrowCount,
         ev: round(targetEV(profile.hatchetFive, profile.hatchetThree, profile.hatchetOne, profile.hatchetDrop), 2),
       }
     },
@@ -106,6 +121,7 @@ const transformProfile = (profile) => {
         threePercent: round(profile.bigAxeThree / profile.bigAxeThrowCount * 100, 2),
         onePercent: round(profile.bigAxeOne / profile.bigAxeThrowCount * 100, 2),
         dropPercent: round(profile.bigAxeDrop / profile.bigAxeThrowCount * 100, 2),
+        throwCount: bigAxeTargetThrowCount,
         ev: round(targetEV(profile.bigAxeFive, profile.bigAxeThree, profile.bigAxeOne, profile.bigAxeDrop), 2),
       }
     },
