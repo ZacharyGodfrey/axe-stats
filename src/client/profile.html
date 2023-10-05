@@ -62,44 +62,10 @@
 
 <section>
   <div class="x-limit">
-    <h2>Hatchet</h2>
-
-    <div class="split stack">
-      <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
-
-          <span>{{profile.hatchet.clutch.hit}}</span>
-
-          <div class="dot"></div>
-        </div>
-
-        <br>
-
-        <div class="target">
-          <div class="ring one">
-            <span class="label">&nbsp;</span>
-
-            <div class="ring three">
-              <span class="label">&nbsp;</span>
-
-              <div class="ring five">
-                <span class="label">{{profile.hatchet.target.five}}</span>
-              </div>
-
-              <span class="label">{{profile.hatchet.target.three}}</span>
-            </div>
-
-            <span class="label">{{profile.hatchet.target.one}}</span>
-          </div>
-        </div>
-
-        <br>
-
-        <span class="label">{{profile.hatchet.target.drop}} Drops</span>
-      </div>
-
+    <div class="split stack y-center">
       <div class="grow">
+        <h2>Hatchet</h2>
+
         <figure>
           <table style="table-layout: fixed;">
             <tbody>
@@ -154,16 +120,12 @@
           </table>
         </figure>
       </div>
-    </div>
 
-    <h2>Big Axe</h2>
-
-    <div class="split stack">
       <div class="targetStats">
         <div class="clutch">
           <div class="dot"></div>
 
-          <span>{{profile.bigAxe.clutch.hit}}</span>
+          <span>{{profile.hatchet.clutch.hit}}</span>
 
           <div class="dot"></div>
         </div>
@@ -178,22 +140,26 @@
               <span class="label">&nbsp;</span>
 
               <div class="ring five">
-                <span class="label">{{profile.bigAxe.target.five}}</span>
+                <span class="label">{{profile.hatchet.target.five}}</span>
               </div>
 
-              <span class="label">{{profile.bigAxe.target.three}}</span>
+              <span class="label">{{profile.hatchet.target.three}}</span>
             </div>
 
-            <span class="label">{{profile.bigAxe.target.one}}</span>
+            <span class="label">{{profile.hatchet.target.one}}</span>
           </div>
         </div>
 
         <br>
 
-        <span class="label">{{profile.bigAxe.target.drop}} Drops</span>
+        <span class="label">{{profile.hatchet.target.drop}} Drops</span>
       </div>
+    </div>
 
+    <div class="split stack y-center">
       <div class="grow">
+        <h2>Big Axe</h2>
+
         <figure>
           <table style="table-layout: fixed;">
             <tbody>
@@ -239,6 +205,40 @@
             </tbody>
           </table>
         </figure>
+      </div>
+
+      <div class="targetStats">
+        <div class="clutch">
+          <div class="dot"></div>
+
+          <span>{{profile.bigAxe.clutch.hit}}</span>
+
+          <div class="dot"></div>
+        </div>
+
+        <br>
+
+        <div class="target">
+          <div class="ring one">
+            <span class="label">&nbsp;</span>
+
+            <div class="ring three">
+              <span class="label">&nbsp;</span>
+
+              <div class="ring five">
+                <span class="label">{{profile.bigAxe.target.five}}</span>
+              </div>
+
+              <span class="label">{{profile.bigAxe.target.three}}</span>
+            </div>
+
+            <span class="label">{{profile.bigAxe.target.one}}</span>
+          </div>
+        </div>
+
+        <br>
+
+        <span class="label">{{profile.bigAxe.target.drop}} Drops</span>
       </div>
     </div>
   </div>
