@@ -278,7 +278,10 @@
       .profile-image {
         display: block;
         margin: 1rem auto;
-        width: clamp(4rem, 100%, 16rem);
+        min-width: 4rem;
+        width: 100%;
+        max-width: 16rem;
+        /* width: clamp(4rem, 100%, 16rem); */
         height: auto;
         border-radius: 50%;
       }
