@@ -7,7 +7,7 @@ const { db, sum, round, logError } = require('../helpers');
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../../dist');
 
-const roundForDisplay = (value) => value === NaN ? 0 : round(value, 2);
+const roundForDisplay = (value) => isNaN(value) ? 0 : round(value, 2);
 
 const transformProfile = (profile) => {
   const { id, name, about, rank, rating, image } = profile;
