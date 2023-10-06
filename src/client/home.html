@@ -9,6 +9,45 @@
 <section>
   <div class="x-limit">
     <figure>
+      <table>
+        <tbody>
+          <tr>
+            <th class="no-wrap text-center">Global Rank</th>
+            <th class="no-wrap maximize"></th>
+          </tr>
+
+          {{#profiles}}
+          <tr>
+            <td>{{rank}}</td>
+
+            <td>
+              <div class="split y-center">
+                <img class="profile-image" src="data:image/png;base64,{{{profile.image}}}">
+
+                <div class="grow">
+                  <a class="text-lg" href="/{{id}}">{{name}}</a>
+                </div>
+              </div>
+
+              <p>
+                <strong>Collins Rating</strong>
+                <span>{{rating}}</span>
+                <strong class="text-lg">|</strong>
+                <strong>Average Score</strong>
+                <span>{{match.averageScore}}</span>
+              </p>
+            </td>
+          </tr>
+          {{/profiles}}
+        </tbody>
+      </table>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="x-limit">
+    <figure>
       <table class="text-center">
         <thead>
           <tr>
