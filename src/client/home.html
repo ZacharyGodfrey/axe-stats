@@ -19,20 +19,19 @@
           {{#profiles}}
           <tr>
             <td>{{rank}}</td>
+            <td>
+              <img class="profile-image" src="data:image/png;base64,{{{image}}}">
+            </td>
 
             <td>
-              <div class="split y-center">
-                <img class="profile-image" src="data:image/png;base64,{{{image}}}">
-
-                <div class="grow">
-                  <a class="text-lg" href="/{{id}}">{{name}}</a>
-                </div>
-              </div>
+              <p>
+                <a href="/{{id}}">{{name}}</a>
+              </p>
 
               <p>
                 <strong>Collins Rating</strong>
                 <span>{{rating}}</span>
-                <strong class="text-lg">|</strong>
+                <strong>|</strong>
                 <strong>Average Score</strong>
                 <span>{{match.averageScore}}</span>
               </p>
