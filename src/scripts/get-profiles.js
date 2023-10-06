@@ -40,10 +40,6 @@ const processProfile = async (page, { id, rank, rating }) => {
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
 
-  console.log(JSON.stringify({
-    name, about, rank, rating, image, id
-  }, null, 2));
-
   await db.run(`
     INSERT OR IGNORE INTO profiles
     (id) VALUES (?);
