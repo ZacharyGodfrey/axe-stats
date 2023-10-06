@@ -13,24 +13,22 @@
         <tbody>
           <tr>
             <th class="no-wrap text-center">Global Rank</th>
-            <th class="no-wrap"></th>
-            <th class="no-wrap maximize"></th>
-            <th class="no-wrap"></th>
+            <th colspan="3"></th>
           </tr>
 
           {{#profiles}}
           <tr>
-            <td class="text-center">{{rank}}</td>
+            <td class="no-wrap text-center">{{rank}}</td>
 
             <td style="width:6rem;">
               <img class="profile-image" src="data:image/png;base64,{{{image}}}">
             </td>
 
-            <td>
+            <td class="no-wrap">
               <a href="/{{id}}">{{name}}</a>
             </td>
 
-            <td>
+            <td class="no-wrap">
               <span>Collins Rating</span>
               <strong>{{rating}}</strong>
               <br>
