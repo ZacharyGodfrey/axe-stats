@@ -2,7 +2,7 @@
   <div class="x-limit">
     <h2>Thrower Profiles</h2>
 
-    <p>All profile information listed is for IATF Premier rules only.</p>
+    <p>All profile stats listed are IATF Premier career stats only.</p>
   </div>
 </section>
 
@@ -35,39 +35,6 @@
               <span>Average Score</span>
               <strong>{{match.averageScore}}</strong>
             </td>
-          </tr>
-          {{/profiles}}
-        </tbody>
-      </table>
-    </figure>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <figure>
-      <table class="text-center">
-        <thead>
-          <tr>
-            <th class="no-wrap">Global Rank</th>
-            <th class="no-wrap text-left maximize">Name</th>
-            <th class="no-wrap">Collins Rating</th>
-            <th class="no-wrap">Average Score</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {{#profiles}}
-          <tr>
-            <td>{{rank}}</td>
-
-            <td class="text-left">
-              <a href="/{{id}}">{{name}}</a>
-            </td>
-
-            <td>{{rating}}</td>
-
-            <td>{{match.averageScore}}</td>
           </tr>
           {{/profiles}}
         </tbody>
