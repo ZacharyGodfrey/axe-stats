@@ -25,6 +25,7 @@ const ensureTables = async () => {
       about TEXT DEFAULT '',
       rank INTEGER DEFAULT 0,
       rating INTEGER DEFAULT 0,
+      image TEXT DEFAULT '',
 
       matchWin INTEGER DEFAULT 0,
       matchLoss INTEGER DEFAULT 0,
@@ -60,18 +61,6 @@ const ensureTables = async () => {
 
     ) WITHOUT ROWID;
   `);
-
-  const { imageExists = 0 } = await get(`
-    SELECT COUNT(*) AS imageExists
-    FROM pragma_table_info('profiles')
-    WHERE name = 'image';
-  `);
-
-  if (!imageExists) {
-    console.log('Adding column "image" to table "profiles"');
-
-    await run(`ALTER TABLE profiles ADD COLUMN image text;`);
-  }
 
   await run(`
     CREATE TABLE IF NOT EXISTS matches (
