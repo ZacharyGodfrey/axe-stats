@@ -161,6 +161,65 @@
             </tbody>
           </table>
         </figure>
+
+        <figure>
+          <table class="text-center">
+            <thead>
+              <tr>
+                <th>Bullseye Accuracy</th>
+                <th>Clutch Accuracy</th>
+                <th>Clutch Call Rate</th>
+                <th>Score Per Axe</th>
+                <th>Bullseye EV</th>
+                <th>Clutch EV</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td class="no-wrap">
+                  <strong>{{profile.hatchet.target.fivePercent}}%</strong>
+                </td>
+                <td class="no-wrap">{{profile.hatchet.target.five}} / {{profile.hatchet.target.throwCount}} Throws</td>
+              </tr>
+
+              <tr>
+                <td class="no-wrap">
+                  <strong>{{profile.hatchet.clutch.hitPercent}}%</strong>
+                </td>
+                <td class="no-wrap">{{profile.hatchet.clutch.hit}} / {{profile.hatchet.clutch.call}} Throws</td>
+              </tr>
+
+              <tr>
+                <td class="no-wrap">
+                  <strong>{{profile.hatchet.clutch.callPercent}}%</strong>
+                </td>
+                <td class="no-wrap">{{profile.hatchet.clutch.call}} / {{profile.hatchet.roundCount}} Rounds</td>
+              </tr>
+
+              <tr>
+                <td class="no-wrap">
+                  <strong>{{profile.hatchet.scorePerThrow}}</strong>
+                </td>
+                <td class="no-wrap">{{profile.hatchet.totalScore}} Points / {{profile.hatchet.throwCount}} Throws</td>
+              </tr>
+
+              <tr>
+                <td class="no-wrap">
+                  <strong>{{profile.hatchet.target.ev}}</strong>
+                </td>
+                <td class="no-wrap">{{profile.hatchet.target.totalScore}} Points / {{profile.hatchet.target.throwCount}} Throws</td>
+              </tr>
+
+              <tr>
+                <td class="no-wrap">
+                  <strong>{{profile.hatchet.clutch.ev}}</strong>
+                </td>
+                <td class="no-wrap">{{profile.hatchet.clutch.totalScore}} Points / {{profile.hatchet.clutch.call}} Throws</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
       </div>
     </div>
   </div>
