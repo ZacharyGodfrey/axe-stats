@@ -6,7 +6,7 @@ const analyzeProfile = async (id) => {
   const matches = await db.query(`
     SELECT *
     FROM matches
-    WHERE profileId = ? AND processed = 1;
+    WHERE profileId = ? AND processed = 1 AND valid = 1;
   `, [id]);
 
   const stats = {

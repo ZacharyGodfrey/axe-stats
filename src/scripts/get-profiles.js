@@ -53,12 +53,7 @@ const processProfile = async (page, { id, rank, rating }) => {
 
   const premierLeagues = leagues.filter(x => x.performanceName === 'IATF Premier');
   const weeks = premierLeagues.flatMap(x => x.seasonWeeks);
-  const matches = weeks.flatMap(x => x.matches).filter((match) => {
-    const notForfeit = match.players.find(x => x.id === id)?.forfeit !== true;
-    const validRoundCount = match.rounds.length <= 4;
-
-    return notForfeit && validRoundCount;
-  });
+  const matches = weeks.flatMap(x => x.matches);
 
   await db.run(`
     INSERT OR IGNORE INTO matches

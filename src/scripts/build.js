@@ -162,6 +162,9 @@ const getMatches = async () => {
   return matches.reduce((result, match) => {
     result[match.profileId] = result[match.profileId] || [];
 
+    match.processed = match.processed === 1;
+    match.valid = match.valid === 1;
+
     result[match.profileId].push(match);
 
     return result;

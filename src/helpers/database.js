@@ -67,6 +67,7 @@ const ensureTables = async () => {
       profileId INTEGER NOT NULL,
       id INTEGER NOT NULL,
       processed INTEGER DEFAULT 0,
+      valid INTEGER DEFAULT 0,
 
       matchWin INTEGER DEFAULT 0,
       matchLoss INTEGER DEFAULT 0,

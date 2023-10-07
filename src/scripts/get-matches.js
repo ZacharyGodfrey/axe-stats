@@ -117,11 +117,24 @@ const processMatch = async (page, matchId, profileIds) => {
   await sequentially(players, async ({ id: profileId }) => {
     console.log(`Processing match details for match ID ${matchId} profile ID ${profileId}`);
 
+    const forfeit = rawMatch.players.find(x => x.id === profileId)?.forfeit === true;
+    const invalidRoundCount = rawMatch.rounds.length > 4;
+
+    if (forfeit || invalidRoundCount) {
+      await db.run(`
+        UPDATE matches
+        SET processed = 1, valid = 0
+        WHERE profileId = ? AND id = ?
+      `, [profileId, matchId]);
+
+      return;
+    }
+
     const stats = matchStats(rawMatch, profileId);
 
     await db.run(`
       UPDATE matches
-      SET processed = 1, ${Object.keys(stats).map(x => `${x} = ?`).join(',\n')}
+      SET processed = 1, valid = 1, ${Object.keys(stats).map(x => `${x} = ?`).join(',\n')}
       WHERE profileId = ? AND id = ?
     `, [
       ...Object.values(stats),
