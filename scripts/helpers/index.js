@@ -1,3 +1,5 @@
+const fs = require('fs-extra');
+
 const sequentially = async (items, action) => {
   return items.reduce((prev, item, index) => {
     return prev.then(() => action(item, index));
@@ -13,6 +15,14 @@ const round = (value, places) => {
 };
 
 const average = (values) => sum(values) / Math.max(1, values.length);
+
+const isDesiredResponse = (method, status, url) => {
+  return (response) => {
+    return response.request().method() === method
+      && response.status() === status
+      && response.url() === url;
+  };
+};
 
 const reactPageState = (page, selector) => {
   const getState = (element) => {
@@ -49,14 +59,25 @@ const logErrorAndDefault = (defaultValue) => {
   };
 };
 
+const readFile = (filePath, encoding = 'utf-8') => {
+  return fs.readFile(filePath, { encoding });
+};
+
+const writeFile = (filePath, content) => {
+  return fs.outputFile(filePath, content, 'utf-8');
+};
+
 module.exports = {
   db: require('./database'),
   sequentially,
   sum,
   round,
   average,
+  isDesiredResponse,
   reactPageState,
   waitMilliseconds,
   logError,
-  logErrorAndDefault
+  logErrorAndDefault,
+  readFile,
+  writeFile
 };

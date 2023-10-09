@@ -26,39 +26,7 @@ const ensureTables = async () => {
       rank INTEGER DEFAULT 0,
       rating INTEGER DEFAULT 0,
       image TEXT DEFAULT '',
-
-      matchWin INTEGER DEFAULT 0,
-      matchLoss INTEGER DEFAULT 0,
-      matchOTL INTEGER DEFAULT 0,
-      matchTotalScore INTEGER DEFAULT 0,
-
-      hatchetRoundWin INTEGER DEFAULT 0,
-      hatchetRoundLoss INTEGER DEFAULT 0,
-      hatchetRoundTie INTEGER DEFAULT 0,
-      hatchetTotalScore INTEGER DEFAULT 0,
-      hatchetThrowCount INTEGER DEFAULT 0,
-
-      hatchetClutchCall INTEGER DEFAULT 0,
-      hatchetClutchHit INTEGER DEFAULT 0,
-
-      hatchetFive INTEGER DEFAULT 0,
-      hatchetThree INTEGER DEFAULT 0,
-      hatchetOne INTEGER DEFAULT 0,
-      hatchetDrop INTEGER DEFAULT 0,
-
-      bigAxeRoundWin INTEGER DEFAULT 0,
-      bigAxeRoundLoss INTEGER DEFAULT 0,
-      bigAxeTotalScore INTEGER DEFAULT 0,
-      bigAxeThrowCount INTEGER DEFAULT 0,
-
-      bigAxeClutchCall INTEGER DEFAULT 0,
-      bigAxeClutchHit INTEGER DEFAULT 0,
-
-      bigAxeFive INTEGER DEFAULT 0,
-      bigAxeThree INTEGER DEFAULT 0,
-      bigAxeOne INTEGER DEFAULT 0,
-      bigAxeDrop INTEGER DEFAULT 0
-
+      stats TEXT DEFAULT ''
     ) WITHOUT ROWID;
   `);
 
@@ -68,35 +36,7 @@ const ensureTables = async () => {
       id INTEGER NOT NULL,
       processed INTEGER DEFAULT 0,
       valid INTEGER DEFAULT 0,
-
-      matchWin INTEGER DEFAULT 0,
-      matchLoss INTEGER DEFAULT 0,
-      matchOTL INTEGER DEFAULT 0,
-      matchTotalScore INTEGER DEFAULT 0,
-
-      hatchetRoundWin INTEGER DEFAULT 0,
-      hatchetRoundLoss INTEGER DEFAULT 0,
-      hatchetRoundTie INTEGER DEFAULT 0,
-
-      hatchetClutchCall INTEGER DEFAULT 0,
-      hatchetClutchHit INTEGER DEFAULT 0,
-
-      hatchetFive INTEGER DEFAULT 0,
-      hatchetThree INTEGER DEFAULT 0,
-      hatchetOne INTEGER DEFAULT 0,
-      hatchetDrop INTEGER DEFAULT 0,
-
-      bigAxeRoundWin INTEGER DEFAULT 0,
-      bigAxeRoundLoss INTEGER DEFAULT 0,
-
-      bigAxeClutchCall INTEGER DEFAULT 0,
-      bigAxeClutchHit INTEGER DEFAULT 0,
-
-      bigAxeFive INTEGER DEFAULT 0,
-      bigAxeThree INTEGER DEFAULT 0,
-      bigAxeOne INTEGER DEFAULT 0,
-      bigAxeDrop INTEGER DEFAULT 0,
-
+      stats TEXT DEFAULT '',
       PRIMARY KEY (profileId, id)
     ) WITHOUT ROWID;
   `);

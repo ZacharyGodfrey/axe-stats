@@ -4,19 +4,15 @@ on:
   schedule:
     - cron: "30 6 * * 3"
 jobs:
-  run-scrape:
+  update-site-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
       - name: Install Dependencies
         run: npm i
-      - name: Get Profiles
-        run: node src/scripts/get-profiles.js
-      - name: Get Matches
-        run: node src/scripts/get-matches.js
-      - name: Analyze Profiles
-        run: node src/scripts/analyze-profiles.js
+      - name: Get Data
+        run: node scripts/get-data.js
       - name: Commit File Changes
         run: |
           git config user.name "GitHub Actions Bot"
