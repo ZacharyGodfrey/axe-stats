@@ -241,6 +241,8 @@ const aggregateMatchStats = (matches) => {
       lossPercent: 0,
       otl: 0,
       otlPercent: 0,
+      winWithoutBigAxe: 0,
+      winWithoutBigAxePercent: 0,
       count: matches.length,
       totalScore: 0,
       averageScore: 0,
@@ -314,6 +316,7 @@ const aggregateMatchStats = (matches) => {
     stats.match.win += match.win ? 1 : 0;
     stats.match.loss += match.loss ? 1 : 0;
     stats.match.otl += match.otl ? 1 : 0;
+    stats.match.winWithoutBigAxe += match.win && match.bigAxe.roundCount === 0 ? 1 : 0;
     stats.match.totalScore += match.totalScore;
 
     stats.hatchet.roundWin += match.hatchet.roundWin;
@@ -355,6 +358,7 @@ const aggregateMatchStats = (matches) => {
   stats.match.winPercent = roundForDisplay(100 * stats.match.win / stats.match.count);
   stats.match.lossPercent = roundForDisplay(100 * stats.match.loss / stats.match.count);
   stats.match.otlPercent = roundForDisplay(100 * stats.match.otl / stats.match.count);
+  stats.match.winWithoutBigAxePercent = roundForDisplay(100 * stats.match.winWithoutBigAxe / stats.match.count);
   stats.match.averageScore = roundForDisplay(stats.match.totalScore / stats.match.count);
 
   stats.hatchet.roundWinPercent = roundForDisplay(100 * stats.hatchet.roundWin / stats.hatchet.roundCount);

@@ -1,3 +1,4 @@
+<!-- Profile -->
 <section class="bg-main">
   <div class="x-limit">
     <div class="split stack y-center">
@@ -32,6 +33,7 @@
   {{/profile.about}}
 </section>
 
+<!-- Stats Highlight -->
 <section class="bg-dark">
   <div class="x-limit">
     <div class="split stack">
@@ -68,6 +70,7 @@
   </div>
 </section>
 
+<!-- Hatchet Accuracy -->
 <section>
   <div class="x-limit">
     <h2>Hatchet Accuracy</h2>
@@ -166,6 +169,7 @@
   </div>
 </section>
 
+<!-- Big Axe Accuracy -->
 <section>
   <div class="x-limit">
     <h2>Big Axe Accuracy</h2>
@@ -256,17 +260,58 @@
   </div>
 </section>
 
+<!-- Match Outcomes -->
 <section>
   <div class="x-limit">
-    <h2>Matches</h2>
+    <h2>Match Outcomes</h2>
 
-    <p>Coming soon...</p>
+    <p>The win count in your career record is a combination of the matches you've won with your hatchet alone as well as your Big Axe tiebreaker wins. Here's a breakdown of your match outcomes in each discipline:</p>
+
+    <figure>
+      <table class="text-center" style="table-layout: fixed;">
+        <thead>
+          <tr>
+            <th></th>
+            <th colspan="2">Hatchet</th>
+            <th colspan="2">Big Axe</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th class="no-wrap">Wins</th>
+            <td>{{profile.stats.match.winWithoutBigAxe}}</td>
+            <td>{{profile.stats.match.winWithoutBigAxePercent}}%</td>
+            <td>{{profile.stats.bigAxe.roundWin}}</td>
+            <td>{{profile.stats.bigAxe.roundWinPercent}}%</td>
+          </tr>
+          <tr>
+            <th class="no-wrap">Losses</th>
+            <td>{{profile.stats.match.loss}}</td>
+            <td>{{profile.stats.match.lossPercent}}%</td>
+            <td>{{profile.stats.bigAxe.roundLoss}}</td>
+            <td>{{profile.stats.bigAxe.roundLossPercent}}%</td>
+          </tr>
+        </tbody>
+      </table>
+    </figure>
   </div>
 </section>
 
+<!-- Round Outcomes -->
 <section>
   <div class="x-limit">
     <h2>Round Outcomes</h2>
+
+    <p>When looking at just your match win rate, it can be hard to get a clear picture of your performance in each match. Because of the "Best 2 of 3 Rounds" rule in IATF, a match win could consist of 0, 1, 2, or 3 round wins with a hatchet and a potential round win with a Big Axe:</p>
+
+    <ul>
+      <li>Win no rounds, tie all three, win the Big Axe tiebreaker</li>
+      <li>Win one round, lose one round, win the Big Axe tiebreaker</li>
+      <li>Win one round, tie two rounds</li>
+      <li>Win two rounds, lose or tie a round</li>
+      <li>Win all three rounds</li>
+    </ul>
 
     <figure>
       <table class="text-center" style="table-layout: fixed;">
@@ -306,6 +351,7 @@
   </div>
 </section>
 
+<!-- Playoff Stats -->
 <section>
   <div class="x-limit">
     <h2>Playoff Stats</h2>
