@@ -101,12 +101,7 @@ const buildProfilePage = async (shell, profile) => {
         matches.forEach(x => {
           x.processed = x.processed === 1;
           x.valid = x.valid === 1;
-
-          try {
-            x.stats = JSON.parse(x.stats);
-          } catch (error) {
-            console.log(`BAD JSON: ${x.stats}`);
-          }
+          x.stats = JSON.parse(x.stats);
         });
 
         await writeFile(`${DIST_DIR}/${profile.id}.html`, page);
