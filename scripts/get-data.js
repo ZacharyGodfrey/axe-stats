@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../config.json');
-const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, sum, round, logError } = require('./helpers');
+const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, round, logError } = require('./helpers');
 
 const timeout = 2 * 1000; // 2 seconds
 
@@ -101,28 +101,29 @@ const processMatch = async (page, matchId, profileIds) => {
 
     const forfeit = rawMatch.players.find(x => x.id === profileId)?.forfeit === true;
     const invalidRoundCount = rawMatch.rounds.length > 4;
-
-    if (forfeit || invalidRoundCount) {
-      await db.run(`
-        UPDATE matches
-        SET processed = 1, valid = 0
-        WHERE profileId = ? AND id = ?
-      `, [profileId, matchId]);
-
-      return;
-    }
-
-    const stats = matchStats(rawMatch, profileId);
+    const valid = !forfeit && !invalidRoundCount;
+    const stats = matchStats(rawMatch, profileId, valid);
 
     await db.run(`
       UPDATE matches
-      SET processed = 1, valid = 1, stats = ?
+      SET processed = 1, valid = ?, stats = ?
       WHERE profileId = ? AND id = ?
-    `, [JSON.stringify(stats), profileId, matchId]);
+    `, [
+      valid ? 1 : 0,
+      JSON.stringify(stats),
+      profileId,
+      matchId
+    ]);
   });
 };
 
-const matchStats = (rawMatch, profileId) => {
+const matchStats = (rawMatch, profileId, valid) => {
+  if (!valid) {
+    return {
+      text: `${rawMatch.id}:INVALID`
+    };
+  }
+
   const stats = {
     win: false,
     loss: false,
@@ -166,7 +167,8 @@ const matchStats = (rawMatch, profileId) => {
         totalScore: 0,
         throwCount: 0,
       }
-    }
+    },
+    text: ''
   };
 
   rawMatch.rounds.forEach((round) => {
@@ -179,13 +181,9 @@ const matchStats = (rawMatch, profileId) => {
     category.roundCount++;
     category.totalScore += total;
 
-    switch (true) {
-      case total > opponent.score: category.roundWin++; break;
-      case total < opponent.score: category.roundLoss++; break;
-      default: category.roundTie++; break;
-    }
-
     throws.forEach(({ score, clutchCalled }) => {
+      stats.text += score === 0 && clutchCalled ? 'C' : score;
+
       if (clutchCalled) {
         category.clutch.call++;
         category.clutch.totalScore += score;
@@ -202,11 +200,32 @@ const matchStats = (rawMatch, profileId) => {
         }
       }
     });
+
+    switch (true) {
+      case total > opponent.score:
+        category.roundWin++;
+        stats.text += 'W';
+        break;
+      case total < opponent.score:
+        category.roundLoss++;
+        stats.text += 'L';
+        break;
+      default:
+        category.roundTie++;
+        stats.text += 'T';
+        break;
+    }
   });
 
   stats.loss = stats.hatchet.roundWin < stats.hatchet.roundLoss;
   stats.otl = stats.bigAxe.roundWin < stats.bigAxe.roundLoss;
   stats.win = !(stats.loss || stats.otl);
+
+  switch (true) {
+    case stats.win: stats.text = `${rawMatch.id}:W${stats.text}`; break;
+    case stats.loss: stats.text = `${rawMatch.id}:L${stats.text}`; break;
+    case stats.otl: stats.text = `${rawMatch.id}:O${stats.text}`; break;
+  }
 
   return stats;
 };
