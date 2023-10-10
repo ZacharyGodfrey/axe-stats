@@ -86,7 +86,6 @@ const buildProfilePage = async (shell, profile) => {
     profiles.forEach(x => x.stats = JSON.parse(x.stats));
 
     await Promise.all([
-      writeFile(`${DIST_DIR}/data.json`, JSON.stringify(profileMap, null, 2)),
       buildHomePage(shell, profiles).then(page => writeFile(`${DIST_DIR}/index.html`, page)),
       build404Page(shell).then(page => writeFile(`${DIST_DIR}/404.html`, page)),
       build500Page(shell).then(page => writeFile(`${DIST_DIR}/500.html`, page)),
