@@ -102,14 +102,15 @@ const processMatch = async (page, matchId, profileIds) => {
     const forfeit = rawMatch.players.find(x => x.id === profileId)?.forfeit === true;
     const invalidRoundCount = rawMatch.rounds.length > 4;
     const valid = !forfeit && !invalidRoundCount;
-    const stats = matchStats(rawMatch, profileId, valid);
+    const { text, stats } = matchStats(rawMatch, profileId, valid);
 
     await db.run(`
       UPDATE matches
-      SET processed = 1, valid = ?, stats = ?
+      SET processed = 1, valid = ?, text = ?, stats = ?
       WHERE profileId = ? AND id = ?
     `, [
       valid ? 1 : 0,
+      text,
       JSON.stringify(stats),
       profileId,
       matchId
@@ -120,10 +121,12 @@ const processMatch = async (page, matchId, profileIds) => {
 const matchStats = (rawMatch, profileId, valid) => {
   if (!valid) {
     return {
-      text: `${rawMatch.id}:INVALID`
+      text: `${rawMatch.id}:INVALID`,
+      stats: {}
     };
   }
 
+  let text = '';
   const stats = {
     win: false,
     loss: false,
@@ -167,8 +170,7 @@ const matchStats = (rawMatch, profileId, valid) => {
         totalScore: 0,
         throwCount: 0,
       }
-    },
-    text: ''
+    }
   };
 
   rawMatch.rounds.forEach((round) => {
@@ -182,7 +184,7 @@ const matchStats = (rawMatch, profileId, valid) => {
     category.totalScore += total;
 
     throws.forEach(({ score, clutchCalled }) => {
-      stats.text += score === 0 && clutchCalled ? 'C' : score;
+      text += score === 0 && clutchCalled ? 'C' : score;
 
       if (clutchCalled) {
         category.clutch.call++;
@@ -204,15 +206,15 @@ const matchStats = (rawMatch, profileId, valid) => {
     switch (true) {
       case total > opponent.score:
         category.roundWin++;
-        stats.text += 'W';
+        text += 'W';
         break;
       case total < opponent.score:
         category.roundLoss++;
-        stats.text += 'L';
+        text += 'L';
         break;
       default:
         category.roundTie++;
-        stats.text += 'T';
+        text += 'T';
         break;
     }
   });
@@ -222,12 +224,12 @@ const matchStats = (rawMatch, profileId, valid) => {
   stats.win = !(stats.loss || stats.otl);
 
   switch (true) {
-    case stats.win: stats.text = `${rawMatch.id}:W${stats.text}`; break;
-    case stats.loss: stats.text = `${rawMatch.id}:L${stats.text}`; break;
-    case stats.otl: stats.text = `${rawMatch.id}:O${stats.text}`; break;
+    case stats.win: text = `${rawMatch.id}:W${text}`; break;
+    case stats.loss: text = `${rawMatch.id}:L${text}`; break;
+    case stats.otl: text = `${rawMatch.id}:O${text}`; break;
   }
 
-  return stats;
+  return { text, stats };
 };
 
 const aggregateMatchStats = (matches) => {

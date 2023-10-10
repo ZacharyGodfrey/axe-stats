@@ -36,7 +36,8 @@ const ensureTables = async () => {
       id INTEGER NOT NULL,
       processed INTEGER DEFAULT 0,
       valid INTEGER DEFAULT 0,
-      stats TEXT DEFAULT '',
+      text TEXT DEFAULT '',
+      stats TEXT DEFAULT '{}',
       PRIMARY KEY (profileId, id)
     ) WITHOUT ROWID;
   `);

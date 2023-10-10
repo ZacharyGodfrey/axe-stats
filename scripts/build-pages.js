@@ -106,7 +106,7 @@ const buildProfilePage = async (shell, profile) => {
 
         await writeFile(`${DIST_DIR}/${profile.id}.html`, page);
         await writeFile(`${DIST_DIR}/${profile.id}.json`, JSON.stringify({ profile, matches }, null, 2));
-        await writeFile(`${DIST_DIR}/${profile.id}.txt`, matches.map(x => x.stats.text).join('\n'));
+        await writeFile(`${DIST_DIR}/${profile.id}.txt`, matches.map(x => x.text).join('\n'));
       })
     ]);
 
