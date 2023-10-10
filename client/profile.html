@@ -74,65 +74,37 @@
 
     <div class="split stack">
       <div class="targetStats">
-        <div class="split">
-          <div class="grow">
-            <div class="clutch">
-              <div class="dot"></div>
+        <div class="clutch">
+          <div class="dot"></div>
 
-              <span>{{profile.stats.hatchet.clutch.hit}}</span>
+          <span>{{profile.stats.hatchet.clutch.hit}}</span>
 
-              <div class="dot"></div>
-            </div>
+          <div class="dot"></div>
+        </div>
 
-            <br>
+        <br>
 
-            <div class="target">
-              <div class="ring one">
-                <span class="label">&nbsp;</span>
+        <div class="target">
+          <div class="ring one">
+            <span class="label">&nbsp;</span>
 
-                <div class="ring three">
-                  <span class="label">&nbsp;</span>
+            <div class="ring three">
+              <span class="label">&nbsp;</span>
 
-                  <div class="ring five">
-                    <span class="label">{{profile.stats.hatchet.target.five}}</span>
-                  </div>
-
-                  <span class="label">{{profile.stats.hatchet.target.three}}</span>
-                </div>
-
-                <span class="label">{{profile.stats.hatchet.target.one}}</span>
+              <div class="ring five">
+                <span class="label">{{profile.stats.hatchet.target.five}}</span>
               </div>
+
+              <span class="label">{{profile.stats.hatchet.target.three}}</span>
             </div>
 
-            <br>
-
-            <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
-          </div>
-
-          <div class="stretch">
-            <figure>
-              <table class="text-center">
-                <tbody>
-                  <tr>
-                    <td class="stat-seven">{{profile.stats.hatchet.clutch.hitPercent}}%</td>
-                  </tr>
-                  <tr>
-                    <td class="stat-five">{{profile.stats.hatchet.target.fivePercent}}%</td>
-                  </tr>
-                  <tr>
-                    <td class="stat-three">{{profile.stats.hatchet.target.threePercent}}%</td>
-                  </tr>
-                  <tr>
-                    <td class="stat-one">{{profile.stats.hatchet.target.onePercent}}%</td>
-                  </tr>
-                  <tr>
-                    <td class="stat-drop">{{profile.stats.hatchet.target.dropPercent}}%</td>
-                  </tr>
-                </tbody>
-              </table>
-            </figure>
+            <span class="label">{{profile.stats.hatchet.target.one}}</span>
           </div>
         </div>
+
+        <br>
+
+        <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
       </div>
 
       <div class="grow">
@@ -140,11 +112,11 @@
           <table class="text-center">
             <tbody>
               <tr>
-                <th class="minimize no-wrap">Bullseye Accuracy</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.target.fivePercent}}%</strong>
+                <th class="minimize no-wrap">Clutch Call Rate</th>
+                <td class="minimize no-wrap">
+                  <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
                 </td>
-                <td class="no-wrap">{{profile.stats.hatchet.target.five}} Hits / {{profile.stats.hatchet.target.throwCount}} Throws</td>
+                <td class="no-wrap">{{profile.stats.hatchet.clutch.call}} Calls / {{profile.stats.hatchet.roundCount}} Rounds</td>
               </tr>
 
               <tr>
@@ -156,11 +128,11 @@
               </tr>
 
               <tr>
-                <th class="minimize no-wrap">Clutch Call Rate</th>
-                <td class="minimize no-wrap">
-                  <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
+                <th class="minimize no-wrap">Bullseye Accuracy</th>
+                <td class="no-wrap">
+                  <strong>{{profile.stats.hatchet.target.fivePercent}}%</strong>
                 </td>
-                <td class="no-wrap">{{profile.stats.hatchet.clutch.call}} Calls / {{profile.stats.hatchet.roundCount}} Rounds</td>
+                <td class="no-wrap">{{profile.stats.hatchet.target.five}} Hits / {{profile.stats.hatchet.target.throwCount}} Throws</td>
               </tr>
 
               <tr>
@@ -238,19 +210,19 @@
           <table class="text-center">
             <tbody>
               <tr>
-                <th class="minimize no-wrap">Bullseye Accuracy</th>
-                <td class="minimize no-wrap">
-                  <strong>{{profile.stats.bigAxe.target.fivePercent}}%</strong>
-                </td>
-                <td class="no-wrap">{{profile.stats.bigAxe.target.five}} Hits / {{profile.stats.bigAxe.target.throwCount}} Throws</td>
-              </tr>
-
-              <tr>
                 <th class="minimize no-wrap">Clutch Accuracy</th>
                 <td class="minimize no-wrap">
                   <strong>{{profile.stats.bigAxe.clutch.hitPercent}}%</strong>
                 </td>
                 <td class="no-wrap">{{profile.stats.bigAxe.clutch.hit}} Hits / {{profile.stats.bigAxe.clutch.call}} Throws</td>
+              </tr>
+
+              <tr>
+                <th class="minimize no-wrap">Bullseye Accuracy</th>
+                <td class="minimize no-wrap">
+                  <strong>{{profile.stats.bigAxe.target.fivePercent}}%</strong>
+                </td>
+                <td class="no-wrap">{{profile.stats.bigAxe.target.five}} Hits / {{profile.stats.bigAxe.target.throwCount}} Throws</td>
               </tr>
 
               <tr>
