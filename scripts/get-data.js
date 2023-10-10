@@ -380,8 +380,6 @@ const updateProfileStats = async () => {
       profile.id
     ]);
   });
-
-  return data;
 };
 
 (async () => {

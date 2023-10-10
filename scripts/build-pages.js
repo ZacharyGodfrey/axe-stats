@@ -99,6 +99,12 @@ const buildProfilePage = async (shell, profile) => {
           ORDER BY id ASC
         `, [profile.id]);
 
+        matches.forEach(x => {
+          x.processed = x.processed === 1;
+          x.valid = x.valid === 1;
+          x.stats = JSON.parse(x.stats);
+        });
+
         await writeFile(`${DIST_DIR}/${profile.id}.html`, page);
         await writeFile(`${DIST_DIR}/${profile.id}.json`, JSON.stringify({ profile, matches }, null, 2));
       })
