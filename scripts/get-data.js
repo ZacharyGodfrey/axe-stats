@@ -236,28 +236,32 @@ const aggregateMatchStats = (matches) => {
   const stats = {
     match: {
       win: 0,
+      winPercent: 0,
       loss: 0,
+      lossPercent: 0,
       otl: 0,
+      otlPercent: 0,
       count: matches.length,
       totalScore: 0,
       averageScore: 0,
-      winPercent: 0,
     },
     hatchet: {
       roundWin: 0,
+      roundWinPercent: 0,
       roundLoss: 0,
+      roundLossPercent: 0,
       roundTie: 0,
+      roundTiePercent: 0,
       roundCount: 0,
-      winPercent: 0,
       totalScore: 0,
       throwCount: 0,
       scorePerThrow: 0,
       clutch: {
         call: 0,
-        hit: 0,
-        totalScore: 0,
         callPercent: 0,
+        hit: 0,
         hitPercent: 0,
+        totalScore: 0,
         ev: 0,
       },
       target: {
@@ -276,17 +280,18 @@ const aggregateMatchStats = (matches) => {
     },
     bigAxe: {
       roundWin: 0,
+      roundWinPercent: 0,
       roundLoss: 0,
+      roundLossPercent: 0,
       roundCount: 0,
-      winPercent: 0,
       totalScore: 0,
       throwCount: 0,
       scorePerThrow: 0,
       clutch: {
         call: 0,
         hit: 0,
-        totalScore: 0,
         hitPercent: 0,
+        totalScore: 0,
         ev: 0,
       },
       target: {
@@ -347,10 +352,14 @@ const aggregateMatchStats = (matches) => {
     stats.bigAxe.target.throwCount += match.bigAxe.target.throwCount;
   });
 
-  stats.match.averageScore = roundForDisplay(stats.match.totalScore / stats.match.count);
   stats.match.winPercent = roundForDisplay(100 * stats.match.win / stats.match.count);
+  stats.match.lossPercent = roundForDisplay(100 * stats.match.loss / stats.match.count);
+  stats.match.otlPercent = roundForDisplay(100 * stats.match.otl / stats.match.count);
+  stats.match.averageScore = roundForDisplay(stats.match.totalScore / stats.match.count);
 
-  stats.hatchet.winPercent = roundForDisplay(100 * stats.hatchet.roundWin / stats.hatchet.roundCount);
+  stats.hatchet.roundWinPercent = roundForDisplay(100 * stats.hatchet.roundWin / stats.hatchet.roundCount);
+  stats.hatchet.roundLossPercent = roundForDisplay(100 * stats.hatchet.roundLoss / stats.hatchet.roundCount);
+  stats.hatchet.roundTiePercent = roundForDisplay(100 * stats.hatchet.roundTie / stats.hatchet.roundCount);
   stats.hatchet.scorePerThrow = roundForDisplay(stats.hatchet.totalScore / stats.hatchet.throwCount);
   stats.hatchet.clutch.callPercent = roundForDisplay(100 * stats.hatchet.clutch.call / stats.hatchet.roundCount);
   stats.hatchet.clutch.hitPercent = roundForDisplay(100 * stats.hatchet.clutch.hit / stats.hatchet.clutch.call);
@@ -361,7 +370,8 @@ const aggregateMatchStats = (matches) => {
   stats.hatchet.target.dropPercent = roundForDisplay(100 * stats.hatchet.target.drop / stats.hatchet.target.throwCount);
   stats.hatchet.target.ev = roundForDisplay(stats.hatchet.target.totalScore / stats.hatchet.target.throwCount);
 
-  stats.bigAxe.winPercent = roundForDisplay(100 * stats.bigAxe.roundWin / stats.bigAxe.roundCount);
+  stats.bigAxe.roundWinPercent = roundForDisplay(100 * stats.bigAxe.roundWin / stats.bigAxe.roundCount);
+  stats.bigAxe.roundLossPercent = roundForDisplay(100 * stats.bigAxe.roundLoss / stats.bigAxe.roundCount);
   stats.bigAxe.scorePerThrow = roundForDisplay(stats.bigAxe.totalScore / stats.bigAxe.throwCount);
   stats.bigAxe.clutch.hitPercent = roundForDisplay(100 * stats.bigAxe.clutch.hit / stats.bigAxe.clutch.call);
   stats.bigAxe.clutch.ev = roundForDisplay(stats.bigAxe.clutch.totalScore / stats.bigAxe.clutch.call);
