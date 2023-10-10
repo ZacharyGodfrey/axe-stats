@@ -306,6 +306,7 @@ const aggregateMatchStats = (matches) => {
     stats.hatchet.target.one += match.hatchet.target.one;
     stats.hatchet.target.drop += match.hatchet.target.drop;
     stats.hatchet.target.totalScore += match.hatchet.target.totalScore;
+    stats.hatchet.target.throwCount += match.hatchet.target.throwCount;
 
     stats.bigAxe.roundWin += match.bigAxe.roundWin;
     stats.bigAxe.roundLoss += match.bigAxe.roundLoss;
@@ -322,6 +323,7 @@ const aggregateMatchStats = (matches) => {
     stats.bigAxe.target.one += match.bigAxe.target.one;
     stats.bigAxe.target.drop += match.bigAxe.target.drop;
     stats.bigAxe.target.totalScore += match.bigAxe.target.totalScore;
+    stats.bigAxe.target.throwCount += match.bigAxe.target.throwCount;
   });
 
   stats.match.averageScore = roundForDisplay(stats.match.totalScore / stats.match.count);
@@ -340,7 +342,6 @@ const aggregateMatchStats = (matches) => {
 
   stats.bigAxe.winPercent = roundForDisplay(100 * stats.bigAxe.roundWin / stats.bigAxe.roundCount);
   stats.bigAxe.scorePerThrow = roundForDisplay(stats.bigAxe.totalScore / stats.bigAxe.throwCount);
-  stats.bigAxe.clutch.callPercent = roundForDisplay(100 * stats.bigAxe.clutch.call / stats.bigAxe.roundCount);
   stats.bigAxe.clutch.hitPercent = roundForDisplay(100 * stats.bigAxe.clutch.hit / stats.bigAxe.clutch.call);
   stats.bigAxe.clutch.ev = roundForDisplay(stats.bigAxe.clutch.totalScore / stats.bigAxe.clutch.call);
   stats.bigAxe.target.fivePercent = roundForDisplay(100 * stats.bigAxe.target.five / stats.bigAxe.target.throwCount);
