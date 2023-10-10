@@ -74,61 +74,65 @@
 
     <div class="split stack">
       <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
+        <div class="split">
+          <div class="grow">
+            <div class="clutch">
+              <div class="dot"></div>
 
-          <span>{{profile.stats.hatchet.clutch.hit}}</span>
+              <span>{{profile.stats.hatchet.clutch.hit}}</span>
 
-          <div class="dot"></div>
-        </div>
-
-        <br>
-
-        <div class="target">
-          <div class="ring one">
-            <span class="label">&nbsp;</span>
-
-            <div class="ring three">
-              <span class="label">&nbsp;</span>
-
-              <div class="ring five">
-                <span class="label">{{profile.stats.hatchet.target.five}}</span>
-              </div>
-
-              <span class="label">{{profile.stats.hatchet.target.three}}</span>
+              <div class="dot"></div>
             </div>
 
-            <span class="label">{{profile.stats.hatchet.target.one}}</span>
+            <br>
+
+            <div class="target">
+              <div class="ring one">
+                <span class="label">&nbsp;</span>
+
+                <div class="ring three">
+                  <span class="label">&nbsp;</span>
+
+                  <div class="ring five">
+                    <span class="label">{{profile.stats.hatchet.target.five}}</span>
+                  </div>
+
+                  <span class="label">{{profile.stats.hatchet.target.three}}</span>
+                </div>
+
+                <span class="label">{{profile.stats.hatchet.target.one}}</span>
+              </div>
+            </div>
+
+            <br>
+
+            <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
+          </div>
+
+          <div class="stretch">
+            <figure>
+              <table class="text-center">
+                <tbody>
+                  <tr>
+                    <td class="stat-seven">{{profile.stats.hatchet.clutch.hitPercent}}%</td>
+                  </tr>
+                  <tr>
+                    <td class="stat-five">{{profile.stats.hatchet.target.fivePercent}}%</td>
+                  </tr>
+                  <tr>
+                    <td class="stat-three">{{profile.stats.hatchet.target.threePercent}}%</td>
+                  </tr>
+                  <tr>
+                    <td class="stat-one">{{profile.stats.hatchet.target.onePercent}}%</td>
+                  </tr>
+                  <tr>
+                    <td class="stat-drop">{{profile.stats.hatchet.target.dropPercent}}%</td>
+                  </tr>
+                </tbody>
+              </table>
+            </figure>
           </div>
         </div>
-
-        <br>
-
-        <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
-      </div>
-
-      <div class="stretch">
-        <figure>
-          <table class="text-center">
-            <tbody>
-              <tr>
-                <td class="stat-seven">{{profile.stats.hatchet.clutch.hitPercent}}%</td>
-              </tr>
-              <tr>
-                <td class="stat-five">{{profile.stats.hatchet.target.fivePercent}}%</td>
-              </tr>
-              <tr>
-                <td class="stat-three">{{profile.stats.hatchet.target.threePercent}}%</td>
-              </tr>
-              <tr>
-                <td class="stat-one">{{profile.stats.hatchet.target.onePercent}}%</td>
-              </tr>
-              <tr>
-                <td class="stat-drop">{{profile.stats.hatchet.target.dropPercent}}%</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
       </div>
 
       <div class="grow">
