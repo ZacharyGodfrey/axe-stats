@@ -366,9 +366,9 @@ const updateProfileStats = async () => {
     const matches = await db.query(`
       SELECT stats
       FROM matches
-      WHERE processed = 1 AND valid = 1
+      WHERE profileId = ? AND processed = 1 AND valid = 1
       ORDER BY id asc;
-    `);
+    `, [profile.id]);
 
     const stats = aggregateMatchStats(matches.map(x => JSON.parse(x.stats)));
 
@@ -376,10 +376,7 @@ const updateProfileStats = async () => {
       UPDATE profiles
       SET stats = ?
       WHERE id = ?
-    `, [
-      JSON.stringify(stats),
-      profile.id
-    ]);
+    `, [JSON.stringify(stats), profile.id]);
   });
 };
 
