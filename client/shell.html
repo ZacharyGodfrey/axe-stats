@@ -376,6 +376,28 @@
 
       Chart.defaults.plugins.legend.display = false;
       Chart.overrides.doughnut.cutout = '80%';
+
+      const arcChart = (id, total, value) => {
+        new Chart(document.getElementById(id), {
+          type: 'doughnut',
+          options: {
+            rotation: -90,
+            circumference: 180,
+            aspectRatio: 0.5,
+            plugins: {
+              tooltip: {
+                enabled: false
+              }
+            }
+          },
+          data: {
+            datasets: [{
+              backgroundColor: [cssVar('main'), cssVar('neutral')],
+              data: [value, total - value]
+            }]
+          }
+        });
+      };
     </script>
   </head>
   <body>

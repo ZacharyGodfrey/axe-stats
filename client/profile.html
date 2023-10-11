@@ -39,33 +39,7 @@
     <div class="split stack">
       <div class="grow stretch card text-center no-break">
         <div class="chartWrap" style="max-width: 16rem;">
-          <canvas id="chartAvgScore"></canvas>
-
-          <script>
-            new Chart(document.getElementById('chartAvgScore'), {
-              type: 'doughnut',
-              options: {
-                rotation: -90,
-                circumference: 180,
-                aspectRatio: 0.5,
-                plugins: {
-                  tooltip: {
-                    enabled: false
-                  }
-                }
-              },
-              data: {
-                // labels: ['Average Score', ''],
-                datasets: [{
-                  backgroundColor: [cssVar('main'), cssVar('neutral')],
-                  data: [
-                    {{profile.stats.match.averageScore}},
-                    81 - {{profile.stats.match.averageScore}}
-                  ]
-                }]
-              }
-            });
-          </script>
+          <canvas id="chartAverageScore"></canvas>
         </div>
 
         <p class="text-lg">{{profile.stats.match.averageScore}}</p>
@@ -80,32 +54,6 @@
       <div class="grow stretch card text-center no-break">
         <div class="chartWrap" style="max-width: 16rem;">
           <canvas id="chartWinPercent"></canvas>
-
-          <script>
-            new Chart(document.getElementById('chartWinPercent'), {
-              type: 'doughnut',
-              options: {
-                rotation: -90,
-                circumference: 180,
-                aspectRatio: 0.5,
-                plugins: {
-                  tooltip: {
-                    enabled: false
-                  }
-                }
-              },
-              data: {
-                // labels: ['Win Rate', ''],
-                datasets: [{
-                  backgroundColor: [cssVar('main'), cssVar('neutral')],
-                  data: [
-                    {{profile.stats.match.winPercent}},
-                    100 - {{profile.stats.match.winPercent}}
-                  ]
-                }]
-              }
-            });
-          </script>
         </div>
 
         <p class="text-lg">{{profile.stats.match.winPercent}}%</p>
@@ -120,32 +68,6 @@
       <div class="grow stretch card text-center no-break">
         <div class="chartWrap" style="max-width: 16rem;">
           <canvas id="chartBigAxeWinPercent"></canvas>
-
-          <script>
-            new Chart(document.getElementById('chartBigAxeWinPercent'), {
-              type: 'doughnut',
-              options: {
-                rotation: -90,
-                circumference: 180,
-                aspectRatio: 0.5,
-                plugins: {
-                  tooltip: {
-                    enabled: false
-                  }
-                }
-              },
-              data: {
-                // labels: ['Big Axe Win Rate', ''],
-                datasets: [{
-                  backgroundColor: [cssVar('main'), cssVar('neutral')],
-                  data: [
-                    {{profile.stats.bigAxe.roundWinPercent}},
-                    100 - {{profile.stats.bigAxe.roundWinPercent}}
-                  ]
-                }]
-              }
-            });
-          </script>
         </div>
 
         <p class="text-lg">{{profile.stats.bigAxe.roundWinPercent}}%</p>
@@ -158,6 +80,12 @@
       </div>
     </div>
   </div>
+
+  <script>
+    arcChart('chartAverageScore', 81, {{profile.stats.match.averageScore}});
+    arcChart('chartWinPercent', 100, {{profile.stats.match.winPercent}});
+    arcChart('chartBigAxeWinPercent', 100, {{profile.stats.bigAxe.roundWinPercent}});
+  </script>
 </section>
 
 <!-- Hatchet Accuracy -->
