@@ -334,25 +334,33 @@
 
         <tbody>
           <tr>
-            <th class="no-wrap">Wins</th>
+            <th class="no-wrap">Hatchet Wins</th>
             <td>{{profile.stats.hatchet.roundWin}}</td>
             <td>{{profile.stats.hatchet.roundWinPercent}}%</td>
+          </tr>
+
+          <tr>
+            <th class="no-wrap">Hatchet Losses</th>
+            <td>{{profile.stats.hatchet.roundLoss}}</td>
+            <td>{{profile.stats.hatchet.roundLossPercent}}%</td>
+          </tr>
+
+          <tr>
+            <th class="no-wrap">Hatchet Ties</th>
+            <td>{{profile.stats.hatchet.roundTie}}</td>
+            <td>{{profile.stats.hatchet.roundTiePercent}}%</td>
+          </tr>
+
+          <tr>
+            <th class="no-wrap">Big Axe Wins</th>
             <td>{{profile.stats.bigAxe.roundWin}}</td>
             <td>{{profile.stats.bigAxe.roundWinPercent}}%</td>
           </tr>
+
           <tr>
-            <th class="no-wrap">Losses</th>
-            <td>{{profile.stats.hatchet.roundLoss}}</td>
-            <td>{{profile.stats.hatchet.roundLossPercent}}%</td>
+            <th class="no-wrap">Big Axe Losses</th>
             <td>{{profile.stats.bigAxe.roundLoss}}</td>
             <td>{{profile.stats.bigAxe.roundLossPercent}}%</td>
-          </tr>
-          <tr>
-            <th class="no-wrap">Ties</th>
-            <td>{{profile.stats.hatchet.roundTie}}</td>
-            <td>{{profile.stats.hatchet.roundTiePercent}}%</td>
-            <td>N/A</td>
-            <td>N/A</td>
           </tr>
         </tbody>
       </table>
