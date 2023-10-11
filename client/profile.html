@@ -133,42 +133,35 @@
         <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
       </div>
 
-      <div>
-        <div class="card grid col-auto-1 items-y-center">
-          <div class="chartWrap size-8">
-            <canvas id="hatchetBullseyeRing" width="8rem" height="8rem"></canvas>
-          </div>
-
-          <p class="text-center">
-            <span>{{profile.stats.hatchet.target.fivePercent}}%</span>
-            <br>
-            <strong>Bullseye Accuracy</strong>
-          </p>
+      <div class="grid col-1-1 items-y-center">
+        <div class="chartWrap size-8">
+          <canvas id="hatchetBullseyeRing" width="8rem" height="8rem"></canvas>
         </div>
 
-        <div class="card grid col-auto-1 items-y-center">
-          <div class="chartWrap size-8">
-            <canvas id="hatchetClutchHitRing" width="8rem" height="8rem"></canvas>
-          </div>
-
-          <p class="text-center">
-            <span>{{profile.stats.hatchet.clutch.hitPercent}}%</span>
-            <br>
-            <strong>Clutch Accuracy</strong>
-          </p>
+        <div class="card text-center">
+          <span>{{profile.stats.hatchet.target.fivePercent}}%</span>
+          <br>
+          <strong>Bullseye Accuracy</strong>
         </div>
 
-        <div class="card grid col-auto-1 items-y-center">
-          <div class="chartWrap size-8">
-            <canvas id="hatchetClutchCallRing" width="8rem" height="8rem"></canvas>
-          </div>
-
-          <p class="text-center">
-            <span>{{profile.stats.hatchet.clutch.callPercent}}%</span>
-            <br>
-            <strong>Clutch Call Rate</strong>
-          </p>
+        <div class="chartWrap size-8">
+          <canvas id="hatchetClutchHitRing" width="8rem" height="8rem"></canvas>
         </div>
+
+        <div class="card text-center">
+          <span>{{profile.stats.hatchet.clutch.hitPercent}}%</span>
+          <br>
+          <strong>Clutch Accuracy</strong>
+        </div>
+
+        <div class="chartWrap size-8">
+          <canvas id="hatchetClutchCallRing" width="8rem" height="8rem"></canvas>
+        </div>
+
+        <div class="card text-center">
+          <span>{{profile.stats.hatchet.clutch.callPercent}}%</span>
+          <br>
+          <strong>Clutch Call Rate</strong>
       </div>
     </div>
   </div>
