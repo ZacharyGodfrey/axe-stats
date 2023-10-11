@@ -375,7 +375,7 @@
 
       /* CSS Grid */
 
-      .portrait .grid {
+      .portrait .grid.stack {
         display: block;
       }
 
@@ -396,7 +396,7 @@
       .grid.col-3 { grid-template-columns: repeat(3, 1fr); }
       .grid.col-3-center { grid-template-columns: auto 1fr auto; }
 
-      .grid > * {
+      .grid:not(.portrait .grid.stack) > * {
         margin-top: 0 !important;
         margin-bottom: 0 !important;
       }
