@@ -44,7 +44,7 @@
     <div class="grid col-3 stack items-y-stretch">
       <div class="card text-center no-break">
         <div class="chartWrap">
-          <canvas id="chartAverageScore"></canvas>
+          <canvas id="averageScoreArc"></canvas>
         </div>
 
         <p class="text-lg">{{profile.stats.match.averageScore}}</p>
@@ -58,7 +58,7 @@
 
       <div class="card text-center no-break">
         <div class="chartWrap">
-          <canvas id="chartWinPercent"></canvas>
+          <canvas id="winPercentArc"></canvas>
         </div>
 
         <p class="text-lg">{{profile.stats.match.winPercent}}%</p>
@@ -72,7 +72,7 @@
 
       <div class="card text-center no-break">
         <div class="chartWrap">
-          <canvas id="chartBigAxeWinPercent"></canvas>
+          <canvas id="bigAxeWinArc"></canvas>
         </div>
 
         <p class="text-lg">{{profile.stats.bigAxe.roundWinPercent}}%</p>
@@ -87,9 +87,9 @@
   </div>
 
   <script>
-    statArc('chartAverageScore', 81, profile.stats.match.averageScore);
-    statArc('chartWinPercent', 100, profile.stats.match.winPercent);
-    statArc('chartBigAxeWinPercent', 100, profile.stats.bigAxe.roundWinPercent);
+    statArc('averageScoreArc', 81, profile.stats.match.averageScore);
+    statArc('winPercentArc', 100, profile.stats.match.winPercent);
+    statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
   </script>
 </section>
 
@@ -98,7 +98,7 @@
   <div class="x-limit">
     <h2>Hatchet Accuracy</h2>
 
-    <div class="grid col-3 stack">
+    <div class="grid col-2-2 stack">
       <div class="targetStats">
         <div class="clutch">
           <div class="dot"></div>
@@ -133,56 +133,50 @@
         <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
       </div>
 
-      <div class="card text-center no-break">
-        <div class="chartWrap">
-          <canvas id="hatchetBullseyeChart"></canvas>
-        </div>
-
-        <p class="text-lg">{{profile.stats.hatchet.target.fivePercent}}%</p>
-
-        <p>
-          <strong>Bullseye Accuracy</strong>
-        </p>
-
-        <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
-      </div>
-
       <div>
-        <div class="card text-center no-break">
+        <div class="card grid col-3-2">
           <div class="chartWrap">
-            <canvas id="hatchetClutchHitChart"></canvas>
+            <canvas id="hatchetBullseyeRing" width="8rem"></canvas>
           </div>
 
-          <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
+          <p>
+            <strong>Bullseye Accuracy</strong>
+          </p>
+
+          <p>{{profile.stats.hatchet.target.fivePercent}}%</p>
+        </div>
+
+        <div class="card grid col-3-2">
+          <div class="chartWrap">
+            <canvas id="hatchetClutchHitRing" width="8rem"></canvas>
+          </div>
 
           <p>
             <strong>Clutch Accuracy</strong>
           </p>
 
-          <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+          <p>{{profile.stats.hatchet.clutch.hitPercent}}%</p>
         </div>
 
-        <div class="card text-center no-break">
+        <div class="card grid col-3-2">
           <div class="chartWrap">
-            <canvas id="hatchetClutchCallChart"></canvas>
+            <canvas id="hatchetClutchCallRing" width="8rem"></canvas>
           </div>
-
-          <p class="text-lg">{{profile.stats.hatchet.clutch.callPercent}}%</p>
 
           <p>
             <strong>Clutch Call Rate</strong>
           </p>
 
-          <p>{{profile.stats.hatchet.clutch.call}} / {{profile.stats.hatchet.roundCount}} Rounds</p>
+          <p>{{profile.stats.hatchet.clutch.callPercent}}%</p>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
-    statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
-    statArc('hatchetClutchCallChart', 100, profile.stats.hatchet.clutch.callPercent);
+    statRing('hatchetBullseyeRing', 100, profile.stats.hatchet.target.fivePercent);
+    statRing('hatchetClutchHitRing', 100, profile.stats.hatchet.clutch.hitPercent);
+    statRing('hatchetClutchCallRing', 100, profile.stats.hatchet.clutch.callPercent);
   </script>
 </section>
 

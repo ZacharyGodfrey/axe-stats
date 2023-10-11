@@ -442,6 +442,26 @@
           }
         });
       };
+
+      const statRing = (id, total, value) => {
+        new Chart(document.getElementById(id), {
+          type: 'doughnut',
+          options: {
+            aspectRatio: 1,
+            plugins: {
+              tooltip: {
+                enabled: false
+              }
+            }
+          },
+          data: {
+            datasets: [{
+              backgroundColor: [cssVar('main'), cssVar('neutral')],
+              data: [value, total - value]
+            }]
+          }
+        });
+      };
     </script>
   </head>
   <body>
