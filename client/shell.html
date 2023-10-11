@@ -391,20 +391,18 @@
         align-content: start; /* row spacing Y */
       }
 
-      .grid.col-2 { grid-template-columns: repeat(2, 1fr); }
-      .grid.col-2-1 { grid-template-columns: 1fr auto; }
-      .grid.col-2-2 { grid-template-columns: auto 1fr; }
+      /* 2-Column Grid Layouts */
+      .grid.col-1-1 { grid-template-columns: 1fr 1fr; }
+      .grid.col-1-auto { grid-template-columns: 1fr auto; }
+      .grid.col-auto-1 { grid-template-columns: auto 1fr; }
 
-      .grid.col-3 { grid-template-columns: repeat(3, 1fr); }
-      .grid.col-3-1 { grid-template-columns: 1fr auto auto; }
-      .grid.col-3-2 { grid-template-columns: auto 1fr auto; }
-      .grid.col-3-3 { grid-template-columns: auto auto 1fr; }
-
-      .grid.col-4 { grid-template-columns: repeat(4, 1fr); }
-      .grid.col-4-1 { grid-template-columns: 1fr auto auto auto; }
-      .grid.col-4-2 { grid-template-columns: auto 1fr auto auto; }
-      .grid.col-4-3 { grid-template-columns: auto auto 1fr auto; }
-      .grid.col-4-4 { grid-template-columns: auto auto auto 1fr; }
+      /* 3-Column Grid Layouts */
+      .grid.col-1-1-1 { grid-template-columns: 1fr 1fr 1fr; }
+      .grid.col-2-1 { grid-template-columns: 2fr 1fr; }
+      .grid.col-1-2 { grid-template-columns: 1fr 2fr; }
+      .grid.col-auto-1-1 { grid-template-columns: auto 1fr 1fr; }
+      .grid.col-1-auto-1 { grid-template-columns: 1fr auto 1fr; }
+      .grid.col-1-1-auto { grid-template-columns: 1fr 1fr auto; }
 
       .grid.no-gap { gap: unset; }
 
