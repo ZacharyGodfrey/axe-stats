@@ -67,6 +67,25 @@
       </div>
 
       <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="chartWinPercent"></canvas>
+
+          <script>
+            new Chart(document.getElementById('chartWinPercent'), {
+              type: 'doughnut',
+              data: {
+                labels: ['Win Rate', ''],
+                datasets: [{
+                  data: [
+                    {{profile.stats.match.winPercent}},
+                    100 - {{profile.stats.match.winPercent}}
+                  ]
+                }]
+              }
+            });
+          </script>
+        </div>
+
         <p class="text-lg">{{profile.stats.match.winPercent}}%</p>
 
         <p>
@@ -77,6 +96,26 @@
       </div>
 
       <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="chartBigAxeWinPercent"></canvas>
+
+          <script>
+            new Chart(document.getElementById('chartBigAxeWinPercent'), {
+              type: 'doughnut',
+              data: {
+                labels: ['Big Axe Win Rate', ''],
+                datasets: [{
+                  backgroundColor: ['var(--main)', 'transparent'],
+                  data: [
+                    {{profile.stats.bigAxe.roundWinPercent}},
+                    100 - {{profile.stats.bigAxe.roundWinPercent}}
+                  ]
+                }]
+              }
+            });
+          </script>
+        </div>
+
         <p class="text-lg">{{profile.stats.bigAxe.roundWinPercent}}%</p>
 
         <p>
