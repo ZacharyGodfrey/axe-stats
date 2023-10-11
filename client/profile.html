@@ -98,17 +98,7 @@
   <div class="x-limit">
     <h2>Hatchet Accuracy</h2>
 
-    <div class="grid col-2-2 stack">
-      <div class="card text-center">
-        <div class="grid col-3-2 no-gap">
-          <div class="dot"></div>
-          <div>{{profile.stats.hatchet.clutch.hit}}</div>
-          <div class="dot"></div>
-        </div>
-
-        <p>Target Here</p>
-      </div>
-
+    <div class="grid col-3 stack">
       <div class="targetStats">
         <div class="clutch">
           <div class="dot"></div>
@@ -143,49 +133,47 @@
         <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
       </div>
 
-      <div class="grid col-2">
-        <div class="card text-center no-break">
-          <div class="chartWrap">
-            <canvas id="hatchetBullseyeChart"></canvas>
-          </div>
-
-          <p class="text-lg">{{profile.stats.hatchet.target.fivePercent}}%</p>
-
-          <p>
-            <strong>Bullseye Accuracy</strong>
-          </p>
-
-          <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
+      <div class="card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="hatchetBullseyeChart"></canvas>
         </div>
 
-        <div>
-          <div class="card text-center no-break">
-            <div class="chartWrap">
-              <canvas id="hatchetClutchHitChart"></canvas>
-            </div>
+        <p class="text-lg">{{profile.stats.hatchet.target.fivePercent}}%</p>
 
-            <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
+        <p>
+          <strong>Bullseye Accuracy</strong>
+        </p>
 
-            <p>
-              <strong>Clutch Accuracy</strong>
-            </p>
+        <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
+      </div>
 
-            <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+      <div>
+        <div class="card text-center no-break">
+          <div class="chartWrap">
+            <canvas id="hatchetClutchHitChart"></canvas>
           </div>
 
-          <div class="card text-center no-break">
-            <div class="chartWrap">
-              <canvas id="hatchetClutchCallChart"></canvas>
-            </div>
+          <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
-            <p class="text-lg">{{profile.stats.hatchet.clutch.callPercent}}%</p>
+          <p>
+            <strong>Clutch Accuracy</strong>
+          </p>
 
-            <p>
-              <strong>Clutch Call Rate</strong>
-            </p>
+          <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+        </div>
 
-            <p>{{profile.stats.hatchet.clutch.call}} / {{profile.stats.hatchet.roundCount}} Rounds</p>
+        <div class="card text-center no-break">
+          <div class="chartWrap">
+            <canvas id="hatchetClutchCallChart"></canvas>
           </div>
+
+          <p class="text-lg">{{profile.stats.hatchet.clutch.callPercent}}%</p>
+
+          <p>
+            <strong>Clutch Call Rate</strong>
+          </p>
+
+          <p>{{profile.stats.hatchet.clutch.call}} / {{profile.stats.hatchet.roundCount}} Rounds</p>
         </div>
       </div>
     </div>
