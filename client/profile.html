@@ -38,7 +38,7 @@
   <div class="x-limit">
     <div class="split stack">
       <div class="grow stretch card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap" style="max-width: 10rem;">
           <canvas id="chartAvgScore"></canvas>
 
           <script>
@@ -67,7 +67,7 @@
       </div>
 
       <div class="grow stretch card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap" style="max-width: 10rem;">
           <canvas id="chartWinPercent"></canvas>
 
           <script>
@@ -96,7 +96,7 @@
       </div>
 
       <div class="grow stretch card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap" style="max-width: 10rem;">
           <canvas id="chartBigAxeWinPercent"></canvas>
 
           <script>
@@ -116,10 +116,10 @@
                 elements: {
                   center: {
                     text: '{{profile.stats.bigAxe.roundWinPercent}}%',
-                    color: 'var(--main)', // Default is #000000
-                    fontStyle: 'inherit', // Default is Arial
+                    // color: 'var(--main)', // Default is #000000
+                    // fontStyle: 'inherit', // Default is Arial
                     sidePadding: 10, // Default is 20 (as a percentage)
-                    minFontSize: false,
+                    minFontSize: 20,
                   }
                 }
               }
