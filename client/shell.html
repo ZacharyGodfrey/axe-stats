@@ -115,13 +115,19 @@
       }
 
       a {
-        color: inherit;
-        text-decoration-color: var(--main);
-        text-decoration-thickness: 2px;
+        color: var(--main);
+        text-decoration: none;
+        /* text-decoration-color: var(--main); */
+        /* text-decoration-thickness: 2px; */
+      }
+
+      a:hover {
+        text-decoration: underline;
       }
 
       h1 a {
         text-decoration: none;
+        color: inherit;
       }
 
       ul, ol {
@@ -384,7 +390,7 @@
         margin: 1rem auto;
         gap: 1rem;
         justify-items: stretch; /* cell content X */
-        align-items: center; /* cell content Y */
+        align-items: stretch; /* cell content Y */
         justify-content: center; /* column spacing X */
         align-content: center; /* row spacing Y */
       }
@@ -394,7 +400,9 @@
       .grid.col-2-right { grid-template-columns: auto 1fr; }
 
       .grid.col-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid.col-3-left { grid-template-columns: 1fr auto auto; }
       .grid.col-3-center { grid-template-columns: auto 1fr auto; }
+      .grid.col-3-right { grid-template-columns: auto auto 1fr; }
 
       .grid:not(.portrait .grid.stack) > * {
         margin-top: 0 !important;

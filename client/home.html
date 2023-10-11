@@ -13,67 +13,30 @@
 
 <section>
   <div class="x-limit">
-    <div class="grid col-2">
-      <div class="card text-center">Left</div>
-      <div class="card text-center">Right</div>
-    </div>
-  </div>
-</section>
+    <div class="grid col-3-right">
+      {{#profiles}}
+      <div class="card text-center">
+        <strong>#{{rank}}</strong>
+      </div>
 
-<section>
-  <div class="x-limit">
-    <div class="grid col-2-left">
-      <div class="card text-center">Left</div>
-      <div class="card text-center">Right</div>
-    </div>
-  </div>
-</section>
+      <div>
+        <img class="profile-image" src="data:image/png;base64,{{{image}}}">
+      </div>
 
-<section>
-  <div class="x-limit">
-    <div class="grid col-2-right">
-      <div class="card text-center">Left</div>
-      <div class="card text-center">Right</div>
-    </div>
-  </div>
-</section>
+      <div class="card">
+        <p class="text-lg">
+          <a href="/{{id}}">{{name}}</a>
+        </p>
 
-<section>
-  <div class="x-limit">
-    <div class="grid col-3">
-      <div class="card text-center">Left</div>
-      <div class="card text-center">Center</div>
-      <div class="card text-center">Right</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <div class="grid col-3-center">
-      <div class="card text-center">Left</div>
-      <div class="card text-center">Center</div>
-      <div class="card text-center">Right</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <div class="grid col-3">
-      <div class="card text-center">Left</div>
-      <div class="card text-center">Center</div>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="x-limit">
-    <div class="grid col-3">
-      <div class="card text-center">One</div>
-      <div class="card text-center">Two</div>
-      <div class="card text-center">Three</div>
-      <div class="card text-center">Four</div>
+        <p class="text-right">
+          <span>Collins Rating</span>
+          <strong>{{rating}}</strong>
+          <br>
+          <span>Average Score</span>
+          <strong>{{stats.match.averageScore}}</strong>
+        </p>
+      </div>
+      {{/profiles}}
     </div>
   </div>
 </section>
@@ -102,11 +65,6 @@
             </td>
 
             <td class="no-wrap">
-              <span>Collins Rating</span>
-              <strong>{{rating}}</strong>
-              <br>
-              <span>Average Score</span>
-              <strong>{{stats.match.averageScore}}</strong>
             </td>
           </tr>
           {{/profiles}}
