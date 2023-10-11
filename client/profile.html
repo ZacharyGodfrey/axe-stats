@@ -105,12 +105,23 @@
               data: {
                 labels: ['Big Axe Win Rate', ''],
                 datasets: [{
-                  backgroundColor: ['var(--main)', 'transparent'],
+                  backgroundColor: ['var(--main)', 'white'],
                   data: [
                     {{profile.stats.bigAxe.roundWinPercent}},
                     100 - {{profile.stats.bigAxe.roundWinPercent}}
                   ]
                 }]
+              },
+              options: {
+                elements: {
+                  center: {
+                    text: '{{profile.stats.bigAxe.roundWinPercent}}%',
+                    color: 'var(--main)', // Default is #000000
+                    fontStyle: 'inherit', // Default is Arial
+                    sidePadding: 10, // Default is 20 (as a percentage)
+                    minFontSize: false,
+                  }
+                }
               }
             });
           </script>
