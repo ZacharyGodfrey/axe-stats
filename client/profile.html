@@ -98,6 +98,102 @@
   <div class="x-limit">
     <h2>Hatchet Accuracy</h2>
 
+    <details>
+      <summary>Details</summary>
+
+      <div class="split stack">
+        <div class="targetStats">
+          <div class="clutch">
+            <div class="dot"></div>
+
+            <span>{{profile.stats.hatchet.clutch.hit}}</span>
+
+            <div class="dot"></div>
+          </div>
+
+          <br>
+
+          <div class="target">
+            <div class="ring one">
+              <span class="label">&nbsp;</span>
+
+              <div class="ring three">
+                <span class="label">&nbsp;</span>
+
+                <div class="ring five">
+                  <span class="label">{{profile.stats.hatchet.target.five}}</span>
+                </div>
+
+                <span class="label">{{profile.stats.hatchet.target.three}}</span>
+              </div>
+
+              <span class="label">{{profile.stats.hatchet.target.one}}</span>
+            </div>
+          </div>
+
+          <br>
+
+          <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
+        </div>
+
+        <div class="grow">
+          <figure>
+            <table class="text-center">
+              <tbody>
+                <tr>
+                  <th class="no-wrap">Clutch Call Rate</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.hatchet.clutch.call}} Calls / {{profile.stats.hatchet.roundCount}} Rounds</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Clutch Accuracy</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.hatchet.clutch.hitPercent}}%</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.hatchet.clutch.hit}} Hits / {{profile.stats.hatchet.clutch.call}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Bullseye Accuracy</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.hatchet.target.fivePercent}}%</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.hatchet.target.five}} Hits / {{profile.stats.hatchet.target.throwCount}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Score Per Axe</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.hatchet.scorePerThrow}}</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.hatchet.totalScore}} Points / {{profile.stats.hatchet.throwCount}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Bullseye EV</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.hatchet.target.ev}}</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.hatchet.target.totalScore}} Points / {{profile.stats.hatchet.target.throwCount}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Clutch EV</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.hatchet.clutch.ev}}</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.hatchet.clutch.totalScore}} Points / {{profile.stats.hatchet.clutch.call}} Throws</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+      </div>
+    </details>
+
     <div class="split stack">
       <div class="grow stretch card text-center no-break">
         <div class="chartWrap">
@@ -141,98 +237,6 @@
         <p>{{profile.stats.hatchet.clutch.call}} / {{profile.stats.hatchet.roundCount}} Rounds</p>
       </div>
     </div>
-
-    <div class="split stack">
-      <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
-
-          <span>{{profile.stats.hatchet.clutch.hit}}</span>
-
-          <div class="dot"></div>
-        </div>
-
-        <br>
-
-        <div class="target">
-          <div class="ring one">
-            <span class="label">&nbsp;</span>
-
-            <div class="ring three">
-              <span class="label">&nbsp;</span>
-
-              <div class="ring five">
-                <span class="label">{{profile.stats.hatchet.target.five}}</span>
-              </div>
-
-              <span class="label">{{profile.stats.hatchet.target.three}}</span>
-            </div>
-
-            <span class="label">{{profile.stats.hatchet.target.one}}</span>
-          </div>
-        </div>
-
-        <br>
-
-        <span class="label">{{profile.stats.hatchet.target.drop}} Drops</span>
-      </div>
-
-      <div class="grow">
-        <figure>
-          <table class="text-center">
-            <tbody>
-              <tr>
-                <th class="no-wrap">Clutch Call Rate</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.hatchet.clutch.call}} Calls / {{profile.stats.hatchet.roundCount}} Rounds</td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Clutch Accuracy</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.clutch.hitPercent}}%</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.hatchet.clutch.hit}} Hits / {{profile.stats.hatchet.clutch.call}} Throws</td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Bullseye Accuracy</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.target.fivePercent}}%</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.hatchet.target.five}} Hits / {{profile.stats.hatchet.target.throwCount}} Throws</td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Score Per Axe</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.scorePerThrow}}</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.hatchet.totalScore}} Points / {{profile.stats.hatchet.throwCount}} Throws</td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Bullseye EV</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.target.ev}}</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.hatchet.target.totalScore}} Points / {{profile.stats.hatchet.target.throwCount}} Throws</td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Clutch EV</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.hatchet.clutch.ev}}</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.hatchet.clutch.totalScore}} Points / {{profile.stats.hatchet.clutch.call}} Throws</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
-      </div>
-    </div>
   </div>
 
   <script>
@@ -247,90 +251,144 @@
   <div class="x-limit">
     <h2>Big Axe Accuracy</h2>
 
-    <div class="split stack">
-      <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
+    <details>
+      <summary>Details</summary>
 
-          <span>{{profile.stats.bigAxe.clutch.hit}}</span>
+      <div class="split stack">
+        <div class="targetStats">
+          <div class="clutch">
+            <div class="dot"></div>
 
-          <div class="dot"></div>
-        </div>
+            <span>{{profile.stats.bigAxe.clutch.hit}}</span>
 
-        <br>
+            <div class="dot"></div>
+          </div>
 
-        <div class="target">
-          <div class="ring one">
-            <span class="label">&nbsp;</span>
+          <br>
 
-            <div class="ring three">
+          <div class="target">
+            <div class="ring one">
               <span class="label">&nbsp;</span>
 
-              <div class="ring five">
-                <span class="label">{{profile.stats.bigAxe.target.five}}</span>
+              <div class="ring three">
+                <span class="label">&nbsp;</span>
+
+                <div class="ring five">
+                  <span class="label">{{profile.stats.bigAxe.target.five}}</span>
+                </div>
+
+                <span class="label">{{profile.stats.bigAxe.target.three}}</span>
               </div>
 
-              <span class="label">{{profile.stats.bigAxe.target.three}}</span>
+              <span class="label">{{profile.stats.bigAxe.target.one}}</span>
             </div>
-
-            <span class="label">{{profile.stats.bigAxe.target.one}}</span>
           </div>
+
+          <br>
+
+          <span class="label">{{profile.stats.bigAxe.target.drop}} Drops</span>
         </div>
 
-        <br>
+        <div class="grow">
+          <figure>
+            <table class="text-center">
+              <tbody>
+                <tr>
+                  <th class="no-wrap">Clutch Accuracy</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.bigAxe.clutch.hitPercent}}%</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.clutch.hit}} Hits / {{profile.stats.bigAxe.clutch.call}} Throws</td>
+                </tr>
 
-        <span class="label">{{profile.stats.bigAxe.target.drop}} Drops</span>
+                <tr>
+                  <th class="no-wrap">Bullseye Accuracy</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.bigAxe.target.fivePercent}}%</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.target.five}} Hits / {{profile.stats.bigAxe.target.throwCount}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Score Per Axe</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.bigAxe.scorePerThrow}}</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.totalScore}} Points / {{profile.stats.bigAxe.throwCount}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Bullseye EV</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.bigAxe.target.ev}}</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.target.totalScore}} Points / {{profile.stats.bigAxe.target.throwCount}} Throws</td>
+                </tr>
+
+                <tr>
+                  <th class="no-wrap">Clutch EV</th>
+                  <td class="no-wrap">
+                    <strong>{{profile.stats.bigAxe.clutch.ev}}</strong>
+                  </td>
+                  <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.clutch.totalScore}} Points / {{profile.stats.bigAxe.clutch.call}} Throws</td>
+                </tr>
+              </tbody>
+            </table>
+          </figure>
+        </div>
+      </div>
+    </details>
+
+    <div class="split stack">
+      <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="bigAxeBullseyeChart"></canvas>
+        </div>
+
+        <p class="text-lg">{{profile.stats.bigAxe.target.fivePercent}}%</p>
+
+        <p>
+          <strong>Bullseye Accuracy</strong>
+        </p>
+
+        <p>{{profile.stats.bigAxe.target.five}} / {{profile.stats.bigAxe.target.throwCount}} Throws</p>
       </div>
 
-      <div class="grow">
-        <figure>
-          <table class="text-center">
-            <tbody>
-              <tr>
-                <th class="no-wrap">Clutch Accuracy</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.clutch.hitPercent}}%</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.clutch.hit}} Hits / {{profile.stats.bigAxe.clutch.call}} Throws</td>
-              </tr>
+      <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="bigAxeClutchHitChart"></canvas>
+        </div>
 
-              <tr>
-                <th class="no-wrap">Bullseye Accuracy</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.target.fivePercent}}%</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.target.five}} Hits / {{profile.stats.bigAxe.target.throwCount}} Throws</td>
-              </tr>
+        <p class="text-lg">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
 
-              <tr>
-                <th class="no-wrap">Score Per Axe</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.scorePerThrow}}</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.totalScore}} Points / {{profile.stats.bigAxe.throwCount}} Throws</td>
-              </tr>
+        <p>
+          <strong>Clutch Accuracy</strong>
+        </p>
 
-              <tr>
-                <th class="no-wrap">Bullseye EV</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.target.ev}}</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.target.totalScore}} Points / {{profile.stats.bigAxe.target.throwCount}} Throws</td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Clutch EV</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.clutch.ev}}</strong>
-                </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.clutch.totalScore}} Points / {{profile.stats.bigAxe.clutch.call}} Throws</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
+        <p>{{profile.stats.bigAxe.clutch.hit}} / {{profile.stats.bigAxe.clutch.call}} Calls</p>
       </div>
+
+      <!-- <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="bigAxeClutchCallChart"></canvas>
+        </div>
+
+        <p class="text-lg">{{profile.stats.bigAxe.clutch.callPercent}}%</p>
+
+        <p>
+          <strong>Clutch Call Rate</strong>
+        </p>
+
+        <p>{{profile.stats.bigAxe.clutch.call}} / {{profile.stats.bigAxe.roundCount}} Rounds</p>
+      </div> -->
     </div>
   </div>
+
+  <script>
+    statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
+    statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
+    // statArc('bigAxeClutchCallChart', 100, profile.stats.bigAxe.clutch.callPercent);
+  </script>
 </section>
 
 <!-- Match Outcomes -->
