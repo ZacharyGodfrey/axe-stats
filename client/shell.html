@@ -402,13 +402,22 @@
       }
 
       .grid.col-2 { grid-template-columns: repeat(2, 1fr); }
-      .grid.col-2-left { grid-template-columns: 1fr auto; }
-      .grid.col-2-right { grid-template-columns: auto 1fr; }
+      .grid.col-2-1 { grid-template-columns: 1fr auto; }
+      .grid.col-2-2 { grid-template-columns: auto 1fr; }
 
       .grid.col-3 { grid-template-columns: repeat(3, 1fr); }
-      .grid.col-3-left { grid-template-columns: 1fr auto auto; }
-      .grid.col-3-center { grid-template-columns: auto 1fr auto; }
-      .grid.col-3-right { grid-template-columns: auto auto 1fr; }
+      .grid.col-3-1 { grid-template-columns: 1fr auto auto; }
+      .grid.col-3-2 { grid-template-columns: auto 1fr auto; }
+      .grid.col-3-3 { grid-template-columns: auto auto 1fr; }
+
+      .grid.col-4 { grid-template-columns: repeat(4, 1fr); }
+      .grid.col-4-1 { grid-template-columns: 1fr auto auto auto; }
+      .grid.col-4-2 { grid-template-columns: auto 1fr auto auto; }
+      .grid.col-4-3 { grid-template-columns: auto auto 1fr auto; }
+      .grid.col-4-4 { grid-template-columns: auto auto auto 1fr; }
+
+      .grid.items-x-center { justify-items: center; }
+      .grid.items-y-center { align-items: center; }
 
       .grid:not(.portrait .grid.stack) > * {
         margin-top: 0 !important;
