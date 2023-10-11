@@ -383,10 +383,10 @@
         display: grid;
         margin: 1rem auto;
         gap: 1rem;
-        justify-items: stretch; /* cell content X */
-        align-items: stretch; /* cell content Y */
-        justify-content: stretch; /* column spacing X */
-        align-content: stretch; /* row spacing Y */
+        justify-items: center; /* cell content X */
+        align-items: center; /* cell content Y */
+        justify-content: center; /* column spacing X */
+        align-content: center; /* row spacing Y */
       }
 
       .grid.col-2 { grid-template-columns: repeat(2, 1fr); }
@@ -395,6 +395,11 @@
 
       .grid.col-3 { grid-template-columns: repeat(3, 1fr); }
       .grid.col-3-center { grid-template-columns: auto 1fr auto; }
+
+      .grid > * {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
     </style>
 
     <script>//chartJS//</script>
