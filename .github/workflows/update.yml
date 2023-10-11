@@ -2,7 +2,7 @@ name: Update Site Data
 on:
   workflow_dispatch:
   schedule:
-    - cron: "30 6 * * 3"
+    - cron: "30 6 * * *"
 jobs:
   update-site-data:
     runs-on: ubuntu-latest
