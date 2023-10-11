@@ -13,7 +13,9 @@
     <div class="grid col-2-2 items-y-center">
       {{#profiles}}
       <div>
-        <img class="profile-image width-4" src="data:image/png;base64,{{{image}}}">
+        <a href="/{{id}}">
+          <img class="profile-image width-4" src="data:image/png;base64,{{{image}}}">
+        </a>
       </div>
 
       <div class="card">
