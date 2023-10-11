@@ -41,8 +41,8 @@
 <!-- Stats Highlight -->
 <section class="bg-dark">
   <div class="x-limit">
-    <div class="split stack">
-      <div class="grow stretch card text-center no-break">
+    <div class="grid col-3 stack items-y-stretch">
+      <div class="card text-center no-break">
         <div class="chartWrap">
           <canvas id="chartAverageScore"></canvas>
         </div>
@@ -56,7 +56,7 @@
         <p>{{profile.stats.match.totalScore}} Total Points</p>
       </div>
 
-      <div class="grow stretch card text-center no-break">
+      <div class="card text-center no-break">
         <div class="chartWrap">
           <canvas id="chartWinPercent"></canvas>
         </div>
@@ -70,7 +70,7 @@
         <p>{{profile.stats.match.win}} / {{profile.stats.match.count}} Matches</p>
       </div>
 
-      <div class="grow stretch card text-center no-break">
+      <div class="card text-center no-break">
         <div class="chartWrap">
           <canvas id="chartBigAxeWinPercent"></canvas>
         </div>
