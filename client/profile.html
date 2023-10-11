@@ -82,9 +82,9 @@
   </div>
 
   <script>
-    arcChart('chartAverageScore', 81, {{profile.stats.match.averageScore}});
-    arcChart('chartWinPercent', 100, {{profile.stats.match.winPercent}});
-    arcChart('chartBigAxeWinPercent', 100, {{profile.stats.bigAxe.roundWinPercent}});
+    statArc('chartAverageScore', 81, {{profile.stats.match.averageScore}});
+    statArc('chartWinPercent', 100, {{profile.stats.match.winPercent}});
+    statArc('chartBigAxeWinPercent', 100, {{profile.stats.bigAxe.roundWinPercent}});
   </script>
 </section>
 
@@ -293,23 +293,6 @@
       <div class="grow">
         <div class="chartWrap">
           <canvas id="matchOutcomeChart"></canvas>
-
-          <script>
-            new Chart(document.getElementById('matchOutcomeChart'), {
-              type: 'doughnut',
-              data: {
-                labels: ['Hatchet Wins', 'Big Axe Wins', 'Hatchet Losses', 'Big Axe Losses'],
-                datasets: [{
-                  data: [
-                    {{profile.stats.match.winWithoutBigAxe}},
-                    {{profile.stats.bigAxe.roundWin}},
-                    {{profile.stats.match.loss}},
-                    {{profile.stats.bigAxe.roundLoss}}
-                  ]
-                }]
-              }
-            });
-          </script>
         </div>
       </div>
 
@@ -350,6 +333,26 @@
       </div>
     </div>
   </div>
+
+  <script>
+    new Chart(document.getElementById('matchOutcomeChart'), {
+      type: 'doughnut',
+      options: {
+        
+      },
+      data: {
+        labels: ['Hatchet Wins', 'Big Axe Wins', 'Hatchet Losses', 'Big Axe Losses'],
+        datasets: [{
+          data: [
+            {{profile.stats.match.winWithoutBigAxe}},
+            {{profile.stats.bigAxe.roundWin}},
+            {{profile.stats.match.loss}},
+            {{profile.stats.bigAxe.roundLoss}}
+          ]
+        }]
+      }
+    });
+  </script>
 </section>
 
 <!-- Round Outcomes -->

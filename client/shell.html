@@ -377,13 +377,13 @@
       Chart.defaults.plugins.legend.display = false;
       Chart.overrides.doughnut.cutout = '80%';
 
-      const arcChart = (id, total, value) => {
+      const statArc = (id, total, value) => {
         new Chart(document.getElementById(id), {
           type: 'doughnut',
           options: {
             rotation: -90,
             circumference: 180,
-            aspectRatio: 2,
+            aspectRatio: 2.5,
             plugins: {
               tooltip: {
                 enabled: false
