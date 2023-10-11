@@ -188,7 +188,40 @@
         </figure>
       </div>
     </div>
+
+    <div class="chartWrap">
+      <canvas id="hatchetTargetChart"></canvas>
+    </div>
   </div>
+
+  <script>
+    new Chart(document.getElementById('hatchetTargetChart'), {
+      type: 'doughnut',
+      options: {
+        rotation: -90,
+        circumference: 180,
+        aspectRatio: 2.5,
+        plugins: {
+          tooltip: {
+            enabled: true
+          }
+        }
+      },
+      data: {
+        labels: ['Drops', 'Ones', 'Threes', 'Bullseyes', 'Clutches', 'Clutches Missed'],
+        datasets: [{
+          data: [
+            profile.stats.hatchet.target.drop,
+            profile.stats.hatchet.target.one,
+            profile.stats.hatchet.target.three,
+            profile.stats.hatchet.target.five,
+            profile.stats.hatchet.clutch.hit,
+            profile.stats.hatchet.clutch.call - profile.stats.hatchet.clutch.hit,
+          ]
+        }]
+      }
+    });
+  </script>
 </section>
 
 <!-- Big Axe Accuracy -->
