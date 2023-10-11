@@ -21,7 +21,8 @@
         --cta:       hsl(var(--hue), 80%, 60%);
         --main:      hsl(var(--hue), 50%, 40%);
         --dark:      hsl(var(--hue), 50%, 20%);
-        --neutral:    #EEEEEE;
+        --neutral: #EEEEEE;
+        --content-limit: 100ch;
         font-family: 'roboto', monospace;
         font-size: 18px;
         line-height: 1.5;
@@ -149,6 +150,12 @@
         aspect-ratio: 3 / 2;
       }
 
+      canvas {
+        min-width: 10rem;
+        width: 100%;
+        max-width: var(--content-limit);
+      }
+
       figure {
         width: 100%;
         margin: 1rem 0;
@@ -201,7 +208,7 @@
       }
 
       .x-limit {
-        max-width: 100ch;
+        max-width: var(--content-limit);
         margin-left: auto;
         margin-right: auto;
       }
