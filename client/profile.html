@@ -134,7 +134,9 @@
       </div>
 
       <div class="card grid col-3-2 items-y-center">
-        <canvas id="hatchetBullseyeRing" width="8rem" height="8rem"></canvas>
+        <div class="chartWrap">
+          <canvas id="hatchetBullseyeRing" width="8rem" height="8rem"></canvas>
+        </div>
 
         <p>
           <strong>Bullseye Accuracy</strong>
@@ -142,7 +144,9 @@
 
         <p>{{profile.stats.hatchet.target.fivePercent}}%</p>
 
-        <canvas id="hatchetClutchHitRing" width="8rem" height="8rem"></canvas>
+        <div class="chartWrap">
+          <canvas id="hatchetClutchHitRing" width="8rem" height="8rem"></canvas>
+        </div>
 
         <p>
           <strong>Clutch Accuracy</strong>
@@ -150,7 +154,9 @@
 
         <p>{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
-        <canvas id="hatchetClutchCallRing" width="8rem" height="8rem"></canvas>
+        <div class="chartWrap">
+          <canvas id="hatchetClutchCallRing" width="8rem" height="8rem"></canvas>
+        </div>
 
         <p>
           <strong>Clutch Call Rate</strong>
