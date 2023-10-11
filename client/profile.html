@@ -272,7 +272,24 @@
     </details>
 
     <div class="chartWrap">
-      <canvas id="sampleChart"></canvas>
+      <canvas id="matchOutcomeChart"></canvas>
+
+      <script>
+        new Chart(document.getElementById('matchOutcomeChart'), {
+          type: 'doughnut',
+          labels: ['Hatchet Wins', 'Hatchet Losses', 'Big Axe Wins', 'Big Axe Losses'],
+          data: {
+            datasets: [{
+              data: [
+                {{profile.stats.match.winWithoutBigAxe}},
+                {{profile.stats.match.loss}},
+                {{profile.stats.bigAxe.roundWin}},
+                {{profile.stats.bigAxe.roundLoss}}
+              ]
+            }]
+          }
+        });
+      </script>
     </div>
 
     <figure>
@@ -372,19 +389,3 @@
     <p>Coming soon...</p>
   </div>
 </section>
-
-<script>
-  new Chart(document.getElementById('sampleChart'), {
-    type: 'doughnut',
-    data: {
-      datasets: [{
-        data: [{id: 'Sales', nested: {value: 1500}}, {id: 'Purchases', nested: {value: 500}}]
-      }]
-    },
-    options: {
-      parsing: {
-        key: 'nested.value'
-      }
-    }
-  });
-</script>
