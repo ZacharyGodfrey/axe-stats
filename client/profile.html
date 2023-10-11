@@ -271,64 +271,70 @@
       <p>Losses and OTLs are displayed separately in your career record, but wins are displayed as a single value whether you won the match outright or won the Big Axe tiebreaker.</p>
     </details>
 
-    <div class="chartWrap">
-      <canvas id="matchOutcomeChart"></canvas>
+    <div class="split stack">
+      <div class="grow">
+        <div class="chartWrap">
+          <canvas id="matchOutcomeChart"></canvas>
 
-      <script>
-        new Chart(document.getElementById('matchOutcomeChart'), {
-          type: 'doughnut',
-          data: {
-            labels: ['Hatchet Wins', 'Big Axe Wins', 'Hatchet Losses', 'Big Axe Losses'],
-            datasets: [{
-              data: [
-                {{profile.stats.match.winWithoutBigAxe}},
-                {{profile.stats.bigAxe.roundWin}},
-                {{profile.stats.match.loss}},
-                {{profile.stats.bigAxe.roundLoss}}
-              ]
-            }]
-          }
-        });
-      </script>
+          <script>
+            new Chart(document.getElementById('matchOutcomeChart'), {
+              type: 'doughnut',
+              data: {
+                labels: ['Hatchet Wins', 'Big Axe Wins', 'Hatchet Losses', 'Big Axe Losses'],
+                datasets: [{
+                  data: [
+                    {{profile.stats.match.winWithoutBigAxe}},
+                    {{profile.stats.bigAxe.roundWin}},
+                    {{profile.stats.match.loss}},
+                    {{profile.stats.bigAxe.roundLoss}}
+                  ]
+                }]
+              }
+            });
+          </script>
+        </div>
+      </div>
+
+      <div class="grow">
+        <figure>
+          <table class="text-center">
+            <tbody>
+              <tr>
+                <th class="no-wrap">Hatchet Wins</th>
+                <td class="no-wrap">
+                  <strong>{{profile.stats.match.winWithoutBigAxePercent}}%</strong>
+                </td>
+                <td class="no-wrap text-left maximize">{{profile.stats.match.winWithoutBigAxe}}</td>
+              </tr>
+
+              <tr>
+                <th class="no-wrap">Big Axe Wins</th>
+                <td class="no-wrap">
+                  <strong>{{profile.stats.bigAxe.roundWinPercent}}%</strong>
+                </td>
+                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.roundWin}}</td>
+              </tr>
+
+              <tr>
+                <th class="no-wrap">Hatchet Losses</th>
+                <td class="no-wrap">
+                  <strong>{{profile.stats.match.lossPercent}}%</strong>
+                </td>
+                <td class="no-wrap text-left maximize">{{profile.stats.match.loss}}</td>
+              </tr>
+
+              <tr>
+                <th class="no-wrap">Big Axe Losses</th>
+                <td class="no-wrap">
+                  <strong>{{profile.stats.bigAxe.roundLossPercent}}%</strong>
+                </td>
+                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.roundLoss}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
     </div>
-
-    <figure>
-      <table class="text-center">
-        <tbody>
-          <tr>
-            <th class="no-wrap">Hatchet Wins</th>
-            <td class="no-wrap">
-              <strong>{{profile.stats.match.winWithoutBigAxePercent}}%</strong>
-            </td>
-            <td class="no-wrap text-left maximize">{{profile.stats.match.winWithoutBigAxe}}</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Big Axe Wins</th>
-            <td class="no-wrap">
-              <strong>{{profile.stats.bigAxe.roundWinPercent}}%</strong>
-            </td>
-            <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.roundWin}}</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Hatchet Losses</th>
-            <td class="no-wrap">
-              <strong>{{profile.stats.match.lossPercent}}%</strong>
-            </td>
-            <td class="no-wrap text-left maximize">{{profile.stats.match.loss}}</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Big Axe Losses</th>
-            <td class="no-wrap">
-              <strong>{{profile.stats.bigAxe.roundLossPercent}}%</strong>
-            </td>
-            <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.roundLoss}}</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure>
   </div>
 </section>
 
