@@ -242,34 +242,6 @@
     </details>
 
     <div class="grid col-3 stack">
-      <div class="card text-center no-break">
-        <div class="chartWrap">
-          <canvas id="bigAxeBullseyeChart"></canvas>
-        </div>
-
-        <p class="text-lg">{{profile.stats.bigAxe.target.fivePercent}}%</p>
-
-        <p>
-          <strong>Bullseye Accuracy</strong>
-        </p>
-
-        <p>{{profile.stats.bigAxe.target.five}} / {{profile.stats.bigAxe.target.throwCount}} Throws</p>
-      </div>
-
-      <div class="card text-center no-break">
-        <div class="chartWrap">
-          <canvas id="bigAxeClutchHitChart"></canvas>
-        </div>
-
-        <p class="text-lg">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
-
-        <p>
-          <strong>Clutch Accuracy</strong>
-        </p>
-
-        <p>{{profile.stats.bigAxe.clutch.hit}} / {{profile.stats.bigAxe.clutch.call}} Calls</p>
-      </div>
-
       <div class="targetStats">
         <div class="clutch">
           <div class="dot"></div>
@@ -302,6 +274,34 @@
         <br>
 
         <span class="label">{{profile.stats.bigAxe.target.drop}} Drops</span>
+      </div>
+
+      <div class="card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="bigAxeBullseyeChart"></canvas>
+        </div>
+
+        <p class="text-lg">{{profile.stats.bigAxe.target.fivePercent}}%</p>
+
+        <p>
+          <strong>Bullseye Accuracy</strong>
+        </p>
+
+        <p>{{profile.stats.bigAxe.target.five}} / {{profile.stats.bigAxe.target.throwCount}} Throws</p>
+      </div>
+
+      <div class="card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="bigAxeClutchHitChart"></canvas>
+        </div>
+
+        <p class="text-lg">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
+
+        <p>
+          <strong>Clutch Accuracy</strong>
+        </p>
+
+        <p>{{profile.stats.bigAxe.clutch.hit}} / {{profile.stats.bigAxe.clutch.call}} Calls</p>
       </div>
     </div>
   </div>
