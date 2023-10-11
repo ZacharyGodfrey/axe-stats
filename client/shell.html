@@ -294,6 +294,7 @@
         width: 100%;
         height: auto;
         border-radius: 50%;
+        aspect-ratio: 1 / 1;
       }
 
       .profile-image.max-4 {
@@ -305,11 +306,8 @@
       }
 
       .profile-image.border {
-        filter:
-          drop-shadow(-4px 0 0 white)
-          drop-shadow(4px 0 0 white)
-          drop-shadow(0 -4px 0 white)
-          drop-shadow(0 4px 0 white);
+        background: white;
+        border: 4px solid white;
       }
 
       .card {
