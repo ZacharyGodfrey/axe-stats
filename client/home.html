@@ -40,36 +40,3 @@
     </div>
   </div>
 </section>
-
-<section>
-  <div class="x-limit">
-    <figure>
-      <table>
-        <tbody>
-          <tr>
-            <th class="no-wrap text-center">Global Rank</th>
-            <th class="text-center" colspan="2">Name</th>
-            <th class="text-center">Stats</th>
-          </tr>
-
-          {{#profiles}}
-          <tr>
-            <td class="no-wrap text-center">{{rank}}</td>
-
-            <td class="no-wrap">
-              <img class="profile-image" src="data:image/png;base64,{{{image}}}">
-            </td>
-
-            <td class="no-wrap maximize">
-              <a href="/{{id}}">{{name}}</a>
-            </td>
-
-            <td class="no-wrap">
-            </td>
-          </tr>
-          {{/profiles}}
-        </tbody>
-      </table>
-    </figure>
-  </div>
-</section>
