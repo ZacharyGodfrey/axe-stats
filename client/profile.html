@@ -47,6 +47,7 @@
               data: {
                 labels: ['Average Score', ''],
                 datasets: [{
+                  backgroundColor: ['var(--main)', 'var(--neutral)'],
                   data: [
                     {{profile.stats.match.averageScore}},
                     81 - {{profile.stats.match.averageScore}}
@@ -76,6 +77,7 @@
               data: {
                 labels: ['Win Rate', ''],
                 datasets: [{
+                  backgroundColor: ['var(--main)', 'var(--neutral)'],
                   data: [
                     {{profile.stats.match.winPercent}},
                     100 - {{profile.stats.match.winPercent}}
@@ -105,7 +107,7 @@
               data: {
                 labels: ['Big Axe Win Rate', ''],
                 datasets: [{
-                  backgroundColor: ['var(--main)', 'white'],
+                  backgroundColor: ['var(--main)', 'var(--neutral)'],
                   data: [
                     {{profile.stats.bigAxe.roundWinPercent}},
                     100 - {{profile.stats.bigAxe.roundWinPercent}}
