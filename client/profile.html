@@ -379,24 +379,17 @@
   </div>
 </section>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
   new Chart(document.getElementById('sampleChart'), {
-    type: 'pie',
+    type: 'doughnut',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
       datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
+        data: [{id: 'Sales', nested: {value: 1500}}, {id: 'Purchases', nested: {value: 500}}]
       }]
     },
     options: {
-      scales: {
-        y: {
-          beginAtZero: true
-        }
+      parsing: {
+        key: 'nested.value'
       }
     }
   });

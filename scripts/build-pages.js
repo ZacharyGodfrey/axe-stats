@@ -8,12 +8,14 @@ const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
 
 const getShell = async () => {
-  let [shell, robotoFont] = await Promise.all([
+  let [shell, robotoFont, chartJS] = await Promise.all([
     readFile(`${CLIENT_DIR}/shell.html`),
     readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64'),
+    readFile(`${CLIENT_DIR}/assets/chart.js`),
   ]);
 
-  shell = shell.replace('**robotoFont**', robotoFont);
+  shell = shell.replace('//robotoFont//', robotoFont);
+  shell = shell.replace('//chartJS//', chartJS);
 
   return shell;
 };
