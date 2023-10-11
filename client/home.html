@@ -13,21 +13,19 @@
 
 <section>
   <div class="x-limit">
-    <div class="grid col-4-3 items-y-center">
+    <div class="grid col-3-2">
       {{#profiles}}
-      <div class="card text-center">
-        <strong>#{{rank}}</strong>
+      <img class="profile-image max-4" src="data:image/png;base64,{{{image}}}">
+
+      <div class="card">
+        <p>
+          <strong>#{{rank}}</strong>
+          <br>
+          <a href="/{{id}}">{{name}}</a>
+        </p>
       </div>
 
-      <div>
-        <img class="profile-image max-4" src="data:image/png;base64,{{{image}}}">
-      </div>
-
-      <div class="card text-lg">
-        <a href="/{{id}}">{{name}}</a>
-      </div>
-
-      <div class="text-right">
+      <div class="card text-right">
         <span>Collins Rating</span>
         <strong>{{rating}}</strong>
         <br>
