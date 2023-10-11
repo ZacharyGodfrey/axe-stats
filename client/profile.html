@@ -1,3 +1,7 @@
+<script>
+  const profile = {{{profileJson}}};
+</script>
+
 <!-- Profile -->
 <section class="bg-main">
   <div class="x-limit">
@@ -82,9 +86,9 @@
   </div>
 
   <script>
-    statArc('chartAverageScore', 81, {{profile.stats.match.averageScore}});
-    statArc('chartWinPercent', 100, {{profile.stats.match.winPercent}});
-    statArc('chartBigAxeWinPercent', 100, {{profile.stats.bigAxe.roundWinPercent}});
+    statArc('chartAverageScore', 81, profile.stats.match.averageScore);
+    statArc('chartWinPercent', 100, profile.stats.match.winPercent);
+    statArc('chartBigAxeWinPercent', 100, profile.stats.bigAxe.roundWinPercent);
   </script>
 </section>
 
@@ -338,16 +342,16 @@
     new Chart(document.getElementById('matchOutcomeChart'), {
       type: 'doughnut',
       options: {
-        
+        //
       },
       data: {
         labels: ['Hatchet Wins', 'Big Axe Wins', 'Hatchet Losses', 'Big Axe Losses'],
         datasets: [{
           data: [
-            {{profile.stats.match.winWithoutBigAxe}},
-            {{profile.stats.bigAxe.roundWin}},
-            {{profile.stats.match.loss}},
-            {{profile.stats.bigAxe.roundLoss}}
+            profile.stats.match.winWithoutBigAxe,
+            profile.stats.bigAxe.roundWin,
+            profile.stats.match.loss,
+            profile.stats.bigAxe.roundLoss
           ]
         }]
       }

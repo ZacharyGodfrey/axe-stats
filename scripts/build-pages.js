@@ -26,7 +26,8 @@ const buildHomePage = async (shell, profiles) => {
   const page = await readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
-    profiles
+    profiles,
+    profilesJson: JSON.stringify(profiles, null, 2)
   };
 
   return render(shell, data, { page });
@@ -60,7 +61,8 @@ const buildProfilePage = async (shell, profile) => {
   const page = await readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
-    profile
+    profile,
+    profileJson: JSON.stringify(profile, null, 2)
   };
 
   return render(shell, data, { page });
