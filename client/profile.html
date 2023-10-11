@@ -98,6 +98,26 @@
     <h2>Hatchet Accuracy</h2>
 
     <div class="split stack">
+      <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="hatchetBullseyeChart"></canvas>
+        </div>
+      </div>
+
+      <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="hatchetClutchHitChart"></canvas>
+        </div>
+      </div>
+
+      <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="hatchetClutchCallChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="split stack">
       <div class="targetStats">
         <div class="clutch">
           <div class="dot"></div>
@@ -188,39 +208,12 @@
         </figure>
       </div>
     </div>
-
-    <div class="chartWrap">
-      <canvas id="hatchetTargetChart"></canvas>
-    </div>
   </div>
 
   <script>
-    new Chart(document.getElementById('hatchetTargetChart'), {
-      type: 'doughnut',
-      options: {
-        rotation: -90,
-        circumference: 180,
-        aspectRatio: 2.5,
-        plugins: {
-          tooltip: {
-            enabled: true
-          }
-        }
-      },
-      data: {
-        labels: ['Drops', 'Ones', 'Threes', 'Bullseyes', 'Clutches', 'Clutches Missed'],
-        datasets: [{
-          data: [
-            profile.stats.hatchet.target.drop,
-            profile.stats.hatchet.target.one,
-            profile.stats.hatchet.target.three,
-            profile.stats.hatchet.target.five,
-            profile.stats.hatchet.clutch.hit,
-            profile.stats.hatchet.clutch.call - profile.stats.hatchet.clutch.hit,
-          ]
-        }]
-      }
-    });
+    statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
+    statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
+    statArc('hatchetClutchCallChart', 100, profile.stats.hatchet.clutch.callPercent);
   </script>
 </section>
 
