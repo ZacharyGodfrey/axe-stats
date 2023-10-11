@@ -38,6 +38,25 @@
   <div class="x-limit">
     <div class="split stack">
       <div class="grow stretch card text-center no-break">
+        <div class="chartWrap">
+          <canvas id="chartAvgScore"></canvas>
+
+          <script>
+            new Chart(document.getElementById('chartAvgScore'), {
+              type: 'doughnut',
+              data: {
+                labels: ['Average Score', ''],
+                datasets: [{
+                  data: [
+                    {{profile.stats.match.averageScore}},
+                    81 - {{profile.stats.match.averageScore}}
+                  ]
+                }]
+              }
+            });
+          </script>
+        </div>
+
         <p class="text-lg">{{profile.stats.match.averageScore}}</p>
 
         <p>
@@ -301,34 +320,30 @@
             <tbody>
               <tr>
                 <th class="no-wrap">Hatchet Wins</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.match.winWithoutBigAxePercent}}%</strong>
+                <td class="no-wrap text-left maximize">
+                  <strong>{{profile.stats.match.winWithoutBigAxe}}</strong>
                 </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.match.winWithoutBigAxe}}</td>
               </tr>
 
               <tr>
                 <th class="no-wrap">Big Axe Wins</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.roundWinPercent}}%</strong>
+                <td class="no-wrap text-left maximize">
+                  <strong>{{profile.stats.bigAxe.roundWin}}</strong>
                 </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.roundWin}}</td>
               </tr>
 
               <tr>
                 <th class="no-wrap">Hatchet Losses</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.match.lossPercent}}%</strong>
+                <td class="no-wrap text-left maximize">
+                  <strong>{{profile.stats.match.loss}}</strong>
                 </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.match.loss}}</td>
               </tr>
 
               <tr>
                 <th class="no-wrap">Big Axe Losses</th>
-                <td class="no-wrap">
-                  <strong>{{profile.stats.bigAxe.roundLossPercent}}%</strong>
+                <td class="no-wrap text-left maximize">
+                  <strong>{{profile.stats.bigAxe.roundLoss}}</strong>
                 </td>
-                <td class="no-wrap text-left maximize">{{profile.stats.bigAxe.roundLoss}}</td>
               </tr>
             </tbody>
           </table>
