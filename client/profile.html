@@ -44,10 +44,14 @@
           <script>
             new Chart(document.getElementById('chartAvgScore'), {
               type: 'doughnut',
+              options: {
+                rotation: -90,
+                circumference: 180
+              },
               data: {
                 labels: ['Average Score', ''],
                 datasets: [{
-                  backgroundColor: ['var(--main)', 'var(--neutral)'],
+                  backgroundColor: [cssVar('main'), cssVar('neutral')],
                   data: [
                     {{profile.stats.match.averageScore}},
                     81 - {{profile.stats.match.averageScore}}
@@ -74,10 +78,14 @@
           <script>
             new Chart(document.getElementById('chartWinPercent'), {
               type: 'doughnut',
+              options: {
+                rotation: -90,
+                circumference: 180
+              },
               data: {
                 labels: ['Win Rate', ''],
                 datasets: [{
-                  backgroundColor: ['var(--main)', 'var(--neutral)'],
+                  backgroundColor: [cssVar('main'), cssVar('neutral')],
                   data: [
                     {{profile.stats.match.winPercent}},
                     100 - {{profile.stats.match.winPercent}}
@@ -104,26 +112,19 @@
           <script>
             new Chart(document.getElementById('chartBigAxeWinPercent'), {
               type: 'doughnut',
+              options: {
+                rotation: -90,
+                circumference: 180
+              },
               data: {
                 labels: ['Big Axe Win Rate', ''],
                 datasets: [{
-                  backgroundColor: ['var(--main)', 'var(--neutral)'],
+                  backgroundColor: [cssVar('main'), cssVar('neutral')],
                   data: [
                     {{profile.stats.bigAxe.roundWinPercent}},
                     100 - {{profile.stats.bigAxe.roundWinPercent}}
                   ]
                 }]
-              },
-              options: {
-                elements: {
-                  center: {
-                    text: '{{profile.stats.bigAxe.roundWinPercent}}%',
-                    // color: 'var(--main)', // Default is #000000
-                    // fontStyle: 'inherit', // Default is Arial
-                    sidePadding: 10, // Default is 20 (as a percentage)
-                    minFontSize: 20,
-                  }
-                }
               }
             });
           </script>
