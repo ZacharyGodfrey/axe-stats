@@ -393,7 +393,7 @@
         margin: 1rem auto;
         gap: 1rem;
         justify-items: stretch; /* cell content X */
-        align-items: stretch; /* cell content Y */
+        align-items: start; /* cell content Y */
         justify-content: center; /* column spacing X */
         align-content: center; /* row spacing Y */
       }
@@ -415,6 +415,9 @@
 
       .grid.items-x-center { justify-items: center; }
       .grid.items-y-center { align-items: center; }
+
+      .grid.items-x-stretch { justify-items: stretch; }
+      .grid.items-y-stretch { align-items: stretch; }
 
       .grid:not(.portrait .grid.stack) > * {
         margin-top: 0 !important;
