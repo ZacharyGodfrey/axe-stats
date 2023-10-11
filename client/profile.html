@@ -268,8 +268,10 @@
     <details>
       <summary>Details</summary>
 
-      <p>The win count in your career record is a combination of the matches you've won with your hatchet alone as well as your Big Axe tiebreaker wins. Here's a breakdown of your match outcomes in each discipline:</p>
+      <p>Losses and OTLs are displayed separately in your career record, but wins are displayed as a single value whether you won the match outright or won the Big Axe tiebreaker.</p>
     </details>
+
+    <canvas id="sampleChart"></canvas>
 
     <figure>
       <table class="text-center" style="table-layout: fixed;">
@@ -368,3 +370,26 @@
     <p>Coming soon...</p>
   </div>
 </section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  new Chart(document.getElementById('sampleChart'), {
+    type: 'bar',
+    data: {
+      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      datasets: [{
+        label: '# of Votes',
+        data: [12, 19, 3, 5, 2, 3],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
