@@ -277,8 +277,8 @@
       <script>
         new Chart(document.getElementById('matchOutcomeChart'), {
           type: 'doughnut',
-          labels: ['Hatchet Wins', 'Hatchet Losses', 'Big Axe Wins', 'Big Axe Losses'],
           data: {
+            labels: ['Hatchet Wins', 'Hatchet Losses', 'Big Axe Wins', 'Big Axe Losses'],
             datasets: [{
               data: [
                 {{profile.stats.match.winWithoutBigAxe}},
