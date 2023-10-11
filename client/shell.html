@@ -372,6 +372,29 @@
         margin: 1rem auto;
         max-width: calc(var(--content-limit) / 2);
       }
+
+      /* CSS Grid */
+
+      .portrait .grid {
+        display: block;
+      }
+
+      .grid {
+        display: grid;
+        margin: 1rem auto;
+        gap: 1rem;
+        justify-items: stretch; /* cell content X */
+        align-items: stretch; /* cell content Y */
+        justify-content: stretch; /* column spacing X */
+        align-content: stretch; /* row spacing Y */
+      }
+
+      .grid.col-2 { grid-template-columns: repeat(2, 1fr); }
+      .grid.col-2-left { grid-template-columns: 1fr auto; }
+      .grid.col-2-right { grid-template-columns: auto 1fr; }
+
+      .grid.col-3 { grid-template-columns: repeat(3, 1fr); }
+      .grid.col-3-center { grid-template-columns: auto 1fr auto; }
     </style>
 
     <script>//chartJS//</script>
