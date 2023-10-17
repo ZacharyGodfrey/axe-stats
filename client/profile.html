@@ -306,7 +306,14 @@
               ticks: {
                 stepSize: 5
               }
-            }
+            },
+            // y: {
+            //   min: 0,
+            //   max: 1,
+            //   ticks: {
+            //     stepSize: 0.1
+            //   }
+            // }
           },
           pointStyle: false,
           plugins: {
@@ -318,7 +325,7 @@
         data: {
           labels,
           datasets: [{
-            data: labels.map(x => pdf(x)).map((x, _, a) => x / Math.max(a)),
+            data: labels.map(x => pdf(x)), // .map((x, _, a) => x / Math.max(a)),
             fill: true,
             backgroundColor: cssVar('main'),
           }]
