@@ -108,7 +108,7 @@ const buildProfilePage = async (shell, profile, matches) => {
           x.stats = JSON.parse(x.stats);
         });
 
-        const page = await buildProfilePage(shell, profile, matches);
+        const page = await buildProfilePage(shell, profile, matches.filter(x => x.processed && x.valid));
 
         await writeFile(`${DIST_DIR}/${profile.id}.html`, page);
         await writeFile(`${DIST_DIR}/${profile.id}.json`, JSON.stringify({ profile, matches }, null, 2));
