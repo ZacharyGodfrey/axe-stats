@@ -1,5 +1,14 @@
 <script>
   const profile = {{{profileJson}}};
+
+  const scoreFrequencies = (matches) => {
+    return matches.reduce((result, match) => {
+      result[match.stats.totalScore] = result[match.stats.totalScore] || 0;
+      result[match.stats.totalScore]++;
+
+      return result;
+    }, {});
+  };
 </script>
 
 <!-- Profile -->
@@ -91,9 +100,11 @@
   </div>
 
   <script>
-    statArc('averageScoreArc', 81, profile.stats.match.averageScore);
-    statArc('winPercentArc', 100, profile.stats.match.winPercent);
-    statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
+    (() => {
+      statArc('averageScoreArc', 81, profile.stats.match.averageScore);
+      statArc('winPercentArc', 100, profile.stats.match.winPercent);
+      statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
+    })();
   </script>
 </section>
 
@@ -169,8 +180,10 @@
   </div>
 
   <script>
-    statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
-    statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
+    (() => {
+      statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
+      statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
+    })();
   </script>
 </section>
 
@@ -245,8 +258,46 @@
   </div>
 
   <script>
-    statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
-    statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
+    (() => {
+      statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
+      statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
+    })();
+  </script>
+</section>
+
+<section>
+  <div class="x-limit">
+    <h2>Match Score Distribution</h2>
+
+    <div class="chartWrap">
+      <canvas id="matchScoreChart"></canvas>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const data = scoreFrequencies(profile.matches);
+      const keys = Object.keys(data);
+      const values = Object.values(data);
+
+      new Chart({
+        type: line,
+        options: {
+          plugins: {
+            tooltip: {
+              enabled: false
+            }
+          }
+        },
+        data: {
+          labels: Object.keys(data),
+          datasets: [{
+            data: Object.values(data),
+            fill: true,
+          }]
+        }
+      });
+    })();
   </script>
 </section>
 
