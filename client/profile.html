@@ -100,10 +100,11 @@
   </script>
 </section>
 
-<!-- Hatchet Accuracy -->
-<section>
+<section id="hatchetAccuracy">
   <div class="x-limit">
-    <h2>Hatchet Accuracy</h2>
+    <h2>
+      <a href="#hatchetAccuracy">Hatchet Accuracy</a>
+    </h2>
 
     <div class="grid stack col-1-1-1 items-y-stretch">
       <div class="targetStats">
@@ -179,10 +180,11 @@
   </script>
 </section>
 
-<!-- Big Axe Accuracy -->
-<section>
+<section id="bigAxeAccuracy">
   <div class="x-limit">
-    <h2>Big Axe Accuracy</h2>
+    <h2>
+      <a href="#bigAxeAccuracy">Big Axe Accuracy</a>
+    </h2>
 
     <div class="grid stack col-1-1-1 items-y-stretch">
       <div class="targetStats">
@@ -257,7 +259,6 @@
   </script>
 </section>
 
-<!-- Match Score Distribution -->
 <section id="matchScoreDistribution">
   <div class="x-limit">
     <h2>
@@ -311,7 +312,7 @@
         data: {
           labels: Object.keys(data),
           datasets: [{
-            data: Object.values(data),
+            data: Object.values(data).map((x, _, a) => x / Math.max(a)),
             fill: true,
           }]
         }
@@ -320,10 +321,11 @@
   </script>
 </section>
 
-<!-- Match Outcomes -->
-<section>
+<section id="matchOutcomes">
   <div class="x-limit">
-    <h2>Match Outcomes</h2>
+    <h2>
+      <a href="#matchOutcomes">Match Outcomes</a>
+    </h2>
 
     <p>Coming soon...</p>
 
@@ -399,10 +401,11 @@
   </script> -->
 </section>
 
-<!-- Round Outcomes -->
-<section>
+<section id="roundOutcomes">
   <div class="x-limit">
-    <h2>Round Outcomes</h2>
+    <h2>
+      <a href="#roundOutcomes">Round Outcomes</a>
+    </h2>
 
     <p>Coming soon...</p>
 
@@ -458,10 +461,11 @@
   </div>
 </section>
 
-<!-- Playoff Stats -->
-<section>
+<section id="playoffStats">
   <div class="x-limit">
-    <h2>Playoff Stats</h2>
+    <h2>
+      <a href="#playoffStats">Playoff Stats</a>
+    </h2>
 
     <p>Coming soon...</p>
   </div>
