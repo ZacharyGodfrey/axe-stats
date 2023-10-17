@@ -48,7 +48,7 @@
   <div class="x-limit">
     <div class="grid stack col-1-1-1 items-y-stretch">
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="averageScoreArc"></canvas>
         </div>
 
@@ -62,7 +62,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="winPercentArc"></canvas>
         </div>
 
@@ -76,7 +76,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="bigAxeWinArc"></canvas>
         </div>
 
@@ -142,7 +142,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="hatchetBullseyeChart"></canvas>
         </div>
 
@@ -156,7 +156,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="hatchetClutchHitChart"></canvas>
         </div>
 
@@ -222,7 +222,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="bigAxeBullseyeChart"></canvas>
         </div>
 
@@ -236,7 +236,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="bigAxeClutchHitChart"></canvas>
         </div>
 
@@ -312,9 +312,9 @@
               type: 'linear',
               min: 0,
               max: 1,
-              ticks: {
-                stepSize: 0.1
-              }
+              // ticks: {
+              //   stepSize: 0.1
+              // }
             }
           },
           pointStyle: false,
@@ -327,7 +327,7 @@
         data: {
           labels,
           datasets: [{
-            data: labels.map(x => pdf(x)).map((x, _, a) => x / Math.max(...a)),
+            data: labels.map(x => pdf(x)), // .map((x, _, a) => x / Math.max(...a)),
             fill: true,
             backgroundColor: cssVar('main'),
           }]
@@ -353,7 +353,7 @@
 
     <div class="split stack">
       <div class="grow">
-        <div class="chartWrap">
+        <div class="chartWrap mx-auto">
           <canvas id="matchOutcomeChart"></canvas>
         </div>
       </div>
