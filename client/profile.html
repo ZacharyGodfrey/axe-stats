@@ -292,7 +292,7 @@
         };
       };
 
-      const allScores = matches.map(x => x.stats.totalScore);
+      const allScores = matches.map(x => x.stats.totalScore).sort();
       const pdf = probabilityDensityFn(allScores);
       const labels = [...new Set(allScores)];
 
