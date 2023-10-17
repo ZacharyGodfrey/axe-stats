@@ -20,6 +20,21 @@ const getShell = async () => {
   return shell;
 };
 
+const getGlobalStats = async () => {
+  const row = await db.get(`
+    SELECT
+      min(stats -> '$.totalScore') AS minScore,
+      max(stats -> '$.totalScore') AS maxScore
+    FROM matches
+    WHERE processed = 1 AND valid = 1
+  `);
+
+  return {
+    minScore: parseInt(row.minScore),
+    maxScore: parseInt(row.maxScore),
+  }
+};
+
 const buildHomePage = async (shell, profiles) => {
   console.log('Building home page');
 
@@ -82,20 +97,17 @@ const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
     await fs.emptyDir(DIST_DIR);
     await fs.copy(`${CLIENT_DIR}/static`, DIST_DIR);
 
-    const shell = await getShell();
-    const profiles = await db.query(`
-      SELECT *
-      FROM profiles
-      ORDER BY rank ASC, rating DESC;
-    `);
+    const [shell, globalStats, profiles] = await Promise.all([
+      getShell(),
+      getGlobalStats(),
+      db.query(`
+        SELECT *
+        FROM profiles
+        ORDER BY rank ASC, rating DESC
+      `)
+    ]);
 
     profiles.forEach(x => x.stats = JSON.parse(x.stats));
-
-    const globalStats = await db.get(`
-      SELECT min(stats -> '$.totalScore') AS minScore, max(stats -> '$.totalScore') AS maxScore
-      FROM matches
-      WHERE processed = 1 AND valid = 1
-    `);
 
     await Promise.all([
       buildHomePage(shell, profiles).then(page => writeFile(`${DIST_DIR}/index.html`, page)),
