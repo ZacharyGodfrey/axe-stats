@@ -55,14 +55,15 @@ const build500Page = async (shell) => {
   return render(shell, data, { page });
 };
 
-const buildProfilePage = async (shell, profile) => {
+const buildProfilePage = async (shell, profile, matches) => {
   console.log(`Building profile page for profile ID ${profile.id}`);
 
   const page = await readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
     profile,
-    profileJson: JSON.stringify(profile, null, 2)
+    profileJson: JSON.stringify(profile, null, 2),
+    matchesJson: JSON.stringify(matches, null, 2)
   };
 
   return render(shell, data, { page });
@@ -94,7 +95,6 @@ const buildProfilePage = async (shell, profile) => {
       build404Page(shell).then(page => writeFile(`${DIST_DIR}/404.html`, page)),
       build500Page(shell).then(page => writeFile(`${DIST_DIR}/500.html`, page)),
       ...profiles.map(async profile => {
-        const page = await buildProfilePage(shell, profile);
         const matches = await db.query(`
           SELECT *
           FROM matches
@@ -107,6 +107,8 @@ const buildProfilePage = async (shell, profile) => {
           x.valid = x.valid === 1;
           x.stats = JSON.parse(x.stats);
         });
+
+        const page = await buildProfilePage(shell, profile, matches);
 
         await writeFile(`${DIST_DIR}/${profile.id}.html`, page);
         await writeFile(`${DIST_DIR}/${profile.id}.json`, JSON.stringify({ profile, matches }, null, 2));

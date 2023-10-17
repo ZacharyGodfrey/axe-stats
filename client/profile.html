@@ -1,14 +1,6 @@
 <script>
   const profile = {{{profileJson}}};
-
-  const scoreFrequencies = (matches) => {
-    return matches.reduce((result, match) => {
-      result[match.stats.totalScore] = result[match.stats.totalScore] || 0;
-      result[match.stats.totalScore]++;
-
-      return result;
-    }, {});
-  };
+  const matches = {{{matchesJson}}};
 </script>
 
 <!-- Profile -->
@@ -276,9 +268,12 @@
 
   <script>
     (() => {
-      const data = scoreFrequencies(profile.matches);
-      const keys = Object.keys(data);
-      const values = Object.values(data);
+      const data = matches.reduce((result, match) => {
+        result[match.stats.totalScore] = result[match.stats.totalScore] || 0;
+        result[match.stats.totalScore]++;
+
+        return result;
+      }, {});
 
       new Chart({
         type: line,
