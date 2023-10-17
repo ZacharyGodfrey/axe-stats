@@ -299,6 +299,15 @@
       new Chart(document.getElementById('matchScoreChart'), {
         type: 'line',
         options: {
+          scales: {
+            x: {
+              min: 0,
+              max: 85,
+              ticks: {
+                stepSize: 5
+              }
+            }
+          },
           plugins: {
             tooltip: {
               enabled: false
@@ -308,7 +317,7 @@
         data: {
           labels,
           datasets: [{
-            data: labels.map(x => pdf(x)),
+            data: labels.map(x => pdf(x)).map((x, _, a) => x / Math.max(a)),
             fill: true,
             backgroundColor: cssVar('main'),
           }]
