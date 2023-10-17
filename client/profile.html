@@ -327,7 +327,7 @@
         data: {
           labels,
           datasets: [{
-            data: labels.map(x => pdf(x)), // .map((x, _, a) => x / Math.max(...a)),
+            data: labels.map(x => pdf(x) * 10), // .map((x, _, a) => x / Math.max(...a)),
             fill: true,
             backgroundColor: cssVar('main'),
           }]
