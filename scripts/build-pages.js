@@ -55,15 +55,16 @@ const build500Page = async (shell) => {
   return render(shell, data, { page });
 };
 
-const buildProfilePage = async (shell, profile, matches) => {
+const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
   console.log(`Building profile page for profile ID ${profile.id}`);
 
   const page = await readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
     profile,
-    profileJson: JSON.stringify(profile, null, 2),
-    matchesJson: JSON.stringify(matches, null, 2)
+    profileJson: JSON.stringify(profile),
+    matchesJson: JSON.stringify(matches),
+    globalStatsJson: JSON.stringify(globalStats)
   };
 
   return render(shell, data, { page });
@@ -90,6 +91,12 @@ const buildProfilePage = async (shell, profile, matches) => {
 
     profiles.forEach(x => x.stats = JSON.parse(x.stats));
 
+    const globalStats = await db.get(`
+      SELECT min(stats -> '$.totalScore') AS minScore, max(stats -> '$.totalScore') AS maxScore
+      FROM matches
+      WHERE processed = 1 AND valid = 1
+    `);
+
     await Promise.all([
       buildHomePage(shell, profiles).then(page => writeFile(`${DIST_DIR}/index.html`, page)),
       build404Page(shell).then(page => writeFile(`${DIST_DIR}/404.html`, page)),
@@ -108,7 +115,11 @@ const buildProfilePage = async (shell, profile, matches) => {
           x.stats = JSON.parse(x.stats);
         });
 
-        const page = await buildProfilePage(shell, profile, matches.filter(x => x.processed && x.valid));
+        const page = await buildProfilePage(shell, {
+          profile,
+          matches: matches.filter(x => x.processed && x.valid),
+          globalStats
+        });
 
         await writeFile(`${DIST_DIR}/${profile.id}.html`, page);
         await writeFile(`${DIST_DIR}/${profile.id}.json`, JSON.stringify({ profile, matches }, null, 2));

@@ -119,13 +119,6 @@ const processMatch = async (page, matchId, profileIds) => {
 };
 
 const matchStats = (rawMatch, profileId, valid) => {
-  if (!valid) {
-    return {
-      text: `${rawMatch.id}:INVALID`,
-      stats: {}
-    };
-  }
-
   let text = '';
   const stats = {
     win: false,
@@ -172,6 +165,13 @@ const matchStats = (rawMatch, profileId, valid) => {
       }
     }
   };
+
+  if (!valid) {
+    return {
+      text: `${rawMatch.id}:INVALID`,
+      stats
+    };
+  }
 
   rawMatch.rounds.forEach((round) => {
     const isBigAxe = round.name === 'Tie Break';
