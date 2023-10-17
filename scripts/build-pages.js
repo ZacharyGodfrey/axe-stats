@@ -26,7 +26,10 @@ const getGlobalStats = async () => {
       min(stats -> '$.totalScore') AS minScore,
       max(stats -> '$.totalScore') AS maxScore
     FROM matches
-    WHERE processed = 1 AND valid = 1
+    WHERE
+      processed = 1
+      AND valid = 1
+      AND stats -> '$.totalScore' > 0
   `);
 
   return {
