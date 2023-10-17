@@ -268,9 +268,30 @@
 
   <script>
     (() => {
-      const data = matches.reduce((result, match) => {
-        result[match.stats.totalScore] = result[match.stats.totalScore] || 0;
-        result[match.stats.totalScore]++;
+      const sum = (values) => values.reduce((s, v) => s + v, 0);
+      const mean = (values) => sum(values) / Math.max(1, values.length);
+      const sDev = (values) => {
+        const avg = mean(values);
+        const squareDifferences = values.map(value => (value - avg) ** 2);
+
+        return Math.sqrt(mean(squareDifferences));
+      };
+
+      const probabilityDensityFn = (values) => {
+        const avg = mean(values);
+        const dev = sDev(values);
+        const pi = Math.PI;
+        const e = Math.E;
+
+        return (x) => {
+          return (1 / (dev * Math.sqrt(2 * pi))) * (e ** (-(((x - avg) ** 2) / (2 * (dev ** 2)))));
+        };
+      };
+
+      const allScores = matches.map(x => x.stats.totalScore);
+      const pdf = probabilityDensityFn(allScores);
+      const data = [...new Set(allScores)].reduce((result, score) => {
+        result[score] = pdf(score);
 
         return result;
       }, {});
