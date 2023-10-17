@@ -294,11 +294,7 @@
 
       const allScores = matches.map(x => x.stats.totalScore);
       const pdf = probabilityDensityFn(allScores);
-      const data = [...new Set(allScores)].reduce((result, score) => {
-        result[score] = pdf(score);
-
-        return result;
-      }, {});
+      const labels = [...new Set(allScores)];
 
       new Chart(document.getElementById('matchScoreChart'), {
         type: 'line',
@@ -310,10 +306,11 @@
           }
         },
         data: {
-          labels: Object.keys(data),
+          labels,
           datasets: [{
-            data: Object.values(data).map((x, _, a) => x / Math.max(a)),
+            data: labels.map(x => pdf(x)),
             fill: true,
+            backgroundColor: cssVar('main'),
           }]
         }
       });
