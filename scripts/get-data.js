@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../config.json');
-const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, logError } = require('./helpers');
+const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, logError } = require('./helpers');
 
 const timeout = 2 * 1000;
 

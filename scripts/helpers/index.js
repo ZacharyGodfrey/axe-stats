@@ -33,8 +33,6 @@ const reactPageState = (page, selector) => {
 };
 
 const waitMilliseconds = (milliseconds) => {
-  console.log(`Waiting for ${milliseconds} milliseconds...`);
-
   return new Promise((resolve) => {
     setTimeout(resolve, milliseconds);
   });
