@@ -8,13 +8,13 @@ const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
 
 const readFile = (filePath, encoding = 'utf-8') => {
-  fs.readFileSync(filePath, { encoding });
+  return fs.readFileSync(filePath, { encoding });
 };
 
 const writeFile = (filePath, content) => {
   console.log(`Writing file: ${filePath}`);
 
-  fs.outputFileSync(filePath, content, 'utf-8')
+  return fs.outputFileSync(filePath, content, 'utf-8')
 };
 
 const getShell = () => {
