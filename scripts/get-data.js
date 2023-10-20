@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../config.json');
-const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, round, logError } = require('./helpers');
+const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, logError } = require('./helpers');
 
 const timeout = 2 * 1000; // 2 seconds
 
@@ -463,8 +463,6 @@ const aggregateMatchStats = (matches) => {
 
   return stats;
 };
-
-const roundForDisplay = (value) => isNaN(value) ? 0 : round(value, 2);
 
 (async () => {
   try {

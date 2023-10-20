@@ -1,5 +1,3 @@
-const fs = require('fs-extra');
-
 const sequentially = async (items, action) => {
   return items.reduce((prev, item, index) => {
     return prev.then(() => action(item, index));
@@ -13,6 +11,8 @@ const round = (value, places) => {
 
   return Math.round(value * factor) / factor;
 };
+
+const roundForDisplay = (value) => isNaN(value) ? 0 : round(value, 2);
 
 const average = (values) => sum(values) / Math.max(1, values.length);
 
@@ -59,25 +59,16 @@ const logErrorAndDefault = (defaultValue) => {
   };
 };
 
-const readFile = (filePath, encoding = 'utf-8') => {
-  return fs.readFile(filePath, { encoding });
-};
-
-const writeFile = (filePath, content) => {
-  return fs.outputFile(filePath, content, 'utf-8');
-};
-
 module.exports = {
-  db: require('./db-sync'),
+  db: require('./database'),
   sequentially,
   sum,
   round,
+  roundForDisplay,
   average,
   isDesiredResponse,
   reactPageState,
   waitMilliseconds,
   logError,
-  logErrorAndDefault,
-  readFile,
-  writeFile
+  logErrorAndDefault
 };
