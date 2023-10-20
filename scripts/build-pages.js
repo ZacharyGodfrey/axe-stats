@@ -374,8 +374,6 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       ORDER BY rank ASC, rating DESC
     `);
 
-    profiles.forEach(x => x.stats = JSON.parse(x.stats));
-
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
     writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
     writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
