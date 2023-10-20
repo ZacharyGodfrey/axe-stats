@@ -132,7 +132,7 @@ const mapMatch = (profileId, rawMatch) => {
     return match;
   }
 
-  let roundWins = 0, roundLosses = 0;
+  let roundWins = 0, roundLosses = 0, bigAxeWins = 0, bigAxeLosses = 0;
 
   rawMatch.rounds.forEach((rawRound) => {
     const opponent = rawRound.games.find(x => x.player !== profileId);
@@ -150,8 +150,15 @@ const mapMatch = (profileId, rawMatch) => {
       case total === opponent.score: round.outcome = 'T'; break;
     }
 
-    if (!round.bigAxe) {
-      match.total += total;
+    match.total += round.bigAxe ? 0 : total;
+
+    if (round.bigAxe) {
+      switch (round.outcome) {
+        case 'W': bigAxeWins++; break;
+        case 'L': bigAxeLosses++; break;
+      }
+    } else {
+      match.total += round.bigAxe ? 0 : total;
 
       switch (round.outcome) {
         case 'W': roundWins++; break;
@@ -163,10 +170,10 @@ const mapMatch = (profileId, rawMatch) => {
   });
 
   switch (true) {
-    case roundWins > roundLosses:       match.outcome = 'W'; break;
-    case match.bigAxe?.outcome === 'W': match.outcome = 'W'; break;
-    case roundLosses > roundWins:       match.outcome = 'L'; break;
-    case match.bigAxe?.outcome === 'L': match.outcome = 'O'; break;
+    case roundWins > roundLosses:   match.outcome = 'W'; break;
+    case bigAxeWins > bigAxeLosses: match.outcome = 'W'; break;
+    case roundLosses > roundWins:   match.outcome = 'L'; break;
+    case bigAxeLosses > bigAxeWins: match.outcome = 'O'; break;
   }
 
   return match;
