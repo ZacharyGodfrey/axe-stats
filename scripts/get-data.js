@@ -25,26 +25,26 @@ const getProfiles = async (page, profileIds) => {
   await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
 };
 
-const processProfile = async (page, { id, rank, rating }) => {
-  console.log(`Scraping additional profile data for ID ${id}...`);
+const processProfile = async (page, { id: profileId, rank, rating }) => {
+  console.log(`Scraping additional profile data for ID ${profileId}...`);
 
-  await page.goto(`https://axescores.com/player/${id}`);
+  await page.goto(`https://axescores.com/player/${profileId}`);
   await waitMilliseconds(timeout);
 
-  const image = await getProfileImage(id);
+  const image = await getProfileImage(profileId);
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
 
   await db.run(`
     INSERT OR IGNORE INTO profiles
-    (id) VALUES (?)
-  `, [id]);
+    (profileId) VALUES (?)
+  `, [profileId]);
 
   await db.run(`
     UPDATE profiles
     SET name = ?, about = ?, rank = ?, rating = ?, image = ?
-    WHERE id = ?
-  `, [name, about, rank, rating, image, id]);
+    WHERE profileId = ?
+  `, [name, about, rank, rating, image, profileId]);
 
   const premierLeagues = leagues.filter(x => x.performanceName === 'IATF Premier');
   const weeks = premierLeagues.flatMap(x => x.seasonWeeks);
@@ -52,7 +52,7 @@ const processProfile = async (page, { id, rank, rating }) => {
 
   await db.run(`
     INSERT OR IGNORE INTO matches
-    (profileId, id) VALUES ${matches.map(x => `(${id}, ${x.id})`).join(', ')}
+    (matchId, profileId) VALUES ${matches.map(match => `(${match.id}, ${profileId})`).join(', ')}
   `);
 };
 
@@ -71,14 +71,14 @@ const getMatches = async (page) => {
   let profileIds = new Set(), matchIds = new Set();
 
   const unprocessedMatches = await db.query(`
-    SELECT profileId, id
+    SELECT profileId, matchId
     FROM matches
-    WHERE processed = 0
+    WHERE state = 0
   `);
 
-  unprocessedMatches.forEach(({ profileId, id }) => {
+  unprocessedMatches.forEach(({ profileId, matchId }) => {
     profileIds.add(profileId);
-    matchIds.add(id);
+    matchIds.add(matchId);
   });
 
   await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds).catch(logError));
@@ -99,32 +99,113 @@ const processMatch = async (page, matchId, profileIds) => {
   await sequentially(players, async ({ id: profileId }) => {
     console.log(`Processing match details for match ID ${matchId} profile ID ${profileId}`);
 
-    const forfeit = rawMatch.players.find(x => x.id === profileId)?.forfeit === true;
-    const invalidRoundCount = rawMatch.rounds.length > 4;
-    const valid = !forfeit && !invalidRoundCount;
-    const { text, stats } = matchStats(rawMatch, profileId, valid);
+    const match = mapMatch(profileId, rawMatch);
+    const stats = match.outcome === '' ? {} : analyzeMatch(match);
 
     await db.run(`
       UPDATE matches
-      SET processed = 1, valid = ?, text = ?, stats = ?
-      WHERE profileId = ? AND id = ?
+      SET state = ?, outcome = ?, total = ?, text = ?, stats = ?
+      WHERE matchId = ? AND profileId = ?
     `, [
-      valid ? 1 : 0,
-      text,
+      match.state,
+      match.outcome,
+      match.total,
+      matchText(match),
       JSON.stringify(stats),
-      profileId,
-      matchId
+      matchId,
+      profileId
     ]);
   });
 };
 
-const matchStats = (rawMatch, profileId, valid) => {
-  let text = '';
+const mapMatch = (profileId, rawMatch) => {
+  const match = {
+    matchId: rawMatch.id,
+    profileId,
+    state: db.enums.matchState.unprocessed,
+    outcome: '',
+    total: 0,
+    rounds: [],
+    bigAxe: null
+  };
+
+  const invalidRoundCount = rawMatch.rounds.length > 4;
+  const forfeit = rawMatch.players.find(x => x.id === profileId)?.forfeit === true;
+  const states = db.enums.matchState;
+
+  match.state = invalidRoundCount ? states.invalid : forfeit ? states.forfeit : states.valid;
+
+  if (invalidRoundCount) {
+    return match;
+  }
+
+  let roundWins = 0, roundLosses = 0;
+
+  rawMatch.rounds.forEach((rawRound) => {
+    const opponent = rawRound.games.find(x => x.player !== profileId);
+    const { score: total, Axes: throws } = rawRound.games.find(x => x.player === profileId);
+    const round = {
+      outcome: '',
+      total,
+      throws: throws.map(({ score, clutchCalled: clutch }) => ({ score, clutch }))
+    };
+
+    switch (true) {
+      case total  >  opponent.score: round.outcome = 'W'; break;
+      case total  <  opponent.score: round.outcome = 'L'; break;
+      case total === opponent.score: round.outcome = 'T'; break;
+    }
+
+    if (round.name === 'Tie Break') {
+      match.bigAxe = round;
+    } else {
+      match.rounds.push(round);
+      match.total += total;
+
+      switch (round.outcome) {
+        case 'W': roundWins++; break;
+        case 'L': roundLosses++; break;
+      }
+    }
+  });
+
+  switch (true) {
+    case roundWins > roundLosses:       match.outcome = 'W'; break;
+    case match.bigAxe?.outcome === 'W': match.outcome = 'W'; break;
+    case roundLosses > roundWins:       match.outcome = 'L'; break;
+    case match.bigAxe?.outcome === 'L': match.outcome = 'O'; break;
+  }
+
+  return match;
+};
+
+const matchText = ({ matchId, profileId, state, outcome, total, rounds, bigAxe }) => {
+  const parts = [matchId, profileId, state];
+
+  switch (state) {
+    case db.enums.matchState.invalid: parts.push('I'); break;
+    case db.enums.matchState.forfeit: parts.push('F'); break;
+    case db.enums.matchState.valid: parts.push(outcome); break;
+  }
+
+  if (state !== db.enums.matchState.valid) {
+    return parts.join(' ');
+  }
+
+  parts.push(total);
+
+  rounds.concat(bigAxe).forEach(({ outcome, throws }) => {
+    parts.push(...[
+      outcome,
+      throws.map(({ score, clutch }) => score === 0 && clutch ? 'C' : score).join('')
+    ]);
+  });
+
+  return parts.join(' ');
+};
+
+const analyzeMatch = ({ rounds, bigAxe }) => {
   const stats = {
-    win: false,
-    loss: false,
-    otl: false,
-    totalScore: 0,
     hatchet: {
       roundWin: 0,
       roundLoss: 0,
@@ -166,70 +247,63 @@ const matchStats = (rawMatch, profileId, valid) => {
     }
   };
 
-  if (!valid) {
-    return {
-      text: `${rawMatch.id}:INVALID`,
-      stats
-    };
-  }
+  const allRounds = rounds.map(x => ({ ...x, bigAxe: false })).concat(bigAxe ? { ...bigAxe, bigAxe: true } : []);
 
-  rawMatch.rounds.forEach((round) => {
-    const isBigAxe = round.name === 'Tie Break';
-    const category = isBigAxe ? stats.bigAxe : stats.hatchet;
-    const opponent = round.games.find(x => x.player !== profileId);
-    const { score: total, Axes: throws } = round.games.find(x => x.player === profileId);
+  allRounds.forEach(({ bigAxe, outcome, total, throws }) => {
+    const category = bigAxe ? stats.bigAxe : stats.hatchet;
 
-    stats.totalScore += isBigAxe ? 0 : total;
+    switch (outcome) {
+      case 'W': category.roundWin++; break;
+      case 'L': category.roundLoss++; break;
+      case 'T': category.roundTie++; break;
+    }
+
     category.roundCount++;
     category.totalScore += total;
 
-    throws.forEach(({ score, clutchCalled }) => {
-      text += score === 0 && clutchCalled ? 'C' : score;
-
-      if (clutchCalled) {
+    throws.forEach(({ clutch, score }) => {
+      if (clutch) {
         category.clutch.call++;
-        category.clutch.totalScore += score;
         category.clutch.hit += score === 7 ? 1 : 0;
+        category.clutch.totalScore += score;
       } else {
-        category.target.throwCount++;
-        category.target.totalScore += score;
-
         switch (score) {
           case 5: category.target.five++; break;
           case 3: category.target.three++; break;
           case 1: category.target.one++; break;
           case 0: category.target.drop++; break;
         }
+
+        category.target.totalScore += score;
+        category.target.throwCount++;
       }
     });
-
-    switch (true) {
-      case total > opponent.score:
-        category.roundWin++;
-        text += 'W';
-        break;
-      case total < opponent.score:
-        category.roundLoss++;
-        text += 'L';
-        break;
-      default:
-        category.roundTie++;
-        text += 'T';
-        break;
-    }
   });
 
-  stats.loss = stats.hatchet.roundWin < stats.hatchet.roundLoss;
-  stats.otl = stats.bigAxe.roundWin < stats.bigAxe.roundLoss;
-  stats.win = !(stats.loss || stats.otl);
+  return stats;
+};
 
-  switch (true) {
-    case stats.win: text = `${rawMatch.id}:W${text}`; break;
-    case stats.loss: text = `${rawMatch.id}:L${text}`; break;
-    case stats.otl: text = `${rawMatch.id}:O${text}`; break;
-  }
+const updateProfileStats = async () => {
+  const profiles = await db.query(`
+    SELECT profileId
+    FROM profiles
+  `);
 
-  return { text, stats };
+  await sequentially(profiles, async ({ profileId }) => {
+    const matches = await db.query(`
+      SELECT *
+      FROM matches
+      WHERE profileId = ? AND state = ?
+    `, [profileId, db.enums.matchState.valid]);
+
+    const stats = aggregateMatchStats(matches.map(x => ({ ...x, stats: JSON.parse(x.stats) })));
+
+    await db.run(`
+      UPDATE profiles
+      SET stats = ?
+      WHERE profileId = ?
+    `, [JSON.stringify(stats), profileId]);
+  });
 };
 
 const aggregateMatchStats = (matches) => {
@@ -313,46 +387,46 @@ const aggregateMatchStats = (matches) => {
   };
 
   matches.forEach((match) => {
-    stats.match.win += match.win ? 1 : 0;
-    stats.match.loss += match.loss ? 1 : 0;
-    stats.match.otl += match.otl ? 1 : 0;
-    stats.match.winWithoutBigAxe += match.win && match.bigAxe.roundCount === 0 ? 1 : 0;
-    stats.match.totalScore += match.totalScore;
+    stats.match.win += match.outcome === 'W' ? 1 : 0;
+    stats.match.loss += match.outcome === 'L' ? 1 : 0;
+    stats.match.otl += match.outcome === 'O' ? 1 : 0;
+    stats.match.winWithoutBigAxe += match.outcome === 'W' && match.stats.bigAxe.roundCount === 0 ? 1 : 0;
+    stats.match.totalScore += match.total;
 
-    stats.hatchet.roundWin += match.hatchet.roundWin;
-    stats.hatchet.roundLoss += match.hatchet.roundLoss;
-    stats.hatchet.roundTie += match.hatchet.roundTie;
-    stats.hatchet.roundCount += match.hatchet.roundCount;
-    stats.hatchet.totalScore += match.hatchet.totalScore;
-    stats.hatchet.throwCount += match.hatchet.clutch.call + match.hatchet.target.throwCount;
+    stats.hatchet.roundWin += match.stats.hatchet.roundWin;
+    stats.hatchet.roundLoss += match.stats.hatchet.roundLoss;
+    stats.hatchet.roundTie += match.stats.hatchet.roundTie;
+    stats.hatchet.roundCount += match.stats.hatchet.roundCount;
+    stats.hatchet.totalScore += match.stats.hatchet.totalScore;
+    stats.hatchet.throwCount += match.stats.hatchet.clutch.call + match.stats.hatchet.target.throwCount;
 
-    stats.hatchet.clutch.call += match.hatchet.clutch.call;
-    stats.hatchet.clutch.hit += match.hatchet.clutch.hit;
-    stats.hatchet.clutch.totalScore += match.hatchet.clutch.totalScore;
+    stats.hatchet.clutch.call += match.stats.hatchet.clutch.call;
+    stats.hatchet.clutch.hit += match.stats.hatchet.clutch.hit;
+    stats.hatchet.clutch.totalScore += match.stats.hatchet.clutch.totalScore;
 
-    stats.hatchet.target.five += match.hatchet.target.five;
-    stats.hatchet.target.three += match.hatchet.target.three;
-    stats.hatchet.target.one += match.hatchet.target.one;
-    stats.hatchet.target.drop += match.hatchet.target.drop;
-    stats.hatchet.target.totalScore += match.hatchet.target.totalScore;
-    stats.hatchet.target.throwCount += match.hatchet.target.throwCount;
+    stats.hatchet.target.five += match.stats.hatchet.target.five;
+    stats.hatchet.target.three += match.stats.hatchet.target.three;
+    stats.hatchet.target.one += match.stats.hatchet.target.one;
+    stats.hatchet.target.drop += match.stats.hatchet.target.drop;
+    stats.hatchet.target.totalScore += match.stats.hatchet.target.totalScore;
+    stats.hatchet.target.throwCount += match.stats.hatchet.target.throwCount;
 
-    stats.bigAxe.roundWin += match.bigAxe.roundWin;
-    stats.bigAxe.roundLoss += match.bigAxe.roundLoss;
-    stats.bigAxe.roundCount += match.bigAxe.roundCount;
-    stats.bigAxe.totalScore += match.bigAxe.totalScore;
-    stats.bigAxe.throwCount += match.bigAxe.clutch.call + match.bigAxe.target.throwCount;
+    stats.bigAxe.roundWin += match.stats.bigAxe.roundWin;
+    stats.bigAxe.roundLoss += match.stats.bigAxe.roundLoss;
+    stats.bigAxe.roundCount += match.stats.bigAxe.roundCount;
+    stats.bigAxe.totalScore += match.stats.bigAxe.totalScore;
+    stats.bigAxe.throwCount += match.stats.bigAxe.clutch.call + match.stats.bigAxe.target.throwCount;
 
-    stats.bigAxe.clutch.call += match.bigAxe.clutch.call;
-    stats.bigAxe.clutch.hit += match.bigAxe.clutch.hit;
-    stats.bigAxe.clutch.totalScore += match.bigAxe.clutch.totalScore;
+    stats.bigAxe.clutch.call += match.stats.bigAxe.clutch.call;
+    stats.bigAxe.clutch.hit += match.stats.bigAxe.clutch.hit;
+    stats.bigAxe.clutch.totalScore += match.stats.bigAxe.clutch.totalScore;
 
-    stats.bigAxe.target.five += match.bigAxe.target.five;
-    stats.bigAxe.target.three += match.bigAxe.target.three;
-    stats.bigAxe.target.one += match.bigAxe.target.one;
-    stats.bigAxe.target.drop += match.bigAxe.target.drop;
-    stats.bigAxe.target.totalScore += match.bigAxe.target.totalScore;
-    stats.bigAxe.target.throwCount += match.bigAxe.target.throwCount;
+    stats.bigAxe.target.five += match.stats.bigAxe.target.five;
+    stats.bigAxe.target.three += match.stats.bigAxe.target.three;
+    stats.bigAxe.target.one += match.stats.bigAxe.target.one;
+    stats.bigAxe.target.drop += match.stats.bigAxe.target.drop;
+    stats.bigAxe.target.totalScore += match.stats.bigAxe.target.totalScore;
+    stats.bigAxe.target.throwCount += match.stats.bigAxe.target.throwCount;
   });
 
   stats.match.winPercent = roundForDisplay(100 * stats.match.win / stats.match.count);
@@ -389,31 +463,6 @@ const aggregateMatchStats = (matches) => {
 };
 
 const roundForDisplay = (value) => isNaN(value) ? 0 : round(value, 2);
-
-const updateProfileStats = async () => {
-  const profiles = await db.query(`
-    SELECT *
-    FROM profiles
-    ORDER BY rank ASC, rating DESC;
-  `);
-
-  await sequentially(profiles, async (profile) => {
-    const matches = await db.query(`
-      SELECT stats
-      FROM matches
-      WHERE profileId = ? AND processed = 1 AND valid = 1
-      ORDER BY id asc;
-    `, [profile.id]);
-
-    const stats = aggregateMatchStats(matches.map(x => JSON.parse(x.stats)));
-
-    await db.run(`
-      UPDATE profiles
-      SET stats = ?
-      WHERE id = ?
-    `, [JSON.stringify(stats), profile.id]);
-  });
-};
 
 (async () => {
   try {

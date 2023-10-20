@@ -21,21 +21,11 @@ const getShell = async () => {
 };
 
 const getGlobalStats = async () => {
-  const row = await db.get(`
-    SELECT
-      min(stats -> '$.totalScore') AS minScore,
-      max(stats -> '$.totalScore') AS maxScore
+  return await db.get(`
+    SELECT min(total) AS minScore, max(total) AS maxScore
     FROM matches
-    WHERE
-      processed = 1
-      AND valid = 1
-      AND stats -> '$.totalScore' > 0
-  `);
-
-  return {
-    minScore: parseInt(row.minScore),
-    maxScore: parseInt(row.maxScore),
-  }
+    WHERE state = ? AND total > 0
+  `, [db.enums.matchState.valid]);
 };
 
 const buildHomePage = async (shell, profiles) => {
@@ -74,7 +64,7 @@ const build500Page = async (shell) => {
 };
 
 const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
-  console.log(`Building profile page for profile ID ${profile.id}`);
+  console.log(`Building profile page for profile ID ${profile.profileId}`);
 
   const page = await readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
@@ -122,17 +112,15 @@ const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
           FROM matches
           WHERE profileId = ?
           ORDER BY id ASC
-        `, [profile.id]);
+        `, [profile.profileId]);
 
         matches.forEach(x => {
-          x.processed = x.processed === 1;
-          x.valid = x.valid === 1;
           x.stats = JSON.parse(x.stats);
         });
 
         const page = await buildProfilePage(shell, {
           profile,
-          matches: matches.filter(x => x.processed && x.valid),
+          matches: matches.filter(x => x.state === db.enums.matchState.valid),
           globalStats
         });
 
