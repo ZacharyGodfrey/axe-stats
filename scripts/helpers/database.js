@@ -1,6 +1,6 @@
-const db = require('better-sqlite3')(`${__dirname}/../../database.db`);
+const sqlite = require('better-sqlite3');
 
-db.pragma('journal_mode = WAL');
+const db = new sqlite(`${__dirname}/../../database.db`, {});
 
 const enums = {
   matchState: {
