@@ -9,10 +9,10 @@
     "local-watch": "npm run build && concurrently \"npm run build-watch\" \"npm run local\""
   },
   "dependencies": {
+    "better-sqlite3": "^9.0.0",
     "fs-extra": "^11.1.0",
     "mustache": "^4.2.0",
-    "puppeteer": "^19.7.2",
-    "sqlite3": "^5.1.4"
+    "puppeteer": "^19.7.2"
   },
   "devDependencies": {
     "concurrently": "^8.2.1",

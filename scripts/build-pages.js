@@ -61,7 +61,7 @@ const writeProfileContent = (shell, profiles) => {
   profiles.forEach(profile => {
     console.log(`Building profile content for profile ID ${profile.profileId}`);
 
-    const matches = db.all(`
+    const matches = db.rows(`
       SELECT *
       FROM matches
       WHERE profileId = ?
@@ -83,7 +83,7 @@ const writeProfileContent = (shell, profiles) => {
 };
 
 const getGlobalStats = () => {
-  return db.one(`
+  return db.row(`
     SELECT min(total) AS minScore, max(total) AS maxScore
     FROM matches
     WHERE state = ? AND total > 0
@@ -116,7 +116,7 @@ const buildProfilePage = (shell, { profile, matches, globalStats }) => {
     fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
 
     const shell = getShell();
-    const profiles = db.all(`
+    const profiles = db.rows(`
       SELECT *
       FROM profiles
       ORDER BY rank ASC, rating DESC

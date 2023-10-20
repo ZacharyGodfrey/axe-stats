@@ -68,7 +68,7 @@ const getProfileImage = async (profileId) => {
 const getMatches = async (page) => {
   let profileIds = new Set(), matchIds = new Set();
 
-  const unprocessedMatches = db.all(`
+  const unprocessedMatches = db.rows(`
     SELECT profileId, matchId
     FROM matches
     WHERE state = ?
@@ -284,13 +284,13 @@ const analyzeMatch = ({ rounds, bigAxe }) => {
 };
 
 const updateProfileStats = () => {
-  const profiles = db.all(`
+  const profiles = db.rows(`
     SELECT profileId
     FROM profiles
   `);
 
   profiles.forEach(({ profileId }) => {
-    const matches = db.all(`
+    const matches = db.rows(`
       SELECT *
       FROM matches
       WHERE profileId = ? AND state = ?
