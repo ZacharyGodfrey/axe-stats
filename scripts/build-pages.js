@@ -114,7 +114,7 @@ const buildProfilePage = (shell, { profile, matches, globalStats }) => {
     fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
 
     const shell = getShell();
-    const profiles = db.query(`
+    const profiles = db.all(`
       SELECT *
       FROM profiles
       ORDER BY rank ASC, rating DESC
