@@ -141,7 +141,7 @@ const mapMatch = (profileId, rawMatch) => {
       outcome: '',
       total,
       throws: throws.map(({ score, clutchCalled: clutch }) => ({ score, clutch })),
-      bigAxe: round.name === 'Tie Break'
+      bigAxe: rawRound.name === 'Tie Break'
     };
 
     switch (true) {
