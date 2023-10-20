@@ -59,6 +59,8 @@ const writeProfileContent = (shell, profiles) => {
   const globalStats = getGlobalStats();
 
   profiles.forEach(profile => {
+    console.log(`Building profile content for profile ID ${profile.profileId}`);
+
     const matches = db.all(`
       SELECT *
       FROM matches
