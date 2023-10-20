@@ -194,7 +194,7 @@ const matchText = ({ matchId, profileId, state, outcome, total, rounds, bigAxe }
 
   parts.push(total);
 
-  rounds.concat(bigAxe).forEach(({ outcome, throws }) => {
+  rounds.concat(bigAxe || []).forEach(({ outcome, throws }) => {
     parts.push(...[
       outcome,
       throws.map(({ score, clutch }) => score === 0 && clutch ? 'C' : score).join('')

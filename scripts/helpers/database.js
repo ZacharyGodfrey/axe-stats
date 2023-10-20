@@ -31,7 +31,7 @@ const ensureTables = async () => {
     CREATE TABLE IF NOT EXISTS profiles (
       profileId INTEGER PRIMARY KEY,
       name TEXT NOT NULL DEFAULT '',
-      about TEXT NOT NULL DEFAULT '',
+      about TEXT DEFAULT '',
       rank INTEGER NOT NULL DEFAULT 0,
       rating INTEGER NOT NULL DEFAULT 0,
       image TEXT NOT NULL DEFAULT '',
