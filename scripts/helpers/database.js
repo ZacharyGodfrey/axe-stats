@@ -29,7 +29,7 @@ db.prepare(`
     state INTEGER CHECK(state IN (${Object.values(enums.matchState).join(', ')})) NOT NULL DEFAULT 0,
     outcome TEXT NOT NULL DEFAULT '',
     total INTEGER NOT NULL DEFAULT 0,
-    rounds TEXT NOT NULL DEFAULT '[]'
+    rounds TEXT NOT NULL DEFAULT '[]',
     PRIMARY KEY (matchId, profileId)
   ) WITHOUT ROWID;
 `).run();
