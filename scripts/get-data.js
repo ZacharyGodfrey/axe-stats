@@ -6,12 +6,10 @@ const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, r
 const timeout = 2 * 1000; // 2 seconds
 
 const getProfiles = async (page, profileIds) => {
-  console.log('# Get Profiles');
-
   const profileIdSet = new Set(profileIds);
   const rulesetSelector = '.sc-gwVKww.fJdgsF select';
 
-  console.log('Scraping all profile data...');
+  console.log('Scraping all profile data');
 
   await page.goto('https://axescores.com/players/collins-rating');
   await page.waitForSelector(rulesetSelector);
@@ -26,7 +24,7 @@ const getProfiles = async (page, profileIds) => {
 };
 
 const processProfile = async (page, { id: profileId, rank, rating }) => {
-  console.log(`Scraping additional profile data for ID ${profileId}...`);
+  console.log(`Scraping additional profile data for ID ${profileId}`);
 
   await page.goto(`https://axescores.com/player/${profileId}`);
   await waitMilliseconds(timeout);
@@ -35,12 +33,12 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
 
-  await db.run(`
+  db.run(`
     INSERT OR IGNORE INTO profiles
     (profileId) VALUES (?)
   `, [profileId]);
 
-  await db.run(`
+  db.run(`
     UPDATE profiles
     SET name = ?, about = ?, rank = ?, rating = ?, image = ?
     WHERE profileId = ?
@@ -50,14 +48,16 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   const weeks = premierLeagues.flatMap(x => x.seasonWeeks);
   const matches = weeks.flatMap(x => x.matches);
 
-  await db.run(`
+  db.run(`
     INSERT OR IGNORE INTO matches
     (matchId, profileId) VALUES ${matches.map(match => `(${match.id}, ${profileId})`).join(', ')}
   `);
 };
 
-const getProfileImage = async (id) => {
-  const url = `https://admin.axescores.com/pic/${id}`;
+const getProfileImage = async (profileId) => {
+  console.log(`Scraping profile image for profile ID ${profileId}`);
+
+  const url = `https://admin.axescores.com/pic/${profileId}`;
   const response = await fetch(url);
   const buffer = await response.arrayBuffer();
   const base64 = Buffer.from(buffer).toString('base64');
@@ -66,15 +66,13 @@ const getProfileImage = async (id) => {
 };
 
 const getMatches = async (page) => {
-  console.log('# Get Matches');
-
   let profileIds = new Set(), matchIds = new Set();
 
-  const unprocessedMatches = await db.query(`
+  const unprocessedMatches = db.all(`
     SELECT profileId, matchId
     FROM matches
-    WHERE state = 0
-  `);
+    WHERE state = ?
+  `, [db.enums.matchState.unprocessed]);
 
   unprocessedMatches.forEach(({ profileId, matchId }) => {
     profileIds.add(profileId);
@@ -85,6 +83,8 @@ const getMatches = async (page) => {
 };
 
 const processMatch = async (page, matchId, profileIds) => {
+  console.log(`Scraping match details for match ID ${matchId}`);
+
   const url = `https://axescores.com/player/1/${matchId}`;
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
@@ -96,13 +96,13 @@ const processMatch = async (page, matchId, profileIds) => {
   const rawMatch = await apiResponse.json();
   const players = rawMatch.players.filter(x => profileIds.has(x.id));
 
-  await sequentially(players, async ({ id: profileId }) => {
+  players.forEach(({ id: profileId }) => {
     console.log(`Processing match details for match ID ${matchId} profile ID ${profileId}`);
 
     const match = mapMatch(profileId, rawMatch);
     const stats = match.outcome === '' ? {} : analyzeMatch(match);
 
-    await db.run(`
+    db.run(`
       UPDATE matches
       SET state = ?, outcome = ?, total = ?, text = ?, stats = ?
       WHERE matchId = ? AND profileId = ?
@@ -283,22 +283,24 @@ const analyzeMatch = ({ rounds, bigAxe }) => {
   return stats;
 };
 
-const updateProfileStats = async () => {
-  const profiles = await db.query(`
+const updateProfileStats = () => {
+  const profiles = db.all(`
     SELECT profileId
     FROM profiles
   `);
 
-  await sequentially(profiles, async ({ profileId }) => {
-    const matches = await db.query(`
+  profiles.forEach(({ profileId }) => {
+    const matches = db.all(`
       SELECT *
       FROM matches
       WHERE profileId = ? AND state = ?
     `, [profileId, db.enums.matchState.valid]);
 
-    const stats = aggregateMatchStats(matches.map(x => ({ ...x, stats: JSON.parse(x.stats) })));
+    matches.forEach(x => x.stats = JSON.parse(x.stats));
 
-    await db.run(`
+    const stats = aggregateMatchStats(matches);
+
+    db.run(`
       UPDATE profiles
       SET stats = ?
       WHERE profileId = ?
@@ -471,16 +473,16 @@ const roundForDisplay = (value) => isNaN(value) ? 0 : round(value, 2);
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    await db.connect();
-
+    console.log('Getting profiles');
     await getProfiles(page, config.profileIds);
+
+    console.log('Getting matches');
     await getMatches(page);
 
     await browser.close();
 
-    await updateProfileStats();
-
-    await db.disconnect();
+    console.log('Updating profile stats');
+    updateProfileStats();
   } catch (error) {
     logError(error);
 

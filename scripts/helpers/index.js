@@ -68,7 +68,7 @@ const writeFile = (filePath, content) => {
 };
 
 module.exports = {
-  db: require('./database'),
+  db: require('./db-sync'),
   sequentially,
   sum,
   round,

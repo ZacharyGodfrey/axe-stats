@@ -20,8 +20,8 @@ const getShell = async () => {
   return shell;
 };
 
-const getGlobalStats = async () => {
-  return await db.get(`
+const getGlobalStats = () => {
+  return db.one(`
     SELECT min(total) AS minScore, max(total) AS maxScore
     FROM matches
     WHERE state = ? AND total > 0
@@ -80,8 +80,6 @@ const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
 
 (async () => {
   try {
-    console.log('# Build Pages');
-
     console.log(JSON.stringify({
       CLIENT_DIR,
       DIST_DIR
@@ -90,15 +88,13 @@ const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
     await fs.emptyDir(DIST_DIR);
     await fs.copy(`${CLIENT_DIR}/static`, DIST_DIR);
 
-    const [shell, globalStats, profiles] = await Promise.all([
-      getShell(),
-      getGlobalStats(),
-      db.query(`
-        SELECT *
-        FROM profiles
-        ORDER BY rank ASC, rating DESC
-      `)
-    ]);
+    const shell = await getShell();
+    const globalStats = getGlobalStats();
+    const profiles = db.query(`
+      SELECT *
+      FROM profiles
+      ORDER BY rank ASC, rating DESC
+    `);
 
     profiles.forEach(x => x.stats = JSON.parse(x.stats));
 
@@ -107,16 +103,14 @@ const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
       build404Page(shell).then(page => writeFile(`${DIST_DIR}/404.html`, page)),
       build500Page(shell).then(page => writeFile(`${DIST_DIR}/500.html`, page)),
       ...profiles.map(async profile => {
-        const matches = await db.query(`
+        const matches = db.all(`
           SELECT *
           FROM matches
           WHERE profileId = ?
-          ORDER BY id ASC
+          ORDER BY matchId ASC
         `, [profile.profileId]);
 
-        matches.forEach(x => {
-          x.stats = JSON.parse(x.stats);
-        });
+        matches.forEach(x => x.stats = JSON.parse(x.stats));
 
         const page = await buildProfilePage(shell, {
           profile,
@@ -129,8 +123,6 @@ const buildProfilePage = async (shell, { profile, matches, globalStats }) => {
         await writeFile(`${DIST_DIR}/${profile.id}.txt`, matches.map(x => x.text).join('\n'));
       })
     ]);
-
-    await db.disconnect();
   } catch (error) {
     logError(error);
 
