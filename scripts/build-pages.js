@@ -7,9 +7,15 @@ const { db, logError } = require('./helpers');
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
 
-const readFile = (filePath, encoding = 'utf-8') => fs.readFileSync(filePath, { encoding });
+const readFile = (filePath, encoding = 'utf-8') => {
+  fs.readFileSync(filePath, { encoding });
+};
 
-const writeFile = (filePath, content) => fs.outputFileSync(filePath, content, 'utf-8');
+const writeFile = (filePath, content) => {
+  console.log(`Writing file: ${filePath}`);
+
+  fs.outputFileSync(filePath, content, 'utf-8')
+};
 
 const getShell = () => {
   const robotoFont = readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64');
@@ -21,8 +27,6 @@ const getShell = () => {
 };
 
 const buildHomePage = (shell, profiles) => {
-  console.log('Building home page');
-
   const page = readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
@@ -34,8 +38,6 @@ const buildHomePage = (shell, profiles) => {
 };
 
 const build404Page = (shell) => {
-  console.log('Building 404 page');
-
   const page = readFile(`${CLIENT_DIR}/404.html`);
   const data = {
     title: 'Not Found'
@@ -45,8 +47,6 @@ const build404Page = (shell) => {
 };
 
 const build500Page = (shell) => {
-  console.log('Building 500 page');
-
   const page = readFile(`${CLIENT_DIR}/500.html`);
   const data = {
     title: 'Error',
@@ -59,8 +59,6 @@ const writeProfileContent = (shell, profiles) => {
   const globalStats = getGlobalStats();
 
   profiles.forEach(profile => {
-    console.log(`Building profile content for profile ID ${profile.profileId}`);
-
     const matches = db.rows(`
       SELECT *
       FROM matches
@@ -91,8 +89,6 @@ const getGlobalStats = () => {
 };
 
 const buildProfilePage = (shell, { profile, matches, globalStats }) => {
-  console.log(`Building profile page for profile ID ${profile.profileId}`);
-
   const page = readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
@@ -127,7 +123,6 @@ const buildProfilePage = (shell, { profile, matches, globalStats }) => {
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
     writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
     writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
-
     writeProfileContent(shell, profiles);
   } catch (error) {
     logError(error);

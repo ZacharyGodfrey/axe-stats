@@ -9,8 +9,6 @@ const getProfiles = async (page, profileIds) => {
   const profileIdSet = new Set(profileIds);
   const rulesetSelector = '.sc-gwVKww.fJdgsF select';
 
-  console.log('Scraping all profile data');
-
   await page.goto('https://axescores.com/players/collins-rating');
   await page.waitForSelector(rulesetSelector);
   await page.select(rulesetSelector, 'IATF Premier');
@@ -24,7 +22,7 @@ const getProfiles = async (page, profileIds) => {
 };
 
 const processProfile = async (page, { id: profileId, rank, rating }) => {
-  console.log(`Scraping additional profile data for ID ${profileId}`);
+  console.log(`Scraping profile data for profile ID ${profileId}`);
 
   await page.goto(`https://axescores.com/player/${profileId}`);
   await waitMilliseconds(timeout);
@@ -83,8 +81,6 @@ const getMatches = async (page) => {
 };
 
 const processMatch = async (page, matchId, profileIds) => {
-  console.log(`Scraping match details for match ID ${matchId}`);
-
   const url = `https://axescores.com/player/1/${matchId}`;
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
@@ -290,6 +286,8 @@ const updateProfileStats = () => {
   `);
 
   profiles.forEach(({ profileId }) => {
+    console.log(`Updating profile stats for profile ID ${profileId}`);
+
     const matches = db.rows(`
       SELECT *
       FROM matches
@@ -471,15 +469,30 @@ const aggregateMatchStats = (matches) => {
     const browser = await puppeteer.launch();
     const page = await browser.newPage();
 
-    console.log('Getting profiles');
+    console.log([
+      '**********',
+      'Getting profiles',
+      '**********'
+    ].join('\n'));
+
     await getProfiles(page, config.profileIds);
 
-    console.log('Getting matches');
+    console.log([
+      '**********',
+      'Getting matches',
+      '**********'
+    ].join('\n'));
+
     await getMatches(page);
 
     await browser.close();
 
-    console.log('Updating profile stats');
+    console.log([
+      '**********',
+      'Updating profile stats',
+      '**********'
+    ].join('\n'));
+
     updateProfileStats();
   } catch (error) {
     logError(error);
