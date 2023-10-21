@@ -158,8 +158,6 @@ const mapMatch = (profileId, rawMatch) => {
         case 'L': bigAxeLosses++; break;
       }
     } else {
-      match.total += round.bigAxe ? 0 : total;
-
       switch (round.outcome) {
         case 'W': roundWins++; break;
         case 'L': roundLosses++; break;
