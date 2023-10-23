@@ -30,6 +30,9 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   const image = await getProfileImage(profileId);
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
+  const seasons = leagues.filter(x => x.performanceName === 'IATF Premier');
+  const weeks = seasons.flatMap(x => x.seasonWeeks);
+  const matches = weeks.flatMap(x => x.matches);
 
   db.run(`
     INSERT OR IGNORE INTO profiles
@@ -42,13 +45,29 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
     WHERE profileId = ?
   `, [name, about, rank, rating, image, profileId]);
 
-  const premierLeagues = leagues.filter(x => x.performanceName === 'IATF Premier');
-  const weeks = premierLeagues.flatMap(x => x.seasonWeeks);
-  const matches = weeks.flatMap(x => x.matches);
+  db.run(`
+    INSERT OR IGNORE INTO seasons
+    (seasonId, profileId) VALUES ${seasons.map(x => `(${x.id}, ${profileId})`).join(', ')}
+  `);
+
+  seasons.forEach(({ id: seasonId, date, name, shortName, seasonRank, playoffRank }) => {
+    db.run(`
+      UPDATE seasons
+      SET name = ?, date = ?, seasonRank = ?, playoffRank = ?
+      WHERE seasonId = ? AND profileId = ?
+    `, [
+      `${name} ${shortName}`,
+      date,
+      seasonRank,
+      playoffRank,
+      seasonId,
+      profileId
+    ]);
+  });
 
   db.run(`
     INSERT OR IGNORE INTO matches
-    (matchId, profileId) VALUES ${matches.map(match => `(${match.id}, ${profileId})`).join(', ')}
+    (matchId, profileId) VALUES ${matches.map(x => `(${x.id}, ${profileId})`).join(', ')}
   `);
 };
 

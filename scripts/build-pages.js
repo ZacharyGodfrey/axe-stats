@@ -343,6 +343,13 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     `);
 
     profiles.forEach(profile => {
+      const seasons = db.rows(`
+        SELECT *
+        FROM seasons
+        WHERE profileId = ?
+        ORDER BY seasonId ASC
+      `, [profile.profileId]);
+
       const matches = db.rows(`
         SELECT *
         FROM matches
@@ -359,6 +366,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
 
       validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
 
+      profile.seasons = seasons;
       profile.stats = aggregateMatchStats(validMatches);
       profile.matches = validMatches;
 
