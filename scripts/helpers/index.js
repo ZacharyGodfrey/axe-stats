@@ -17,15 +17,16 @@ const median = (values) => {
     return undefined;
   }
 
-  const middle = Math.floor(values.length / 2);
+  const sorted = [...values].sort();
+  const middle = Math.floor(sorted.length / 2);
 
-  if (values.length % 2 === 0) {
-    const left = values[middle];
-    const right = values[middle + 1];
+  if (sorted.length % 2 === 0) {
+    const left = sorted[middle];
+    const right = sorted[middle + 1];
 
     return (left + right) / 2;
   } else {
-    return values[middle];
+    return sorted[middle];
   }
 };
 
