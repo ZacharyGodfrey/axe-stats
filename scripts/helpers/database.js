@@ -38,10 +38,6 @@ db.prepare(`
 `).run();
 
 db.prepare(`
-  DROP TABLE seasons;
-`).run();
-
-db.prepare(`
   CREATE TABLE IF NOT EXISTS seasons (
     seasonId INTEGER NOT NULL,
     profileId INTEGER NOT NULL,
