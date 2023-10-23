@@ -272,25 +272,21 @@
         </div>
       </div>
 
-      <div class="card">
-        <figure>
-          <table class="text-center">
-            <tbody>
-              <tr>
-                <th>Max Score</th>
-                <td>{{matchScoreStats.maxScore}}</td>
-              </tr>
-              <tr>
-                <th>Median Score</th>
-                <td>{{matchScoreStats.medianScore}}</td>
-              </tr>
-              <tr>
-                <th>Min Score</th>
-                <td>{{matchScoreStats.minScore}}</td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
+      <div>
+        <div class="card grid col-auto-1">
+          <span>Max Score</span>
+          <strong>{{matchScoreStats.maxScore}}</strong>
+        </div>
+
+        <div class="card grid col-auto-1">
+          <span>Median Score</span>
+          <strong>{{matchScoreStats.medianScore}}</strong>
+        </div>
+
+        <div class="card grid col-auto-1">
+          <span>Min Score</span>
+          <strong>{{matchScoreStats.minScore}}</strong>
+        </div>
       </div>
     </div>
   </div>
