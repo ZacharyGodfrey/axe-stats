@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
-const { db, median, average, roundForDisplay, logError } = require('./helpers');
+const { db, median, roundForDisplay, logError } = require('./helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -31,9 +31,7 @@ const buildHomePage = (shell, profiles) => {
   const data = {
     title: undefined,
     profiles,
-    dataJson: JSON.stringify({
-      profiles
-    })
+    dataJson: JSON.stringify({ profiles })
   };
 
   return render(shell, data, { page });
@@ -70,10 +68,7 @@ const buildProfilePage = (shell, profile) => {
     title: profile.name,
     profile,
     matchScoreStats,
-    dataJson: JSON.stringify({
-      profile,
-      matchScoreStats
-    })
+    dataJson: JSON.stringify({ profile })
   };
 
   return render(shell, data, { page });
@@ -372,23 +367,10 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
     });
 
-    const allData = profiles.reduce((x, profile) => {
-      x[profile.profileId] = {
-        ...profile,
-        matches: profile.matches.reduce((y, match) => {
-          y[match.matchId] = match;
-
-          return y;
-        }, {})
-      };
-
-      return x;
-    }, {});
-
     writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
     writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
-    writeFile(`${DIST_DIR}/data.json`, JSON.stringify(allData, null, 2));
+    writeFile(`${DIST_DIR}/data.json`, JSON.stringify(profiles, null, 2));
   } catch (error) {
     logError(error);
 
