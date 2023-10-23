@@ -53,10 +53,11 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   seasons.forEach(({ id: seasonId, date, name, shortName, seasonRank, playoffRank }) => {
     db.run(`
       UPDATE seasons
-      SET name = ?, date = ?, seasonRank = ?, playoffRank = ?
+      SET name = ?, shortName = ?, date = ?, seasonRank = ?, playoffRank = ?
       WHERE seasonId = ? AND profileId = ?
     `, [
-      `${name} ${shortName}`,
+      name,
+      shortName,
       date,
       seasonRank || 0,
       playoffRank || 0,
