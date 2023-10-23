@@ -41,7 +41,7 @@
         --neutral: #EEEEEE;
         --content-limit: 100ch;
         font-family: 'roboto', monospace;
-        font-size: 20px;
+        font-size: 16px;
         line-height: 1.5;
         color: var(--dark);
         background: var(--neutral);
@@ -79,8 +79,7 @@
       }
 
       header {
-        padding: 0 1rem;
-        background: white;
+        padding: 1rem 1rem;
       }
 
       main {
@@ -96,8 +95,7 @@
       }
 
       footer {
-        padding: 2rem 1rem;
-        text-align: right;
+        padding: 2rem 1rem 1rem 1rem;
       }
 
       /* Element Styles */
@@ -224,7 +222,7 @@
       .text-left { text-align: left; }
       .text-center { text-align: center; }
       .text-right { text-align: right; }
-      .text-lg { font-size: 2rem; }
+      .text-lg { font-size: 2.5rem; }
       .text-white { color: white; }
       .text-main { color: var(--main); }
       .no-wrap { white-space: nowrap; }
@@ -236,8 +234,8 @@
       }
 
       .bg-white {
-        color: white;
-        background: var(--dark);
+        color: var(--dark);
+        background: white;
       }
 
       .bg-dark {
@@ -392,7 +390,7 @@
     </script>
   </head>
   <body>
-    <header>
+    <header class="bg-white">
       <div class="x-limit">
         <p class="text-lg text-main">
           <a href="/">Axe Charts</a>
@@ -404,7 +402,7 @@
       {{>page}}
     </main>
 
-    <footer class="bg-dark">
+    <footer class="bg-dark text-right">
       <div class="x-limit">
         <h2>Axe Charts</h2>
 
