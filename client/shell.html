@@ -18,13 +18,21 @@
 
       @media screen and (min-width: 801px) {
         :root {
-          font-size: 18px;
+          font-size: 16px;
+        }
+
+        .grid > * {
+          margin: 0 !important;
         }
       }
 
       @media screen and (max-width: 800px) {
         :root {
-          font-size: 36px;
+          font-size: 32px;
+        }
+
+        .grid.stack {
+          display: block;
         }
       }
 
@@ -37,7 +45,6 @@
         --neutral: #EEEEEE;
         --content-limit: 100ch;
         font-family: 'roboto', monospace;
-        /* font-size: 18px; */
         line-height: 1.5;
         color: var(--dark);
         background: var(--neutral);
@@ -341,13 +348,13 @@
         align-content: start; /* row spacing Y */
       }
 
-      .portrait .grid.stack {
+      /* .portrait .grid.stack {
         display: block;
-      }
+      } */
 
-      .grid:not(.portrait .grid.stack) > * {
+      /* .grid:not(.portrait .grid.stack) > * {
         margin: 0 !important;
-      }
+      } */
 
       /* 2-Column Grid Layouts */
       .grid.col-1-1 { grid-template-columns: 1fr 1fr; }
@@ -424,7 +431,7 @@
           console.log(screen.orientation.type);
 
           const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
-          const isPortrait = orientation.includes('portrait') || screen.availWidth < 1000;
+          const isPortrait = orientation.includes('portrait');
 
           if (isPortrait) {
               document.querySelector('body').classList.add('portrait');
