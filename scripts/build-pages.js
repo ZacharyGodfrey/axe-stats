@@ -365,7 +365,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       validMatches.forEach(x => {
         x.stats = analyzeMatch(x.rounds);
 
-        if (x.total <= globalStats.minScore) {
+        if (0 < x.total && x.total <= globalStats.minScore) {
           console.log('Min Score Match:');
           console.log(JSON.stringify(x, null, 2));
         }
