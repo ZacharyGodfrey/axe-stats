@@ -331,13 +331,23 @@
       aspectRatio: 1,
       indexAxis: 'y',
       scales: {
+        x: {
+          title: {
+            text: 'Frequency',
+            display: true
+          },
+        },
         y: {
+          title: {
+            text: 'Score',
+            display: true
+          },
           type: 'linear',
           min: Math.min(...allScores),
           max: Math.max(...allScores),
           ticks: {
             stepSize: 1
-          }
+          },
         }
       }
     }
@@ -368,13 +378,13 @@
       scales: {
         x: {
           title: {
-            text: 'Frequency',
+            text: 'Season',
             display: true
           },
         },
         y: {
           title: {
-            text: 'Score',
+            text: 'Rank',
             display: true
           },
           reverse: true,
