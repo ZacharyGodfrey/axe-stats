@@ -1,7 +1,6 @@
 <script>
-  const profile = {{{profileJson}}};
-  const matches = {{{matchesJson}}};
-  const globalStats = {{{globalStatsJson}}};
+  const { profile, matchScoreStats } = {{{dataJson}}};
+  const { matches } = profile;
 </script>
 
 <!-- Profile -->
@@ -150,7 +149,7 @@
         <p class="text-lg">{{profile.stats.hatchet.target.fivePercent}}%</p>
 
         <p>
-          <strong>Bullseye Accuracy</strong>
+          <strong>Bullseye Hit Rate</strong>
         </p>
 
         <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
@@ -164,7 +163,7 @@
         <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
         <p>
-          <strong>Clutch Accuracy</strong>
+          <strong>Clutch Hit Rate</strong>
         </p>
 
         <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
@@ -230,7 +229,7 @@
         <p class="text-lg">{{profile.stats.bigAxe.target.fivePercent}}%</p>
 
         <p>
-          <strong>Bullseye Accuracy</strong>
+          <strong>Bullseye Hit Rate</strong>
         </p>
 
         <p>{{profile.stats.bigAxe.target.five}} / {{profile.stats.bigAxe.target.throwCount}} Throws</p>
@@ -244,7 +243,7 @@
         <p class="text-lg">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
 
         <p>
-          <strong>Clutch Accuracy</strong>
+          <strong>Clutch Hit Rate</strong>
         </p>
 
         <p>{{profile.stats.bigAxe.clutch.hit}} / {{profile.stats.bigAxe.clutch.call}} Calls</p>
@@ -272,6 +271,27 @@
           <canvas id="matchScoreChart"></canvas>
         </div>
       </div>
+
+      <div class="card">
+        <figure>
+          <table class="text-center">
+            <tbody>
+              <tr>
+                <th>Max Score</th>
+                <td>{{matchScoreStats.maxScore}}</td>
+              </tr>
+              <tr>
+                <th>Median Score</th>
+                <td>{{matchScoreStats.medianScore}}</td>
+              </tr>
+              <tr>
+                <th>Min Score</th>
+                <td>{{matchScoreStats.minScore}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </figure>
+      </div>
     </div>
   </div>
 
@@ -292,154 +312,4 @@
       });
     })();
   </script>
-</section>
-
-<section id="matchOutcomes">
-  <div class="x-limit">
-    <h2>
-      <a href="#matchOutcomes">Match Outcomes</a>
-    </h2>
-
-    <p>Coming soon...</p>
-
-    <!-- <details>
-      <summary>Details</summary>
-
-      <p>Losses and OTLs are displayed separately in your career record, but wins are displayed as a single value whether you won the match outright or won the Big Axe tiebreaker.</p>
-    </details>
-
-    <div class="split stack">
-      <div class="grow">
-        <div class="chartWrap mx-auto">
-          <canvas id="matchOutcomeChart"></canvas>
-        </div>
-      </div>
-
-      <div class="grow">
-        <figure>
-          <table class="text-center">
-            <tbody>
-              <tr>
-                <th class="no-wrap">Hatchet Wins</th>
-                <td class="no-wrap text-left maximize">
-                  <strong>{{profile.stats.match.winWithoutBigAxe}}</strong>
-                </td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Big Axe Wins</th>
-                <td class="no-wrap text-left maximize">
-                  <strong>{{profile.stats.bigAxe.roundWin}}</strong>
-                </td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Hatchet Losses</th>
-                <td class="no-wrap text-left maximize">
-                  <strong>{{profile.stats.match.loss}}</strong>
-                </td>
-              </tr>
-
-              <tr>
-                <th class="no-wrap">Big Axe Losses</th>
-                <td class="no-wrap text-left maximize">
-                  <strong>{{profile.stats.bigAxe.roundLoss}}</strong>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </figure>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    new Chart(document.getElementById('matchOutcomeChart'), {
-      type: 'doughnut',
-      options: {
-        //
-      },
-      data: {
-        labels: ['Hatchet Wins', 'Big Axe Wins', 'Hatchet Losses', 'Big Axe Losses'],
-        datasets: [{
-          data: [
-            profile.stats.match.winWithoutBigAxe,
-            profile.stats.bigAxe.roundWin,
-            profile.stats.match.loss,
-            profile.stats.bigAxe.roundLoss
-          ]
-        }]
-      }
-    });
-  </script> -->
-</section>
-
-<section id="roundOutcomes">
-  <div class="x-limit">
-    <h2>
-      <a href="#roundOutcomes">Round Outcomes</a>
-    </h2>
-
-    <p>Coming soon...</p>
-
-    <!-- <details>
-      <summary>Details</summary>
-
-      <p>When looking at just your match win rate, it can be hard to get a clear picture of your performance in each match. Because of the "Best 2 of 3 Rounds" rule in IATF, a match win could consist of 0, 1, 2, or 3 round wins with a hatchet and a potential round win with a Big Axe:</p>
-
-      <ul>
-        <li>Win no rounds, tie all three, win the Big Axe tiebreaker</li>
-        <li>Win one round, lose one round, win the Big Axe tiebreaker</li>
-        <li>Win one round, tie two rounds</li>
-        <li>Win two rounds, lose or tie a round</li>
-        <li>Win all three rounds</li>
-      </ul>
-    </details>
-
-    <figure>
-      <table class="text-center" style="table-layout: fixed;">
-        <tbody>
-          <tr>
-            <th class="no-wrap">Hatchet Wins</th>
-            <td>{{profile.stats.hatchet.roundWin}}</td>
-            <td>{{profile.stats.hatchet.roundWinPercent}}%</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Hatchet Losses</th>
-            <td>{{profile.stats.hatchet.roundLoss}}</td>
-            <td>{{profile.stats.hatchet.roundLossPercent}}%</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Hatchet Ties</th>
-            <td>{{profile.stats.hatchet.roundTie}}</td>
-            <td>{{profile.stats.hatchet.roundTiePercent}}%</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Big Axe Wins</th>
-            <td>{{profile.stats.bigAxe.roundWin}}</td>
-            <td>{{profile.stats.bigAxe.roundWinPercent}}%</td>
-          </tr>
-
-          <tr>
-            <th class="no-wrap">Big Axe Losses</th>
-            <td>{{profile.stats.bigAxe.roundLoss}}</td>
-            <td>{{profile.stats.bigAxe.roundLossPercent}}%</td>
-          </tr>
-        </tbody>
-      </table>
-    </figure> -->
-  </div>
-</section>
-
-<section id="playoffStats">
-  <div class="x-limit">
-    <h2>
-      <a href="#playoffStats">Playoff Stats</a>
-    </h2>
-
-    <p>Coming soon...</p>
-  </div>
 </section>

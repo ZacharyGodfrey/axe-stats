@@ -26,14 +26,14 @@ const getShell = () => {
     .replace('//chartJS//', chartJS);
 };
 
-const buildHomePage = (shell, globalStats, profiles) => {
+const buildHomePage = (shell, profiles) => {
   const page = readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
-    globalStats,
     profiles,
-    globalStatsJson: JSON.stringify(globalStats),
-    profilesJson: JSON.stringify(profiles)
+    dataJson: JSON.stringify({
+      profiles
+    })
   };
 
   return render(shell, data, { page });
@@ -75,14 +75,23 @@ const getGlobalStats = () => {
   };
 };
 
-const buildProfilePage = (shell, globalStats, profile) => {
+const buildProfilePage = (shell, profile) => {
   const page = readFile(`${CLIENT_DIR}/profile.html`);
+  const scores = profile.matches.map(x => x.total);
+  const matchScoreStats = {
+    minScore: Math.min(...scores),
+    medianScore: roundForDisplay(median(scores) || 0),
+    maxScore: Math.max(...scores)
+  };
+
   const data = {
     title: profile.name,
     profile,
-    globalStatsJson: JSON.stringify(globalStats),
-    profileJson: JSON.stringify({ ...profile, matches: undefined }),
-    matchesJson: JSON.stringify(profile.matches)
+    matchScoreStats,
+    dataJson: JSON.stringify({
+      profile,
+      matchScoreStats
+    })
   };
 
   return render(shell, data, { page });
@@ -350,7 +359,6 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
 
     const shell = getShell();
-    const globalStats = getGlobalStats();
     const profiles = db.rows(`
       SELECT *
       FROM profiles
@@ -375,16 +383,16 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
 
       profile.stats = aggregateMatchStats(validMatches);
-      profile.matches = matches;
+      profile.matches = validMatches;
 
-      writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, globalStats, profile));
+      writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, profile));
       writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));
-      writeFile(`${DIST_DIR}/${profile.profileId}.txt`, profile.matches.map(x => matchText(x)).join('\n'));
+      writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
     });
 
     writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
     writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
-    writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, globalStats, profiles));
+    writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
   } catch (error) {
     logError(error);
 
