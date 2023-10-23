@@ -57,24 +57,6 @@ const build500Page = (shell) => {
   return render(shell, data, { page });
 };
 
-const getGlobalStats = () => {
-  const rows = db.rows(`
-    SELECT total
-    FROM matches
-    WHERE state = ?
-    ORDER BY total ASC
-  `, [db.enums.matchState.valid]);
-
-  const scores = rows.map(x => x.total);
-
-  return {
-    minScore: Math.min(...scores),
-    maxScore: Math.max(...scores),
-    medianScore: roundForDisplay(median(scores) || 0),
-    meanScore: roundForDisplay(average(scores))
-  };
-};
-
 const buildProfilePage = (shell, profile) => {
   const page = readFile(`${CLIENT_DIR}/profile.html`);
   const scores = profile.matches.map(x => x.total);
@@ -390,9 +372,23 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
     });
 
+    const allData = profiles.reduce((x, profile) => {
+      x[profile.profileId] = {
+        ...profile,
+        matches: profile.matches.reduce((y, match) => {
+          y[match.matchId] = match;
+
+          return y;
+        }, {})
+      };
+
+      return x;
+    }, {});
+
     writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
     writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
+    writeFile(`${DIST_DIR}/data.json`, JSON.stringify(allData, null, 2));
   } catch (error) {
     logError(error);
 
