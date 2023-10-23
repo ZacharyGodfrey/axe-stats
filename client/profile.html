@@ -347,12 +347,14 @@
       labels: profile.seasons.map((_, i) => i),
       datasets: [
         {
+          label: 'Season Rank',
           data: profile.seasons.map(x => x.seasonRank),
           fill: false,
           backgroundColor: cssVar('main'),
           borderColor: cssVar('main'),
         },
         {
+          label: 'Playoff Rank',
           data: profile.seasons.map(x => x.playoffRank),
           fill: false,
           backgroundColor: cssVar('cta'),
@@ -367,6 +369,13 @@
           ticks: {
             stepSize: 1
           }
+        }
+      },
+      plugins: {
+        legend: {
+          display: true,
+          position: 'bottom',
+          align: 'center'
         }
       }
     }
