@@ -26,10 +26,11 @@ const getShell = () => {
     .replace('//chartJS//', chartJS);
 };
 
-const buildHomePage = (shell, profiles) => {
+const buildHomePage = (shell, globalStats, profiles) => {
   const page = readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
+    globalStats,
     profiles,
     profilesJson: JSON.stringify(profiles, null, 2)
   };
