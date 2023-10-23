@@ -331,12 +331,12 @@
       indexAxis: 'y',
       scales: {
         x: {
+        },
+        y: {
           type: 'linear',
-          min: 0,
-          max: 81,
-          ticks: {
-            stepSize: 5
-          }
+          // reverse: true,
+          min: Math.min(...allScores),
+          max: Math.max(...allScores),
         }
       }
     }
