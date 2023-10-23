@@ -251,9 +251,10 @@
       /* Component Classes */
 
       .profile-image {
+        --minWidth: 8rem;
         display: block;
         margin: 1rem auto;
-        width: 8rem;
+        width: var(--minWidth);
         height: auto;
         aspect-ratio: 1 / 1;
         background: white;
@@ -262,8 +263,7 @@
       }
 
       .profile-image.grow {
-        width: 100%;
-        max-width: 20rem;
+        width: clamp(var(--minWidth), 50vw, 100%);
       }
 
       .card {
