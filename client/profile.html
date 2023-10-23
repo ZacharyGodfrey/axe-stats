@@ -328,15 +328,16 @@
       }]
     },
     options: {
+      aspectRatio: 1,
       indexAxis: 'y',
       scales: {
-        x: {
-        },
         y: {
           type: 'linear',
-          // reverse: true,
           min: Math.min(...allScores),
           max: Math.max(...allScores),
+          ticks: {
+            stepSize: 1
+          }
         }
       }
     }
