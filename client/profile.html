@@ -273,53 +273,25 @@
 
   <script>
     (() => {
-      const sum = (values) => values.reduce((s, v) => s + v, 0);
-      const mean = (values) => sum(values) / Math.max(1, values.length);
-      const sDev = (values) => {
-        const avg = mean(values);
-        const squareDifferences = values.map(value => (value - avg) ** 2);
-
-        return Math.sqrt(mean(squareDifferences));
-      };
-
-      const probabilityDensityFn = (values) => {
-        const avg = mean(values);
-        const dev = sDev(values);
-        const pi = Math.PI;
-        const e = Math.E;
-
-        return (x) => {
-          return (1 / (dev * Math.sqrt(2 * pi))) * (e ** (-(((x - avg) ** 2) / (2 * (dev ** 2)))));
-        };
-      };
-
       const allScores = matches.map(x => x.total).sort();
-      const pdf = probabilityDensityFn(allScores);
-      const frequencies = [...new Set(allScores)].reduce((x, score) => {
-        x[score] = x[score] || 0;
-        x[score]++;
-
-        return x;
-      }, {});
-
-      const labels = Object.keys(frequencies);
+      const frequencies = [...new Set(allScores)].reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
 
       new Chart(document.getElementById('matchScoreChart'), {
-        type: 'line',
+        type: 'bar',
         options: {
           scales: {
-            x: {
-              type: 'linear',
-              min: Math.min(...allScores),
-              max: Math.max(...allScores)
-            },
-            y: {
-              type: 'linear',
-              min: 0,
-              max: Math.max(...Object.values(frequencies))
-            }
+            // x: {
+            //   type: 'linear',
+            //   min: Math.min(...allScores),
+            //   max: Math.max(...allScores)
+            // },
+            // y: {
+            //   type: 'linear',
+            //   min: 0,
+            //   max: Math.max(...Object.values(frequencies))
+            // }
           },
-          pointStyle: false,
+          // pointStyle: false,
           plugins: {
             tooltip: {
               enabled: false
