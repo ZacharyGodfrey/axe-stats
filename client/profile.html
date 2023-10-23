@@ -276,33 +276,14 @@
       const allScores = matches.map(x => x.total).sort();
       const frequencies = [...new Set(allScores)].reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
 
+      console.log(frequencies);
+
       new Chart(document.getElementById('matchScoreChart'), {
         type: 'bar',
-        options: {
-          scales: {
-            // x: {
-            //   type: 'linear',
-            //   min: Math.min(...allScores),
-            //   max: Math.max(...allScores)
-            // },
-            // y: {
-            //   type: 'linear',
-            //   min: 0,
-            //   max: Math.max(...Object.values(frequencies))
-            // }
-          },
-          // pointStyle: false,
-          plugins: {
-            tooltip: {
-              enabled: false
-            }
-          }
-        },
         data: {
           labels: Object.keys(frequencies),
           datasets: [{
             data: Object.values(frequencies),
-            fill: true,
             backgroundColor: cssVar('main'),
           }]
         }
