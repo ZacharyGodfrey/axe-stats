@@ -1,9 +1,3 @@
-<script>
-  const { profile, matchScoreStats } = {{{dataJson}}};
-  const { matches } = profile;
-</script>
-
-<!-- Profile -->
 <section class="bg-main">
   <div class="x-limit">
     <div class="grid stack col-auto-1 items-y-center">
@@ -43,7 +37,6 @@
   </div>
 </section>
 
-<!-- Stats Highlight -->
 <section class="bg-dark">
   <div class="x-limit">
     <div class="grid stack col-1-1-1 items-y-stretch">
@@ -90,14 +83,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-    (() => {
-      statArc('averageScoreArc', 81, profile.stats.match.averageScore);
-      statArc('winPercentArc', 100, profile.stats.match.winPercent);
-      statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
-    })();
-  </script>
 </section>
 
 <section id="hatchetAccuracy">
@@ -171,13 +156,6 @@
         <p>Clutch Call Rate: {{profile.stats.hatchet.clutch.callPercent}}%</p>
       </div>
   </div>
-
-  <script>
-    (() => {
-      statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
-      statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
-    })();
-  </script>
 </section>
 
 <section id="bigAxeAccuracy">
@@ -250,13 +228,6 @@
       </div>
     </div>
   </div>
-
-  <script>
-    (() => {
-      statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
-      statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
-    })();
-  </script>
 </section>
 
 <section id="matchScoreFrequencies">
@@ -296,34 +267,43 @@
       </div>
     </div>
   </div>
+</section>
 
-  <script>
-    (() => {
-      const allScores = matches.map(x => x.total).sort();
-      const frequencies = allScores.reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
+<script>
+  const { profile, matchScoreStats } = {{{dataJson}}};
+  const { matches } = profile;
 
-      new Chart(document.getElementById('matchScoreChart'), {
-        type: 'bar',
-        data: {
-          labels: Object.keys(frequencies),
-          datasets: [{
-            data: Object.values(frequencies),
-            backgroundColor: cssVar('main'),
-          }]
-        },
-        options: {
-          scales: {
-            x: {
-              type: 'linear',
-              min: 0,
-              max: 81,
-              ticks: {
-                stepSize: 5
-              }
-            }
+  statArc('averageScoreArc', 81, profile.stats.match.averageScore);
+  statArc('winPercentArc', 100, profile.stats.match.winPercent);
+  statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
+  statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
+  statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
+  statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
+  statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
+
+  const allScores = matches.map(x => x.total).sort();
+  const frequencies = allScores.reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
+
+  new Chart(document.getElementById('matchScoreChart'), {
+    type: 'bar',
+    data: {
+      labels: Object.keys(frequencies),
+      datasets: [{
+        data: Object.values(frequencies),
+        backgroundColor: cssVar('main'),
+      }]
+    },
+    options: {
+      scales: {
+        x: {
+          type: 'linear',
+          min: 0,
+          max: 81,
+          ticks: {
+            stepSize: 5
           }
         }
-      });
-    })();
-  </script>
-</section>
+      }
+    }
+  });
+</script>
