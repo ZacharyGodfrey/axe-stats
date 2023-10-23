@@ -328,6 +328,7 @@
       }]
     },
     options: {
+      indexAxis: 'y',
       scales: {
         x: {
           type: 'linear',
@@ -344,7 +345,7 @@
   new Chart(document.getElementById('seasonsChart'), {
     type: 'line',
     data: {
-      labels: profile.seasons.map((_, i) => i),
+      labels: profile.seasons.map((_, i) => i + 1),
       datasets: [
         {
           label: 'Season Rank',
