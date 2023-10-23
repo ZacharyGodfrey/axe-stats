@@ -55,36 +55,6 @@ const build500Page = (shell) => {
   return render(shell, data, { page });
 };
 
-const writeProfileContent = (shell, profiles) => {
-  const globalStats = getGlobalStats();
-
-  profiles.forEach(profile => {
-    const matches = db.rows(`
-      SELECT *
-      FROM matches
-      WHERE profileId = ?
-      ORDER BY matchId ASC
-    `, [profile.profileId]);
-
-    matches.forEach(x => {
-      x.rounds = JSON.parse(x.rounds);
-      x.stats = null;
-    });
-
-    const validMatches = matches.filter(x => x.state === db.enums.matchState.valid);
-
-    validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
-
-    profile.stats = aggregateMatchStats(validMatches);
-
-    const page = buildProfilePage(shell, { profile, matches, globalStats });
-
-    writeFile(`${DIST_DIR}/${profile.profileId}.html`, page);
-    writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify({ profile, matches }, null, 2));
-    writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
-  });
-};
-
 const getGlobalStats = () => {
   return db.row(`
     SELECT min(total) AS minScore, max(total) AS maxScore
@@ -93,13 +63,13 @@ const getGlobalStats = () => {
   `, [db.enums.matchState.valid]);
 };
 
-const buildProfilePage = (shell, { profile, matches, globalStats }) => {
+const buildProfilePage = (shell, globalStats, profile) => {
   const page = readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
     profile,
-    profileJson: JSON.stringify(profile),
-    matchesJson: JSON.stringify(matches),
+    profileJson: JSON.stringify({ ...profile, matches: undefined }),
+    matchesJson: JSON.stringify(profile.matches),
     globalStatsJson: JSON.stringify(globalStats)
   };
 
@@ -368,16 +338,41 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
 
     const shell = getShell();
+    const globalStats = getGlobalStats();
     const profiles = db.rows(`
       SELECT *
       FROM profiles
       ORDER BY rank ASC, rating DESC
     `);
 
-    writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
+    profiles.forEach(profile => {
+      const matches = db.rows(`
+        SELECT *
+        FROM matches
+        WHERE profileId = ?
+        ORDER BY matchId ASC
+      `, [profile.profileId]);
+
+      matches.forEach(x => {
+        x.rounds = JSON.parse(x.rounds);
+        x.stats = null;
+      });
+
+      const validMatches = matches.filter(x => x.state === db.enums.matchState.valid);
+
+      validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
+
+      profile.stats = aggregateMatchStats(validMatches);
+      profile.matches = matches;
+
+      writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, globalStats, profile));
+      writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));
+      writeFile(`${DIST_DIR}/${profile.profileId}.txt`, profile.matches.map(x => matchText(x)).join('\n'));
+    });
+
     writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
     writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
-    writeProfileContent(shell, profiles);
+    writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, globalStats, profiles));
   } catch (error) {
     logError(error);
 
