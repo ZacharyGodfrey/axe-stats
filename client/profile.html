@@ -260,10 +260,10 @@
   </script>
 </section>
 
-<section id="matchScoreDistribution">
+<section id="matchScoreFrequencies">
   <div class="x-limit">
     <h2>
-      <a href="#matchScoreDistribution">Match Score Distribution</a>
+      <a href="#matchScoreFrequencies">Match Score Frequencies</a>
     </h2>
 
     <div class="chartWrap">
@@ -295,7 +295,14 @@
 
       const allScores = matches.map(x => x.total).sort();
       const pdf = probabilityDensityFn(allScores);
-      const labels = [...new Set(allScores)];
+      const frequencies = [...new Set(allScores)].reduce((x, score) => {
+        x[score] = x[score] || 0;
+        x[score]++;
+
+        return x;
+      }, {});
+
+      const labels = Object.keys(frequencies);
 
       new Chart(document.getElementById('matchScoreChart'), {
         type: 'line',
@@ -303,8 +310,8 @@
           scales: {
             x: {
               type: 'linear',
-              min: globalStats.minScore,
-              max: globalStats.maxScore,
+              min: Math.min(...allScores),
+              max: Math.max(...allScores),
               ticks: {
                 stepSize: 5
               }
@@ -312,7 +319,7 @@
             y: {
               type: 'linear',
               min: 0,
-              max: 100,
+              max: Math.max(Object.values(frequencies)),
               ticks: {
                 stepSize: 10
               }
@@ -326,9 +333,9 @@
           }
         },
         data: {
-          labels,
+          labels: Object.keys(frequencies),
           datasets: [{
-            data: labels.map(x => pdf(x) * 1000), // .map((x, _, a) => x / Math.max(...a)),
+            data: Object.values(frequencies),
             fill: true,
             backgroundColor: cssVar('main'),
           }]

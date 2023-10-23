@@ -71,7 +71,7 @@ const getGlobalStats = () => {
     minScore: Math.min(...scores),
     maxScore: Math.max(...scores),
     medianScore: roundForDisplay(median(scores) || 0),
-    meanScore: average(scores)
+    meanScore: roundForDisplay(average(scores))
   };
 };
 
