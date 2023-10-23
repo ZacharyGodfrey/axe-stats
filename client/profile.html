@@ -310,6 +310,18 @@
             data: Object.values(frequencies),
             backgroundColor: cssVar('main'),
           }]
+        },
+        options: {
+          scales: {
+            x: {
+              type: 'linear',
+              min: 0,
+              max: 81,
+              ticks: {
+                stepSize: 5
+              }
+            }
+          }
         }
       });
     })();
