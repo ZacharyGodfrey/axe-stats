@@ -253,7 +253,9 @@
       .profile-image {
         display: block;
         margin: 1rem auto;
-        width: 100vw;
+        min-width: 4rem;
+        width: 100%;
+        max-width: 12rem;
         height: auto;
         aspect-ratio: 1 / 1;
         background: white;
@@ -261,8 +263,8 @@
         border-radius: 50%;
       }
 
-      .profile-image.width-4 { width: 4rem; }
-      .profile-image.width-16 { width: 16rem; }
+      .profile-image.width-8 { max-width: 8rem; }
+      /* .profile-image.width-16 { width: 16rem; } */
 
       .card {
         margin: 1rem 0;
