@@ -12,6 +12,23 @@ const round = (value, places) => {
   return Math.round(value * factor) / factor;
 };
 
+const median = (values) => {
+  if (!values) {
+    return undefined;
+  }
+
+  const middle = Math.floor(values.length / 2);
+
+  if (values.length % 2 === 0) {
+    const left = values[middle];
+    const right = values[middle + 1];
+
+    return (left + right) / 2;
+  } else {
+    return values[middle];
+  }
+};
+
 const roundForDisplay = (value) => isNaN(value) ? 0 : round(value, 2);
 
 const average = (values) => sum(values) / Math.max(1, values.length);
@@ -62,6 +79,7 @@ module.exports = {
   sequentially,
   sum,
   round,
+  median,
   roundForDisplay,
   average,
   isDesiredResponse,

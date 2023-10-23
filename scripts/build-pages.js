@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
-const { db, roundForDisplay, logError } = require('./helpers');
+const { db, median, roundForDisplay, logError } = require('./helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -58,11 +58,18 @@ const build500Page = (shell) => {
 };
 
 const getGlobalStats = () => {
-  return db.row(`
-    SELECT min(total) AS minScore, max(total) AS maxScore
+  const scores = db.rows(`
+    SELECT total
     FROM matches
-    WHERE state = ? AND total > 0
+    WHERE state = ?
+    ORDER BY total ASC
   `, [db.enums.matchState.valid]);
+
+  return {
+    minScore: Math.min(0, ...scores),
+    maxScore: Math.max(0, ...scores),
+    medianScore: roundForDisplay(median(scores) || 0)
+  };
 };
 
 const buildProfilePage = (shell, globalStats, profile) => {
