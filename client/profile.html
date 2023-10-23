@@ -293,7 +293,7 @@
         };
       };
 
-      const allScores = matches.map(x => x.stats.totalScore).sort();
+      const allScores = matches.map(x => x.total).sort();
       const pdf = probabilityDensityFn(allScores);
       const labels = [...new Set(allScores)];
 
@@ -303,8 +303,8 @@
           scales: {
             x: {
               type: 'linear',
-              min: 30,
-              max: 85,
+              min: globalStats.minScore,
+              max: globalStats.maxScore,
               ticks: {
                 stepSize: 5
               }
