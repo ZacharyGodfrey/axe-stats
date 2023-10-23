@@ -49,6 +49,7 @@
         --neutral: #EEEEEE;
         --content-limit: 100ch;
         font-family: 'roboto', monospace;
+        font-size: clamp(18px, 5vw, 32px);
         line-height: 1.5;
         color: var(--dark);
         background: var(--neutral);
@@ -352,14 +353,6 @@
         align-content: start; /* row spacing Y */
       }
 
-      /* .portrait .grid.stack {
-        display: block;
-      } */
-
-      /* .grid:not(.portrait .grid.stack) > * {
-        margin: 0 !important;
-      } */
-
       /* 2-Column Grid Layouts */
       .grid.col-1-1 { grid-template-columns: 1fr 1fr; }
       .grid.col-1-auto { grid-template-columns: 1fr auto; }
@@ -428,26 +421,5 @@
         </p>
       </div>
     </footer>
-
-    <script>
-      (() => {
-        const setOrientationClass = () => {
-          console.log(screen.orientation.type);
-
-          const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
-          const isPortrait = orientation.includes('portrait');
-
-          if (isPortrait) {
-              document.querySelector('body').classList.add('portrait');
-          } else {
-              document.querySelector('body').classList.remove('portrait');
-          }
-        };
-
-        setOrientationClass();
-
-        screen.orientation.addEventListener('change', setOrientationClass);
-      })();
-    </script>
   </body>
 </html>
