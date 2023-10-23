@@ -69,8 +69,7 @@
 
       main {
         flex: 1;
-        display: flex;
-        flex-direction: column;
+        padding: 0 1rem;
       }
 
       main > :nth-last-child(2) {
@@ -88,7 +87,7 @@
 
       /* Element Styles */
 
-      h1, h2, h3, p, li, th, td, a, button {
+      h1, h2, h3, p, li, th, td, a {
         line-height: 1.5;
       }
 
@@ -207,26 +206,13 @@
 
       /* Utility Classes */
 
-      .hide { display: none !important; }
-
       .text-left { text-align: left; }
-      .text-right { text-align: right; }
       .text-center { text-align: center; }
-      .no-wrap { white-space: nowrap; }
-
+      .text-right { text-align: right; }
       .text-lg { font-size: 2rem; }
       .text-white { color: white; }
       .text-main { color: var(--main); }
-
-      .pad, .x-pad {
-        padding-left: 1rem;
-        padding-right: 1rem;
-      }
-
-      .mx-auto {
-        margin-left: auto;
-        margin-right: auto;
-      }
+      .no-wrap { white-space: nowrap; }
 
       .x-limit {
         max-width: var(--content-limit);
@@ -235,8 +221,8 @@
       }
 
       .bg-white {
-        color: var(--dark);
-        background: white;
+        color: white;
+        background: var(--dark);
       }
 
       .bg-dark {
@@ -249,60 +235,7 @@
         background: var(--main);
       }
 
-      .split {
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 2rem;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-      }
-
-      .split:not(.portrait .stack) {
-        display: flex;
-      }
-
-      .split:not(.portrait .stack).x-center {
-        justify-content: center;
-      }
-
-      .split:not(.portrait .stack).y-center {
-        align-items: center;
-      }
-
-      .split:not(.portrait .stack) > * {
-        margin: 0;
-      }
-
-      .split:not(.portrait .stack) > .grow {
-        flex: 1;
-      }
-
-      .split:not(.portrait .stack) > .stretch {
-        align-self: stretch;
-      }
-
-      .split:not(.portrait .stack) > .end {
-        align-self: flex-end;
-      }
-
       /* Component Classes */
-
-      .button {
-        display: inline-block;
-        padding: 0.5rem;
-        text-decoration: none;
-        font-weight: bold;
-        font-family: inherit;
-        font-size: 1rem;
-        background: var(--cta);
-        border: none;
-        border-radius: 0.25rem;
-        cursor: pointer;
-      }
-
-      .button:hover {
-        background: var(--main);
-      }
 
       .profile-image {
         display: block;
@@ -462,17 +395,17 @@
 
     <main>
       {{>page}}
-
-      <footer class="bg-dark">
-        <div class="x-limit">
-          <h2>Axe Charts</h2>
-
-          <p>
-            <a class="text-white" href="mailto:info@axecharts.com">info@axecharts.com</a>
-          </p>
-        </div>
-      </footer>
     </main>
+
+    <footer class="bg-dark">
+      <div class="x-limit">
+        <h2>Axe Charts</h2>
+
+        <p>
+          <a class="text-white" href="mailto:info@axecharts.com">info@axecharts.com</a>
+        </p>
+      </div>
+    </footer>
 
     <script>
       (() => {
