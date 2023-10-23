@@ -362,14 +362,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
 
       const validMatches = matches.filter(x => x.state === db.enums.matchState.valid);
 
-      validMatches.forEach(x => {
-        x.stats = analyzeMatch(x.rounds);
-
-        if (0 < x.total && x.total <= globalStats.minScore) {
-          console.log('Min Score Match:');
-          console.log(JSON.stringify(x, null, 2));
-        }
-      });
+      validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
 
       profile.stats = aggregateMatchStats(validMatches);
       profile.matches = matches;
