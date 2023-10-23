@@ -276,7 +276,7 @@
     </h2>
 
     <div class="card">
-      <div class="chartWrap">
+      <div class="chartWrap mx-auto">
         <canvas id="seasonsChart"></canvas>
       </div>
     </div>
@@ -350,16 +350,22 @@
           data: profile.seasons.map(x => x.seasonRank),
           fill: false,
           backgroundColor: cssVar('main'),
+          borderColor: cssVar('main'),
         },
         {
           data: profile.seasons.map(x => x.playoffRank),
           fill: false,
           backgroundColor: cssVar('cta'),
+          borderColor: cssVar('cta'),
         }
       ]
     },
     options: {
-      // pointStyle: false,
+      scales: {
+        y: {
+          reverse: true
+        }
+      }
     }
   });
 </script>
