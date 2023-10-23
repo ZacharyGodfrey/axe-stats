@@ -344,7 +344,7 @@
   new Chart(document.getElementById('seasonsChart'), {
     type: 'line',
     data: {
-      labels: profile.seasons.map(x => x.name),
+      labels: profile.seasons.map((_, i) => i),
       datasets: [
         {
           data: profile.seasons.map(x => x.seasonRank),
@@ -363,7 +363,10 @@
     options: {
       scales: {
         y: {
-          reverse: true
+          reverse: true,
+          ticks: {
+            stepSize: 1
+          }
         }
       }
     }
