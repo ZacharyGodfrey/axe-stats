@@ -275,8 +275,10 @@
       <a href="#seasons">Seasons</a>
     </h2>
 
-    <div class="card chartWrap">
-      <canvas id="seasonsChart"></canvas>
+    <div class="card">
+      <div class="chartWrap">
+        <canvas id="seasonsChart"></canvas>
+      </div>
     </div>
 
     {{#profile.seasons}}
@@ -287,7 +289,7 @@
         <span>{{shortName}}</span>
       </p>
 
-      <p class="text-right no-wrap">
+      <p class="no-wrap">
         <span>Season Rank</span>
         {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
         {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
