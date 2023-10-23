@@ -269,6 +269,40 @@
   </div>
 </section>
 
+<section id="seasons">
+  <div class="x-limit">
+    <h2>
+      <a href="#seasons">Seasons</a>
+    </h2>
+
+    <div class="grid stack col-2-1">
+      <div class="card">
+        <div class="chartWrap">
+          <canvas id="seasonsChart"></canvas>
+        </div>
+      </div>
+
+      <div>
+        {{#profile.seasons}}
+        <div class="card grid col-1-1-1">
+          <p>{{name}}</p>
+
+          <p class="text-center">
+            {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
+            {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
+          </p>
+
+          <p class="text-center">
+            {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
+            {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
+          </p>
+        </div>
+        {{/profile.seasons}}
+      </div>
+    </div>
+  </div>
+</section>
+
 <script>
   const { profile } = {{{dataJson}}};
   const { matches } = profile;
@@ -304,6 +338,28 @@
           }
         }
       }
+    }
+  });
+
+  new Chart(document.getElementById('seasonsChart'), {
+    type: 'line',
+    data: {
+      labels: profile.seasons.map(x => x.name),
+      datasets: [
+        {
+          data: profile.seasons.map(x => x.seasonRank),
+          fill: false,
+          backgroundColor: cssVar('main'),
+        },
+        {
+          data: profile.seasons.map(x => x.playoffRank),
+          fill: false,
+          backgroundColor: cssVar('cta'),
+        }
+      ]
+    },
+    options: {
+      // pointStyle: false,
     }
   });
 </script>
