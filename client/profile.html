@@ -311,18 +311,12 @@
             x: {
               type: 'linear',
               min: Math.min(...allScores),
-              max: Math.max(...allScores),
-              ticks: {
-                stepSize: 5
-              }
+              max: Math.max(...allScores)
             },
             y: {
               type: 'linear',
               min: 0,
-              max: Math.max(Object.values(frequencies)),
-              ticks: {
-                stepSize: 10
-              }
+              max: Math.max(...Object.values(frequencies))
             }
           },
           pointStyle: false,
