@@ -280,19 +280,19 @@
     </div>
 
     {{#profile.seasons}}
-    <div class="card grid col-1-1-1 items-y-center">
+    <div class="card grid col-1-auto items-y-center">
       <p>
         <strong>{{name}}</strong>
         <br>
         <span>{{shortName}}</span>
       </p>
 
-      <p class="text-center">
+      <p class="text-right no-wrap">
+        <span>Season Rank</span>
         {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
         {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
-      </p>
-
-      <p class="text-center">
+        <br>
+        <span>Playoff Rank</span>
         {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
         {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
       </p>
