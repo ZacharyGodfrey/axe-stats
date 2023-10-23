@@ -429,6 +429,7 @@
     <script>
       const cssVar = (name) => getComputedStyle(document.body).getPropertyValue(`--${name}`);
 
+      Chart.defaults.aspectRatio = 3;
       Chart.defaults.plugins.legend.display = false;
       Chart.defaults.plugins.tooltip.enabled = false;
       Chart.overrides.doughnut.cutout = '80%';
