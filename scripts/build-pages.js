@@ -58,16 +58,18 @@ const build500Page = (shell) => {
 };
 
 const getGlobalStats = () => {
-  const scores = db.rows(`
+  const rows = db.rows(`
     SELECT total
     FROM matches
     WHERE state = ?
     ORDER BY total ASC
   `, [db.enums.matchState.valid]);
 
+  const scores = rows.map(x => x.total);
+
   return {
-    minScore: Math.min(0, ...scores),
-    maxScore: Math.max(0, ...scores),
+    minScore: Math.min(...scores),
+    maxScore: Math.max(...scores),
     medianScore: roundForDisplay(median(scores) || 0)
   };
 };
