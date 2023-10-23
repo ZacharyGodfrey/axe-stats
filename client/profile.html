@@ -236,35 +236,31 @@
       <a href="#matchScoreFrequencies">Match Score Frequencies</a>
     </h2>
 
-    <div class="grid stack col-2-1">
-      <div class="card">
-        <div class="chartWrap">
-          <canvas id="matchScoreChart"></canvas>
-        </div>
+    <div class="card">
+      <div class="chartWrap">
+        <canvas id="matchScoreChart"></canvas>
       </div>
+    </div>
 
-      <div>
-        <div class="card grid col-auto-1">
-          <p>High Score</p>
-          <p class="text-right">
-            <strong>{{matchScoreStats.maxScore}}</strong>
-          </p>
-        </div>
+    <div class="card grid col-auto-1">
+      <p>High Score</p>
+      <p class="text-right">
+        <strong>{{matchScoreStats.maxScore}}</strong>
+      </p>
+    </div>
 
-        <div class="card grid col-auto-1">
-          <p>Median Score</p>
-          <p class="text-right">
-            <strong>{{matchScoreStats.medianScore}}</strong>
-          </p>
-        </div>
+    <div class="card grid col-auto-1">
+      <p>Median Score</p>
+      <p class="text-right">
+        <strong>{{matchScoreStats.medianScore}}</strong>
+      </p>
+    </div>
 
-        <div class="card grid col-auto-1">
-          <p>Low Score</p>
-          <p class="text-right">
-            <strong>{{matchScoreStats.minScore}}</strong>
-          </p>
-        </div>
-      </div>
+    <div class="card grid col-auto-1">
+      <p>Low Score</p>
+      <p class="text-right">
+        <strong>{{matchScoreStats.minScore}}</strong>
+      </p>
     </div>
   </div>
 </section>
@@ -328,10 +324,10 @@
       }]
     },
     options: {
-      aspectRatio: 2 / 3,
-      indexAxis: 'y',
+      // aspectRatio: 2 / 3,
+      // indexAxis: 'y',
       scales: {
-        x: {
+        y: {
           title: {
             text: 'Frequency',
             display: true
@@ -340,7 +336,7 @@
             display: false
           }
         },
-        y: {
+        x: {
           title: {
             text: 'Score',
             display: true
