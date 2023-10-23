@@ -32,7 +32,8 @@ const buildHomePage = (shell, globalStats, profiles) => {
     title: undefined,
     globalStats,
     profiles,
-    profilesJson: JSON.stringify(profiles, null, 2)
+    globalStatsJson: JSON.stringify(globalStats),
+    profilesJson: JSON.stringify(profiles)
   };
 
   return render(shell, data, { page });
@@ -69,9 +70,9 @@ const buildProfilePage = (shell, globalStats, profile) => {
   const data = {
     title: profile.name,
     profile,
+    globalStatsJson: JSON.stringify(globalStats),
     profileJson: JSON.stringify({ ...profile, matches: undefined }),
-    matchesJson: JSON.stringify(profile.matches),
-    globalStatsJson: JSON.stringify(globalStats)
+    matchesJson: JSON.stringify(profile.matches)
   };
 
   return render(shell, data, { page });
