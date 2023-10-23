@@ -58,8 +58,8 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
     `, [
       `${name} ${shortName}`,
       date,
-      seasonRank,
-      playoffRank,
+      seasonRank || 0,
+      playoffRank || 0,
       seasonId,
       profileId
     ]);
