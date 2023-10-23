@@ -481,7 +481,7 @@
           console.log(screen.orientation.type);
 
           const orientation = screen.orientation.type?.toLowerCase() || 'landscape';
-          const isPortrait = orientation.includes('portrait');
+          const isPortrait = orientation.includes('portrait') || screen.availWidth < 1000;
 
           if (isPortrait) {
               document.querySelector('body').classList.add('portrait');
