@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
-const { db, median, roundForDisplay, logError } = require('./helpers');
+const { db, median, average, roundForDisplay, logError } = require('./helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -70,7 +70,8 @@ const getGlobalStats = () => {
   return {
     minScore: Math.min(...scores),
     maxScore: Math.max(...scores),
-    medianScore: roundForDisplay(median(scores) || 0)
+    medianScore: roundForDisplay(median(scores) || 0),
+    meanScore: average(scores)
   };
 };
 
