@@ -38,11 +38,16 @@ db.prepare(`
 `).run();
 
 db.prepare(`
+  DROP TABLE seasons;
+`).run();
+
+db.prepare(`
   CREATE TABLE IF NOT EXISTS seasons (
     seasonId INTEGER NOT NULL,
     profileId INTEGER NOT NULL,
 
     name TEXT NOT NULL DEFAULT '',
+    shortName TEXT NOT NULL DEFAULT '',
     date TEXT NOT NULL DEFAULT '',
     seasonRank INTEGER NOT NULL DEFAULT 0,
     playoffRank INTEGER NOT NULL DEFAULT 0,

@@ -280,8 +280,12 @@
     </div>
 
     {{#profile.seasons}}
-    <div class="card grid col-1-1-1">
-      <p>{{name}}</p>
+    <div class="card grid col-1-1-1 items-y-center">
+      <p>
+        <strong>{{name}}</strong>
+        <br>
+        <span>{{shortName}}</span>
+      </p>
 
       <p class="text-center">
         {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
