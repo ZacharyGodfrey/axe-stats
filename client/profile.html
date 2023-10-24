@@ -43,7 +43,7 @@
   <div class="x-limit">
     <div class="grid stack col-1-1-1 items-y-stretch">
       <div class="card text-center no-break">
-        <!-- <canvas id="averageScoreArc"></canvas> -->
+        <canvas id="averageScoreArc"></canvas>
 
         <p class="text-lg">{{profile.stats.match.averageScore}}</p>
 
@@ -55,7 +55,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <!-- <canvas id="winPercentArc"></canvas> -->
+        <canvas id="winPercentArc"></canvas>
 
         <p class="text-lg">{{profile.stats.match.winPercent}}%</p>
 
@@ -67,7 +67,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <!-- <canvas id="bigAxeWinArc"></canvas> -->
+        <canvas id="bigAxeWinArc"></canvas>
 
         <p class="text-lg">{{profile.stats.bigAxe.roundWinPercent}}%</p>
 
@@ -294,9 +294,9 @@
   const { profile } = {{{dataJson}}};
   const { matches } = profile;
 
-  // statArc('averageScoreArc', 81, profile.stats.match.averageScore);
-  // statArc('winPercentArc', 100, profile.stats.match.winPercent);
-  // statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
+  statArc('averageScoreArc', 81, profile.stats.match.averageScore);
+  statArc('winPercentArc', 100, profile.stats.match.winPercent);
+  statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
   // statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
   // statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
   // statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
