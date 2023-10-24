@@ -271,27 +271,32 @@
       <canvas id="seasonsChart"></canvas>
     </div>
 
-    {{#profile.seasons}}
-    <div class="card grid stack col-1-auto items-y-center">
-      <p>
-        <span>#{{order}}</span>
-        <br>
-        <strong>{{name}}</strong>
-        <br>
-        <span>{{shortName}}</span>
-      </p>
+    <details>
+      <summary>View List</summary>
 
-      <p class="text-right no-wrap">
-        <span>Season Rank</span>
-        {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
-        {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
-        <br>
-        <span>Playoff Rank</span>
-        {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
-        {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
-      </p>
-    </div>
-    {{/profile.seasons}}
+      {{#profile.seasons}}
+      <div class="card grid stack col-1-auto items-y-center">
+        <p>
+          <span>#{{order}}</span>
+          <br>
+          <strong>{{name}}</strong>
+          <br>
+          <span>{{shortName}}</span>
+        </p>
+
+        <p class="text-right no-wrap">
+          <span>Season Rank</span>
+          {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
+          {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
+          <br>
+          <span>Playoff Rank</span>
+          {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
+          {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
+        </p>
+      </div>
+      {{/profile.seasons}}
+    </details>
+
   </div>
 </section>
 
