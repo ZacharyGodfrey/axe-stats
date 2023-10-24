@@ -366,7 +366,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
 
       validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
 
-      profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 }));
+      profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
       profile.stats = aggregateMatchStats(validMatches);
       profile.matches = validMatches;
 

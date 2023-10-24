@@ -359,18 +359,18 @@
   new Chart(document.getElementById('seasonsChart'), {
     type: 'line',
     data: {
-      labels: profile.seasons.map((_, i) => i + 1),
+      labels: profile.seasons.map(x => x.order),
       datasets: [
         {
           label: 'Season Rank',
-          data: profile.seasons.map(x => x.seasonRank),
+          data: profile.seasons.map(x => x.seasonRank || null),
           fill: false,
           backgroundColor: cssVar('main'),
           borderColor: cssVar('main'),
         },
         {
           label: 'Playoff Rank',
-          data: profile.seasons.map(x => x.playoffRank),
+          data: profile.seasons.map(x => x.playoffRank || null),
           fill: false,
           backgroundColor: cssVar('cta'),
           borderColor: cssVar('cta'),
