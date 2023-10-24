@@ -231,7 +231,7 @@
 
     <div class="grid stack col-1-1">
       <div class="card">
-        <canvas id="matchScoreChart"></canvas>
+        <canvas id="matchScoresChart"></canvas>
       </div>
 
       <div>
@@ -327,7 +327,7 @@
   const allScores = matches.map(x => x.total).sort();
   const frequencies = allScores.reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
 
-  new Chart(document.getElementById('matchScoreChart'), {
+  new Chart(document.getElementById('matchScoresChart'), {
     type: 'bar',
     data: {
       labels: Object.keys(frequencies),
@@ -337,10 +337,10 @@
       }]
     },
     options: {
-      // aspectRatio: 2 / 3,
-      // indexAxis: 'y',
+      aspectRatio: 2 / 3,
+      indexAxis: 'y',
       scales: {
-        y: {
+        x: {
           title: {
             text: 'Frequency',
             display: true
@@ -349,7 +349,7 @@
             display: false
           }
         },
-        x: {
+        y: {
           title: {
             text: 'Score',
             display: true
