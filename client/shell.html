@@ -35,7 +35,7 @@
       :root {
         --hue: 200;
         --highlight: hsl(var(--hue), 80%, 80%);
-        --cta:       hsl(var(--hue), 80%, 60%);
+        --light:     hsl(var(--hue), 80%, 60%);
         --main:      hsl(var(--hue), 50%, 40%);
         --dark:      hsl(var(--hue), 50%, 20%);
         --neutral: #EEEEEE;
@@ -236,6 +236,11 @@
       .bg-white {
         color: var(--dark);
         background: white;
+      }
+
+      .bg-light {
+        color: var(--dark);
+        background: var(--light);
       }
 
       .bg-dark {
