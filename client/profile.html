@@ -341,18 +341,6 @@
     };
   })();
 
-  console.log(matchScoreHistogram);
-
-  const allScores = matches.map(x => x.total).sort();
-  const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
-  const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
-
-  allScores.forEach(score => {
-    const bucket = [...buckets].reverse().find(b => b <= score);
-
-    histogram[bucket]++;
-  });
-
   new Chart(document.getElementById('matchScoresChart'), {
     type: 'bar',
     data: {
@@ -392,21 +380,33 @@
     }
   });
 
+  const seasonsChart = (() => {
+    const seasons = [...profile.seasons].reverse();
+
+    return {
+      labels: seasons.map(x => x.order),
+      values: {
+        seasonRank: seasons.map(x => x.seasonRank || null),
+        playoffRank: seasons.map(x => x.playoffRank || null)
+      }
+    }
+  })();
+
   new Chart(document.getElementById('seasonsChart'), {
     type: 'line',
     data: {
-      labels: profile.seasons.map(x => x.order),
+      labels: seasonsChart.labels,
       datasets: [
         {
           label: 'Season Rank',
-          data: profile.seasons.map(x => x.seasonRank || null),
+          data: seasonsChart.values.seasonRank,
           fill: false,
           backgroundColor: cssVar('main'),
           borderColor: cssVar('main'),
         },
         {
           label: 'Playoff Rank',
-          data: profile.seasons.map(x => x.playoffRank || null),
+          data: seasonsChart.values.playoffRank,
           fill: false,
           backgroundColor: cssVar('cta'),
           borderColor: cssVar('cta'),
