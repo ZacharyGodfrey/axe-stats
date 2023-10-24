@@ -234,19 +234,33 @@
       <canvas id="matchScoresChart"></canvas>
     </div>
 
-    <div class="card grid col-1-1 items-y-center">
-      <span>High Score</span>
+    <details>
+      <summary>Details</summary>
 
-      <strong>{{matchScoreStats.maxScore}}</strong>
+      <div class="card grid col-auto-1">
+        <p>High Score</p>
 
-      <span>Median Score</span>
+        <p class="text-right">
+          <strong>{{matchScoreStats.maxScore}}</strong>
+        </p>
+      </div>
 
-      <strong>{{matchScoreStats.medianScore}}</strong>
+      <div class="card grid col-auto-1">
+        <p>Median Score</p>
 
-      <span>Low Score</span>
+        <p class="text-right">
+          <strong>{{matchScoreStats.medianScore}}</strong>
+        </p>
+      </div>
 
-      <strong>{{matchScoreStats.minScore}}</strong>
-    </div>
+      <div class="card grid col-auto-1">
+        <p>Low Score</p>
+
+        <p class="text-right">
+          <strong>{{matchScoreStats.minScore}}</strong>
+        </p>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -261,7 +275,7 @@
     </div>
 
     <details>
-      <summary>View List</summary>
+      <summary>Details</summary>
 
       {{#profile.seasons}}
       <div class="card grid stack col-1-auto items-y-center">
