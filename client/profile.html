@@ -399,19 +399,23 @@
   })();
 
   new Chart(document.getElementById('seasonsChart'), {
-    type: 'bar',
+    type: 'line',
     data: {
       labels: seasonsChart.labels,
       datasets: [
         {
           label: 'Season Rank',
           data: seasonsChart.values.seasonRank,
-          backgroundColor: cssVar('main')
+          fill: false,
+          backgroundColor: cssVar('main'),
+          borderColor: cssVar('main')
         },
         {
           label: 'Playoff Rank',
           data: seasonsChart.values.playoffRank,
-          backgroundColor: cssVar('light')
+          fill: false,
+          backgroundColor: cssVar('light'),
+          borderColor: cssVar('light')
         }
       ]
     },
@@ -429,7 +433,7 @@
             display: true
           },
           reverse: true,
-          min: 1,
+          min: 0,
           max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
           ticks: {
             stepSize: 1
