@@ -424,6 +424,8 @@
             display: true
           },
           reverse: true,
+          min: 1,
+          max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
           ticks: {
             stepSize: 1
           }
