@@ -32,7 +32,7 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   const { name, about, leagues } = state.player.playerData;
   const seasons = leagues.filter(x => x.performanceName === 'IATF Premier');
   const weeks = seasons.flatMap(x => x.seasonWeeks);
-  const matches = weeks.flatMap(x => x.matches);
+  const matches = weeks.flatMap(x => x.matches).filter(x => x.result);
 
   db.run(`
     INSERT OR IGNORE INTO profiles
