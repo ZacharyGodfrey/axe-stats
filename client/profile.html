@@ -8,23 +8,15 @@
       <div>
         <h2>{{profile.name}}</h2>
 
-        <p>
+        <p class="grid col-auto-1">
           <strong>Global Rank</strong>
           <span>#{{profile.rank}}</span>
-        </p>
 
-        <p>
           <strong>Collins Rating</strong>
           <span>{{profile.rating}}</span>
-        </p>
 
-        <p class="no-wrap">
           <strong>Career Record</strong>
-          <span>{{profile.stats.match.win}}</span>
-          <span>/</span>
-          <span>{{profile.stats.match.loss}}</span>
-          <span>/</span>
-          <span>{{profile.stats.match.otl}}</span>
+          <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
         </p>
       </div>
     </div>
@@ -87,7 +79,7 @@
       <a href="#hatchetAccuracy">Hatchet</a>
     </h2>
 
-    <div class="grid col-1-1-1">
+    <div class="grid stack col-1-1-1">
       <div>
         <div class="targetStats">
           <div class="clutch">
@@ -169,7 +161,7 @@
       <a href="#bigAxeAccuracy">Big Axe</a>
     </h2>
 
-    <div class="grid col-1-1-1">
+    <div class="grid stack col-1-1-1">
       <div>
         <div class="targetStats">
           <div class="clutch">
