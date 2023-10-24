@@ -1,11 +1,21 @@
+<style>
+  #profile-image-wrap {
+    grid-column: 2;
+  }
+
+  #profile-stats-wrap {
+    grid-column: 1;
+  }
+</style>
+
 <section class="bg-main" id="profile">
   <div class="x-limit">
-    <div class="grid stack col-1-2 items-y-center">
-      <p>
+    <div class="grid stack col-2-1 items-y-center">
+      <p id="profile-image-wrap">
         <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
       </p>
 
-      <div>
+      <div id="profile-stats-wrap">
         <h2>{{profile.name}}</h2>
 
         <p class="grid col-auto-1">
