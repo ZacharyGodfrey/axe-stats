@@ -327,28 +327,26 @@
   const allScores = matches.map(x => x.total).sort();
   const frequencies = allScores.reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
 
+  const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
+  const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
+
+  allScores.forEach(score => {
+    const bucket = [...buckets].sort().reverse().find(b => b <= score);
+
+    histogram[bucket]++;
+  });
+
   new Chart(document.getElementById('matchScoresChart'), {
     type: 'bar',
     data: {
-      labels: Object.keys(frequencies),
+      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 10}`),
       datasets: [{
-        data: Object.values(frequencies),
+        data: buckets.map(b => histogram[b]),
         backgroundColor: cssVar('main'),
       }]
     },
     options: {
-      // aspectRatio: 2 / 3,
-      // indexAxis: 'y',
       scales: {
-        y: {
-          title: {
-            text: 'Frequency',
-            display: true
-          },
-          grid: {
-            display: false
-          }
-        },
         x: {
           title: {
             text: 'Score',
@@ -357,12 +355,21 @@
           grid: {
             display: false
           },
-          type: 'linear',
-          min: Math.min(...allScores),
-          max: Math.max(...allScores),
-          ticks: {
-            stepSize: 1
+          // type: 'linear',
+          // min: Math.min(...allScores),
+          // max: Math.max(...allScores),
+          // ticks: {
+          //   stepSize: 1
+          // },
+        },
+        y: {
+          title: {
+            text: 'Frequency',
+            display: true
           },
+          grid: {
+            display: false
+          }
         }
       }
     }
