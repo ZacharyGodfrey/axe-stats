@@ -229,32 +229,36 @@
       <a href="#matchScores">Match Score Frequencies</a>
     </h2>
 
-    <div class="card">
-      <canvas id="matchScoreChart"></canvas>
-    </div>
+    <div class="grid stack col-1-1">
+      <div class="card">
+        <canvas id="matchScoreChart"></canvas>
+      </div>
 
-    <div class="card grid col-auto-1">
-      <p>High Score</p>
+      <div>
+        <div class="card grid col-auto-1">
+          <p>High Score</p>
 
-      <p class="text-right">
-        <strong>{{matchScoreStats.maxScore}}</strong>
-      </p>
-    </div>
+          <p class="text-right">
+            <strong>{{matchScoreStats.maxScore}}</strong>
+          </p>
+        </div>
 
-    <div class="card grid col-auto-1">
-      <p>Median Score</p>
+        <div class="card grid col-auto-1">
+          <p>Median Score</p>
 
-      <p class="text-right">
-        <strong>{{matchScoreStats.medianScore}}</strong>
-      </p>
-    </div>
+          <p class="text-right">
+            <strong>{{matchScoreStats.medianScore}}</strong>
+          </p>
+        </div>
 
-    <div class="card grid col-auto-1">
-      <p>Low Score</p>
+        <div class="card grid col-auto-1">
+          <p>Low Score</p>
 
-      <p class="text-right">
-        <strong>{{matchScoreStats.minScore}}</strong>
-      </p>
+          <p class="text-right">
+            <strong>{{matchScoreStats.minScore}}</strong>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
