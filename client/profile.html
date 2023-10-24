@@ -1,26 +1,14 @@
-<style>
-  #profile-image-wrap {
-    grid-row: 1;
-    grid-column: 2;
-  }
-
-  #profile-stats-wrap {
-    grid-row: 1;
-    grid-column: 1;
-  }
-</style>
-
 <section class="bg-main" id="profile">
   <div class="x-limit">
-    <div class="grid stack col-2-1 items-y-center">
-      <p id="profile-image-wrap">
+    <div class="grid stack col-1-2 items-y-center">
+      <p>
         <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
       </p>
 
-      <div class="text-right" id="profile-stats-wrap">
+      <div>
         <h2>{{profile.name}}</h2>
 
-        <p class="grid col-1-auto">
+        <p class="grid col-auto-1">
           <strong>Global Rank</strong>
           <span>#{{profile.rank}}</span>
 
