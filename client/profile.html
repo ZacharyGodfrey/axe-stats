@@ -125,7 +125,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <!-- <canvas id="hatchetBullseyeChart"></canvas> -->
+        <canvas id="hatchetBullseyeChart"></canvas>
 
         <p class="text-lg">{{profile.stats.hatchet.target.fivePercent}}%</p>
 
@@ -136,18 +136,26 @@
         <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
       </div>
 
-      <div class="card text-center no-break">
-        <!-- <canvas id="hatchetClutchHitChart"></canvas> -->
+      <div>
+        <div class="card text-center no-break">
+          <canvas id="hatchetClutchHitChart"></canvas>
 
-        <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
+          <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
-        <p>
-          <strong>Clutch Hit Rate</strong>
-        </p>
+          <p>
+            <strong>Clutch Hit Rate</strong>
+          </p>
 
-        <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+          <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+        </div>
 
-        <p>Clutch Call Rate: {{profile.stats.hatchet.clutch.callPercent}}%</p>
+        <div class="card grid col-auto-1">
+          <p>Clutch Call Rate</p>
+
+          <p class="text-right">
+            <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
+          </p>
+        </div>
       </div>
     </div>
 
@@ -199,7 +207,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <!-- <canvas id="bigAxeBullseyeChart"></canvas> -->
+        <canvas id="bigAxeBullseyeChart"></canvas>
 
         <p class="text-lg">{{profile.stats.bigAxe.target.fivePercent}}%</p>
 
@@ -211,7 +219,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <!-- <canvas id="bigAxeClutchHitChart"></canvas> -->
+        <canvas id="bigAxeClutchHitChart"></canvas>
 
         <p class="text-lg">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
 
@@ -237,6 +245,7 @@
 
     <div class="card grid col-auto-1">
       <p>High Score</p>
+
       <p class="text-right">
         <strong>{{matchScoreStats.maxScore}}</strong>
       </p>
@@ -244,6 +253,7 @@
 
     <div class="card grid col-auto-1">
       <p>Median Score</p>
+
       <p class="text-right">
         <strong>{{matchScoreStats.medianScore}}</strong>
       </p>
@@ -251,6 +261,7 @@
 
     <div class="card grid col-auto-1">
       <p>Low Score</p>
+
       <p class="text-right">
         <strong>{{matchScoreStats.minScore}}</strong>
       </p>
@@ -304,10 +315,10 @@
   statArc('averageScoreArc', 81, profile.stats.match.averageScore);
   statArc('winPercentArc', 100, profile.stats.match.winPercent);
   statArc('bigAxeWinArc', 100, profile.stats.bigAxe.roundWinPercent);
-  // statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
-  // statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
-  // statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
-  // statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
+  statArc('hatchetBullseyeChart', 100, profile.stats.hatchet.target.fivePercent);
+  statArc('hatchetClutchHitChart', 100, profile.stats.hatchet.clutch.hitPercent);
+  statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
+  statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
 
   const allScores = matches.map(x => x.total).sort();
   const frequencies = allScores.reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
