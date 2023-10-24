@@ -352,14 +352,15 @@
       }
 
       /* 2-Column Grid Layouts */
-      .grid.col-1-1 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+      .grid.col-1-1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .grid.col-1-auto { grid-template-columns: minmax(0, 1fr) auto; }
       .grid.col-auto-1 { grid-template-columns: auto minmax(0, 1fr); }
 
       /* 3-Column Grid Layouts */
-      .grid.col-1-1-1 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr); }
+      .grid.col-1-1-1 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .grid.col-2-1 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
       .grid.col-1-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
+      .grid.col-1-auto-1 { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
 
       .grid.no-gap { gap: unset; }
 

@@ -81,13 +81,13 @@
   </div>
 </section>
 
-<section id="hatchetAccuracy">
+<section>
   <div class="x-limit">
-    <h2>
+    <h2 id="hatchetAccuracy">
       <a href="#hatchetAccuracy">Hatchet</a>
     </h2>
 
-    <div class="grid col-1-1-1 items-y-stretch">
+    <div class="grid col-1-1-1">
       <div>
         <div class="targetStats">
           <div class="clutch">
@@ -150,16 +150,18 @@
         <p>Clutch Call Rate: {{profile.stats.hatchet.clutch.callPercent}}%</p>
       </div>
     </div>
-  </div>
-</section>
 
-<section id="bigAxeAccuracy">
-  <div class="x-limit">
-    <h2>
+    <div class="grid col-1-auto-1 items-y-center">
+      <hr>
+      <h3>Text Here</h3>
+      <hr>
+    </div>
+
+    <h2 id="bigAxeAccuracy">
       <a href="#bigAxeAccuracy">Big Axe</a>
     </h2>
 
-    <div class="grid col-1-1-1 items-y-stretch">
+    <div class="grid col-1-1-1">
       <div>
         <div class="targetStats">
           <div class="clutch">
@@ -289,6 +291,11 @@
     {{/profile.seasons}}
   </div>
 </section>
+
+<!-- <section>
+  <div class="x-limit">
+  </div>
+</section> -->
 
 <script>
   const { profile } = {{{dataJson}}};
