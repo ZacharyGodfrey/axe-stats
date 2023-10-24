@@ -78,10 +78,6 @@
         padding: 2rem 1rem;
       }
 
-      nav {
-        padding: 1rem;
-      }
-
       footer {
         padding: 4rem 1rem 2rem 1rem;
       }
@@ -260,11 +256,16 @@
       }
 
       .card {
+        display: block;
         margin: 1rem 0;
         padding: 1rem;
         border-radius: 0.5rem;
         color: var(--dark);
         background: white;
+      }
+
+      .card.shrink {
+        display: inline-block;
       }
 
       .targetStats {
