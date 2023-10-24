@@ -295,14 +295,14 @@
           <span>{{shortName}}</span>
         </p>
 
-        <p class="text-right no-wrap">
-          <span>Season Rank</span>
-          {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
-          {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
-          <br>
-          <span>Playoff Rank</span>
-          {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
-          {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
+        <p class="grid col-auto-1">
+          <span class="no-wrap">Season Rank</span>
+          {{#seasonRank}}<strong class="text-right">{{seasonRank}}</strong>{{/seasonRank}}
+          {{^seasonRank}}<strong class="text-right">TBD</strong>{{/seasonRank}}
+
+          <span class="no-wrap">Playoff Rank</span>
+          {{#playoffRank}}<strong class="text-right">{{playoffRank}}</strong>{{/playoffRank}}
+          {{^playoffRank}}<strong class="text-right">TBD</strong>{{/playoffRank}}
         </p>
       </div>
       {{/profile.seasons}}
