@@ -271,23 +271,29 @@
       <summary>Details</summary>
 
       {{#profile.seasons}}
-      <div class="card grid stack col-1-auto items-y-center">
-        <p>
+      <div class="card grid stack col-1-auto">
+        <div class="grid col-auto-1">
           <span>#{{order}}</span>
-          <br>
-          <strong>{{name}}</strong>
-          <br>
-          <span>{{shortName}}</span>
-        </p>
+
+          <span>
+            <strong>{{name}}</strong>
+            <br>
+            <span>{{shortName}}</span>
+          </span>
+        </div>
 
         <div class="grid col-auto-1 no-gap-y">
           <span>Season Rank</span>
-          {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
-          {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
+          <strong>
+            {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
+            {{^seasonRank}}TBD{{/seasonRank}}
+          </strong>
 
           <span>Playoff Rank</span>
-          {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
-          {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
+          <strong>
+            {{#playoffRank}}{{playoffRank}}{{/playoffRank}}
+            {{^playoffRank}}TBD{{/playoffRank}}
+          </strong>
         </div>
       </div>
       {{/profile.seasons}}
