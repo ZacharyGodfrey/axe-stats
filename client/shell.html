@@ -362,7 +362,8 @@
       .grid.col-1-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
       .grid.col-1-auto-1 { grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
 
-      .grid.no-gap { gap: unset; }
+      .grid.no-gap, .grid.no-gap-x { column-gap: 0; }
+      .grid.no-gap, .grid.no-gap-y { row-gap: 0; }
 
       .grid.items-x-center { justify-items: center; }
       .grid.items-y-center { align-items: center; }
