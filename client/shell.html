@@ -16,22 +16,6 @@
         src: url(data:application/x-font-ttf;charset=utf-8;base64,//robotoFont//);
       }
 
-      @media screen and (min-width: 801px) {
-        .grid > * {
-          margin: 0 !important;
-        }
-      }
-
-      @media screen and (max-width: 800px) {
-        .grid.stack {
-          display: block;
-        }
-
-        .grid:not(.stack) > * {
-          margin: 0 !important;
-        }
-      }
-
       :root {
         --hue: 200;
         --highlight: hsl(var(--hue), 80%, 80%);
@@ -370,6 +354,32 @@
 
       .grid.items-x-stretch { justify-items: stretch; }
       .grid.items-y-stretch { align-items: stretch; }
+
+      /* Small Screens */
+      @media screen and (max-width: 800px) {
+        .grid.stack {
+          display: block;
+        }
+
+        .grid:not(.stack) > * {
+          margin: 0 !important;
+        }
+
+        .only-lg {
+          display: none;
+        }
+      }
+
+      /* Large Screens */
+      @media screen and (min-width: 801px) {
+        .grid > * {
+          margin: 0 !important;
+        }
+
+        .only-sm {
+          display: none;
+        }
+      }
     </style>
 
     <script>//chartJS//</script>
