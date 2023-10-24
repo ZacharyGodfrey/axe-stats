@@ -324,14 +324,29 @@
   statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
   statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
 
-  const allScores = matches.map(x => x.total).sort();
-  const frequencies = allScores.reduce((x, score) => ({ ...x, [score]: x[score] ? x[score] + 1 : 1 }), {});
+  const matchScoreHistogram = (() => {
+    const allScores = matches.map(x => x.total).sort();
+    const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
+    const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
 
+    allScores.forEach(score => {
+      const bucket = [...buckets].sort().reverse().find(b => b <= score);
+
+      histogram[bucket]++;
+    });
+
+    return {
+      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 10}`),
+      values: buckets.map(b => histogram[b])
+    };
+  })();
+
+  const allScores = matches.map(x => x.total).sort();
   const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
   const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
 
   allScores.forEach(score => {
-    const bucket = [...buckets].sort().reverse().find(b => b <= score);
+    const bucket = [...buckets].reverse().find(b => b <= score);
 
     histogram[bucket]++;
   });
@@ -339,9 +354,9 @@
   new Chart(document.getElementById('matchScoresChart'), {
     type: 'bar',
     data: {
-      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 10}`),
+      labels: matchScoreHistogram.labels,
       datasets: [{
-        data: buckets.map(b => histogram[b]),
+        data: matchScoreHistogram.values,
         backgroundColor: cssVar('main'),
       }]
     },
@@ -355,12 +370,6 @@
           grid: {
             display: false
           },
-          // type: 'linear',
-          // min: Math.min(...allScores),
-          // max: Math.max(...allScores),
-          // ticks: {
-          //   stepSize: 1
-          // },
         },
         y: {
           title: {
@@ -369,7 +378,13 @@
           },
           grid: {
             display: false
-          }
+          },
+          type: 'linear',
+          min: 0,
+          max: Math.max(...matchScoreHistogram.values),
+          // ticks: {
+          //   stepSize: 1
+          // },
         }
       }
     }
