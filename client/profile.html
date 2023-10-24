@@ -356,7 +356,7 @@
       labels: matchScoreHistogram.labels,
       datasets: [{
         data: matchScoreHistogram.values,
-        backgroundColor: cssVar('main'),
+        backgroundColor: cssVar('main')
       }]
     },
     options: {
@@ -380,10 +380,7 @@
           },
           type: 'linear',
           min: 0,
-          max: Math.max(...matchScoreHistogram.values),
-          // ticks: {
-          //   stepSize: 1
-          // },
+          max: Math.max(...matchScoreHistogram.values)
         }
       }
     }
@@ -402,23 +399,19 @@
   })();
 
   new Chart(document.getElementById('seasonsChart'), {
-    type: 'line',
+    type: 'bar',
     data: {
       labels: seasonsChart.labels,
       datasets: [
         {
           label: 'Season Rank',
           data: seasonsChart.values.seasonRank,
-          fill: false,
-          backgroundColor: cssVar('main'),
-          borderColor: cssVar('main'),
+          backgroundColor: cssVar('main')
         },
         {
           label: 'Playoff Rank',
           data: seasonsChart.values.playoffRank,
-          fill: false,
-          backgroundColor: cssVar('light'),
-          borderColor: cssVar('light'),
+          backgroundColor: cssVar('light')
         }
       ]
     },
