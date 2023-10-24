@@ -241,7 +241,7 @@
 
       <div class="card grid col-1-auto">
         <span>Average Score</span>
-        <strong class="no-wrap">{{matchScoreStats.averageScore}}</strong>
+        <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
       </div>
 
       <div class="card grid col-1-auto">
@@ -280,15 +280,15 @@
           <span>{{shortName}}</span>
         </p>
 
-        <p class="text-right no-wrap">
+        <div class="grid col-auto-1 no-gap-y">
           <span>Season Rank</span>
           {{#seasonRank}}<strong>{{seasonRank}}</strong>{{/seasonRank}}
           {{^seasonRank}}<strong>TBD</strong>{{/seasonRank}}
-          <br>
+
           <span>Playoff Rank</span>
           {{#playoffRank}}<strong>{{playoffRank}}</strong>{{/playoffRank}}
           {{^playoffRank}}<strong>TBD</strong>{{/playoffRank}}
-        </p>
+        </div>
       </div>
       {{/profile.seasons}}
     </details>
