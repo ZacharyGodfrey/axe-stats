@@ -1,9 +1,9 @@
 <section class="bg-main" id="profile">
   <div class="x-limit">
     <div class="grid stack col-1-2 items-y-center">
-      <div>
+      <p>
         <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
-      </div>
+      </p>
 
       <div>
         <h2>{{profile.name}}</h2>
@@ -117,7 +117,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <canvas id="hatchetBullseyeChart"></canvas>
+        <canvas class="only-lg" id="hatchetBullseyeChart"></canvas>
 
         <p class="text-lg">{{profile.stats.hatchet.target.fivePercent}}%</p>
 
@@ -129,7 +129,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <canvas id="hatchetClutchHitChart"></canvas>
+        <canvas class="only-lg" id="hatchetClutchHitChart"></canvas>
 
         <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
@@ -195,7 +195,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <canvas id="bigAxeBullseyeChart"></canvas>
+        <canvas class="only-lg" id="bigAxeBullseyeChart"></canvas>
 
         <p class="text-lg">{{profile.stats.bigAxe.target.fivePercent}}%</p>
 
@@ -207,7 +207,7 @@
       </div>
 
       <div class="card text-center no-break">
-        <canvas id="bigAxeClutchHitChart"></canvas>
+        <canvas class="only-lg" id="bigAxeClutchHitChart"></canvas>
 
         <p class="text-lg">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
 
