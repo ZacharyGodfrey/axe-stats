@@ -226,7 +226,7 @@
 <section id="matchScores">
   <div class="x-limit">
     <h2>
-      <a href="#matchScores">Match Score Frequencies</a>
+      <a href="#matchScores">Match Scores</a>
     </h2>
 
     <div class="grid stack col-1-1">
@@ -340,6 +340,8 @@
       values: buckets.map(b => histogram[b])
     };
   })();
+
+  console.log(matchScoreHistogram);
 
   const allScores = matches.map(x => x.total).sort();
   const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
