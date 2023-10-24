@@ -79,7 +79,7 @@
       <a href="#hatchet">Hatchet</a>
     </h2>
 
-    <div class="grid stack col-1-1-1">
+    <div class="grid stack col-1-1-1 items-y-stretch">
       <div>
         <div class="targetStats">
           <div class="clutch">
@@ -128,26 +128,27 @@
         <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
       </div>
 
-      <div>
-        <div class="card text-center no-break">
-          <canvas id="hatchetClutchHitChart"></canvas>
+      <div class="card text-center no-break">
+        <canvas id="hatchetClutchHitChart"></canvas>
 
-          <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
+        <p class="text-lg">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
-          <p>
-            <strong>Clutch Hit Rate</strong>
-          </p>
+        <p>
+          <strong>Clutch Hit Rate</strong>
+        </p>
 
-          <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
-        </div>
+        <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+      </div>
 
-        <div class="card grid col-auto-1">
-          <p>Clutch Call Rate</p>
+      <div></div>
+      <div></div>
 
-          <p class="text-right">
-            <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
-          </p>
-        </div>
+      <div class="card grid col-auto-1">
+        <p>Clutch Call Rate</p>
+
+        <p class="text-right">
+          <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
+        </p>
       </div>
     </div>
   </div>
@@ -159,7 +160,7 @@
       <a href="#bigAxe">Big Axe</a>
     </h2>
 
-    <div class="grid stack col-1-1-1">
+    <div class="grid stack col-1-1-1 items-y-stretch">
       <div>
         <div class="targetStats">
           <div class="clutch">
@@ -326,13 +327,13 @@
     const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
 
     allScores.forEach(score => {
-      const bucket = [...buckets].sort().reverse().find(b => b <= score);
+      const bucket = [...buckets].reverse().find(b => b <= score);
 
       histogram[bucket]++;
     });
 
     return {
-      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 10}`),
+      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 9}`),
       values: buckets.map(b => histogram[b])
     };
   })();
