@@ -143,12 +143,9 @@
       <div></div>
       <div></div>
 
-      <div class="card grid col-auto-1">
-        <p>Clutch Call Rate</p>
-
-        <p class="text-right">
-          <strong>{{profile.stats.hatchet.clutch.callPercent}}%</strong>
-        </p>
+      <div class="card grid col-1-auto">
+        <span>Clutch Call Rate</span>
+        <strong class="no-wrap">{{profile.stats.hatchet.clutch.callPercent}}%</strong>
       </div>
     </div>
   </div>
@@ -237,36 +234,24 @@
     <details>
       <summary>Details</summary>
 
-      <div class="card grid col-auto-1">
-        <p>High Score</p>
-
-        <p class="text-right">
-          <strong>{{matchScoreStats.maxScore}}</strong>
-        </p>
+      <div class="card grid col-1-auto">
+        <span>High Score</span>
+        <strong class="no-wrap">{{matchScoreStats.maxScore}}</strong>
       </div>
 
-      <div class="card grid col-auto-1">
-        <p>Average Score</p>
-
-        <p class="text-right">
-          <strong>{{profile.stats.match.averageScore}}</strong>
-        </p>
+      <div class="card grid col-1-auto">
+        <span>Average Score</span>
+        <strong class="no-wrap">{{matchScoreStats.averageScore}}</strong>
       </div>
 
-      <div class="card grid col-auto-1">
-        <p>Median Score</p>
-
-        <p class="text-right">
-          <strong>{{matchScoreStats.medianScore}}</strong>
-        </p>
+      <div class="card grid col-1-auto">
+        <span>Median Score</span>
+        <strong class="no-wrap">{{matchScoreStats.medianScore}}</strong>
       </div>
 
-      <div class="card grid col-auto-1">
-        <p>Low Score</p>
-
-        <p class="text-right">
-          <strong>{{matchScoreStats.minScore}}</strong>
-        </p>
+      <div class="card grid col-1-auto">
+        <span>Low Score</span>
+        <strong class="no-wrap">{{matchScoreStats.minScore}}</strong>
       </div>
     </details>
   </div>
