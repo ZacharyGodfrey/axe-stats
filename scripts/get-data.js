@@ -92,7 +92,13 @@ const getMatches = async (page) => {
     WHERE state = ?
   `, [db.enums.matchState.unprocessed]);
 
-  unprocessedMatches.forEach(({ profileId, matchId }) => {
+  const reprocessMatches = config.reprocessMatchIds.length < 1 ? [] : db.rows(`
+    SELECT profileId, matchId
+    FROM matches
+    WHERE matchId IN (${config.reprocessMatchIds.map(() => '?').join(', ')})
+  `, config.reprocessMatchIds);
+
+  unprocessedMatches.concat(reprocessMatches).forEach(({ profileId, matchId }) => {
     profileIds.add(profileId);
     matchIds.add(matchId);
   });
