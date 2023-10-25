@@ -266,64 +266,77 @@
         display: inline-block;
       }
 
-      .targetStats {
-        margin: 1rem auto;
-        padding: 1rem;
-        max-width: 20rem;
-        background: white;
-        border-radius: 0.5rem;
-        text-align: center;
-        font-weight: bold;
-      }
-
-      .targetStats .clutch {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
+      .target {
+        display: inline-grid;
+        grid-template-columns: auto auto auto;
+        grid-template-rows: auto auto auto;
+        justify-items: center;
         align-items: center;
-      }
-
-      .targetStats .clutch .dot {
-        width: 1.5rem;
-        height: 1.5rem;
-        background: green;
-        border-radius: 100%;
-      }
-
-      .targetStats .target {
-        display: flex;
-        flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-content: center;
+        gap: 1rem;
+        padding: 1rem;
+        text-align: center;
+        color: black;
+        background: tan;
+        --center-size: 4rem;
+        --ring-size: 2rem;
       }
 
-      .targetStats .target .ring {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
+      .target .dot {
+        width: 1rem;
+        height: 1rem;
         border-radius: 100%;
+        aspect-ratio: 1 / 1;
+        background: green;
       }
 
-      .ring.one {
-        width: 12rem;
-        height: 12rem;
+      .target .ring {
+        display: grid;
+        justify-items: center;
+        align-items: center;
+        justify-content: center;
+        align-content: center;
+        border-radius: 100%;
+        aspect-ratio: 1 / 1;
+      }
+
+      .ring.outer {
+        width: calc(6 * var(--ring-size) + var(--center-size));
+        grid-template-columns: var(--ring-size) 1fr var(--ring-size);
+        grid-template-rows: var(--ring-size) 1fr var(--ring-size);
+        color: white;
         background: blue;
-        color: white;
       }
 
-      .ring.three {
-        width: 8rem;
-        height: 8rem;
+      .ring.inner {
+        width: calc(4 * var(--ring-size) + var(--center-size));
+        grid-template-columns: var(--ring-size) 1fr var(--ring-size);
+        grid-template-rows: var(--ring-size) 1fr var(--ring-size);
         background: red;
-        color: white;
       }
 
-      .ring.five {
-        width: 4rem;
-        height: 4rem;
+      .ring.center {
+        width: calc(2 * var(--ring-size) + var(--center-size));
+        grid-template-columns: var(--ring-size) var(--center-size) var(--ring-size);
+        grid-template-rows: var(--ring-size) var(--center-size) var(--ring-size);
         background: black;
-        color: white;
+      }
+
+      .target > .label, .target > .ring {
+        grid-column: 2;
+      }
+
+      .ring > .ring, .ring > .label {
+        grid-column: 2;
+      }
+
+      .ring > .ring, .ring.center > .label {
+        grid-row: 2;
+      }
+
+      .ring:not(.center) > .label {
+        grid-row: 3;
       }
 
       /* CSS Grid */

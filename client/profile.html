@@ -80,38 +80,26 @@
     </h2>
 
     <div class="grid stack col-1-1-1 items-y-stretch">
-      <div class="targetStats">
-        <div class="clutch">
-          <div class="dot"></div>
+      <div class="target">
+        <div class="dot"></div>
 
-          <span>{{profile.stats.hatchet.clutch.hit}}</span>
+        <div class="label">{{profile.stats.hatchet.clutch.hit}}</div>
 
-          <div class="dot"></div>
-        </div>
+        <div class="dot"></div>
 
-        <br>
-
-        <div class="target">
-          <div class="ring one">
-            <span>&nbsp;</span>
-
-            <div class="ring three">
-              <span>&nbsp;</span>
-
-              <div class="ring five">
-                <span>{{profile.stats.hatchet.target.five}}</span>
-              </div>
-
-              <span>{{profile.stats.hatchet.target.three}}</span>
+        <div class="ring outer">
+          <div class="ring inner">
+            <div class="ring center">
+              <div class="label">{{profile.stats.hatchet.target.five}}</div>
             </div>
 
-            <span>{{profile.stats.hatchet.target.one}}</span>
+            <div class="label">{{profile.stats.hatchet.target.three}}</div>
           </div>
+
+          <div class="label">{{profile.stats.hatchet.target.one}}</div>
         </div>
 
-        <br>
-
-        <span>{{profile.stats.hatchet.target.drop}} Drops</span>
+        <div class="label">{{profile.stats.hatchet.target.drop}} Drops</div>
       </div>
 
       <div class="card text-center no-break">
