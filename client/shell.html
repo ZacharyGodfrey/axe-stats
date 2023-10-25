@@ -22,6 +22,8 @@
         --light:     hsl(var(--hue), 80%, 60%);
         --main:      hsl(var(--hue), 50%, 40%);
         --dark:      hsl(var(--hue), 50%, 20%);
+        --red:       hsl(0, 60%, 60%);
+        --green:     hsl(120, 40%, 40%);
         --neutral: #EEEEEE;
         --content-limit: 100ch;
         font-family: 'roboto', monospace;
@@ -288,7 +290,7 @@
         width: 1.5rem;
         border-radius: 100%;
         aspect-ratio: 1 / 1;
-        background: hsl(110, 50%, 50%);
+        background: var(--green);
       }
 
       .target .ring {
@@ -306,21 +308,21 @@
         grid-template-columns: var(--ring-size) 1fr var(--ring-size);
         grid-template-rows: var(--ring-size) 1fr var(--ring-size);
         color: white;
-        background: hsl(var(--hue), 70%, 50%);
+        background: var(--light);
       }
 
       .ring.inner {
         grid-column: 2;
         grid-template-columns: var(--ring-size) 1fr var(--ring-size);
         grid-template-rows: var(--ring-size) 1fr var(--ring-size);
-        background: hsl(0, 70%, 50%);
+        background: var(--red);
       }
 
       .ring.center {
         grid-column: 2;
         grid-template-columns: var(--ring-size) auto var(--ring-size);
         grid-template-rows: var(--ring-size) auto var(--ring-size);
-        background: hsl(var(--hue), 100%, 10%);
+        background: var(--dark);
       }
 
       .target .label {
