@@ -285,19 +285,18 @@
       }
 
       .target .dot {
-        width: 1rem;
-        height: 1rem;
+        width: 1.5rem;
         border-radius: 100%;
         aspect-ratio: 1 / 1;
-        background: green;
+        background: hsl(110, 50%, 50%);
       }
 
       .target .ring {
         display: grid;
         justify-items: center;
         align-items: center;
-        justify-content: center;
-        align-content: center;
+        justify-content: stretch;
+        align-content: stretch;
         border-radius: 100%;
         aspect-ratio: 1 / 1;
       }
@@ -307,23 +306,26 @@
         grid-template-columns: var(--ring-size) 1fr var(--ring-size);
         grid-template-rows: var(--ring-size) 1fr var(--ring-size);
         color: white;
-        background: blue;
+        background: hsl(var(--hue), 70%, 50%);
       }
 
       .ring.inner {
+        grid-column: 2;
         grid-template-columns: var(--ring-size) 1fr var(--ring-size);
         grid-template-rows: var(--ring-size) 1fr var(--ring-size);
-        background: red;
+        background: hsl(0, 70%, 50%);
       }
 
       .ring.center {
+        grid-column: 2;
         grid-template-columns: var(--ring-size) auto var(--ring-size);
         grid-template-rows: var(--ring-size) auto var(--ring-size);
-        background: black;
+        background: hsl(var(--hue), 100%, 10%);
       }
 
-      .target .label, .ring > .ring {
+      .target .label {
         grid-column: 2;
+        line-height: 1.5;
       }
 
       .target .ring, .ring.center > .label {
