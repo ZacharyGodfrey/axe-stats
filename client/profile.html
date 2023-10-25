@@ -360,8 +360,7 @@
           },
           grid: {
             display: false
-          },
-          type: 'linear',
+          }
         },
         y: {
           title: {
@@ -424,7 +423,8 @@
           beginAtZero: true,
           grace: 1,
           ticks: {
-            stepSize: 1
+            stepSize: 1,
+            count: seasonsChart.labels.length + 1
           }
         },
         y: {
@@ -434,7 +434,7 @@
           },
           type: 'linear',
           reverse: true,
-          beginAtZero: true,
+          // beginAtZero: true,
           grace: 1,
           ticks: {
             stepSize: 1
