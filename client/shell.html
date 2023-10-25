@@ -303,7 +303,7 @@
       }
 
       .ring.outer {
-        width: calc(6 * var(--ring-size) + var(--center-size));
+        grid-column: 1 / 4;
         grid-template-columns: var(--ring-size) 1fr var(--ring-size);
         grid-template-rows: var(--ring-size) 1fr var(--ring-size);
         color: white;
@@ -311,28 +311,22 @@
       }
 
       .ring.inner {
-        width: calc(4 * var(--ring-size) + var(--center-size));
         grid-template-columns: var(--ring-size) 1fr var(--ring-size);
         grid-template-rows: var(--ring-size) 1fr var(--ring-size);
         background: red;
       }
 
       .ring.center {
-        width: calc(2 * var(--ring-size) + var(--center-size));
-        grid-template-columns: var(--ring-size) var(--center-size) var(--ring-size);
-        grid-template-rows: var(--ring-size) var(--center-size) var(--ring-size);
+        grid-template-columns: var(--ring-size) auto var(--ring-size);
+        grid-template-rows: var(--ring-size) auto var(--ring-size);
         background: black;
       }
 
-      .target > .label, .target > .ring {
+      .target .label, .ring > .ring {
         grid-column: 2;
       }
 
-      .ring > .ring, .ring > .label {
-        grid-column: 2;
-      }
-
-      .ring > .ring, .ring.center > .label {
+      .target .ring, .ring.center > .label {
         grid-row: 2;
       }
 
