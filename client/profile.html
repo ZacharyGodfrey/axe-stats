@@ -419,6 +419,11 @@
             text: 'Season',
             display: true
           },
+          min: 0,
+          max: Math.max(...seasonsChart.labels) + 1,
+          ticks: {
+            stepSize: 1
+          }
         },
         y: {
           title: {
