@@ -419,8 +419,10 @@
             text: 'Season',
             display: true
           },
-          min: 0,
-          max: Math.max(...seasonsChart.labels) + 1,
+          beginAtZero: true,
+          grace: 1,
+          // min: 0,
+          // max: Math.max(...seasonsChart.labels) + 1,
           ticks: {
             stepSize: 1
           }
@@ -431,8 +433,10 @@
             display: true
           },
           reverse: true,
-          min: 0,
-          max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
+          beginAtZero: true,
+          grace: 1,
+          // min: 0,
+          // max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
           ticks: {
             stepSize: 1
           }
