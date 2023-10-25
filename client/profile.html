@@ -420,11 +420,13 @@
             display: true
           },
           type: 'linear',
-          beginAtZero: true,
-          grace: 1,
+          // beginAtZero: true,
+          // grace: 1,
+          min: 0,
+          max: Math.max(...seasonsChart.labels) + 1,
           ticks: {
             stepSize: 1,
-            count: seasonsChart.labels.length + 1
+            count: seasonsChart.labels.length + 2
           }
         },
         y: {
