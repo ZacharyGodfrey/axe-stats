@@ -98,7 +98,7 @@ const getMatches = async (page) => {
     WHERE matchId IN (${config.reprocessMatchIds.map(() => '?').join(', ')})
   `, config.reprocessMatchIds);
 
-  unprocessedMatches.concat(reprocessMatches).forEach(({ profileId, matchId }) => {
+  reprocessMatches.concat(unprocessedMatches).forEach(({ profileId, matchId }) => {
     profileIds.add(profileId);
     matchIds.add(matchId);
   });
