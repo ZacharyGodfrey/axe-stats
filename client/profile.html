@@ -420,8 +420,6 @@
             display: true
           },
           type: 'linear',
-          // beginAtZero: true,
-          // grace: 1,
           min: 0,
           max: Math.max(...seasonsChart.labels) + 1,
           ticks: {
@@ -436,11 +434,11 @@
           },
           type: 'linear',
           reverse: true,
-          // beginAtZero: true,
-          min: 1,
-          grace: 1,
+          min: 0,
+          max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
           ticks: {
-            stepSize: 1
+            stepSize: 1,
+            count: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 2
           }
         }
       }
