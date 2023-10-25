@@ -361,6 +361,7 @@
           grid: {
             display: false
           },
+          type: 'linear',
         },
         y: {
           title: {
@@ -371,7 +372,7 @@
             display: false
           },
           type: 'linear',
-          min: 0,
+          beginAtZero: true,
           max: Math.max(...matchScoreHistogram.values)
         }
       }
@@ -422,8 +423,6 @@
           type: 'linear',
           beginAtZero: true,
           grace: 1,
-          // min: 0,
-          // max: Math.max(...seasonsChart.labels) + 1,
           ticks: {
             stepSize: 1
           }
@@ -437,18 +436,9 @@
           reverse: true,
           beginAtZero: true,
           grace: 1,
-          // min: 0,
-          // max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
           ticks: {
             stepSize: 1
           }
-        }
-      },
-      plugins: {
-        legend: {
-          display: true,
-          position: 'bottom',
-          align: 'center'
         }
       }
     }
