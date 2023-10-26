@@ -279,7 +279,7 @@
     <figure>
       <table>
         <thead>
-          <tr>
+          <tr class="text-center">
             <th>ID</th>
             <th colspan="2">Result</th>
             <th colspan="3">Round 1</th>
@@ -288,21 +288,22 @@
             <th colspan="3">Big Axe</th>
           </tr>
         </thead>
+
         <tbody>
           {{#profile.matches}}
           <tr>
-            <td>{{matchId}}</td>
-            <td>{{outcome}}</td>
-            <td>{{total}}</td>
+            <td class="text-right">{{matchId}}</td>
+            <td class="text-center">{{outcome}}</td>
+            <td class="text-center">{{total}}</td>
             {{#rounds}}
-            <td>{{outcome}}</td>
-            <td>{{total}}</td>
+            <td class="text-center">{{outcome}}</td>
             <td>
               {{#throws}}
                 {{^clutch}}<span>{{score}}</span>{{/clutch}}
                 {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
               {{/throws}}
             </td>
+            <td class="text-center">{{total}}</td>
             {{/rounds}}
           </tr>
           {{/profile.matches}}
