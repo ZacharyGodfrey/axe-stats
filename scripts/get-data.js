@@ -171,33 +171,28 @@ const mapMatch = (profileId, rawMatch) => {
     };
 
     switch (true) {
-      case total  >  opponent.score: round.outcome = 'W'; break;
-      case total  <  opponent.score: round.outcome = 'L'; break;
-      case total === opponent.score: round.outcome = 'T'; break;
+      case total  >  opponent.score: round.outcome = 'Win'; break;
+      case total  <  opponent.score: round.outcome = 'Loss'; break;
+      case total === opponent.score: round.outcome = 'Tie'; break;
     }
 
     match.total += round.bigAxe ? 0 : total;
 
-    if (round.bigAxe) {
-      switch (round.outcome) {
-        case 'W': bigAxeWins++; break;
-        case 'L': bigAxeLosses++; break;
-      }
-    } else {
-      switch (round.outcome) {
-        case 'W': roundWins++; break;
-        case 'L': roundLosses++; break;
-      }
+    switch (true) {
+      case round.bigAxe && round.outcome === 'Win': bigAxeWins++; break;
+      case round.bigAxe && round.outcome === 'Loss': bigAxeLosses++; break;
+      case !round.bigAxe && round.outcome === 'Win': roundWins++; break;
+      case !round.bigAxe && round.outcome === 'Loss': roundLosses++; break;
     }
 
     match.rounds.push(round);
   });
 
   switch (true) {
-    case roundWins > roundLosses:   match.outcome = 'W'; break;
-    case bigAxeWins > bigAxeLosses: match.outcome = 'W'; break;
-    case roundLosses > roundWins:   match.outcome = 'L'; break;
-    case bigAxeLosses > bigAxeWins: match.outcome = 'O'; break;
+    case roundWins > roundLosses:   match.outcome = 'Win'; break;
+    case bigAxeWins > bigAxeLosses: match.outcome = 'Win'; break;
+    case roundLosses > roundWins:   match.outcome = 'Loss'; break;
+    case bigAxeLosses > bigAxeWins: match.outcome = 'OTL'; break;
   }
 
   return match;
@@ -206,6 +201,14 @@ const mapMatch = (profileId, rawMatch) => {
 (async () => {
   try {
     console.log('Config: ', JSON.stringify(config, null, 2));
+
+    if (config.resetAllData) {
+      console.log('Resetting all data');
+
+      db.run('DELETE FROM profiles');
+      db.run('DELETE FROM matches');
+      db.run('DELETE FROM seasons');
+    }
 
     const browser = await puppeteer.launch();
     const page = await browser.newPage();

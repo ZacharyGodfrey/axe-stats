@@ -2,6 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
+const config = require('../config.json');
 const { db, median, roundForDisplay, logError } = require('./helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
@@ -124,9 +125,9 @@ const analyzeMatch = (rounds) => {
     const category = bigAxe ? stats.bigAxe : stats.hatchet;
 
     switch (outcome) {
-      case 'W': category.roundWin++; break;
-      case 'L': category.roundLoss++; break;
-      case 'T': category.roundTie++; break;
+      case 'Win': category.roundWin++; break;
+      case 'Loss': category.roundLoss++; break;
+      case 'Tie': category.roundTie++; break;
     }
 
     category.roundCount++;
@@ -235,10 +236,10 @@ const aggregateMatchStats = (matches) => {
   };
 
   matches.forEach((match) => {
-    stats.match.win += match.outcome === 'W' ? 1 : 0;
-    stats.match.loss += match.outcome === 'L' ? 1 : 0;
-    stats.match.otl += match.outcome === 'O' ? 1 : 0;
-    stats.match.winWithoutBigAxe += match.outcome === 'W' && match.stats.bigAxe.roundCount === 0 ? 1 : 0;
+    stats.match.win += match.outcome === 'Win' ? 1 : 0;
+    stats.match.loss += match.outcome === 'Loss' ? 1 : 0;
+    stats.match.otl += match.outcome === 'OTL' ? 1 : 0;
+    stats.match.winWithoutBigAxe += match.outcome === 'Win' && match.stats.bigAxe.roundCount === 0 ? 1 : 0;
     stats.match.totalScore += match.total;
 
     stats.hatchet.roundWin += match.stats.hatchet.roundWin;
@@ -319,7 +320,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
   return [
     profileId,
     matchId,
-    outcome,
+    outcome[0],
     total,
     ...rounds.flatMap(({ outcome, throws }) => [
       outcome,
@@ -332,8 +333,13 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
   try {
     console.log(JSON.stringify({
       CLIENT_DIR,
-      DIST_DIR
+      DIST_DIR,
+      config
     }, null, 2));
+
+    if (config.resetAllData) {
+      throw new Error('Skipping build while config.resetAllData is true');
+    }
 
     fs.emptyDirSync(DIST_DIR);
     fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
