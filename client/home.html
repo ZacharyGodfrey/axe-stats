@@ -10,11 +10,9 @@
   <div class="x-limit">
     <h2>Global Ranking</h2>
 
-    <div class="grid col-0-0-1">
+    <div class="grid col-0-1">
       {{#profiles}}
-      <div class="card subgrid colspan-3">
-        <div>#{{rank}}</div>
-
+      <div class="card subgrid colspan-2 items-y-center">
         <div>
           <a href="/{{profileId}}">
             <img class="profile-image" src="data:image/png;base64,{{{image}}}">
@@ -25,10 +23,11 @@
           <strong>
             <a href="/{{profileId}}">{{name}}</a>
           </strong>
+          <br>
+          <span>#{{rank}}</span>
         </div>
 
-        <div>NULL</div>
-        <div>NULL</div>
+        <div></div>
 
         <div>
           <details>
