@@ -8,7 +8,7 @@
       <div>
         <h2>{{profile.name}}</h2>
 
-        <p class="grid col-auto-1">
+        <p class="grid col-0-1">
           <strong>Global Rank</strong>
           <span>#{{profile.rank}}</span>
 
@@ -129,7 +129,7 @@
       <div></div>
       <div></div>
 
-      <div class="card grid col-1-auto">
+      <div class="card grid col-1-0">
         <span>Clutch Call Rate</span>
         <strong class="no-wrap">{{profile.stats.hatchet.clutch.callPercent}}%</strong>
       </div>
@@ -206,22 +206,22 @@
     <details>
       <summary>Details</summary>
 
-      <div class="card grid col-1-auto">
+      <div class="card grid col-1-0">
         <span>High Score</span>
         <strong class="no-wrap">{{matchScoreStats.maxScore}}</strong>
       </div>
 
-      <div class="card grid col-1-auto">
+      <div class="card grid col-1-0">
         <span>Average Score</span>
         <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
       </div>
 
-      <div class="card grid col-1-auto">
+      <div class="card grid col-1-0">
         <span>Median Score</span>
         <strong class="no-wrap">{{matchScoreStats.medianScore}}</strong>
       </div>
 
-      <div class="card grid col-1-auto">
+      <div class="card grid col-1-0">
         <span>Low Score</span>
         <strong class="no-wrap">{{matchScoreStats.minScore}}</strong>
       </div>
@@ -243,8 +243,8 @@
       <summary>Details</summary>
 
       {{#profile.seasons}}
-      <div class="card grid stack col-1-auto">
-        <div class="grid col-auto-1">
+      <div class="card grid stack col-1-0">
+        <div class="grid col-0-1">
           <span>#{{order}}</span>
 
           <span>
@@ -254,7 +254,7 @@
           </span>
         </div>
 
-        <div class="grid col-auto-1 no-gap-y">
+        <div class="grid col-0-1 no-gap-y">
           <span>Season Rank</span>
           <strong>
             {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
