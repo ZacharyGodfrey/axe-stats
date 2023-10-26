@@ -1,3 +1,15 @@
+<style>
+  .homeGrid {
+    grid-template-columns: auto 1fr auto auto;
+  }
+
+  .homeGrid-row {
+    grid-column: span 4;
+    display: grid;
+    grid-template-columns: subgrid;
+  }
+</style>
+
 <section class="bg-main">
   <div class="x-limit">
     <h1 class="text-center">Axe Charts</h1>
@@ -10,9 +22,9 @@
   <div class="x-limit">
     <h2>Global Ranking</h2>
 
-    {{#profiles}}
-    <div class="card grid stack col-1-auto items-y-center">
-      <div class="grid col-auto-1 items-y-center">
+    <div class="grid stack items-y-center homeGrid">
+      {{#profiles}}
+      <div class="card homeGrid-row">
         <a href="/{{profileId}}">
           <img class="profile-image" src="data:image/png;base64,{{{image}}}">
         </a>
@@ -26,16 +38,33 @@
         </p>
       </div>
 
-      <div class="grid col-auto-1">
-        <span class="text-right">Collins Rating</span>
-        <strong>{{rating}}</strong>
-        <span class="text-right">Average Score</span>
-        <strong>{{stats.match.averageScore}}</strong>
-        <span class="text-right">Win Rate</span>
-        <strong>{{stats.match.winPercent}}%</strong>
+      <div class="grid col-auto-1 items-y-center">
+        <a href="/{{profileId}}">
+          <img class="profile-image" src="data:image/png;base64,{{{image}}}">
+        </a>
+
+        <p>
+          <strong>
+            <a href="/{{profileId}}">{{name}}</a>
+          </strong>
+          <br>
+          <span>#{{rank}}</span>
+        </p>
+
+        <div class="text-right">
+          <div>Collins Rating</div>
+          <div>Average Score</div>
+          <div>Win Rate</div>
+        </div>
+
+        <div>
+          <div>{{rating}}</div>
+          <div>{{stats.match.averageScore}}</div>
+          <div>{{stats.match.winPercent}}%</div>
+        </div>
       </div>
+      {{/profiles}}
     </div>
-    {{/profiles}}
   </div>
 </section>
 
