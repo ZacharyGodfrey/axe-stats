@@ -354,7 +354,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
         SELECT *
         FROM matches
         WHERE profileId = ?
-        ORDER BY matchId ASC
+        ORDER BY matchId DESC
       `, [profile.profileId]);
 
       matches.forEach(x => {
