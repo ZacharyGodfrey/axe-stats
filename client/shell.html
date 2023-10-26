@@ -77,7 +77,12 @@
       }
 
       section {
-        padding: 2rem 1rem;
+        display: grid;
+        grid-template-columns: minmax(1rem, 1fr) minmax(1fr, var(--content-limit)) minmax(1rem, 1fr);
+      }
+
+      section > * {
+        grid-column: 1 / -1;
       }
 
       footer {
