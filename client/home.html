@@ -38,15 +38,23 @@
         </p>
 
         <div class="text-right">
-          <div>Collins Rating</div>
-          <div>Average Score</div>
-          <div>Win Rate</div>
+          <p>Collins Rating</p>
+          <p>Average Score</p>
+          <p>Win Rate</p>
         </div>
 
         <div>
-          <div>{{rating}}</div>
-          <div>{{stats.match.averageScore}}</div>
-          <div>{{stats.match.winPercent}}%</div>
+          <p>
+            <strong>{{rating}}</strong>
+          </p>
+
+          <p>
+            <strong>{{stats.match.averageScore}}</strong>
+          </p>
+
+          <p>
+            <strong>{{stats.match.winPercent}}%</strong>
+          </p>
         </div>
       </div>
       {{/profiles}}
