@@ -64,8 +64,17 @@
         min-height: 100vh;
       }
 
+      header, footer, section {
+        display: grid;
+        grid-template-columns: minmax(1rem, 1fr) minmax(0, var(--content-limit)) minmax(1rem, 1fr);
+      }
+
+      header > *, footer > *, section > * {
+        grid-column: 2 / -2;
+      }
+
       header {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0;
       }
 
       main {
@@ -76,17 +85,8 @@
         flex: 1;
       }
 
-      header, footer, section {
-        display: grid;
-        grid-template-columns: minmax(1rem, 1fr) minmax(0, var(--content-limit)) minmax(1rem, 1fr);
-      }
-
-      header > *, footer > *, section > * {
-        grid-column: 2 / -2;
-      }
-
       footer {
-        padding: 4rem 1rem 2rem 1rem;
+        padding: 4rem 0 2rem 0;
       }
 
       /* Element Styles */
