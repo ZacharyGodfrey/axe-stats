@@ -343,7 +343,7 @@
 
       /* CSS Grid */
 
-      .grid {
+      .grid, .subgrid {
         display: grid;
         margin: 1rem auto;
         gap: 1rem;
@@ -352,6 +352,11 @@
         justify-content: stretch; /* column spacing X */
         align-content: start; /* row spacing Y */
       }
+
+      /* Subgrid */
+      .subgrid { grid-template-columns: subgrid; }
+      .subgrid.colspan-2 { grid-column: span 2; }
+      .subgrid.colspan-3 { grid-column: span 3; }
 
       /* 2-Column Grid Layouts */
       .grid.col-1-1 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -363,10 +368,6 @@
       .grid.col-2-1 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
       .grid.col-1-2 { grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); }
       .grid.col-0-0-1 { grid-template-columns: auto auto minmax(0, 1fr); }
-
-      /* Subgrid */
-      .grid.subgrid-2 { grid-template-columns: subgrid; grid-column: span 2; }
-      .grid.subgrid-3 { grid-template-columns: subgrid; grid-column: span 3; }
 
       .grid.no-gap, .grid.no-gap-x { column-gap: 0; }
       .grid.no-gap, .grid.no-gap-y { row-gap: 0; }

@@ -1,14 +1,3 @@
-<style>
-  .homeGrid {
-    grid-template-columns: auto 1fr auto auto;
-  }
-
-  .homeGrid-row {
-    grid-template-columns: subgrid;
-    grid-column: span 4;
-  }
-</style>
-
 <section class="bg-main">
   <div class="x-limit">
     <h1 class="text-center">Axe Charts</h1>
@@ -23,7 +12,7 @@
 
     <div class="grid col-0-1">
       {{#profiles}}
-      <div class="card grid subgrid-2 items-y-center">
+      <div class="card subgrid colspan-2">
         <p>
           <a href="/{{profileId}}">
             <img class="profile-image" src="data:image/png;base64,{{{image}}}">
