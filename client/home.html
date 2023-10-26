@@ -5,7 +5,6 @@
 
   .homeGrid-row {
     grid-column: span 4;
-    display: grid;
     grid-template-columns: subgrid;
   }
 </style>
@@ -22,9 +21,9 @@
   <div class="x-limit">
     <h2>Global Ranking</h2>
 
-    <div class="grid stack items-y-center homeGrid">
+    <div class="grid homeGrid">
       {{#profiles}}
-      <div class="card homeGrid-row">
+      <div class="card grid items-y-center homeGrid-row">
         <a href="/{{profileId}}">
           <img class="profile-image" src="data:image/png;base64,{{{image}}}">
         </a>
