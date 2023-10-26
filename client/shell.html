@@ -76,12 +76,12 @@
         flex: 1;
       }
 
-      section {
+      header, footer, section {
         display: grid;
-        grid-template-columns: minmax(1rem, 1fr) minmax(1fr, var(--content-limit)) minmax(1rem, 1fr);
+        grid-template-columns: minmax(1rem, 1fr) minmax(0, var(--content-limit)) minmax(1rem, 1fr);
       }
 
-      section > * {
+      header > *, footer > *, section > * {
         grid-column: 1 / -1;
       }
 
