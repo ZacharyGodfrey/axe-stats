@@ -66,7 +66,10 @@ const buildProfilePage = (shell, profile) => {
 
   const data = {
     title: profile.name,
-    profile,
+    profile: {
+      ...profile,
+      matches: profile.matches.map(x => ({ ...x, rowSpan: () => 1 + x.rounds.length }))
+    },
     matchScoreStats,
     dataJson: JSON.stringify({ profile })
   };
