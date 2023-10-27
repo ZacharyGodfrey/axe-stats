@@ -17,23 +17,13 @@
           <img class="profile-image" src="data:image/png;base64,{{{image}}}">
         </a>
 
-        <div>
-          <hgroup>
-            <p>#{{rank}}</p>
+        <hgroup>
+          <p>#{{rank}}</p>
 
-            <h3>
-              <a href="/{{profileId}}">{{name}}</a>
-            </h3>
-          </hgroup>
-
-          <p class="grid columns-auto-fill">
-            <strong>Collins Rating</strong>
-            <span>{{rating}}</span>
-
-            <strong>Career Record</strong>
-            <span class="no-wrap">{{stats.match.win}} / {{stats.match.loss}} / {{stats.match.otl}}</span>
-          </p>
-        </div>
+          <h3>
+            <a href="/{{profileId}}">{{name}}</a>
+          </h3>
+        </hgroup>
       </div>
       {{/profiles}}
     </div>

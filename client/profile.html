@@ -6,12 +6,13 @@
       </p>
 
       <div class="card span-2">
-        <h2>{{profile.name}}</h2>
+        <hgroup>
+          <p>#{{profile.rank}}</p>
+
+          <h2>{{profile.name}}</h2>
+        </hgroup>
 
         <p class="grid columns-auto-fill">
-          <strong>Global Rank</strong>
-          <span>#{{profile.rank}}</span>
-
           <strong>Collins Rating</strong>
           <span>{{profile.rating}}</span>
 
