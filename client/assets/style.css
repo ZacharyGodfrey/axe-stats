@@ -178,6 +178,7 @@ details summary {
 .text-center { text-align: center; }
 .text-right { text-align: right; }
 .text-lg { font-size: 2.25rem; }
+.text-md { font-size: 1.5rem; }
 .text-white { color: white; }
 .text-main { color: var(--main); }
 .no-wrap { white-space: nowrap; }
