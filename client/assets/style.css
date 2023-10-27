@@ -1,0 +1,375 @@
+@font-face {
+  font-family: 'roboto';
+  src: url(data:application/x-font-ttf;charset=utf-8;base64,/*robotoFont*/);
+}
+
+:root {
+  --hue: 200;
+  --highlight: hsl(var(--hue), 80%, 80%);
+  --light:     hsl(var(--hue), 80%, 60%);
+  --main:      hsl(var(--hue), 50%, 40%);
+  --dark:      hsl(var(--hue), 50%, 20%);
+  --red:       hsl(0, 60%, 60%);
+  --green:     hsl(120, 40%, 40%);
+  --neutral: #EEEEEE;
+  --gutter: 1rem;
+  --content-max: 60rem;
+  font-family: 'roboto', monospace;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--dark);
+  background: var(--neutral);
+}
+
+* {
+  position: relative;
+  box-sizing: border-box;
+}
+
+*:first-child {
+  margin-top: 0 !important;
+}
+
+*:last-child {
+  margin-bottom: 0 !important;
+}
+
+::selection {
+  color: white;
+  background: var(--dark);
+}
+
+/* Page Layout */
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  padding: 0.5rem var(--gutter);
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  padding: 2rem var(--gutter);
+}
+
+section {
+  padding: 2rem var(--gutter);
+}
+
+/* Element Styles */
+
+h1, h2, h3, p, li, th, td, a, summary {
+  line-height: 1.5;
+}
+
+h1, h2, h3, p, ul, ol {
+  margin-top: var(--gutter);
+  margin-bottom: var(--gutter);
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+strong {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a {
+  color: var(--main);
+  text-decoration: none;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+header a, header a:hover,
+h1 a, h1 a:hover,
+h2 a, h2 a:hover,
+h3 a, h3 a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol {
+  list-style-position: inside;
+  padding: 0;
+}
+
+hr {
+  width: 100%;
+  height: 2px;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: var(--main);
+}
+
+figure {
+  width: 100%;
+  margin: 1rem auto;
+  overflow-x: auto;
+}
+
+table {
+  min-width: 100%;
+  border-collapse: collapse;
+  color: var(--dark);
+  background: white;
+  border: 1px solid black;
+}
+
+th, td {
+  padding: 0.5rem;
+  vertical-align: middle;
+  border: 1px solid black;
+  text-align: inherit;
+}
+
+th {
+  font-weight: bold;
+  color: white;
+  background: var(--main);
+}
+
+th.minimize, td.minimize {
+  width: 1%;
+}
+
+th.maximize, td.maximize {
+  width: 100%;
+}
+
+details {
+  margin: 1rem auto;
+}
+
+details summary {
+  margin: 1rem auto;
+  cursor: pointer;
+}
+
+/* Utility Classes */
+
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-lg { font-size: 2.25rem; }
+.text-white { color: white; }
+.text-main { color: var(--main); }
+.no-wrap { white-space: nowrap; }
+
+.x-limit {
+  max-width: var(--content-max);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bg-white {
+  color: var(--dark);
+  background: white;
+}
+
+.bg-light {
+  color: var(--dark);
+  background: var(--light);
+}
+
+.bg-main {
+  color: white;
+  background: var(--main);
+}
+
+.bg-dark {
+  color: white;
+  background: var(--dark);
+}
+
+.ratio-2-1 { aspect-ratio: 2 / 1; }
+
+/* Component Classes */
+
+.profile-image {
+  display: block;
+  margin: 1rem auto;
+  width: 8rem;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: white;
+  border: 4px solid white;
+  border-radius: 50%;
+}
+
+.profile-image.grow {
+  width: 100%;
+  max-width: 16rem;
+}
+
+.card {
+  display: block;
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: var(--dark);
+  background: white;
+}
+
+.target {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 1rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  background: white;
+  border-radius: 0.5rem;
+  --ring: 2rem;
+}
+
+.target .dot {
+  width: 1.5rem;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+  background: var(--green);
+}
+
+.target .label {
+  grid-column: 2;
+  line-height: 1.5;
+}
+
+.target .ring {
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  justify-content: stretch;
+  align-content: stretch;
+  border-radius: 100%;
+  aspect-ratio: 1 / 1;
+}
+
+.ring.outer {
+  grid-column: 1 / 4;
+  grid-template-columns: var(--ring) 1fr var(--ring);
+  grid-template-rows: var(--ring) 1fr var(--ring);
+  color: white;
+  background: var(--light);
+}
+
+.ring.inner {
+  grid-column: 2;
+  grid-template-columns: var(--ring) 1fr var(--ring);
+  grid-template-rows: var(--ring) 1fr var(--ring);
+  background: var(--red);
+}
+
+.ring.center {
+  grid-column: 2;
+  grid-template-columns: var(--ring) auto var(--ring);
+  grid-template-rows: var(--ring) auto var(--ring);
+  background: var(--dark);
+}
+
+.ring.center > .label {
+  min-width: var(--ring);
+}
+
+.target .ring, .ring.center > .label {
+  grid-row: 2;
+}
+
+.ring:not(.center) > .label {
+  grid-row: 3;
+}
+
+/* CSS Grid */
+
+.grid {
+  display: grid;
+  column-gap: var(--gutter);
+  row-gap: var(--gutter);
+  justify-items: stretch; /* cell content X */
+  align-items: start; /* cell content Y */
+  justify-content: stretch; /* column spacing X */
+  align-content: start; /* row spacing Y */
+}
+
+.grid.columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.columns-auto-fill { grid-template-columns: auto 1fr; }
+.grid.columns-fill-auto { grid-template-columns: 1fr auto; }
+.grid.columns-fill-auto-auto { grid-template-columns: 1fr auto auto; }
+
+.grid.no-gap, .grid.no-gap-x { column-gap: 0; }
+.grid.no-gap, .grid.no-gap-y { row-gap: 0; }
+
+.grid.items-x-center { justify-items: center; }
+.grid.items-y-center { align-items: center; }
+
+.grid.items-x-stretch { justify-items: stretch; }
+.grid.items-y-stretch { align-items: stretch; }
+
+.grid:not(.stack) > * { margin: 0 !important; }
+
+.grid > .span-2 { grid-column: span 2; }
+.grid > .shift { grid-column-start: 2; }
+.grid > .shift-2 { grid-column-start: 3; }
+
+.grid.sub {
+  grid-template-columns: subgrid;
+  grid-column: 1 / -1;
+  justify-items: inherit;
+  align-items: inherit;
+  justify-content: inherit;
+  align-content: inherit;
+}
+
+/* Small Screens */
+@media screen and (max-width: 800px) {
+  .grid.stack {
+    display: block;
+  }
+
+  .screen-lg {
+    display: none !important;
+  }
+}
+
+/* Large Screens */
+@media screen and (min-width: 801px) {
+  .grid > * {
+    margin: 0 !important;
+  }
+
+  .screen-sm {
+    display: none !important;
+  }
+}

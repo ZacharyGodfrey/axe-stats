@@ -20,11 +20,13 @@ const writeFile = (filePath, content) => {
 
 const getShell = () => {
   const robotoFont = readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64');
+  const stylesheet = readFile(`${CLIENT_DIR}/assets/style.css`);
   const chartJS = readFile(`${CLIENT_DIR}/assets/chart.js`);
 
   return readFile(`${CLIENT_DIR}/shell.html`)
-    .replace('//robotoFont//', robotoFont)
-    .replace('//chartJS//', chartJS);
+    .replace('/*stylesheet*/', stylesheet)
+    .replace('/*robotoFont*/', robotoFont)
+    .replace('/*chartJS*/', chartJS);
 };
 
 const buildHomePage = (shell, profiles) => {

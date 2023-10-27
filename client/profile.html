@@ -1,14 +1,14 @@
 <section class="bg-main" id="profile">
   <div class="x-limit">
-    <div class="grid stack col-1-2 items-y-center">
+    <div class="grid stack columns-3 items-y-center">
       <p>
         <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
       </p>
 
-      <div>
+      <div class="span-2">
         <h2>{{profile.name}}</h2>
 
-        <p class="grid col-auto-1">
+        <p class="grid columns-auto-fill">
           <strong>Global Rank</strong>
           <span>#{{profile.rank}}</span>
 
@@ -33,7 +33,7 @@
 
 <section class="bg-dark" id="stats">
   <div class="x-limit">
-    <div class="grid stack col-1-1-1 items-y-stretch">
+    <div class="grid stack columns-3">
       <div class="card text-center no-break">
         <canvas class="screen-lg" id="averageScoreArc"></canvas>
 
@@ -79,7 +79,7 @@
       <a href="#hatchet">Hatchet</a>
     </h2>
 
-    <div class="grid stack col-1-1-1 items-y-stretch">
+    <div class="grid stack columns-3 items-y-stretch">
       <div class="target">
         <div class="dot"></div>
 
@@ -126,10 +126,7 @@
         <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
       </div>
 
-      <div></div>
-      <div></div>
-
-      <div class="card grid col-1-auto">
+      <div class="card shift-2 grid columns-fill-auto">
         <span>Clutch Call Rate</span>
         <strong class="no-wrap">{{profile.stats.hatchet.clutch.callPercent}}%</strong>
       </div>
@@ -143,7 +140,7 @@
       <a href="#bigAxe">Big Axe</a>
     </h2>
 
-    <div class="grid stack col-1-1-1 items-y-stretch">
+    <div class="grid stack columns-3 items-y-stretch">
       <div class="target">
         <div class="dot"></div>
 
@@ -206,24 +203,26 @@
     <details>
       <summary>Details</summary>
 
-      <div class="card grid col-1-auto">
-        <span>High Score</span>
-        <strong class="no-wrap">{{matchScoreStats.maxScore}}</strong>
-      </div>
+      <div class="grid columns-fill-auto">
+        <div class="card grid sub">
+          <span>High Score</span>
+          <strong class="no-wrap">{{matchScoreStats.maxScore}}</strong>
+        </div>
 
-      <div class="card grid col-1-auto">
-        <span>Average Score</span>
-        <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
-      </div>
+        <div class="card grid sub">
+          <span>Average Score</span>
+          <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
+        </div>
 
-      <div class="card grid col-1-auto">
-        <span>Median Score</span>
-        <strong class="no-wrap">{{matchScoreStats.medianScore}}</strong>
-      </div>
+        <div class="card grid sub">
+          <span>Median Score</span>
+          <strong class="no-wrap">{{matchScoreStats.medianScore}}</strong>
+        </div>
 
-      <div class="card grid col-1-auto">
-        <span>Low Score</span>
-        <strong class="no-wrap">{{matchScoreStats.minScore}}</strong>
+        <div class="card grid sub">
+          <span>Low Score</span>
+          <strong class="no-wrap">{{matchScoreStats.minScore}}</strong>
+        </div>
       </div>
     </details>
   </div>
@@ -242,33 +241,33 @@
     <details>
       <summary>Details</summary>
 
-      {{#profile.seasons}}
-      <div class="card grid stack col-1-auto">
-        <div class="grid col-auto-1">
-          <span>#{{order}}</span>
-
-          <span>
+      <div class="grid columns-fill-auto-auto">
+        {{#profile.seasons}}
+        <div class="card grid sub no-gap-y">
+          <p style="grid-row: span 2;">
+            <span>#{{order}}</span>
+            <br>
             <strong>{{name}}</strong>
             <br>
             <span>{{shortName}}</span>
-          </span>
-        </div>
+          </p>
 
-        <div class="grid col-auto-1 no-gap-y">
           <span>Season Rank</span>
+
           <strong>
             {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
             {{^seasonRank}}TBD{{/seasonRank}}
           </strong>
 
           <span>Playoff Rank</span>
+
           <strong>
             {{#playoffRank}}{{playoffRank}}{{/playoffRank}}
             {{^playoffRank}}TBD{{/playoffRank}}
           </strong>
         </div>
+        {{/profile.seasons}}
       </div>
-      {{/profile.seasons}}
     </details>
 
   </div>
