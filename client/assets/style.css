@@ -83,16 +83,18 @@ hgroup > * {
   margin: 0;
 }
 
-h1 {
+h1, .text-h1 {
   font-size: 3rem;
 }
 
-h2 {
+h2, .text-h2 {
   font-size: 2.5rem;
+  font-weight: normal;
 }
 
-h3 {
+h3, .text-h3 {
   font-size: 2rem;
+  font-weight: normal;
 }
 
 strong {
@@ -173,8 +175,6 @@ details summary {
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
-.text-lg { font-size: 2rem; }
-.text-md { font-size: 1.5rem; }
 .text-white { color: white; }
 .text-main { color: var(--main); }
 .no-wrap { white-space: nowrap; }
