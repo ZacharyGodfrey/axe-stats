@@ -1,28 +1,32 @@
 <section class="bg-main">
-  <h1 class="text-center">Axe Charts</h1>
+  <div class="x-limit">
+    <h1 class="text-center">Axe Charts</h1>
 
-  <p class="text-center">In-Depth IATF Premier Stats</p>
+    <p class="text-center">In-Depth IATF Premier Stats</p>
+  </div>
 </section>
 
 <section>
-  <h2>Global Ranking</h2>
+  <div class="x-limit">
+    <h2>Global Ranking</h2>
 
-  <div class="grid col-0-1">
-    {{#profiles}}
-    <div class="card grid colspan-2 items-y-center">
-      <a href="/{{profileId}}">
-        <img class="profile-image" src="data:image/png;base64,{{{image}}}">
-      </a>
+    <div class="grid columns-auto-fill items-y-center">
+      {{#profiles}}
+      <div class="card grid sub">
+        <a href="/{{profileId}}">
+          <img class="profile-image" src="data:image/png;base64,{{{image}}}">
+        </a>
 
-      <div>
-        <strong>
-          <a href="/{{profileId}}">{{name}}</a>
-        </strong>
-        <br>
-        <span>#{{rank}}</span>
+        <div>
+          <strong>
+            <a href="/{{profileId}}">{{name}}</a>
+          </strong>
+          <br>
+          <span>#{{rank}}</span>
+        </div>
       </div>
+      {{/profiles}}
     </div>
-    {{/profiles}}
   </div>
 </section>
 
