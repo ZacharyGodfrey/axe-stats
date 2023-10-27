@@ -338,6 +338,8 @@ details summary {
 .grid:not(.stack) > * { margin: 0 !important; }
 
 .grid > .span-2 { grid-column: span 2; }
+.grid > .span-3 { grid-column: span 3; }
+
 .grid > .shift { grid-column-start: 2; }
 .grid > .shift-2 { grid-column-start: 3; }
 
