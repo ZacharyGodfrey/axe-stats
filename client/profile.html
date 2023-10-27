@@ -1,6 +1,6 @@
 <section class="bg-main" id="profile">
   <div class="x-limit">
-    <div class="grid stack even-3 items-y-center">
+    <div class="grid stack columns-3 items-y-center">
       <p>
         <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
       </p>
@@ -33,7 +33,7 @@
 
 <section class="bg-dark" id="stats">
   <div class="x-limit">
-    <div class="grid stack even-3">
+    <div class="grid stack columns-3">
       <div class="card text-center no-break">
         <canvas class="screen-lg" id="averageScoreArc"></canvas>
 
@@ -79,7 +79,7 @@
       <a href="#hatchet">Hatchet</a>
     </h2>
 
-    <div class="grid stack col-1-1-1 items-y-stretch">
+    <div class="grid stack columns-3 items-y-stretch">
       <div class="target">
         <div class="dot"></div>
 
@@ -126,10 +126,7 @@
         <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
       </div>
 
-      <div></div>
-      <div></div>
-
-      <div class="card grid col-1-0">
+      <div class="card shift-2 grid columns-fill-auto">
         <span>Clutch Call Rate</span>
         <strong class="no-wrap">{{profile.stats.hatchet.clutch.callPercent}}%</strong>
       </div>
@@ -143,7 +140,7 @@
       <a href="#bigAxe">Big Axe</a>
     </h2>
 
-    <div class="grid stack col-1-1-1 items-y-stretch">
+    <div class="grid stack columns-3 items-y-stretch">
       <div class="target">
         <div class="dot"></div>
 
@@ -206,22 +203,22 @@
     <details>
       <summary>Details</summary>
 
-      <div class="card grid col-1-0">
+      <div class="card grid columns-fill-auto">
         <span>High Score</span>
         <strong class="no-wrap">{{matchScoreStats.maxScore}}</strong>
       </div>
 
-      <div class="card grid col-1-0">
+      <div class="card grid columns-fill-auto">
         <span>Average Score</span>
         <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
       </div>
 
-      <div class="card grid col-1-0">
+      <div class="card grid columns-fill-auto">
         <span>Median Score</span>
         <strong class="no-wrap">{{matchScoreStats.medianScore}}</strong>
       </div>
 
-      <div class="card grid col-1-0">
+      <div class="card grid columns-fill-auto">
         <span>Low Score</span>
         <strong class="no-wrap">{{matchScoreStats.minScore}}</strong>
       </div>
@@ -243,7 +240,7 @@
       <summary>Details</summary>
 
       {{#profile.seasons}}
-      <div class="card grid stack col-1-0">
+      <div class="card grid stack columns-fill-auto">
         <div class="grid col-0-1">
           <span>#{{order}}</span>
 
