@@ -8,7 +8,7 @@
       <div class="span-2">
         <h2>{{profile.name}}</h2>
 
-        <p class="grid col-0-1">
+        <p class="grid columns-auto-fill">
           <strong>Global Rank</strong>
           <span>#{{profile.rank}}</span>
 
@@ -33,8 +33,8 @@
 
 <section class="bg-dark" id="stats">
   <div class="x-limit">
-    <div class="grid stack col-1-1-1 row-0-0-0-0">
-      <div class="card grid rowspan-4 text-center no-break">
+    <div class="grid stack even-3">
+      <div class="card text-center no-break">
         <canvas class="screen-lg" id="averageScoreArc"></canvas>
 
         <p class="text-lg">{{profile.stats.match.averageScore}}</p>
@@ -46,7 +46,7 @@
         <p>{{profile.stats.match.totalScore}} Total Points</p>
       </div>
 
-      <div class="card grid rowspan-4 text-center no-break">
+      <div class="card text-center no-break">
         <canvas class="screen-lg" id="winPercentArc"></canvas>
 
         <p class="text-lg">{{profile.stats.match.winPercent}}%</p>
@@ -58,7 +58,7 @@
         <p>{{profile.stats.match.win}} / {{profile.stats.match.count}} Matches</p>
       </div>
 
-      <div class="card grid rowspan-4 text-center no-break">
+      <div class="card text-center no-break">
         <canvas class="screen-lg" id="bigAxeWinArc"></canvas>
 
         <p class="text-lg">{{profile.stats.bigAxe.roundWinPercent}}%</p>
