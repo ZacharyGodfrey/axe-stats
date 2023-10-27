@@ -18,12 +18,21 @@
         </a>
 
         <div>
-          <span>#{{rank}}</span>
-          <br>
-          <strong>
-            <a href="/{{profileId}}">{{name}}</a>
-          </strong>
-          <br>
+          <p>
+            <span>#{{rank}}</span>
+            <br>
+            <strong>
+              <a href="/{{profileId}}">{{name}}</a>
+            </strong>
+          </p>
+
+          <div class="grid columns-auto-fill">
+            <strong>Collins Rating</strong>
+            <span>{{profile.rating}}</span>
+
+            <strong>Career Record</strong>
+            <span class="no-wrap">{{stats.match.win}} / {{stats.match.loss}} / {{stats.match.otl}}</span>
+          </div>
         </div>
       </div>
       {{/profiles}}

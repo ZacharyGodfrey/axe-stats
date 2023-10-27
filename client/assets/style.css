@@ -322,8 +322,8 @@ details summary {
 }
 
 .grid.columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.grid.columns-auto-fill { grid-template-columns: auto 1fr; }
 .grid.columns-fill-auto { grid-template-columns: 1fr auto; }
+.grid.columns-auto-fill { grid-template-columns: auto 1fr; }
 
 .grid.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid.columns-fill-auto-auto { grid-template-columns: 1fr auto auto; }
