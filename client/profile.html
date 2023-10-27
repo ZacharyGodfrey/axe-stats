@@ -5,7 +5,7 @@
         <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
       </p>
 
-      <div class="span-2">
+      <div class="card span-2">
         <h2>{{profile.name}}</h2>
 
         <p class="grid columns-auto-fill">
@@ -22,11 +22,13 @@
     </div>
 
     {{#profile.about}}
-    <p>
-      <strong>Biography</strong>
-    </p>
+    <div class="card">
+      <p>
+        <strong>Biography</strong>
+      </p>
 
-    <p>{{profile.about}}</p>
+      <p>{{profile.about}}</p>
+    </div>
     {{/profile.about}}
   </div>
 </section>
