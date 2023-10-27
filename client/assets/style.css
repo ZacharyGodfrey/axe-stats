@@ -79,6 +79,10 @@ hgroup, h1, h2, h3, p, ul, ol {
   margin-bottom: var(--gutter);
 }
 
+hgroup > * {
+  margin: 0;
+}
+
 h1 {
   font-size: 3rem;
 }
@@ -89,11 +93,6 @@ h2 {
 
 h3 {
   font-size: 2rem;
-}
-
-hgroup > h1, hgroup > h2, hgroup > h3, hgroup > p {
-  margin: 0;
-  line-height: 1;
 }
 
 strong {
@@ -111,11 +110,7 @@ a:hover {
   text-decoration: underline;
 }
 
-header a, header a:hover,
-h1 a, h1 a:hover,
-h2 a, h2 a:hover,
-h3 a, h3 a:hover {
-  color: inherit;
+header a:hover, h1 a:hover, h2 a:hover, h3 a:hover {
   text-decoration: none;
 }
 
