@@ -91,6 +91,10 @@ h3 {
   font-size: 2rem;
 }
 
+hgroup > h1, hgroup > h2, hgroup > h3, hgroup > p {
+  margin: 0;
+}
+
 strong {
   font-weight: bold;
   text-transform: uppercase;
