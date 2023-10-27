@@ -13,8 +13,7 @@
   --green:     hsl(120, 40%, 40%);
   --neutral: #EEEEEE;
   --gutter: 1rem;
-  --content-max: 48rem;
-  --content-limit: 100ch;
+  --content-max: 60rem;
   font-family: 'roboto', monospace;
   font-size: 16px;
   line-height: 1.5;
