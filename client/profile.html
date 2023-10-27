@@ -250,13 +250,9 @@
       <div class="grid columns-fill-auto-auto">
         {{#profile.seasons}}
         <div class="card grid sub no-gap-y">
-          <p style="grid-row: span 2;">
-            <span>#{{order}}</span>
-            <br>
-            <strong>{{name}}</strong>
-            <br>
-            <span>{{shortName}}</span>
-          </p>
+          <span class="span-3">#{{order}}</span>
+
+          <strong>{{name}}</strong>
 
           <span>Season Rank</span>
 
@@ -264,6 +260,8 @@
             {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
             {{^seasonRank}}TBD{{/seasonRank}}
           </strong>
+
+          <span>{{shortName}}</span>
 
           <span>Playoff Rank</span>
 
