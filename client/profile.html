@@ -288,42 +288,44 @@
 
       <p><sup>*</sup> Indicates that clutch was called.</p>
 
-      <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto);">
-        <div class="card grid sub text-center">
-          <div>Match</div>
-          <div>Round 1</div>
-          <div>Round 2</div>
-          <div>Round 3</div>
-          <div>Big Axe</div>
-        </div>
-
-        {{#profile.matches}}
-        <div class="card grid sub text-center">
-          <div>
-            <span class="text-h3">{{outcome}}</span>
-            <br>
-            <strong>{{total}}</strong>
-            <br>
-            <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
+      <figure>
+        <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto);">
+          <div class="card grid sub text-center">
+            <div>Match</div>
+            <div>Round 1</div>
+            <div>Round 2</div>
+            <div>Round 3</div>
+            <div>Big Axe</div>
           </div>
 
-          {{#rounds}}
-          <div>
-            <span class="text-h3">{{outcome}}</span>
-            <br>
-            <strong>{{total}}</strong>
-            <br>
-            <span class="no-wrap">
-              {{#throws}}
-                {{^clutch}}<span>{{score}}</span>{{/clutch}}
-                {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
-              {{/throws}}
-            </span>
+          {{#profile.matches}}
+          <div class="card grid sub text-center">
+            <div>
+              <span class="text-h3">{{outcome}}</span>
+              <br>
+              <strong>{{total}}</strong>
+              <br>
+              <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
+            </div>
+
+            {{#rounds}}
+            <div>
+              <span class="text-h3">{{outcome}}</span>
+              <br>
+              <strong>{{total}}</strong>
+              <br>
+              <span class="no-wrap">
+                {{#throws}}
+                  {{^clutch}}<span>{{score}}</span>{{/clutch}}
+                  {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
+                {{/throws}}
+              </span>
+            </div>
+            {{/rounds}}
           </div>
-          {{/rounds}}
+          {{/profile.matches}}
         </div>
-        {{/profile.matches}}
-      </div>
+      </figure>
     </details>
   </div>
 </section>
