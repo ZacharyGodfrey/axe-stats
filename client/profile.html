@@ -288,7 +288,8 @@
 
       <p><sup>*</sup> Indicates that clutch was called.</p>
 
-      <div class="grid columns-6">
+      <div class="grid columns-6 items-y-center">
+        {{#profile.matches}}
         <div class="card grid sub">
           <div>
             <a target="_blank" href="https://axescores.com/{{profileId}}/{{matchId}}">View</a>
@@ -315,6 +316,7 @@
           </div>
           {{/rounds}}
         </div>
+        {{/profile.matches}}
       </div>
     </details>
   </div>
