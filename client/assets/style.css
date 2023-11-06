@@ -326,6 +326,8 @@ details summary {
 .grid.columns-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid.columns-fill-auto-auto { grid-template-columns: 1fr auto auto; }
 
+.grid.columns-6 { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+
 .grid.no-gap, .grid.no-gap-x { column-gap: 0; }
 .grid.no-gap, .grid.no-gap-y { row-gap: 0; }
 
