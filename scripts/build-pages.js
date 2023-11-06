@@ -325,7 +325,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     outcome[0],
     total,
     ...rounds.flatMap(({ outcome, throws }) => [
-      outcome,
+      outcome[0],
       throws.map(({ score, clutch }) => score === 0 && clutch ? 'C' : score).join('')
     ])
   ].join(' ');
