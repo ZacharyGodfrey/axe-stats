@@ -212,7 +212,7 @@
       <div class="grid columns-fill-auto">
         <div class="card grid sub">
           <span>High Score</span>
-          <strong class="no-wrap">{{matchScoreStats.maxScore}}</strong>
+          <strong class="no-wrap">{{profile.stats.match.maxScore}}</strong>
         </div>
 
         <div class="card grid sub">
@@ -222,12 +222,12 @@
 
         <div class="card grid sub">
           <span>Median Score</span>
-          <strong class="no-wrap">{{matchScoreStats.medianScore}}</strong>
+          <strong class="no-wrap">{{profile.stats.match.medianScore}}</strong>
         </div>
 
         <div class="card grid sub">
           <span>Low Score</span>
-          <strong class="no-wrap">{{matchScoreStats.minScore}}</strong>
+          <strong class="no-wrap">{{profile.stats.match.minScore}}</strong>
         </div>
       </div>
     </details>
@@ -289,45 +289,42 @@
       <p><sup>*</sup> Indicates that clutch was called.</p>
 
       <figure>
-        <table>
-          <thead class="text-center">
-            <tr>
-              <th rowspan="2">ID</th>
-              <th rowspan="2">Result</th>
-              <th rowspan="2">Total</th>
-              <th colspan="3" class="maximize text-left">Rounds</th>
-            </tr>
+        <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto);">
+          <div class="card grid sub text-center">
+            <div>Match</div>
+            <div>Round 1</div>
+            <div>Round 2</div>
+            <div>Round 3</div>
+            <div>Big Axe</div>
+          </div>
 
-            <tr>
-              <th>Result</th>
-              <th>Total</th>
-              <th class="maximize text-left">Throws</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {{#profile.matches}}
-            <tr>
-              <td rowspan="{{rowSpan}}" class="text-right">{{matchId}}</td>
-              <td rowspan="{{rowSpan}}" class="text-center">{{outcome}}</td>
-              <td rowspan="{{rowSpan}}" class="text-center">{{total}}</td>
-            </tr>
+          {{#profile.matches}}
+          <div class="card grid sub text-center">
+            <div>
+              <span class="text-h3">{{outcome}}</span>
+              <br>
+              <strong>{{total}}</strong>
+              <br>
+              <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
+            </div>
 
             {{#rounds}}
-            <tr>
-              <td class="text-center">{{outcome}}</td>
-              <td class="text-center">{{total}}</td>
-              <td class="no-wrap">
+            <div>
+              <span class="text-h3">{{outcome}}</span>
+              <br>
+              <strong>{{total}}</strong>
+              <br>
+              <span class="no-wrap">
                 {{#throws}}
                   {{^clutch}}<span>{{score}}</span>{{/clutch}}
                   {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
                 {{/throws}}
-              </td>
-            </tr>
+              </span>
+            </div>
             {{/rounds}}
-            {{/profile.matches}}
-          </tbody>
-        </table>
+          </div>
+          {{/profile.matches}}
+        </div>
       </figure>
     </details>
   </div>

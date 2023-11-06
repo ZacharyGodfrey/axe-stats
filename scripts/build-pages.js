@@ -60,20 +60,9 @@ const build500Page = (shell) => {
 
 const buildProfilePage = (shell, profile) => {
   const page = readFile(`${CLIENT_DIR}/profile.html`);
-  const scores = profile.matches.map(x => x.total);
-  const matchScoreStats = {
-    minScore: Math.min(...scores),
-    medianScore: roundForDisplay(median(scores) || 0),
-    maxScore: Math.max(...scores)
-  };
-
   const data = {
     title: profile.name,
-    profile: {
-      ...profile,
-      matches: profile.matches.map(x => ({ ...x, rowSpan: () => 1 + x.rounds.length }))
-    },
-    matchScoreStats,
+    profile,
     dataJson: JSON.stringify({ profile })
   };
 
@@ -171,6 +160,9 @@ const aggregateMatchStats = (matches) => {
       count: matches.length,
       totalScore: 0,
       averageScore: 0,
+      minScore: 0,
+      medianScore: 0,
+      maxScore: 0,
     },
     hatchet: {
       roundWin: 0,
@@ -237,7 +229,11 @@ const aggregateMatchStats = (matches) => {
     },
   };
 
+  let allScores = [];
+
   matches.forEach((match) => {
+    allScores.push(match.total);
+
     stats.match.win += match.outcome === 'Win' ? 1 : 0;
     stats.match.loss += match.outcome === 'Loss' ? 1 : 0;
     stats.match.otl += match.outcome === 'OTL' ? 1 : 0;
@@ -285,6 +281,9 @@ const aggregateMatchStats = (matches) => {
   stats.match.otlPercent = roundForDisplay(100 * stats.match.otl / stats.match.count);
   stats.match.winWithoutBigAxePercent = roundForDisplay(100 * stats.match.winWithoutBigAxe / stats.match.count);
   stats.match.averageScore = roundForDisplay(stats.match.totalScore / stats.match.count);
+  stats.match.minScore = Math.min(...allScores);
+  stats.match.medianScore = roundForDisplay(median(allScores) || 0);
+  stats.match.maxScore = Math.max(...allScores);
 
   stats.hatchet.roundWinPercent = roundForDisplay(100 * stats.hatchet.roundWin / stats.hatchet.roundCount);
   stats.hatchet.roundLossPercent = roundForDisplay(100 * stats.hatchet.roundLoss / stats.hatchet.roundCount);
