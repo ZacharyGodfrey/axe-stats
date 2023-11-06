@@ -290,19 +290,19 @@
 
       <div class="grid items-y-center" style="grid-template-columns: repeat(6, auto);">
         {{#profile.matches}}
-        <div class="card grid sub">
+        <div class="card grid sub text-center">
           <div>
             <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
           </div>
 
-          <div class="text-center">
+          <div>
             <span class="h3">{{outcome}}</span>
             <br>
             <strong>{{total}}</strong>
           </div>
 
           {{#rounds}}
-          <div class="text-center">
+          <div>
             <span class="no-wrap">
               {{#throws}}
                 {{^clutch}}<span>{{score}}</span>{{/clutch}}
