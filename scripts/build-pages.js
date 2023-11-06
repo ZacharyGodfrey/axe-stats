@@ -63,7 +63,8 @@ const buildProfilePage = (shell, profile) => {
   const data = {
     title: profile.name,
     profile,
-    dataJson: JSON.stringify({ profile })
+    dataJson: JSON.stringify({ profile }),
+    matchesText: profile.matches.map(x => matchText(x))
   };
 
   return render(shell, data, { page });
