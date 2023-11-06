@@ -290,13 +290,17 @@
 
       <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto);">
         <div class="card grid sub text-center">
-          <div>Match</div>
-          <div>Round 1</div>
-          <div>Round 2</div>
-          <div>Round 3</div>
-          <div>Big Axe</div>
+          <strong>Match</strong>
+          <strong>Round 1</strong>
+          <strong>Round 2</strong>
+          <strong>Round 3</strong>
+          <strong>Big Axe</strong>
         </div>
+      </div>
 
+      <br>
+
+      <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto); max-height: 80vh; overflow-y: auto;">
         {{#profile.matches}}
         <div class="card grid sub text-center">
           <div>
