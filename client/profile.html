@@ -309,16 +309,16 @@
 
           {{#rounds}}
           <div>
+            <span class="text-h3">{{outcome}}</span>
+            <br>
+            <strong>{{total}}</strong>
+            <br>
             <span class="no-wrap">
               {{#throws}}
                 {{^clutch}}<span>{{score}}</span>{{/clutch}}
                 {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
               {{/throws}}
             </span>
-            <br>
-            <span>{{outcome}}</span>
-            <br>
-            <strong>{{total}}</strong>
           </div>
           {{/rounds}}
         </div>
