@@ -288,11 +288,11 @@
 
       <p><sup>*</sup> Indicates that clutch was called.</p>
 
-      <div class="grid columns-6 items-y-center">
+      <div class="grid items-y-center" style="grid-template-columns: auto repeat(5, minmax(0, 1fr));">
         {{#profile.matches}}
         <div class="card grid sub">
           <div>
-            <a target="_blank" href="https://axescores.com/{{profileId}}/{{matchId}}">View</a>
+            <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
           </div>
 
           <div class="text-center">
