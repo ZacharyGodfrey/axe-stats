@@ -1,9 +1,7 @@
 const puppeteer = require('puppeteer');
 
-const config = require('../config.json');
-const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, logError } = require('./helpers');
-
-const timeout = 2 * 1000;
+const config = require('../config');
+const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, logError } = require('../helpers');
 
 const getProfiles = async (page, profileIds) => {
   const profileIdSet = new Set(profileIds);
@@ -25,18 +23,16 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   console.log(`Scraping profile data for profile ID ${profileId}`);
 
   await page.goto(`https://axescores.com/player/${profileId}`);
-  await waitMilliseconds(timeout);
+  await waitMilliseconds(1000);
 
   const image = await getProfileImage(profileId);
   const state = await reactPageState(page, '#root');
   const { name, about, leagues } = state.player.playerData;
   const seasons = leagues.filter(x => x.performanceName === 'IATF Premier');
-  const weeks = seasons.flatMap(x => x.seasonWeeks);
-  const matches = weeks.flatMap(x => x.matches).filter(x => x.result);
 
   db.run(`
-    INSERT OR IGNORE INTO profiles
-    (profileId) VALUES (?)
+    INSERT OR IGNORE INTO profiles (profileId)
+    VALUES (?)
   `, [profileId]);
 
   db.run(`
@@ -45,12 +41,12 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
     WHERE profileId = ?
   `, [name, about, rank, rating, image, profileId]);
 
-  db.run(`
-    INSERT OR IGNORE INTO seasons
-    (seasonId, profileId) VALUES ${seasons.map(x => `(${x.id}, ${profileId})`).join(', ')}
-  `);
+  seasons.forEach(({ id: seasonId, date, name, shortName, seasonRank, playoffRank, seasonWeeks }) => {
+    db.run(`
+      INSERT OR IGNORE INTO seasons (seasonId, profileId)
+      VALUES (?, ?)
+    `, [seasonId, profileId]);
 
-  seasons.forEach(({ id: seasonId, date, name, shortName, seasonRank, playoffRank }) => {
     db.run(`
       UPDATE seasons
       SET name = ?, shortName = ?, date = ?, seasonRank = ?, playoffRank = ?
@@ -64,12 +60,18 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
       seasonId,
       profileId
     ]);
-  });
 
-  db.run(`
-    INSERT OR IGNORE INTO matches
-    (matchId, profileId) VALUES ${matches.map(x => `(${x.id}, ${profileId})`).join(', ')}
-  `);
+    seasonWeeks.forEach(({ week, matches }) => {
+      matches.forEach(({ id: matchId, result }) => {
+        if (result) {
+          db.run(`
+            INSERT OR IGNORE INTO matches (matchId, profileId, seasonId, week)
+            VALUES (?, ?, ?, ?)
+          `, [matchId, profileId, seasonId, week]);
+        }
+      });
+    });
+  });
 };
 
 const getProfileImage = async (profileId) => {
@@ -111,7 +113,7 @@ const processMatch = async (page, matchId, profileIds) => {
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
   const [apiResponse] = await Promise.all([
-    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout }),
+    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: 2000 }),
     page.goto(url)
   ]);
 
@@ -121,13 +123,14 @@ const processMatch = async (page, matchId, profileIds) => {
   players.forEach(({ id: profileId }) => {
     console.log(`Processing match details for match ID ${matchId} profile ID ${profileId}`);
 
-    const { state, outcome, total, rounds } = mapMatch(profileId, rawMatch);
+    const { opponentId, state, outcome, total, rounds } = mapMatch(profileId, rawMatch);
 
     db.run(`
       UPDATE matches
-      SET state = ?, outcome = ?, total = ?, rounds = ?
+      SET opponentId = ?, state = ?, outcome = ?, total = ?, rounds = ?
       WHERE matchId = ? AND profileId = ?
     `, [
+      opponentId,
       state,
       outcome,
       total,
@@ -142,6 +145,7 @@ const mapMatch = (profileId, rawMatch) => {
   const match = {
     matchId: rawMatch.id,
     profileId,
+    opponentId: rawMatch.players.find(x => x.id !== profileId)?.id || 0,
     state: db.enums.matchState.unprocessed,
     outcome: '',
     total: 0,

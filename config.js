@@ -1,6 +1,7 @@
-{
-  "resetAllData": false,
-  "profileIds": [
+module.exports = {
+  databaseFile: `${__dirname}/database.db`,
+  resetAllData: false,
+  profileIds: [
     1207260,
     1051409,
     728184,
@@ -13,5 +14,5 @@
     1112219,
     1408913
   ],
-  "reprocessMatchIds": []
-}
+  reprocessMatchIds: []
+};

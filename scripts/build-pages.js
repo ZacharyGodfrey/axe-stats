@@ -2,8 +2,8 @@ const path = require('path');
 const fs = require('fs-extra');
 const { render } = require('mustache');
 
-const config = require('../config.json');
-const { db, median, roundForDisplay, logError } = require('./helpers');
+const config = require('../config');
+const { db, median, roundForDisplay, logError } = require('../helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -352,6 +352,10 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       ORDER BY rank ASC, rating DESC
     `);
 
+    writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
+    writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
+    writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
+
     profiles.forEach(profile => {
       const seasons = db.rows(`
         SELECT *
@@ -374,7 +378,14 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
 
       const validMatches = matches.filter(x => x.state === db.enums.matchState.valid);
 
-      validMatches.forEach(x => x.stats = analyzeMatch(x.rounds));
+      validMatches.forEach(x => {
+        x.stats = analyzeMatch(x.rounds);
+        x.opponent = db.row(`
+          SELECT profileId, name, image
+          FROM profiles
+          WHERE profileId = ?
+        `, [x.opponentId]) || null;
+      });
 
       profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
       profile.stats = aggregateMatchStats(validMatches);
@@ -384,11 +395,6 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));
       writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
     });
-
-    writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
-    writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
-    writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
-    writeFile(`${DIST_DIR}/data.json`, JSON.stringify(profiles, null, 2));
   } catch (error) {
     logError(error);
 
