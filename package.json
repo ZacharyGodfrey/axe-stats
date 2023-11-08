@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "scrape": "node ./scripts/get-data.js",
     "build": "node ./scripts/build-pages.js",
     "build-watch": "nodemon ./scripts/build-pages.js --watch client --watch scripts --ext html,css,js",
     "local": "http-server ./dist -a localhost -p 3000",

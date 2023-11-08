@@ -3,8 +3,6 @@ const puppeteer = require('puppeteer');
 const config = require('../config');
 const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, logError } = require('../helpers');
 
-const timeout = 2 * 1000;
-
 const getProfiles = async (page, profileIds) => {
   const profileIdSet = new Set(profileIds);
   const rulesetSelector = '.sc-gwVKww.fJdgsF select';
@@ -25,7 +23,7 @@ const processProfile = async (page, { id: profileId, rank, rating }) => {
   console.log(`Scraping profile data for profile ID ${profileId}`);
 
   await page.goto(`https://axescores.com/player/${profileId}`);
-  await waitMilliseconds(timeout);
+  await waitMilliseconds(1000);
 
   const image = await getProfileImage(profileId);
   const state = await reactPageState(page, '#root');
@@ -115,7 +113,7 @@ const processMatch = async (page, matchId, profileIds) => {
   const apiUrl = `https://api.axescores.com/match/${matchId}`;
 
   const [apiResponse] = await Promise.all([
-    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout }),
+    page.waitForResponse(isDesiredResponse('GET', 200, apiUrl), { timeout: 2000 }),
     page.goto(url)
   ]);
 
@@ -147,7 +145,7 @@ const mapMatch = (profileId, rawMatch) => {
   const match = {
     matchId: rawMatch.id,
     profileId,
-    ooponentId: rawMatch.players.find(x => x.id !== profileId)?.id || 0,
+    opponentId: rawMatch.players.find(x => x.id !== profileId)?.id || 0,
     state: db.enums.matchState.unprocessed,
     outcome: '',
     total: 0,

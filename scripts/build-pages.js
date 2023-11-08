@@ -381,7 +381,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       validMatches.forEach(x => {
         x.stats = analyzeMatch(x.rounds);
         x.opponent = db.row(`
-          SELECT *
+          SELECT profileId, name, image
           FROM profiles
           WHERE profileId = ?
         `, [x.opponentId]) || null;

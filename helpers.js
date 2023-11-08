@@ -75,7 +75,7 @@ exports.sequentially = async (items, action) => {
 
 exports.sum = (values) => values.reduce((t, v) => t + v, 0);
 
-exports.round = (value, places) => {
+const round = exports.round = (value, places) => {
   const factor = 10 ** places;
 
   return Math.round(value * factor) / factor;
