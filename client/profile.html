@@ -462,4 +462,18 @@
       }
     }
   });
+
+  const groupBy = (values, keyFn) => {
+    return values.reduce((x, v) => {
+      const k = keyFn(v);
+
+      return {
+        ...x,
+        [k]: (x[k] || []).concat(v)
+      };
+    }, {});
+  };
+
+  const bySeason = groupBy(matches, x => x.seasonId);
+  const byOpponent = groupBy(matches, x => x.opponentId);
 </script>
