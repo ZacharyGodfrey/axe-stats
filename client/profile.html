@@ -479,7 +479,7 @@
 
   const getAxeChartsRating = () => {
     const { hatchet, bigAxe } = profile.stats;
-    const significantDigits = 4;
+    const significantDigits = 3;
     const multiplier = 10 ** significantDigits;
 
     const pointsEarned = hatchet.totalScore + bigAxe.totalScore;
