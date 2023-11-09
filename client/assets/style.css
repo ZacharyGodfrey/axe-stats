@@ -100,7 +100,6 @@ h3, .text-h3 {
 
 strong {
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 a {
@@ -176,6 +175,7 @@ details summary {
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+.text-upper { text-transform: uppercase; }
 .text-white { color: white; }
 .text-main { color: var(--main); }
 .no-wrap { white-space: nowrap; }
