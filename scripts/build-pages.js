@@ -29,30 +29,14 @@ const getShell = () => {
     .replace('/*chartJS*/', chartJS);
 };
 
+const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
+
 const buildHomePage = (shell, profiles) => {
   const page = readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
     profiles,
     dataJson: JSON.stringify({ profiles })
-  };
-
-  return render(shell, data, { page });
-};
-
-const build404Page = (shell) => {
-  const page = readFile(`${CLIENT_DIR}/404.html`);
-  const data = {
-    title: 'Not Found'
-  };
-
-  return render(shell, data, { page });
-};
-
-const build500Page = (shell) => {
-  const page = readFile(`${CLIENT_DIR}/500.html`);
-  const data = {
-    title: 'Error',
   };
 
   return render(shell, data, { page });
@@ -352,8 +336,9 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       ORDER BY rank ASC, rating DESC
     `);
 
-    writeFile(`${DIST_DIR}/404.html`, build404Page(shell));
-    writeFile(`${DIST_DIR}/500.html`, build500Page(shell));
+    writeFile(`${DIST_DIR}/404.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/404.html`), 'Not Found'));
+    writeFile(`${DIST_DIR}/500.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/500.html`), 'Error'));
+    writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'Rating System'));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
 
     profiles.forEach(profile => {
