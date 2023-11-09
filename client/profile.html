@@ -479,12 +479,14 @@
 
   const getAxeChartsRating = () => {
     const { hatchet, bigAxe } = profile.stats;
+    const significantDigits = 4;
+    const multiplier = 10 ** significantDigits;
 
     const pointsEarned = hatchet.totalScore + bigAxe.totalScore;
     const bullAttempts = hatchet.target.throwCount + bigAxe.target.throwCount;
     const clutchAttempts = hatchet.clutch.call + bigAxe.clutch.call;
     const pointsAvailable = (5 * bullAttempts) + (7 * clutchAttempts);
-    const rating = Math.round(1000 * pointsEarned / pointsAvailable);
+    const rating = Math.round(multiplier * pointsEarned / pointsAvailable);
 
     console.log(`Points Earned: ${pointsEarned}`);
     console.log(`Points Available: ${pointsAvailable}`);
