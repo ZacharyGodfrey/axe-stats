@@ -26,20 +26,24 @@
 
     <h2>How does it work?</h2>
 
-    <div class="card no-wrap">
-      <p>Basic Formula:</p>
+    <p>Your Axe Charts rating is a reflection of your accuracy on both targets (bullseye and clutch) in both disciplines (hatchet and Big Axe). The rating value is the total points earned for all of your throws divided by the total points available - with one caveat. The basic idea is expressed in the simple formula below.</p>
 
+    <div class="card no-wrap">
       <p>ACR = Points Earned / Points Available</p>
     </div>
 
-    <p>Your Axe Charts rating is a reflection of your accuracy on both targets (bullseye and clutch) in both disciplines (hatchet and Big Axe). The rating value is the total points earned for all of your throws divided by the total points available - with one caveat. When clutch is called, technically the number of points available for that throw should be 7. However, adding 7 to the denominator of the formula would penalize throwers more for a missed clutch than for a dropped axe. Instead, the formula treats every throw as if there are only 5 points available. This way, a missed clutch incurs the same penalty as a dropped axe but a hit clutch awards an outsized benefit: gaining 7/5 available points instead of the 5/5 available points for a bullseye. For each throw, the number of points available is 7 if clutch is called and 5 otherwise. This division produces a decimal number between 0 and 1. The final rating value is that number rounded to 3 places and then turned into an integer by multiplying it by 1000.</p>
-
-    <p>As an example, an 852 ACR value means that the thrower has earned 85.2% of all available points.</p>
+    <p>This division produces a decimal number between 0 and 1. Multiplying this decimal number by 1000 makes it a 3 digit number (or 4 if your accuracy is perfect). The final rating value is that 3 digit number rounded to the nearest integer. These details are reflected in the updated formula below.</p>
 
     <div class="card no-wrap">
-      <p>Detailed Formula:</p>
+      <p>ACR = Round(1000 * Points Earned / Points Available)</p>
+    </div>
 
+    <p>Now let's talk about the one caveat. When clutch is called, technically the number of points available for that throw should be 7. However, adding 7 to the denominator of the formula would penalize throwers more for a missed clutch than for a dropped axe. Instead, the formula treats every throw as if there are only 5 points available. This way, a missed clutch incurs the same penalty as a dropped axe but a hit clutch awards an outsized benefit: gaining 7/5 available points instead of the 5/5 available points for a bullseye. The final form of the formula is shown below.</p>
+
+    <div class="card no-wrap">
       <p>ACR = Round((1000 * Total Points) / (5 * Total Throws))</p>
     </div>
+
+    <p>As an example, an 852 ACR value means that the thrower has earned 85.2% of all available points.</p>
   </div>
 </section>
