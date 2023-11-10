@@ -330,6 +330,8 @@
   </div>
 </section>
 
+<!-- {{ACR: profile.meta.acr}} -->
+
 <script>
   const { profile } = {{{dataJson}}};
   const { matches } = profile;
@@ -476,21 +478,4 @@
 
   const bySeason = groupBy(matches, x => x.seasonId);
   const byOpponent = groupBy(matches, x => x.opponentId);
-
-  const getAxeChartsRating = () => {
-    const { hatchet, bigAxe } = profile.stats;
-    const multiplier = 10 ** 3;
-
-    const pointsEarned = hatchet.totalScore + bigAxe.totalScore;
-    const bullAttempts = hatchet.target.throwCount + bigAxe.target.throwCount;
-    const clutchAttempts = hatchet.clutch.call + bigAxe.clutch.call;
-    const pointsAvailable = 5 * (bullAttempts + clutchAttempts); // (5 * bullAttempts) + (7 * clutchAttempts);
-    const rating = Math.round(multiplier * pointsEarned / pointsAvailable);
-
-    console.log(`Points Earned: ${pointsEarned}`);
-    console.log(`Points Available: ${pointsAvailable}`);
-    console.log(`Rating: ${rating}`);
-
-    return rating;
-  };
 </script>

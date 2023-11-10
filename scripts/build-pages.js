@@ -314,6 +314,23 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
   ].join(' ');
 };
 
+const getAxeChartsRating = (profile) => {
+  const { hatchet, bigAxe } = profile.stats;
+  const multiplier = 10 ** 3;
+
+  const pointsEarned = hatchet.totalScore + bigAxe.totalScore;
+  const bullAttempts = hatchet.target.throwCount + bigAxe.target.throwCount;
+  const clutchAttempts = hatchet.clutch.call + bigAxe.clutch.call;
+  const pointsAvailable = 5 * (bullAttempts + clutchAttempts); // (5 * bullAttempts) + (7 * clutchAttempts);
+  const rating = Math.round(multiplier * pointsEarned / pointsAvailable);
+
+  // console.log(`Points Earned: ${pointsEarned}`);
+  // console.log(`Points Available: ${pointsAvailable}`);
+  // console.log(`Rating: ${rating}`);
+
+  return rating;
+};
+
 (() => {
   try {
     console.log(JSON.stringify({
@@ -375,6 +392,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
       profile.stats = aggregateMatchStats(validMatches);
       profile.matches = validMatches;
+      profile.meta = { acr: getAxeChartsRating(profile) };
 
       writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, profile));
       writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));
