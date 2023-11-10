@@ -17,6 +17,8 @@
 
           <strong class="text-upper">Career Record</strong>
           <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
+
+          <strong>{{profile.meta.acr}} <a href="/rating-system">ACR</a></strong>
         </p>
       </div>
     </div>
@@ -329,8 +331,6 @@
     </details>
   </div>
 </section>
-
-<!-- ACR: {{profile.meta.acr}} -->
 
 <script>
   const { profile } = {{{dataJson}}};
