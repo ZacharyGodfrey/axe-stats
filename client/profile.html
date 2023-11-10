@@ -7,7 +7,7 @@
 
       <div class="span-2">
         <hgroup>
-          <p>#{{profile.rank}}</p>
+          <p>#{{profile.rank}} | {{profile.meta.acr}} <a href="/rating-system">ACR</a></p>
           <p class="text-h2">{{profile.name}}</p>
         </hgroup>
 
@@ -17,8 +17,6 @@
 
           <strong class="text-upper">Career Record</strong>
           <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
-
-          <strong>{{profile.meta.acr}} <a href="/rating-system">ACR</a></strong>
         </p>
       </div>
     </div>
