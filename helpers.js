@@ -217,11 +217,11 @@ exports.badges = (() => {
   ].map(x => ({ ...x, type: 'Match' }));
 
   const seasonBadges = [
-    {
-      title: '',
-      description: 'Complete a season with an average score of 70 or higher',
-      earned: (profile) => false
-    },
+    // {
+    //   title: '',
+    //   description: 'Complete a season with an average score of 70 or higher',
+    //   earned: (profile) => false
+    // },
     {
       title: 'Shot Caller',
       description: 'Complete a season with a clutch call rate of 100%',
