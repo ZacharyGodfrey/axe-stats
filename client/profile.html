@@ -201,7 +201,7 @@
   </div>
 </section>
 
-<section id="matchScores">
+<!-- <section id="matchScores">
   <div class="x-limit">
     <h2>
       <a href="#matchScores">Match Scores</a>
@@ -333,7 +333,7 @@
       </figure>
     </details>
   </div>
-</section>
+</section> -->
 
 <script>
   const { profile } = {{{dataJson}}};
@@ -347,126 +347,126 @@
   statArc('bigAxeBullseyeChart', 100, profile.stats.bigAxe.target.fivePercent);
   statArc('bigAxeClutchHitChart', 100, profile.stats.bigAxe.clutch.hitPercent);
 
-  const matchScoreHistogram = (() => {
-    const allScores = matches.map(x => x.total).sort();
-    const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
-    const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
+  // const matchScoreHistogram = (() => {
+  //   const allScores = matches.map(x => x.total).sort();
+  //   const buckets = [0, 10, 20, 30, 40, 50, 60, 70, 80];
+  //   const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
 
-    allScores.forEach(score => {
-      const bucket = [...buckets].reverse().find(b => b <= score);
+  //   allScores.forEach(score => {
+  //     const bucket = [...buckets].reverse().find(b => b <= score);
 
-      histogram[bucket]++;
-    });
+  //     histogram[bucket]++;
+  //   });
 
-    return {
-      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 9}`),
-      values: buckets.map(b => histogram[b])
-    };
-  })();
+  //   return {
+  //     labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 9}`),
+  //     values: buckets.map(b => histogram[b])
+  //   };
+  // })();
 
-  new Chart(document.getElementById('matchScoresChart'), {
-    type: 'bar',
-    data: {
-      labels: matchScoreHistogram.labels,
-      datasets: [{
-        data: matchScoreHistogram.values,
-        backgroundColor: cssVar('main')
-      }]
-    },
-    options: {
-      aspectRatio: 2,
-      scales: {
-        x: {
-          title: {
-            text: 'Score',
-            display: true
-          },
-          grid: {
-            display: false
-          }
-        },
-        y: {
-          title: {
-            text: 'Frequency',
-            display: true
-          },
-          grid: {
-            display: false
-          },
-          type: 'linear',
-          beginAtZero: true,
-          max: Math.max(...matchScoreHistogram.values)
-        }
-      }
-    }
-  });
+  // new Chart(document.getElementById('matchScoresChart'), {
+  //   type: 'bar',
+  //   data: {
+  //     labels: matchScoreHistogram.labels,
+  //     datasets: [{
+  //       data: matchScoreHistogram.values,
+  //       backgroundColor: cssVar('main')
+  //     }]
+  //   },
+  //   options: {
+  //     aspectRatio: 2,
+  //     scales: {
+  //       x: {
+  //         title: {
+  //           text: 'Score',
+  //           display: true
+  //         },
+  //         grid: {
+  //           display: false
+  //         }
+  //       },
+  //       y: {
+  //         title: {
+  //           text: 'Frequency',
+  //           display: true
+  //         },
+  //         grid: {
+  //           display: false
+  //         },
+  //         type: 'linear',
+  //         beginAtZero: true,
+  //         max: Math.max(...matchScoreHistogram.values)
+  //       }
+  //     }
+  //   }
+  // });
 
-  const seasonsChart = (() => {
-    const seasons = [...profile.seasons].reverse();
+  // const seasonsChart = (() => {
+  //   const seasons = [...profile.seasons].reverse();
 
-    return {
-      labels: seasons.map(x => x.order),
-      values: {
-        seasonRank: seasons.map(x => x.seasonRank || null),
-        playoffRank: seasons.map(x => x.playoffRank || null)
-      }
-    }
-  })();
+  //   return {
+  //     labels: seasons.map(x => x.order),
+  //     values: {
+  //       seasonRank: seasons.map(x => x.seasonRank || null),
+  //       playoffRank: seasons.map(x => x.playoffRank || null)
+  //     }
+  //   }
+  // })();
 
-  new Chart(document.getElementById('seasonsChart'), {
-    type: 'line',
-    data: {
-      labels: seasonsChart.labels,
-      datasets: [
-        {
-          label: 'Season Rank',
-          data: seasonsChart.values.seasonRank,
-          fill: false,
-          backgroundColor: cssVar('main'),
-          borderColor: cssVar('main')
-        },
-        {
-          label: 'Playoff Rank',
-          data: seasonsChart.values.playoffRank,
-          fill: false,
-          backgroundColor: cssVar('light'),
-          borderColor: cssVar('light')
-        }
-      ]
-    },
-    options: {
-      aspectRatio: 2,
-      scales: {
-        x: {
-          title: {
-            text: 'Season',
-            display: true
-          },
-          type: 'linear',
-          min: 0,
-          max: Math.max(...seasonsChart.labels) + 1,
-          ticks: {
-            stepSize: 1,
-            count: seasonsChart.labels.length + 2
-          }
-        },
-        y: {
-          title: {
-            text: 'Rank',
-            display: true
-          },
-          type: 'linear',
-          reverse: true,
-          min: 0,
-          max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
-          ticks: {
-            stepSize: 1,
-            count: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 2
-          }
-        }
-      }
-    }
-  });
+  // new Chart(document.getElementById('seasonsChart'), {
+  //   type: 'line',
+  //   data: {
+  //     labels: seasonsChart.labels,
+  //     datasets: [
+  //       {
+  //         label: 'Season Rank',
+  //         data: seasonsChart.values.seasonRank,
+  //         fill: false,
+  //         backgroundColor: cssVar('main'),
+  //         borderColor: cssVar('main')
+  //       },
+  //       {
+  //         label: 'Playoff Rank',
+  //         data: seasonsChart.values.playoffRank,
+  //         fill: false,
+  //         backgroundColor: cssVar('light'),
+  //         borderColor: cssVar('light')
+  //       }
+  //     ]
+  //   },
+  //   options: {
+  //     aspectRatio: 2,
+  //     scales: {
+  //       x: {
+  //         title: {
+  //           text: 'Season',
+  //           display: true
+  //         },
+  //         type: 'linear',
+  //         min: 0,
+  //         max: Math.max(...seasonsChart.labels) + 1,
+  //         ticks: {
+  //           stepSize: 1,
+  //           count: seasonsChart.labels.length + 2
+  //         }
+  //       },
+  //       y: {
+  //         title: {
+  //           text: 'Rank',
+  //           display: true
+  //         },
+  //         type: 'linear',
+  //         reverse: true,
+  //         min: 0,
+  //         max: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 1,
+  //         ticks: {
+  //           stepSize: 1,
+  //           count: Math.max(...seasonsChart.values.seasonRank.concat(seasonsChart.values.playoffRank)) + 2
+  //         }
+  //       }
+  //     }
+  //   }
+  // });
 
   const groupBy = (values, keyFn) => {
     return values.reduce((x, v) => {
