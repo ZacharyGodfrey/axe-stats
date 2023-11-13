@@ -201,6 +201,24 @@
   </div>
 </section>
 
+<section id="badges">
+  <div class="x-limit">
+    <h2>
+      <a href="#badges">Badges</a>
+    </h2>
+
+    {{#profile.badges}}
+    <div class="card">
+      <p>
+        <strong>{{title}}</strong>
+      </p>
+
+      <p>{{description}}</p>
+    </div>
+    {{/profile.badges}}
+  </div>
+</section>
+
 <!-- <section id="matchScores">
   <div class="x-limit">
     <h2>
