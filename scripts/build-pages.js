@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const { render } = require('mustache');
 
 const config = require('../config');
-const { db, median, roundForDisplay, logError } = require('../helpers');
+const { db, badges, median, roundForDisplay, logError } = require('../helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -30,6 +30,22 @@ const getShell = () => {
 };
 
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
+
+const buildBadgesPage = (shell) => {
+  const page = readFile(`${CLIENT_DIR}/home.html`);
+  const data = {
+    title: 'Badges',
+    badges: {
+      ...badges,
+      secret: badges.secret.map(() => ({
+        title: 'Secret Badge',
+        description: 'Keep throwing to earn it'
+      }))
+    }
+  };
+
+  return render(shell, data, { page });
+};
 
 const buildHomePage = (shell, profiles) => {
   const page = readFile(`${CLIENT_DIR}/home.html`);
@@ -356,6 +372,7 @@ const getAxeChartsRating = (profile) => {
     writeFile(`${DIST_DIR}/404.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/404.html`), 'Not Found'));
     writeFile(`${DIST_DIR}/500.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/500.html`), 'Error'));
     writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'Rating System'));
+    writeFile(`${DIST_DIR}/badges.html`, buildBadgesPage(shell));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
 
     profiles.forEach(profile => {
@@ -375,7 +392,7 @@ const getAxeChartsRating = (profile) => {
 
       matches.forEach(x => {
         x.rounds = JSON.parse(x.rounds);
-        x.stats = null;
+        x.stats = JSON.parse(x.stats);
       });
 
       const validMatches = matches.filter(x => x.state === db.enums.matchState.valid);
@@ -389,10 +406,10 @@ const getAxeChartsRating = (profile) => {
         `, [x.opponentId]) || null;
       });
 
+      profile.stats = JSON.parse(profile.stats);
+      profile.badges = JSON.parse(profile.badges);
       profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
-      profile.stats = aggregateMatchStats(validMatches);
       profile.matches = validMatches;
-      profile.meta = { acr: getAxeChartsRating(profile) };
 
       writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, profile));
       writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));

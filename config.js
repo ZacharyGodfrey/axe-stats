@@ -1,6 +1,6 @@
 module.exports = {
   databaseFile: `${__dirname}/database.db`,
-  resetAllData: false,
+  resetAllData: true,
   profileIds: [
     1207260,
     1051409,

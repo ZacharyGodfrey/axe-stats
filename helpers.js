@@ -2,7 +2,7 @@ const sqlite = require('better-sqlite3');
 
 const config = require('./config')
 
-const db = new sqlite(config.databaseFile, {});
+const database = new sqlite(config.databaseFile, {});
 
 exports.db = (() => {
   const enums = {
@@ -14,7 +14,13 @@ exports.db = (() => {
     }
   };
 
-  db.prepare(`
+  if (config.resetAllData) {
+    database.prepare(`DROP TABLE IF EXISTS profiles`).run();
+    database.prepare(`DROP TABLE IF EXISTS matches`).run();
+    database.prepare(`DROP TABLE IF EXISTS seasons`).run();
+  }
+
+  database.prepare(`
     CREATE TABLE IF NOT EXISTS profiles (
       profileId INTEGER PRIMARY KEY,
 
@@ -22,11 +28,13 @@ exports.db = (() => {
       about TEXT DEFAULT '',
       rank INTEGER NOT NULL DEFAULT 0,
       rating INTEGER NOT NULL DEFAULT 0,
-      image TEXT NOT NULL DEFAULT ''
+      image TEXT NOT NULL DEFAULT '',
+      stats TEXT NOT NULL DEFAULT '{}',
+      badges TEXT NOT NULL DEFAULT '[]',
     ) WITHOUT ROWID;
   `).run();
 
-  db.prepare(`
+  database.prepare(`
     CREATE TABLE IF NOT EXISTS matches (
       profileId INTEGER NOT NULL,
       matchId INTEGER NOT NULL,
@@ -39,12 +47,13 @@ exports.db = (() => {
       outcome TEXT NOT NULL DEFAULT '',
       total INTEGER NOT NULL DEFAULT 0,
       rounds TEXT NOT NULL DEFAULT '[]',
+      stats TEXT NOT NULL DEFAULT '{}',
 
       PRIMARY KEY (matchId, profileId)
     ) WITHOUT ROWID;
   `).run();
 
-  db.prepare(`
+  database.prepare(`
     CREATE TABLE IF NOT EXISTS seasons (
       profileId INTEGER NOT NULL,
       seasonId INTEGER NOT NULL,
@@ -54,6 +63,7 @@ exports.db = (() => {
       date TEXT NOT NULL DEFAULT '',
       seasonRank INTEGER NOT NULL DEFAULT 0,
       playoffRank INTEGER NOT NULL DEFAULT 0,
+      stats TEXT NOT NULL DEFAULT '{}',
 
       PRIMARY KEY (seasonId, profileId)
     ) WITHOUT ROWID;
@@ -61,9 +71,9 @@ exports.db = (() => {
 
   return {
     enums,
-    run: (sql, params = []) => db.prepare(sql).run(params),
-    row: (sql, params = []) => db.prepare(sql).get(params),
-    rows: (sql, params = []) => db.prepare(sql).all(params)
+    run: (sql, params = []) => database.prepare(sql).run(params),
+    row: (sql, params = []) => database.prepare(sql).get(params),
+    rows: (sql, params = []) => database.prepare(sql).all(params)
   };
 })();
 
@@ -143,3 +153,121 @@ exports.logErrorAndDefault = (defaultValue) => {
     return defaultValue;
   };
 };
+
+exports.badges = (() => {
+  const roundBadges = [
+    {
+      title: 'Unnatural Round',
+      description: 'Score 25 points in a round with a clutch hit',
+      earned: (matches) => false
+    },
+    {
+      title: 'Natural Round',
+      description: 'Score 25 points in a round without a clutch hit',
+      earned: (matches) => false
+    },
+    {
+      title: 'Supernatural Round',
+      description: 'Score more than 25 points in a round',
+      earned: (matches) => false
+    },
+    {
+      title: 'Overtime Win',
+      description: 'Win a round of Big Axe',
+      earned: (matches) => false
+    },
+    {
+      title: 'Long Shot',
+      description: 'Hit a clutch with a Big Axe',
+      earned: (matches) => false
+    }
+  ].map(x => ({ ...x, type: 'Round' }));
+
+  const matchBadges = [
+    {
+      title: 'Unnatural Match',
+      description: 'Score 75 points in a match with a clutch hit',
+      earned: (matches) => false
+    },
+    {
+      title: 'Natural Match',
+      description: 'Score 75 points in a match without a clutch hit',
+      earned: (matches) => false
+    },
+    {
+      title: 'Supernatural Match',
+      description: 'Score more than 75 points in a match',
+      earned: (matches) => false
+    },
+    {
+      title: '777',
+      description: 'Hit all three clutches in a match',
+      earned: (matches) => false
+    },
+    {
+      title: 'Perfection',
+      description: 'Score 81 points in a match',
+      earned: (matches) => false
+    }
+  ].map(x => ({ ...x, type: 'Match' }));
+
+  const seasonBadges = [
+    {
+      title: '',
+      description: 'Complete a season with an average score of 70 or higher',
+      earned: (matches) => false
+    },
+    {
+      title: 'Shot Caller',
+      description: 'Complete a season with a clutch call rate of 100%',
+      earned: (matches) => false
+    },
+    {
+      title: 'Top Performer',
+      description: 'Complete a season with the #1 regular season rank',
+      earned: (matches) => false
+    },
+    {
+      title: 'Champion',
+      description: 'Complete a season with the #1 playoff rank',
+      earned: (matches) => false
+    }
+  ].map(x => ({ ...x, type: 'Season' }));
+
+  const careerBadges = [
+    //
+  ].map(x => ({ ...x, type: 'Career' }));
+
+  const secretBadges = [
+    {
+      title: 'No Cigar',
+      description: 'Score 79 points in a match',
+      earned: (matches) => false
+    },
+    {
+      title: 'Mismatch Win',
+      description: 'Win a match with a lower total score than your opponent',
+      earned: (matches) => false
+    },
+    {
+      title: 'Mismatch Loss',
+      description: 'Lose a match with a higher total score than your opponent',
+      earned: (matches) => false
+    }
+  ].map(x => ({ ...x, type: 'Secret' }));
+
+  return {
+    round: roundBadges,
+    match: matchBadges,
+    season: seasonBadges,
+    career: careerBadges,
+    secret: secretBadges,
+    all: [
+      ...roundBadges,
+      ...matchBadges,
+      ...seasonBadges,
+      ...careerBadges,
+      ...secretBadges,
+    ]
+  }
+})();

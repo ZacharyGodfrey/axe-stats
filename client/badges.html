@@ -1,0 +1,57 @@
+<section class="bg-main text-center">
+  <div class="x-limit">
+    <h1>Badges</h1>
+  </div>
+</section>
+
+<section>
+  <div class="x-limit">
+    <h2>Round Badges</h2>
+
+    {{#badges.round}}
+    <div class="card">
+      <p>
+        <strong>{{title}}</strong>
+      </p>
+
+      <p>{{description}}</p>
+    </div>
+    {{/badges.round}}
+
+    <h2>Match Badges</h2>
+
+    {{#badges.match}}
+    <div class="card">
+      <p>
+        <strong>{{title}}</strong>
+      </p>
+
+      <p>{{description}}</p>
+    </div>
+    {{/badges.match}}
+
+    <h2>Season Badges</h2>
+
+    {{#badges.season}}
+    <div class="card">
+      <p>
+        <strong>{{title}}</strong>
+      </p>
+
+      <p>{{description}}</p>
+    </div>
+    {{/badges.season}}
+
+    <h2>Secret Badges</h2>
+
+    {{#badges.secret}}
+    <div class="card">
+      <p>
+        <strong>{{title}}</strong>
+      </p>
+
+      <p>{{description}}</p>
+    </div>
+    {{/badges.secret}}
+  </div>
+</section>
