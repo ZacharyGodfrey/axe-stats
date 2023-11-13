@@ -104,12 +104,17 @@ strong {
 
 a {
   color: inherit;
-  text-decoration: none;
-}
-
-a:hover {
   text-decoration: underline;
   text-decoration-thickness: 1px;
+}
+
+/* a:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+} */
+
+h1 a:not(:hover), h2 a:not(:hover), h3 a:not(:hover) {
+  text-decoration: none;
 }
 
 ul, ol {
@@ -223,6 +228,16 @@ details summary {
 .profile-image.grow {
   width: 100%;
   max-width: 16rem;
+}
+
+.icon {
+  display: block;
+  width: 4rem;
+  height: auto;
+}
+
+.icon-green {
+  filter: invert() sepia(1) brightness(50%) hue-rotate(90deg) saturate(5);
 }
 
 .card {

@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const { render } = require('mustache');
 
 const config = require('../config');
-const { db, badges, median, roundForDisplay, logError } = require('../helpers');
+const { db, badges, logError } = require('../helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -32,7 +32,6 @@ const getShell = () => {
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
 const buildBadgesPage = (shell) => {
-  const page = readFile(`${CLIENT_DIR}/badges.html`);
   const data = {
     title: 'Badges',
     badges: {
@@ -44,22 +43,24 @@ const buildBadgesPage = (shell) => {
     }
   };
 
-  return render(shell, data, { page });
+  return render(shell, data, {
+    page: readFile(`${CLIENT_DIR}/badges.html`)
+  });
 };
 
 const buildHomePage = (shell, profiles) => {
-  const page = readFile(`${CLIENT_DIR}/home.html`);
   const data = {
     title: undefined,
     profiles,
     dataJson: JSON.stringify({ profiles })
   };
 
-  return render(shell, data, { page });
+  return render(shell, data, {
+    page: readFile(`${CLIENT_DIR}/home.html`)
+  });
 };
 
 const buildProfilePage = (shell, profile) => {
-  const page = readFile(`${CLIENT_DIR}/profile.html`);
   const data = {
     title: profile.name,
     profile,
