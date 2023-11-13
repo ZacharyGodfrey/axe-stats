@@ -159,27 +159,32 @@ exports.badges = (() => {
     {
       title: 'Unnatural Round',
       description: 'Score 25 points in a round with a clutch hit',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.rounds.slice(0, 3).some(y => y.total === 25 && y.throws.some(z => z.score === 7)))
     },
     {
       title: 'Natural Round',
       description: 'Score 25 points in a round without a clutch hit',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.rounds.slice(0, 3).some(y => y.throws.every(z => z.score === 5)))
     },
     {
       title: 'Supernatural Round',
       description: 'Score more than 25 points in a round',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.rounds.slice(0, 3).some(y => y.total > 25))
     },
     {
       title: 'Overtime Win',
       description: 'Win a round of Big Axe',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.rounds.length === 4 && x.outcome === 'Win')
+    },
+    {
+      title: 'Clutch Party',
+      description: 'Call a clutch with a Big Axe',
+      earned: (matches) => matches.some(x => x.rounds.length === 4 && x.rounds[3].throws.some(z => z.clutch === true))
     },
     {
       title: 'Long Shot',
       description: 'Hit a clutch with a Big Axe',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.rounds.length === 4 && x.rounds[3].throws.some(z => z.score === 7))
     }
   ].map(x => ({ ...x, type: 'Round' }));
 
@@ -187,27 +192,27 @@ exports.badges = (() => {
     {
       title: 'Unnatural Match',
       description: 'Score 75 points in a match with a clutch hit',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.total === 75 && x.stats.hatchet.clutch.hit > 0)
     },
     {
       title: 'Natural Match',
       description: 'Score 75 points in a match without a clutch hit',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.total === 75 && x.stats.hatchet.clutch.hit === 0)
     },
     {
       title: 'Supernatural Match',
       description: 'Score more than 75 points in a match',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => 75 < x.total && x.total < 81)
     },
     {
       title: '777',
       description: 'Hit all three clutches in a match',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.stats.hatchet.clutch.hit === 3)
     },
     {
       title: 'Perfection',
       description: 'Score 81 points in a match',
-      earned: (matches) => false
+      earned: (matches) => matches.some(x => x.total === 81)
     }
   ].map(x => ({ ...x, type: 'Match' }));
 

@@ -280,6 +280,8 @@ const analyzeMatch = (rounds) => {
 };
 
 const analyzeProfile = (profileId) => {
+  console.log(`Analyzing profile ID ${profileId}`);
+
   const matches = db.rows(`
     SELECT *
     FROM matches
