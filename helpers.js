@@ -179,12 +179,12 @@ exports.badges = (() => {
     {
       title: 'Clutch Party',
       description: 'Call a clutch with a Big Axe',
-      earned: (profile) => profile.stats.bigAxe.call > 0
+      earned: (profile) => profile.stats.bigAxe.clutch.call > 0
     },
     {
       title: 'Long Shot',
       description: 'Hit a clutch with a Big Axe',
-      earned: (profile) => profile.stats.bigAxe.hit > 0
+      earned: (profile) => profile.stats.bigAxe.clutch.hit > 0
     }
   ].map(x => ({ ...x, type: 'Round' }));
 
