@@ -207,6 +207,10 @@
       <a href="#badges">Badges</a>
     </h2>
 
+    {{^profile.badges}}
+    <p>This thrower has not earned any badges yet.</p>
+    {{/profile.badges}}
+
     {{#profile.badges}}
     <div class="card">
       <p>
