@@ -211,15 +211,21 @@
     <p>This thrower has not earned any badges yet.</p>
     {{/profile.badges}}
 
-    {{#profile.badges}}
-    <div class="card">
-      <p>
-        <strong>{{title}}</strong>
-      </p>
+    <div class="grid columns-auto-fill">
+      {{#profile.badges}}
+      <div class="card grid sub">
+        <img src="data:image/png;base64,{{> iconCheck }}">
 
-      <p>{{description}}</p>
+        <div>
+          <p>
+            <strong>{{title}}</strong>
+          </p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/profile.badges}}
     </div>
-    {{/profile.badges}}
   </div>
 </section>
 

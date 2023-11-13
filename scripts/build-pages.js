@@ -66,84 +66,10 @@ const buildProfilePage = (shell, profile) => {
     dataJson: JSON.stringify({ profile })
   };
 
-  return render(shell, data, { page });
-};
-
-const analyzeMatch = (rounds) => {
-  const stats = {
-    hatchet: {
-      roundWin: 0,
-      roundLoss: 0,
-      roundTie: 0,
-      roundCount: 0,
-      totalScore: 0,
-      clutch: {
-        call: 0,
-        hit: 0,
-        totalScore: 0,
-      },
-      target: {
-        five: 0,
-        three: 0,
-        one: 0,
-        drop: 0,
-        totalScore: 0,
-        throwCount: 0,
-      }
-    },
-    bigAxe: {
-      roundWin: 0,
-      roundLoss: 0,
-      roundCount: 0,
-      totalScore: 0,
-      clutch: {
-        call: 0,
-        hit: 0,
-        totalScore: 0,
-      },
-      target: {
-        five: 0,
-        three: 0,
-        one: 0,
-        drop: 0,
-        totalScore: 0,
-        throwCount: 0,
-      }
-    }
-  };
-
-  rounds.forEach(({ outcome, total, throws, bigAxe }) => {
-    const category = bigAxe ? stats.bigAxe : stats.hatchet;
-
-    switch (outcome) {
-      case 'Win': category.roundWin++; break;
-      case 'Loss': category.roundLoss++; break;
-      case 'Tie': category.roundTie++; break;
-    }
-
-    category.roundCount++;
-    category.totalScore += total;
-
-    throws.forEach(({ clutch, score }) => {
-      if (clutch) {
-        category.clutch.call++;
-        category.clutch.hit += score === 7 ? 1 : 0;
-        category.clutch.totalScore += score;
-      } else {
-        switch (score) {
-          case 5: category.target.five++; break;
-          case 3: category.target.three++; break;
-          case 1: category.target.one++; break;
-          case 0: category.target.drop++; break;
-        }
-
-        category.target.totalScore += score;
-        category.target.throwCount++;
-      }
-    });
+  return render(shell, data, {
+    page: readFile(`${CLIENT_DIR}/profile.html`),
+    iconCheck: readFile(`${CLIENT_DIR}/assets/check.png`, 'base64')
   });
-
-  return stats;
 };
 
 const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
