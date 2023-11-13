@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../config');
-const { db, badges, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, logError } = require('../helpers');
+const { db, badges, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, median, logError } = require('../helpers');
 
 const getProfiles = async (page, profileIds) => {
   const profileIdSet = new Set(profileIds);

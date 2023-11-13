@@ -30,7 +30,7 @@ exports.db = (() => {
       rating INTEGER NOT NULL DEFAULT 0,
       image TEXT NOT NULL DEFAULT '',
       stats TEXT NOT NULL DEFAULT '{}',
-      badges TEXT NOT NULL DEFAULT '[]',
+      badges TEXT NOT NULL DEFAULT '[]'
     ) WITHOUT ROWID;
   `).run();
 

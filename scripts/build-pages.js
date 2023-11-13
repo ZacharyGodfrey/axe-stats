@@ -32,7 +32,7 @@ const getShell = () => {
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
 const buildBadgesPage = (shell) => {
-  const page = readFile(`${CLIENT_DIR}/home.html`);
+  const page = readFile(`${CLIENT_DIR}/badges.html`);
   const data = {
     title: 'Badges',
     badges: {
