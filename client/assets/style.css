@@ -108,12 +108,9 @@ a {
   text-decoration-thickness: 1px;
 }
 
-/* a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-} */
-
-h1 a:not(:hover), h2 a:not(:hover), h3 a:not(:hover) {
+h1 a:not(:hover), .text-h1 a:not(:hover), a.text-h1:not(:hover),
+h2 a:not(:hover), .text-h2 a:not(:hover), a.text-h2:not(:hover),
+h3 a:not(:hover), .text-h3 a:not(:hover), a.text-h3:not(:hover) {
   text-decoration: none;
 }
 
