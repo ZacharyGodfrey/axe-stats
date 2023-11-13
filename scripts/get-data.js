@@ -282,6 +282,12 @@ const analyzeMatch = (rounds) => {
 const analyzeProfile = (profileId) => {
   console.log(`Analyzing profile ID ${profileId}`);
 
+  const profile = db.row(`
+    SELECT *
+    FROM profiles
+    WHERE profileId = ?
+  `, [profileId]);
+
   const matches = db.rows(`
     SELECT *
     FROM matches
@@ -293,16 +299,28 @@ const analyzeProfile = (profileId) => {
     x.stats = JSON.parse(x.stats);
   });
 
-  const careerStats = aggregateMatchStats(matches);
-  const earnedBadges = badges.all.filter(x => x.earned(matches));
+  const seasons = db.rows(`
+    SELECT *
+    FROM seasons
+    WHERE profileId = ?
+  `, [profileId]);
+
+  seasons.forEach(x => {
+    x.stats = JSON.parse(x.stats);
+  });
+
+  profile.matches = matches;
+  profile.seasons = seasons;
+  profile.stats = aggregateMatchStats(matches);
+  profile.badges = badges.all.filter(x => x.earned(profile));
 
   db.run(`
     UPDATE profiles
     SET stats = ?, badges = ?
     WHERE profileId = ?
   `, [
-    JSON.stringify(careerStats),
-    JSON.stringify(earnedBadges),
+    JSON.stringify(profile.stats),
+    JSON.stringify(profile.badges),
     profileId
   ]);
 };

@@ -159,32 +159,32 @@ exports.badges = (() => {
     {
       title: 'Unnatural Round',
       description: 'Score 25 points in a round with a clutch hit',
-      earned: (matches) => matches.some(x => x.rounds.slice(0, 3).some(y => y.total === 25 && y.throws.some(z => z.score === 7)))
+      earned: (profile) => profile.matches.some(x => x.rounds.slice(0, 3).some(y => y.total === 25 && y.throws.some(z => z.score === 7)))
     },
     {
       title: 'Natural Round',
       description: 'Score 25 points in a round without a clutch hit',
-      earned: (matches) => matches.some(x => x.rounds.slice(0, 3).some(y => y.throws.every(z => z.score === 5)))
+      earned: (profile) => profile.matches.some(x => x.rounds.slice(0, 3).some(y => y.throws.every(z => z.score === 5)))
     },
     {
       title: 'Supernatural Round',
       description: 'Score more than 25 points in a round',
-      earned: (matches) => matches.some(x => x.rounds.slice(0, 3).some(y => y.total > 25))
+      earned: (profile) => profile.matches.some(x => x.rounds.slice(0, 3).some(y => y.total > 25))
     },
     {
       title: 'Overtime Win',
       description: 'Win a round of Big Axe',
-      earned: (matches) => matches.some(x => x.rounds.length === 4 && x.outcome === 'Win')
+      earned: (profile) => profile.matches.some(x => x.rounds.length === 4 && x.outcome === 'Win')
     },
     {
       title: 'Clutch Party',
       description: 'Call a clutch with a Big Axe',
-      earned: (matches) => matches.some(x => x.rounds.length === 4 && x.rounds[3].throws.some(z => z.clutch === true))
+      earned: (profile) => profile.stats.bigAxe.call > 0
     },
     {
       title: 'Long Shot',
       description: 'Hit a clutch with a Big Axe',
-      earned: (matches) => matches.some(x => x.rounds.length === 4 && x.rounds[3].throws.some(z => z.score === 7))
+      earned: (profile) => profile.stats.bigAxe.hit > 0
     }
   ].map(x => ({ ...x, type: 'Round' }));
 
@@ -192,27 +192,27 @@ exports.badges = (() => {
     {
       title: 'Unnatural Match',
       description: 'Score 75 points in a match with a clutch hit',
-      earned: (matches) => matches.some(x => x.total === 75 && x.stats.hatchet.clutch.hit > 0)
+      earned: (profile) => profile.matches.some(x => x.total === 75 && x.stats.hatchet.clutch.hit > 0)
     },
     {
       title: 'Natural Match',
       description: 'Score 75 points in a match without a clutch hit',
-      earned: (matches) => matches.some(x => x.total === 75 && x.stats.hatchet.clutch.hit === 0)
+      earned: (profile) => profile.matches.some(x => x.total === 75 && x.stats.hatchet.clutch.hit === 0)
     },
     {
       title: 'Supernatural Match',
       description: 'Score more than 75 points in a match',
-      earned: (matches) => matches.some(x => 75 < x.total && x.total < 81)
+      earned: (profile) => profile.matches.some(x => 75 < x.total && x.total < 81)
     },
     {
       title: '777',
       description: 'Hit all three clutches in a match',
-      earned: (matches) => matches.some(x => x.stats.hatchet.clutch.hit === 3)
+      earned: (profile) => profile.matches.some(x => x.stats.hatchet.clutch.hit === 3)
     },
     {
       title: 'Perfection',
       description: 'Score 81 points in a match',
-      earned: (matches) => matches.some(x => x.total === 81)
+      earned: (profile) => profile.matches.some(x => x.total === 81)
     }
   ].map(x => ({ ...x, type: 'Match' }));
 
@@ -220,22 +220,22 @@ exports.badges = (() => {
     {
       title: '',
       description: 'Complete a season with an average score of 70 or higher',
-      earned: (matches) => false
+      earned: (profile) => false
     },
     {
       title: 'Shot Caller',
       description: 'Complete a season with a clutch call rate of 100%',
-      earned: (matches) => false
+      earned: (profile) => false
     },
     {
       title: 'Top Performer',
       description: 'Complete a season with the #1 regular season rank',
-      earned: (matches) => false
+      earned: (profile) => false
     },
     {
       title: 'Champion',
       description: 'Complete a season with the #1 playoff rank',
-      earned: (matches) => false
+      earned: (profile) => false
     }
   ].map(x => ({ ...x, type: 'Season' }));
 
@@ -247,17 +247,17 @@ exports.badges = (() => {
     {
       title: 'No Cigar',
       description: 'Score 79 points in a match',
-      earned: (matches) => false
+      earned: (profile) => profile.matches.some(x => x.total === 79)
     },
     {
       title: 'Mismatch Win',
       description: 'Win a match with a lower total score than your opponent',
-      earned: (matches) => false
+      earned: (profile) => false
     },
     {
       title: 'Mismatch Loss',
       description: 'Lose a match with a higher total score than your opponent',
-      earned: (matches) => false
+      earned: (profile) => false
     }
   ].map(x => ({ ...x, type: 'Secret' }));
 
