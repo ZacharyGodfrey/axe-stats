@@ -146,172 +146,6 @@ const analyzeMatch = (rounds) => {
   return stats;
 };
 
-const aggregateMatchStats = (matches) => {
-  const stats = {
-    match: {
-      win: 0,
-      winPercent: 0,
-      loss: 0,
-      lossPercent: 0,
-      otl: 0,
-      otlPercent: 0,
-      winWithoutBigAxe: 0,
-      winWithoutBigAxePercent: 0,
-      count: matches.length,
-      totalScore: 0,
-      averageScore: 0,
-      minScore: 0,
-      medianScore: 0,
-      maxScore: 0,
-    },
-    hatchet: {
-      roundWin: 0,
-      roundWinPercent: 0,
-      roundLoss: 0,
-      roundLossPercent: 0,
-      roundTie: 0,
-      roundTiePercent: 0,
-      roundCount: 0,
-      totalScore: 0,
-      throwCount: 0,
-      scorePerThrow: 0,
-      clutch: {
-        call: 0,
-        callPercent: 0,
-        hit: 0,
-        hitPercent: 0,
-        totalScore: 0,
-        ev: 0,
-      },
-      target: {
-        five: 0,
-        three: 0,
-        one: 0,
-        drop: 0,
-        fivePercent: 0,
-        threePercent: 0,
-        onePercent: 0,
-        dropPercent: 0,
-        totalScore: 0,
-        throwCount: 0,
-        ev: 0,
-      }
-    },
-    bigAxe: {
-      roundWin: 0,
-      roundWinPercent: 0,
-      roundLoss: 0,
-      roundLossPercent: 0,
-      roundCount: 0,
-      totalScore: 0,
-      throwCount: 0,
-      scorePerThrow: 0,
-      clutch: {
-        call: 0,
-        hit: 0,
-        hitPercent: 0,
-        totalScore: 0,
-        ev: 0,
-      },
-      target: {
-        five: 0,
-        three: 0,
-        one: 0,
-        drop: 0,
-        fivePercent: 0,
-        threePercent: 0,
-        onePercent: 0,
-        dropPercent: 0,
-        totalScore: 0,
-        throwCount: 0,
-        ev: 0,
-      }
-    },
-  };
-
-  let allScores = [];
-
-  matches.forEach((match) => {
-    allScores.push(match.total);
-
-    stats.match.win += match.outcome === 'Win' ? 1 : 0;
-    stats.match.loss += match.outcome === 'Loss' ? 1 : 0;
-    stats.match.otl += match.outcome === 'OTL' ? 1 : 0;
-    stats.match.winWithoutBigAxe += match.outcome === 'Win' && match.stats.bigAxe.roundCount === 0 ? 1 : 0;
-    stats.match.totalScore += match.total;
-
-    stats.hatchet.roundWin += match.stats.hatchet.roundWin;
-    stats.hatchet.roundLoss += match.stats.hatchet.roundLoss;
-    stats.hatchet.roundTie += match.stats.hatchet.roundTie;
-    stats.hatchet.roundCount += match.stats.hatchet.roundCount;
-    stats.hatchet.totalScore += match.stats.hatchet.totalScore;
-    stats.hatchet.throwCount += match.stats.hatchet.clutch.call + match.stats.hatchet.target.throwCount;
-
-    stats.hatchet.clutch.call += match.stats.hatchet.clutch.call;
-    stats.hatchet.clutch.hit += match.stats.hatchet.clutch.hit;
-    stats.hatchet.clutch.totalScore += match.stats.hatchet.clutch.totalScore;
-
-    stats.hatchet.target.five += match.stats.hatchet.target.five;
-    stats.hatchet.target.three += match.stats.hatchet.target.three;
-    stats.hatchet.target.one += match.stats.hatchet.target.one;
-    stats.hatchet.target.drop += match.stats.hatchet.target.drop;
-    stats.hatchet.target.totalScore += match.stats.hatchet.target.totalScore;
-    stats.hatchet.target.throwCount += match.stats.hatchet.target.throwCount;
-
-    stats.bigAxe.roundWin += match.stats.bigAxe.roundWin;
-    stats.bigAxe.roundLoss += match.stats.bigAxe.roundLoss;
-    stats.bigAxe.roundCount += match.stats.bigAxe.roundCount;
-    stats.bigAxe.totalScore += match.stats.bigAxe.totalScore;
-    stats.bigAxe.throwCount += match.stats.bigAxe.clutch.call + match.stats.bigAxe.target.throwCount;
-
-    stats.bigAxe.clutch.call += match.stats.bigAxe.clutch.call;
-    stats.bigAxe.clutch.hit += match.stats.bigAxe.clutch.hit;
-    stats.bigAxe.clutch.totalScore += match.stats.bigAxe.clutch.totalScore;
-
-    stats.bigAxe.target.five += match.stats.bigAxe.target.five;
-    stats.bigAxe.target.three += match.stats.bigAxe.target.three;
-    stats.bigAxe.target.one += match.stats.bigAxe.target.one;
-    stats.bigAxe.target.drop += match.stats.bigAxe.target.drop;
-    stats.bigAxe.target.totalScore += match.stats.bigAxe.target.totalScore;
-    stats.bigAxe.target.throwCount += match.stats.bigAxe.target.throwCount;
-  });
-
-  stats.match.winPercent = roundForDisplay(100 * stats.match.win / stats.match.count);
-  stats.match.lossPercent = roundForDisplay(100 * stats.match.loss / stats.match.count);
-  stats.match.otlPercent = roundForDisplay(100 * stats.match.otl / stats.match.count);
-  stats.match.winWithoutBigAxePercent = roundForDisplay(100 * stats.match.winWithoutBigAxe / stats.match.count);
-  stats.match.averageScore = roundForDisplay(stats.match.totalScore / stats.match.count);
-  stats.match.minScore = Math.min(...allScores);
-  stats.match.medianScore = roundForDisplay(median(allScores) || 0);
-  stats.match.maxScore = Math.max(...allScores);
-
-  stats.hatchet.roundWinPercent = roundForDisplay(100 * stats.hatchet.roundWin / stats.hatchet.roundCount);
-  stats.hatchet.roundLossPercent = roundForDisplay(100 * stats.hatchet.roundLoss / stats.hatchet.roundCount);
-  stats.hatchet.roundTiePercent = roundForDisplay(100 * stats.hatchet.roundTie / stats.hatchet.roundCount);
-  stats.hatchet.scorePerThrow = roundForDisplay(stats.hatchet.totalScore / stats.hatchet.throwCount);
-  stats.hatchet.clutch.callPercent = roundForDisplay(100 * stats.hatchet.clutch.call / stats.hatchet.roundCount);
-  stats.hatchet.clutch.hitPercent = roundForDisplay(100 * stats.hatchet.clutch.hit / stats.hatchet.clutch.call);
-  stats.hatchet.clutch.ev = roundForDisplay(stats.hatchet.clutch.totalScore / stats.hatchet.clutch.call);
-  stats.hatchet.target.fivePercent = roundForDisplay(100 * stats.hatchet.target.five / stats.hatchet.target.throwCount);
-  stats.hatchet.target.threePercent = roundForDisplay(100 * stats.hatchet.target.three / stats.hatchet.target.throwCount);
-  stats.hatchet.target.onePercent = roundForDisplay(100 * stats.hatchet.target.one / stats.hatchet.target.throwCount);
-  stats.hatchet.target.dropPercent = roundForDisplay(100 * stats.hatchet.target.drop / stats.hatchet.target.throwCount);
-  stats.hatchet.target.ev = roundForDisplay(stats.hatchet.target.totalScore / stats.hatchet.target.throwCount);
-
-  stats.bigAxe.roundWinPercent = roundForDisplay(100 * stats.bigAxe.roundWin / stats.bigAxe.roundCount);
-  stats.bigAxe.roundLossPercent = roundForDisplay(100 * stats.bigAxe.roundLoss / stats.bigAxe.roundCount);
-  stats.bigAxe.scorePerThrow = roundForDisplay(stats.bigAxe.totalScore / stats.bigAxe.throwCount);
-  stats.bigAxe.clutch.hitPercent = roundForDisplay(100 * stats.bigAxe.clutch.hit / stats.bigAxe.clutch.call);
-  stats.bigAxe.clutch.ev = roundForDisplay(stats.bigAxe.clutch.totalScore / stats.bigAxe.clutch.call);
-  stats.bigAxe.target.fivePercent = roundForDisplay(100 * stats.bigAxe.target.five / stats.bigAxe.target.throwCount);
-  stats.bigAxe.target.threePercent = roundForDisplay(100 * stats.bigAxe.target.three / stats.bigAxe.target.throwCount);
-  stats.bigAxe.target.onePercent = roundForDisplay(100 * stats.bigAxe.target.one / stats.bigAxe.target.throwCount);
-  stats.bigAxe.target.dropPercent = roundForDisplay(100 * stats.bigAxe.target.drop / stats.bigAxe.target.throwCount);
-  stats.bigAxe.target.ev = roundForDisplay(stats.bigAxe.target.totalScore / stats.bigAxe.target.throwCount);
-
-  return stats;
-};
-
 const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
   switch (state) {
     case db.enums.matchState.invalid: return `${profileId} ${matchId} INVALID`;
@@ -328,23 +162,6 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       throws.map(({ score, clutch }) => score === 0 && clutch ? 'C' : score).join('')
     ])
   ].join(' ');
-};
-
-const getAxeChartsRating = (profile) => {
-  const { hatchet, bigAxe } = profile.stats;
-  const multiplier = 10 ** 3;
-
-  const pointsEarned = hatchet.totalScore + bigAxe.totalScore;
-  const bullAttempts = hatchet.target.throwCount + bigAxe.target.throwCount;
-  const clutchAttempts = hatchet.clutch.call + bigAxe.clutch.call;
-  const pointsAvailable = 5 * (bullAttempts + clutchAttempts); // (5 * bullAttempts) + (7 * clutchAttempts);
-  const rating = Math.round(multiplier * pointsEarned / pointsAvailable);
-
-  // console.log(`Points Earned: ${pointsEarned}`);
-  // console.log(`Points Available: ${pointsAvailable}`);
-  // console.log(`Rating: ${rating}`);
-
-  return rating;
 };
 
 (() => {
@@ -398,7 +215,6 @@ const getAxeChartsRating = (profile) => {
       const validMatches = matches.filter(x => x.state === db.enums.matchState.valid);
 
       validMatches.forEach(x => {
-        x.stats = analyzeMatch(x.rounds);
         x.opponent = db.row(`
           SELECT profileId, name, image
           FROM profiles
