@@ -70,7 +70,7 @@ const buildProfilePage = (shell, profile) => {
 
   return render(shell, data, {
     page: readFile(`${CLIENT_DIR}/profile.html`),
-    iconCheck: readFile(`${CLIENT_DIR}/assets/check.png`, 'base64')
+    iconCheck: readFile(`${CLIENT_DIR}/assets/badge.png`, 'base64')
   });
 };
 
