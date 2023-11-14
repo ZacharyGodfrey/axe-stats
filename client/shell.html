@@ -86,17 +86,5 @@
         </p>
       </div>
     </footer>
-
-    <script>
-      [...document.querySelectorAll('[data-set]')].forEach(element => {
-        element.addEventListener('click', () => {
-          const [id, key, value] = element.dataset.set.split('.');
-
-          [...document.querySelectorAll(`[data-id='${id}']`)].forEach(target => {
-            target.dataset[key] = value;
-          });
-        });
-      });
-    </script>
   </body>
 </html>
