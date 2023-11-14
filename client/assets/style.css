@@ -79,6 +79,11 @@ dialog {
   width: clamp(100%, calc(100vw - 2 * var(--gutter)));
 }
 
+dialog::backdrop {
+  background: var(--main);
+  opacity: 0.25;
+}
+
 h1, h2, h3, p, li, th, td, a, summary {
   line-height: 1.5;
 }
