@@ -128,8 +128,7 @@ button {
 }
 
 button:hover {
-  color: white;
-  background: var(--main);
+  background: var(--neutral);
 }
 
 ul, ol {
