@@ -76,6 +76,8 @@ section {
 /* Element Styles */
 
 dialog {
+  position: fixed;
+  top: 1rem;
   padding: 1rem;
   width: clamp(100%, calc(100vw - 2 * var(--gutter)));
   border: 1px solid var(--dark);
@@ -85,7 +87,7 @@ dialog {
 }
 
 dialog::backdrop {
-  background: var(--main);
+  background: black;
   opacity: 0.25;
 }
 
