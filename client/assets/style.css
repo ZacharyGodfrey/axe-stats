@@ -119,16 +119,18 @@ h3 a:not(:hover), .text-h3 a:not(:hover), a.text-h3:not(:hover) {
 }
 
 button {
-  padding: 0.25rem;
-  color: var(--dark);
+  padding: 0.25rem 0.5rem;
+  font-size: 1.25rem;
+  color: var(--main);
   background: white;
-  border: 1px solid var(--dark);
+  border: 1px solid var(--main);
   border-radius: 0.25rem;
   cursor: pointer;
 }
 
 button:hover {
-  background: var(--neutral);
+  color: white;
+  background: var(--main);
 }
 
 ul, ol {
