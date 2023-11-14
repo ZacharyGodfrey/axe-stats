@@ -22,11 +22,13 @@ const getShell = () => {
   const robotoFont = readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64');
   const stylesheet = readFile(`${CLIENT_DIR}/assets/style.css`);
   const chartJS = readFile(`${CLIENT_DIR}/assets/chart.js`);
+  const iconMenu = readFile(`${CLIENT_DIR}/assets/menu.png`, 'base64');
 
   return readFile(`${CLIENT_DIR}/shell.html`)
     .replace('/*stylesheet*/', stylesheet)
     .replace('/*robotoFont*/', robotoFont)
-    .replace('/*chartJS*/', chartJS);
+    .replace('/*chartJS*/', chartJS)
+    .replace('/*iconMenu*/', iconMenu);
 };
 
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
