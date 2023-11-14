@@ -14,7 +14,8 @@
   --neutral: #EEEEEE;
   --gutter: 1rem;
   --content-max: 60rem;
-  font-family: 'roboto', monospace;
+  --font: 'roboto', monospace;
+  font-family: var(--font);
   font-size: 16px;
   line-height: 1.5;
   color: var(--dark);
@@ -120,6 +121,7 @@ h3 a:not(:hover), .text-h3 a:not(:hover), a.text-h3:not(:hover) {
 
 button {
   padding: 0.25rem 0.5rem;
+  font-family: var(--font);
   font-size: 1rem;
   line-height: 1.5;
   color: var(--dark);
