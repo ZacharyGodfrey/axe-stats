@@ -1,7 +1,7 @@
 const puppeteer = require('puppeteer');
 
 const config = require('../config');
-const { db, badges, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, median, logError } = require('../helpers');
+const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, median, logError } = require('../helpers');
 
 const getProfiles = async (page, profileIds) => {
   const profileIdSet = new Set(profileIds);
@@ -324,15 +324,13 @@ const analyzeProfile = (profileId) => {
   profile.matches = matches;
   profile.seasons = seasons;
   profile.stats = aggregateMatchStats(matches);
-  profile.badges = badges.all.filter(x => x.earned(profile));
 
   db.run(`
     UPDATE profiles
-    SET stats = ?, badges = ?
+    SET stats = ?
     WHERE profileId = ?
   `, [
     JSON.stringify(profile.stats),
-    JSON.stringify(profile.badges),
     profileId
   ]);
 };

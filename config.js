@@ -14,7 +14,5 @@ module.exports = {
     1112219,
     1408913
   ],
-  reprocessMatchIds: [
-    11628591
-  ]
+  reprocessMatchIds: []
 };

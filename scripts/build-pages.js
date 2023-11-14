@@ -159,9 +159,9 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
         `, [x.opponentId]) || null;
       });
 
-      profile.badges = JSON.parse(profile.badges);
-      profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
       profile.matches = validMatches;
+      profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
+      profile.badges = badges.all.filter(x => x.earned(profile));
 
       writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, profile));
       writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));
