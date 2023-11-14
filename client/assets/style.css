@@ -231,10 +231,16 @@ details summary {
   max-width: 16rem;
 }
 
-.icon {
+.icon-2 {
   display: block;
-  width: 4rem;
   height: auto;
+  width: 2rem;
+}
+
+.icon-4 {
+  display: block;
+  height: auto;
+  width: 4rem;
 }
 
 .icon-green {
