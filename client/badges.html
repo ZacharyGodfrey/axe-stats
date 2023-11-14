@@ -8,44 +8,62 @@
   <div class="x-limit">
     <p>Badges are earned by accomplishing performance milestones. This is the full list of available badges, but some are kept secret until after you've earned them. Have fun collecting them all!</p>
 
-    {{#badges.round}}
-    <div class="card">
-      <p>
-        <strong>{{title}}</strong>
-      </p>
+    <div class="grid columns-auto-fill">
+      {{#badges.round}}
+      <div class="card grid sub">
+        <img class="icon" src="data:image/png;base64,{{> iconBadge }}">
 
-      <p>{{description}}</p>
+        <div>
+          <p>
+            <strong>{{title}}</strong>
+          </p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/badges.round}}
+
+      {{#badges.match}}
+      <div class="card grid sub">
+        <img class="icon" src="data:image/png;base64,{{> iconBadge }}">
+
+        <div>
+          <p>
+            <strong>{{title}}</strong>
+          </p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/badges.match}}
+
+      {{#badges.season}}
+      <div class="card grid sub">
+        <img class="icon" src="data:image/png;base64,{{> iconBadge }}">
+
+        <div>
+          <p>
+            <strong>{{title}}</strong>
+          </p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/badges.season}}
+
+      {{#badges.secret}}
+      <div class="card grid sub">
+        <img class="icon" src="data:image/png;base64,{{> iconBadge }}">
+
+        <div>
+          <p>
+            <strong>{{title}}</strong>
+          </p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/badges.secret}}
     </div>
-    {{/badges.round}}
-
-    {{#badges.match}}
-    <div class="card">
-      <p>
-        <strong>{{title}}</strong>
-      </p>
-
-      <p>{{description}}</p>
-    </div>
-    {{/badges.match}}
-
-    {{#badges.season}}
-    <div class="card">
-      <p>
-        <strong>{{title}}</strong>
-      </p>
-
-      <p>{{description}}</p>
-    </div>
-    {{/badges.season}}
-
-    {{#badges.secret}}
-    <div class="card">
-      <p>
-        <strong>{{title}}</strong>
-      </p>
-
-      <p>{{description}}</p>
-    </div>
-    {{/badges.secret}}
   </div>
 </section>

@@ -44,7 +44,8 @@ const buildBadgesPage = (shell) => {
   };
 
   return render(shell, data, {
-    page: readFile(`${CLIENT_DIR}/badges.html`)
+    page: readFile(`${CLIENT_DIR}/badges.html`),
+    iconBadge: readFile(`${CLIENT_DIR}/assets/badge.png`, 'base64')
   });
 };
 
