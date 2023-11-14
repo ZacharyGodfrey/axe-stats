@@ -65,11 +65,15 @@ main {
   flex: 1;
 }
 
-footer {
-  padding: 2rem var(--gutter);
+nav {
+  padding: 0.5rem var(--gutter);
 }
 
 section {
+  padding: 2rem var(--gutter);
+}
+
+footer {
   padding: 2rem var(--gutter);
 }
 
