@@ -36,14 +36,6 @@
           }
         });
       };
-
-      document.getElementById('menu-open').addEventListener('click', () => {
-        document.getElementById('menu').showModal();
-      });
-
-      document.getElementById('menu-close').addEventListener('click', () => {
-        document.getElementById('menu').close();
-      });
     </script>
   </head>
   <body>
@@ -87,5 +79,15 @@
         </p>
       </div>
     </footer>
+
+    <script>
+      document.getElementById('menu-open').addEventListener('click', () => {
+        document.getElementById('menu').showModal();
+      });
+
+      document.getElementById('menu-close').addEventListener('click', () => {
+        document.getElementById('menu').close();
+      });
+    </script>
   </body>
 </html>
