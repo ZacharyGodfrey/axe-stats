@@ -118,6 +118,20 @@ h3 a:not(:hover), .text-h3 a:not(:hover), a.text-h3:not(:hover) {
   text-decoration: none;
 }
 
+button {
+  padding: 0.25rem;
+  color: var(--dark);
+  background: white;
+  border: 1px solid var(--dark);
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  color: white;
+  background: var(--main);
+}
+
 ul, ol {
   list-style-position: inside;
   padding: 0;
@@ -394,16 +408,4 @@ details summary {
   .screen-sm {
     display: none !important;
   }
-}
-
-/* Specific Styles */
-
-#menu-button {
-  padding: 0.25rem;
-  border-radius: 0.25rem;
-  cursor: pointer;
-}
-
-#menu-button:hover {
-  background: var(--main);
 }
