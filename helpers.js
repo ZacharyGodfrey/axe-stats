@@ -217,25 +217,25 @@ exports.badges = (() => {
   ].map(x => ({ ...x, type: 'Match' }));
 
   const seasonBadges = [
-    // {
-    //   title: '',
-    //   description: 'Complete a season with an average score of 70 or higher',
-    //   earned: (profile) => false
-    // },
+    {
+      title: 'High Marks',
+      description: 'Complete a season with an average score of 70 or higher',
+      earned: (profile) => profile.seasons.some(x => x.stats.match.averageScore >= 70)
+    },
     {
       title: 'Shot Caller',
       description: 'Complete a season with a clutch call rate of 100%',
-      earned: (profile) => false
+      earned: (profile) => profile.seasons.some(x => x.stats.hatchet.clutch.callPercent === 100)
     },
     {
       title: 'Top Performer',
       description: 'Complete a season with the #1 regular season rank',
-      earned: (profile) => false
+      earned: (profile) => profile.seasons.some(x => x.seasonRank === 1)
     },
     {
       title: 'Champion',
       description: 'Complete a season with the #1 playoff rank',
-      earned: (profile) => false
+      earned: (profile) => profile.seasons.some(x => x.playoffRank === 1)
     }
   ].map(x => ({ ...x, type: 'Season' }));
 

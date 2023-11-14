@@ -306,7 +306,19 @@ const analyzeProfile = (profileId) => {
   `, [profileId]);
 
   seasons.forEach(x => {
-    x.stats = JSON.parse(x.stats);
+    const seasonMatches = matches.filter(y => y.seasonId === x.seasonId);
+
+    x.stats = aggregateMatchStats(seasonMatches);
+
+    db.run(`
+      UPDATE seasons
+      SET stats = ?
+      WHERE profileId = ? AND seasonId = ?
+    `, [
+      JSON.stringify(x.stats),
+      profileId,
+      x.seasonId
+    ]);
   });
 
   profile.matches = matches;

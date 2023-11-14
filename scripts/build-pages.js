@@ -129,6 +129,10 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
         ORDER BY seasonId ASC
       `, [profile.profileId]);
 
+      seasons.forEach(x => {
+        x.stats = JSON.parse(x.stats);
+      });
+
       const matches = db.rows(`
         SELECT *
         FROM matches
