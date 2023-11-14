@@ -452,6 +452,7 @@ details summary {
 .dialog-content {
   padding: 1rem;
   width: 100%;
+  max-width: var(--content-max);
   color: var(--dark);
   background: white;
   border: 1px solid var(--dark);
