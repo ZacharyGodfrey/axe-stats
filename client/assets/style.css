@@ -84,7 +84,7 @@ dialog {
   background: white;
 }
 
-dialog ::backdrop {
+dialog::backdrop {
   background: var(--main);
   opacity: 0.25;
 }
