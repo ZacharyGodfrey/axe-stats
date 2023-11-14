@@ -430,9 +430,7 @@ details summary {
   }
 }
 
-/* Specific Styles */
-
-#menu {
+.dialog {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -440,14 +438,22 @@ details summary {
   right: 0;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  align-content: center;
   padding: 1rem;
   background: rgba(0, 0, 0, 0.25);
+  z-index: 1;
 }
 
-#menu:not([data-open="true"]) {
+.dialog:not([data-open="true"]) {
   display: none;
 }
 
-#menu > * {
-  margin: auto;
+.dialog-content {
+  padding: 1rem;
+  width: 100%;
+  color: var(--dark);
+  background: white;
+  border: 1px solid var(--dark);
+  border-radius: 0.5rem;
 }
