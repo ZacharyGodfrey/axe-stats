@@ -78,12 +78,13 @@ section {
 dialog {
   padding: 1rem;
   width: clamp(100%, calc(100vw - 2 * var(--gutter)));
+  border: 1px solid var(--dark);
   border-radius: 0.5rem;
   color: var(--dark);
   background: white;
 }
 
-dialog::backdrop {
+dialog ::backdrop {
   background: var(--main);
   opacity: 0.25;
 }
