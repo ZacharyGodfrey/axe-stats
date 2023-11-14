@@ -121,9 +121,9 @@ h3 a:not(:hover), .text-h3 a:not(:hover), a.text-h3:not(:hover) {
 button {
   padding: 0.25rem 0.5rem;
   font-size: 1.25rem;
-  color: var(--main);
+  color: var(--dark);
   background: white;
-  border: 1px solid var(--main);
+  border: 2px solid var(--main);
   border-radius: 0.25rem;
   cursor: pointer;
 }
