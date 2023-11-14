@@ -40,7 +40,7 @@
   </head>
   <body>
     <header class="bg-white">
-      <nav class="x-limit grid columns-fill-auto items-y-center">
+      <div class="x-limit grid columns-fill-auto items-y-center">
         <div>
           <a class="text-h3" href="/">Axe Charts</a>
         </div>
@@ -48,18 +48,7 @@
         <div>
           <button id="menu-open">Menu</button>
         </div>
-      </nav>
-
-      <dialog id="menu">
-        <div class="grid columns-fill-auto">
-          <div></div>
-          <div>
-            <button id="menu-close">X</button>
-          </div>
-        </div>
-
-        <p>This is the menu.</p>
-      </dialog>
+      </div>
     </header>
 
     <main>
@@ -80,13 +69,27 @@
       </div>
     </footer>
 
+    <nav id="menu" data-open="false">
+      <div class="x-limit card">
+        <div class="grid columns-fill-auto">
+          <div></div>
+
+          <div>
+            <button id="menu-close">X</button>
+          </div>
+        </div>
+
+        <p>This is the menu.</p>
+      </div>
+    </nav>
+
     <script>
       document.getElementById('menu-open').addEventListener('click', () => {
-        document.getElementById('menu').showModal();
+        document.getElementById('menu').dataset.open = "true";
       });
 
       document.getElementById('menu-close').addEventListener('click', () => {
-        document.getElementById('menu').close();
+        document.getElementById('menu').dataset.open = "false";
       });
     </script>
   </body>
