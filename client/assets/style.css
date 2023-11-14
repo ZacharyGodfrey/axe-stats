@@ -76,7 +76,11 @@ section {
 /* Element Styles */
 
 dialog {
+  padding: 1rem;
   width: clamp(100%, calc(100vw - 2 * var(--gutter)));
+  border-radius: 0.5rem;
+  color: var(--dark);
+  background: white;
 }
 
 dialog::backdrop {
