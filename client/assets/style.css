@@ -227,6 +227,7 @@ details summary {
   background: var(--dark);
 }
 
+.ratio-1-1 { aspect-ratio: 1 / 1; }
 .ratio-2-1 { aspect-ratio: 2 / 1; }
 
 /* Component Classes */
