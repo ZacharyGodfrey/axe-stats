@@ -296,6 +296,34 @@
   </div>
 </section>
 
+<section class="bg-main" id="badges">
+  <div class="x-limit">
+    <h2>Badges</h2>
+
+    {{^profile.badges}}
+    <p>This thrower has not earned any badges yet.</p>
+    {{/profile.badges}}
+
+    <p>View the full list of available badges <a href="/badges">here</a>.</p>
+
+    <div class="grid columns-auto-fill">
+      {{#profile.badges}}
+      <div class="card grid sub">
+        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
+
+        <div>
+          <p>
+            <strong>{{title}}</strong>
+          </p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/profile.badges}}
+    </div>
+  </div>
+</section>
+
 <script>
   const { profile } = {{{dataJson}}};
   const { matches } = profile;
