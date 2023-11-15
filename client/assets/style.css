@@ -279,6 +279,12 @@ details summary {
   background: white;
 }
 
+.quote {
+  padding: 1rem;
+  border-left: 0.5rem solid var(--main);
+  text-indent: 2rem;
+}
+
 .target {
   display: grid;
   grid-template-columns: auto auto auto;
