@@ -279,13 +279,6 @@ details summary {
   background: white;
 }
 
-.quote {
-  padding: 1rem;
-  text-indent: 2rem;
-  border: 1px solid var(--main);
-  border-left: 0.5rem solid var(--main);
-}
-
 .target {
   display: grid;
   grid-template-columns: auto auto auto;
