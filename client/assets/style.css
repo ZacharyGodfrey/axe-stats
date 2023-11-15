@@ -267,10 +267,6 @@ details summary {
   width: 4rem;
 }
 
-.icon-green {
-  filter: invert() sepia(1) brightness(50%) hue-rotate(90deg) saturate(5);
-}
-
 .card {
   margin: 1rem 0;
   padding: 1rem;
