@@ -200,34 +200,6 @@
   </div>
 </section>
 
-<section class="bg-main" id="badges">
-  <div class="x-limit">
-    <h2>Badges</h2>
-
-    {{^profile.badges}}
-    <p>This thrower has not earned any badges yet.</p>
-    {{/profile.badges}}
-
-    <p>View the full list of available badges <a href="/badges">here</a>.</p>
-
-    <div class="grid columns-auto-fill">
-      {{#profile.badges}}
-      <div class="card grid sub">
-        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
-
-        <div>
-          <p>
-            <strong>{{title}}</strong>
-          </p>
-
-          <p>{{description}}</p>
-        </div>
-      </div>
-      {{/profile.badges}}
-    </div>
-  </div>
-</section>
-
 <section id="seasons">
   <div class="x-limit">
     <h2>Seasons</h2>
@@ -276,38 +248,6 @@
     <div class="card ratio-2-1">
       <canvas id="matchScoresChart"></canvas>
     </div>
-
-    <details>
-      <summary>Details</summary>
-
-      <div class="grid columns-fill-auto">
-        <div class="card grid sub">
-          <span>High Score</span>
-          <strong class="no-wrap">{{profile.stats.match.maxScore}}</strong>
-        </div>
-
-        <div class="card grid sub">
-          <span>Average Score</span>
-          <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
-        </div>
-
-        <div class="card grid sub">
-          <span>Median Score</span>
-          <strong class="no-wrap">{{profile.stats.match.medianScore}}</strong>
-        </div>
-
-        <div class="card grid sub">
-          <span>Low Score</span>
-          <strong class="no-wrap">{{profile.stats.match.minScore}}</strong>
-        </div>
-      </div>
-    </details>
-  </div>
-</section>
-
-<section id="matches">
-  <div class="x-limit">
-    <h2>Matches</h2>
 
     <details>
       <summary>Details</summary>
