@@ -130,7 +130,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
         SELECT *
         FROM seasons
         WHERE profileId = ?
-        ORDER BY seasonId ASC
+        ORDER BY seasonId DESC
       `, [profile.profileId]);
 
       seasons.forEach(x => {
@@ -141,7 +141,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
         SELECT *
         FROM matches
         WHERE profileId = ?
-        ORDER BY matchId DESC
+        ORDER BY seasonId DESC, week DESC, matchId DESC
       `, [profile.profileId]);
 
       matches.forEach(x => {
@@ -160,7 +160,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       });
 
       profile.matches = validMatches;
-      profile.seasons = seasons.map((x, i) => ({ ...x, order: i + 1 })).reverse();
+      profile.seasons = seasons.map((x, i, { length }) => ({ ...x, order: length - i }));
       profile.badges = badges.all.filter(x => x.earned(profile));
 
       writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, profile));
