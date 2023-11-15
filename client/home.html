@@ -17,15 +17,23 @@
           <img class="profile-image" src="data:image/png;base64,{{{image}}}">
         </a>
 
-        <hgroup>
-          <p>#{{rank}} &bull; {{stats.acr.rating}} <a href="/rating-system">ACR</a></p>
+        <div>
+          <hgroup>
+            <p>#{{rank}} &bull; {{stats.acr.rating}} <a href="/rating-system">ACR</a></p>
 
-          <p class="text-h3">
-            <a href="/{{profileId}}">{{name}}</a>
-          </p>
+            <p class="text-h3">
+              <a href="/{{profileId}}">{{name}}</a>
+            </p>
 
-          <br>
-        </hgroup>
+            <br>
+          </hgroup>
+
+          <details>
+            <summary>Details</summary>
+
+            <p>This is the details section.</p>
+          </details>
+        </div>
       </div>
       {{/profiles}}
     </div>
