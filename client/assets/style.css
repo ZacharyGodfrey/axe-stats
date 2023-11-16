@@ -250,6 +250,10 @@ details summary {
   background: var(--dark);
 }
 
+.bg-gradient-dark-main-dark {
+  background: linear-gradient(90deg, var(--dark) 0%, var(--main) 50%, var(--dark) 100%);
+}
+
 .ratio-1-1 { aspect-ratio: 1 / 1; }
 .ratio-2-1 { aspect-ratio: 2 / 1; }
 
