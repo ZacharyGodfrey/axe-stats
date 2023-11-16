@@ -216,14 +216,6 @@ details summary {
 .text-main { color: var(--main); }
 .no-wrap { white-space: nowrap; }
 
-.hero {
-  min-height: 50vh;
-  min-height: 50svh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
 .x-limit {
   max-width: var(--content-max);
   margin-left: auto;
