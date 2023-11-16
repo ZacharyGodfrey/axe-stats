@@ -19,11 +19,13 @@ const writeFile = (filePath, content) => {
 };
 
 const getShell = () => {
+  const favicon = readFile(`${CLIENT_DIR}/assets/favicon.ico`, 'base64');
   const robotoFont = readFile(`${CLIENT_DIR}/assets/roboto-mono.ttf`, 'base64');
   const stylesheet = readFile(`${CLIENT_DIR}/assets/style.css`);
   const chartJS = readFile(`${CLIENT_DIR}/assets/chart.js`);
 
   return readFile(`${CLIENT_DIR}/shell.html`)
+    .replace('/*favicon*/', favicon)
     .replace('/*stylesheet*/', stylesheet)
     .replace('/*robotoFont*/', robotoFont)
     .replace('/*chartJS*/', chartJS);
@@ -106,7 +108,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     }
 
     fs.emptyDirSync(DIST_DIR);
-    fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
+    // fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
 
     const shell = getShell();
     const profiles = db.rows(`
