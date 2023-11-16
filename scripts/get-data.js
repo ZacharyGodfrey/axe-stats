@@ -18,7 +18,7 @@ const getProfiles = async (page, profileIds) => {
   return allProfiles.filter(x => profileIdSet.has(x.id));
 };
 
-const processProfile = async (page, { id: profileId, name, rank, rating }) => {
+const processProfile = async (page, { id: profileId, rank, rating }) => {
   console.log(`Scraping profile data for profile ID ${profileId}`);
 
   await page.goto(`https://axescores.com/player/${profileId}`);
@@ -26,7 +26,7 @@ const processProfile = async (page, { id: profileId, name, rank, rating }) => {
 
   const image = await getProfileImage(profileId);
   const state = await reactPageState(page, '#root');
-  const { name: alias, about, leagues } = state.player.playerData;
+  const { name, about, leagues } = state.player.playerData;
   const seasons = leagues.filter(x => x.performanceName === 'IATF Premier');
 
   db.run(`
