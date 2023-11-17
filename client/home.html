@@ -1,34 +1,30 @@
-<section class="bg-main text-center">
-  <div class="x-limit">
-    <h1>Axe Charts</h1>
+<section class="bg-dark text-center">
+  <h1>Axe Charts</h1>
 
-    <p>In-Depth IATF Premier Stats</p>
-  </div>
+  <p>In-Depth IATF Premier Stats</p>
 </section>
 
 <section>
-  <div class="x-limit">
-    <h2>Global Ranking</h2>
+  <h2>Global Ranking</h2>
 
-    <div class="grid columns-auto-fill items-y-center">
-      {{#profiles}}
-      <div class="card grid sub">
-        <a href="/{{profileId}}">
-          <img class="profile-image" src="data:image/png;base64,{{{image}}}">
-        </a>
+  <div class="grid columns-auto-fill items-y-center">
+    {{#profiles}}
+    <div class="card grid sub">
+      <a href="/{{profileId}}">
+        <img class="profile-image" src="data:image/png;base64,{{{image}}}">
+      </a>
 
-        <hgroup>
-          <p>#{{rank}} &bull; {{stats.acr.rating}} <a href="/rating-system">ACR</a></p>
+      <hgroup>
+        <p>#{{rank}} &bull; {{stats.acr.rating}} <a href="/rating-system">ACR</a></p>
 
-          <p class="text-h3">
-            <a href="/{{profileId}}">{{name}}</a>
-          </p>
+        <p class="text-h3">
+          <a href="/{{profileId}}">{{name}}</a>
+        </p>
 
-          <br>
-        </hgroup>
-      </div>
-      {{/profiles}}
+        <br>
+      </hgroup>
     </div>
+    {{/profiles}}
   </div>
 </section>
 
