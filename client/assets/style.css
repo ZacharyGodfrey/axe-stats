@@ -399,6 +399,9 @@ details summary {
 .grid.items-x-stretch { justify-items: stretch; }
 .grid.items-y-stretch { align-items: stretch; }
 
+.grid.items-x-spread { justify-content: space-between; }
+.grid.items-y-spread { align-items: space-between; }
+
 .grid > * { margin: 0 !important; }
 
 .grid > .span-2 { grid-column: span 2; }
