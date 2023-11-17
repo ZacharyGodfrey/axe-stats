@@ -10,10 +10,7 @@
 
 :root {
   --main: rgb(50, 100, 150);
-  --light: color-mix(in oklab, var(--main), white 40%);
   --dark:  color-mix(in oklab, var(--main), black 40%);
-  --red:       hsl(0, 60%, 60%);
-  --green:     hsl(120, 40%, 40%);
   --neutral: #EEEEEE;
   --limit: 60rem;
   --gutter: 1rem;
@@ -236,11 +233,6 @@ details summary {
   background: white;
 }
 
-.bg-light {
-  color: var(--dark);
-  background: var(--light);
-}
-
 .bg-main {
   color: white;
   background: var(--main);
@@ -306,14 +298,18 @@ details summary {
   color: var(--dark);
   background: white;
   border-radius: 0.5rem;
-  --ring: 2rem;
+  --ring-width: 2rem;
+  --dot: rgb(60, 145, 60);
+  --ring-outer: var(--main);
+  --ring-inner: rgb(215, 90, 90);
+  --ring-center: var(--dark);
 }
 
 .target .dot {
   width: 1.5rem;
   border-radius: 100%;
   aspect-ratio: 1 / 1;
-  background: var(--green);
+  background: var(--dot);
 }
 
 .target .label {
@@ -336,25 +332,25 @@ details summary {
   grid-template-columns: var(--ring) 1fr var(--ring);
   grid-template-rows: var(--ring) 1fr var(--ring);
   color: white;
-  background: var(--light);
+  background: var(--ring-outer);
 }
 
 .ring.inner {
   grid-column: 2;
   grid-template-columns: var(--ring) 1fr var(--ring);
   grid-template-rows: var(--ring) 1fr var(--ring);
-  background: var(--red);
+  background: var(--ring-inner);
 }
 
 .ring.center {
   grid-column: 2;
   grid-template-columns: var(--ring) auto var(--ring);
   grid-template-rows: var(--ring) auto var(--ring);
-  background: var(--dark);
+  background: var(--ring-center);
 }
 
 .ring.center > .label {
-  min-width: var(--ring);
+  min-width: var(--ring-width);
 }
 
 .target .ring, .ring.center > .label {
