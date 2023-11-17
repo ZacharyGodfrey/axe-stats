@@ -1,37 +1,35 @@
-<section id="profile" class="bg-main">
-  <div class="x-limit">
-    <div class="grid stack columns-3 items-y-center">
-      <p>
-        <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
-      </p>
-
-      <div class="span-2">
-        <hgroup>
-          <p>#{{profile.rank}} &bull; {{profile.stats.acr.rating}} <a href="/rating-system">ACR</a></p>
-          <p class="text-h2">{{profile.name}}</p>
-        </hgroup>
-
-        <p class="grid columns-auto-fill">
-          <strong class="text-upper">Collins Rating</strong>
-          <span>{{profile.rating}}</span>
-
-          <strong class="text-upper">Career Record</strong>
-          <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
-        </p>
-      </div>
-    </div>
-
-    {{#profile.about}}
+<section id="profile" class="bg-dark">
+  <div class="grid stack columns-3 items-y-center">
     <p>
-      <strong class="text-upper">Biography</strong>
+      <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
     </p>
 
-    <p>{{profile.about}}</p>
-    {{/profile.about}}
+    <div class="span-2">
+      <hgroup>
+        <p>#{{profile.rank}} &bull; {{profile.stats.acr.rating}} <a href="/rating-system">ACR</a></p>
+        <p class="text-h2">{{profile.name}}</p>
+      </hgroup>
+
+      <p class="grid columns-auto-fill">
+        <strong class="text-upper">Collins Rating</strong>
+        <span>{{profile.rating}}</span>
+
+        <strong class="text-upper">Career Record</strong>
+        <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
+      </p>
+    </div>
   </div>
+
+  {{#profile.about}}
+  <p>
+    <strong class="text-upper">Biography</strong>
+  </p>
+
+  <p>{{profile.about}}</p>
+  {{/profile.about}}
 </section>
 
-<section id="stats" class="bg-dark">
+<section id="stats" class="bg-main">
   <div class="x-limit">
     <div class="grid stack columns-3">
       <div class="card text-center no-break">
@@ -296,7 +294,7 @@
   </div>
 </section>
 
-<section id="badges" class="bg-main">
+<section id="badges" class="bg-dark">
   <div class="x-limit">
     <h2>Badges</h2>
 
