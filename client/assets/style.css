@@ -173,6 +173,7 @@ ul, ol {
 hr {
   width: 100%;
   height: 2px;
+  margin-block: var(--gutter);
   padding: 0;
   border: none;
   outline: none;
