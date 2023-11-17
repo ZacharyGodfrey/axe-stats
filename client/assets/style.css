@@ -9,7 +9,7 @@
 }
 
 :root {
-  --main: rgb(50, 100, 150);
+  --main: rgb(60, 120, 160);
   --dark:  color-mix(in oklab, var(--main), black 40%);
   --neutral: #EEEEEE;
   --limit: 60rem;
