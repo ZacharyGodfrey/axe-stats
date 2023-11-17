@@ -33,9 +33,9 @@ const getShell = () => {
 
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
-const buildBadgesPage = (shell, profiles) => {
+const buildAboutPage = (shell, profiles) => {
   const data = {
-    title: 'Badges',
+    title: 'About',
     badges: badges.map(({ type, title, description }) => {
       const isSecret = type === 'Secret';
       const earnedCount = profiles.filter(x => x.badges.some(y => y.title === title)).length;
@@ -51,7 +51,7 @@ const buildBadgesPage = (shell, profiles) => {
   };
 
   return render(shell, data, {
-    page: readFile(`${CLIENT_DIR}/badges.html`),
+    page: readFile(`${CLIENT_DIR}/about.html`),
     iconBadge: readFile(`${CLIENT_DIR}/assets/badge.png`, 'base64')
   });
 };
@@ -165,10 +165,9 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
     });
 
-    writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'Rating System'));
     writeFile(`${DIST_DIR}/404.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/404.html`), 'Not Found'));
     writeFile(`${DIST_DIR}/500.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/500.html`), 'Error'));
-    writeFile(`${DIST_DIR}/badges.html`, buildBadgesPage(shell, profiles));
+    writeFile(`${DIST_DIR}/about.html`, buildAboutPage(shell, profiles));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
   } catch (error) {
     logError(error);
