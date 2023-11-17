@@ -305,6 +305,7 @@ details summary {
   padding: 1rem;
   text-align: center;
   font-weight: bold;
+  color: var(--dark);
   background: white;
   border-radius: 0.5rem;
   --ring: 2rem;
