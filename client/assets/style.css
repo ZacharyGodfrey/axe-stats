@@ -14,7 +14,8 @@
   --neutral: #EEEEEE;
   --gutter: 1rem;
   --content-max: 60rem;
-  font-family: 'roboto', monospace;
+  --font: 'roboto', monospace;
+  font-family: var(--font);
   font-size: 16px;
   line-height: 1.5;
   color: var(--dark);
@@ -50,21 +51,30 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  min-height: 100svh;
 }
 
 header {
+  position: sticky;
+  top: 0;
   padding: 0.5rem var(--gutter);
+  border-bottom: 1px solid var(--dark);
+  z-index: 1;
 }
 
 main {
   flex: 1;
 }
 
-footer {
-  padding: 2rem var(--gutter);
+nav {
+  padding: 0.5rem var(--gutter);
 }
 
 section {
+  padding: 2rem var(--gutter);
+}
+
+footer {
   padding: 2rem var(--gutter);
 }
 
@@ -94,23 +104,48 @@ h2, .text-h2 {
 }
 
 h3, .text-h3 {
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   font-weight: normal;
 }
 
 strong {
   font-weight: bold;
-  text-transform: uppercase;
 }
 
 a {
   color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+
+h1 a:not(:hover), .text-h1 a:not(:hover), a.text-h1:not(:hover),
+h2 a:not(:hover), .text-h2 a:not(:hover), a.text-h2:not(:hover),
+h3 a:not(:hover), .text-h3 a:not(:hover), a.text-h3:not(:hover),
+nav a:not(:hover) {
   text-decoration: none;
 }
 
-a:hover {
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
+img, .no-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+button {
+  padding: 0.25rem 0.5rem;
+  font-family: var(--font);
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--dark);
+  background: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+button:hover {
+  color: white;
+  background: var(--main);
 }
 
 ul, ol {
@@ -176,14 +211,14 @@ details summary {
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+.text-upper { text-transform: uppercase; }
 .text-white { color: white; }
 .text-main { color: var(--main); }
 .no-wrap { white-space: nowrap; }
 
 .x-limit {
-  max-width: var(--content-max);
-  margin-left: auto;
-  margin-right: auto;
+  width: min(100%, var(--content-max));
+  margin-inline: auto;
 }
 
 .bg-white {
@@ -206,6 +241,7 @@ details summary {
   background: var(--dark);
 }
 
+.ratio-1-1 { aspect-ratio: 1 / 1; }
 .ratio-2-1 { aspect-ratio: 2 / 1; }
 
 /* Component Classes */
@@ -225,8 +261,19 @@ details summary {
   max-width: 16rem;
 }
 
-.card {
+.icon-2 {
   display: block;
+  height: auto;
+  width: 2rem;
+}
+
+.icon-4 {
+  display: block;
+  height: auto;
+  width: 4rem;
+}
+
+.card {
   margin: 1rem 0;
   padding: 1rem;
   border-radius: 0.5rem;

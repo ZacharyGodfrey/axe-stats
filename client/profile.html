@@ -1,4 +1,4 @@
-<section class="bg-main" id="profile">
+<section id="profile" class="bg-main">
   <div class="x-limit">
     <div class="grid stack columns-3 items-y-center">
       <p>
@@ -7,23 +7,31 @@
 
       <div class="span-2">
         <hgroup>
-          <p>#{{profile.rank}}</p>
+          <p>#{{profile.rank}} &bull; {{profile.stats.acr.rating}} <a href="/rating-system">ACR</a></p>
           <p class="text-h2">{{profile.name}}</p>
         </hgroup>
 
         <p class="grid columns-auto-fill">
-          <strong>Collins Rating</strong>
+          <strong class="text-upper">Collins Rating</strong>
           <span>{{profile.rating}}</span>
 
-          <strong>Career Record</strong>
+          <strong class="text-upper">Career Record</strong>
           <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
         </p>
       </div>
     </div>
+
+    {{#profile.about}}
+    <p>
+      <strong class="text-upper">Biography</strong>
+    </p>
+
+    <p>{{profile.about}}</p>
+    {{/profile.about}}
   </div>
 </section>
 
-<section class="bg-dark" id="stats">
+<section id="stats" class="bg-dark">
   <div class="x-limit">
     <div class="grid stack columns-3">
       <div class="card text-center no-break">
@@ -32,7 +40,7 @@
         <p class="text-h2">{{profile.stats.match.averageScore}}</p>
 
         <p>
-          <strong>Average Score</strong>
+          <strong class="text-upper">Average Score</strong>
         </p>
 
         <hr>
@@ -46,7 +54,7 @@
         <p class="text-h2">{{profile.stats.match.winPercent}}%</p>
 
         <p>
-          <strong>Match Win Rate</strong>
+          <strong class="text-upper">Match Win Rate</strong>
         </p>
 
         <hr>
@@ -60,7 +68,7 @@
         <p class="text-h2">{{profile.stats.bigAxe.roundWinPercent}}%</p>
 
         <p>
-          <strong>Big Axe Win Rate</strong>
+          <strong class="text-upper">Big Axe Win Rate</strong>
         </p>
 
         <hr>
@@ -73,9 +81,7 @@
 
 <section id="hatchet">
   <div class="x-limit">
-    <h2>
-      <a href="#hatchet">Hatchet</a>
-    </h2>
+    <h2>Hatchet</h2>
 
     <div class="grid stack columns-3 items-y-stretch">
       <div class="target">
@@ -106,7 +112,7 @@
         <p class="text-h2">{{profile.stats.hatchet.target.fivePercent}}%</p>
 
         <p>
-          <strong>Bullseye Hit Rate</strong>
+          <strong class="text-upper">Bullseye Hit Rate</strong>
         </p>
 
         <hr>
@@ -120,7 +126,7 @@
         <p class="text-h2">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
         <p>
-          <strong>Clutch Hit Rate</strong>
+          <strong class="text-upper">Clutch Hit Rate</strong>
         </p>
 
         <hr>
@@ -138,9 +144,7 @@
 
 <section id="bigAxe">
   <div class="x-limit">
-    <h2>
-      <a href="#bigAxe">Big Axe</a>
-    </h2>
+    <h2>Big Axe</h2>
 
     <div class="grid stack columns-3 items-y-stretch">
       <div class="target">
@@ -171,7 +175,7 @@
         <p class="text-h2">{{profile.stats.bigAxe.target.fivePercent}}%</p>
 
         <p>
-          <strong>Bullseye Hit Rate</strong>
+          <strong class="text-upper">Bullseye Hit Rate</strong>
         </p>
 
         <hr>
@@ -185,7 +189,7 @@
         <p class="text-h2">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
 
         <p>
-          <strong>Clutch Hit Rate</strong>
+          <strong class="text-upper">Clutch Hit Rate</strong>
         </p>
 
         <hr>
@@ -196,49 +200,9 @@
   </div>
 </section>
 
-<section id="matchScores">
-  <div class="x-limit">
-    <h2>
-      <a href="#matchScores">Match Scores</a>
-    </h2>
-
-    <div class="card ratio-2-1">
-      <canvas id="matchScoresChart"></canvas>
-    </div>
-
-    <details>
-      <summary>Details</summary>
-
-      <div class="grid columns-fill-auto">
-        <div class="card grid sub">
-          <span>High Score</span>
-          <strong class="no-wrap">{{profile.stats.match.maxScore}}</strong>
-        </div>
-
-        <div class="card grid sub">
-          <span>Average Score</span>
-          <strong class="no-wrap">{{profile.stats.match.averageScore}}</strong>
-        </div>
-
-        <div class="card grid sub">
-          <span>Median Score</span>
-          <strong class="no-wrap">{{profile.stats.match.medianScore}}</strong>
-        </div>
-
-        <div class="card grid sub">
-          <span>Low Score</span>
-          <strong class="no-wrap">{{profile.stats.match.minScore}}</strong>
-        </div>
-      </div>
-    </details>
-  </div>
-</section>
-
 <section id="seasons">
   <div class="x-limit">
-    <h2>
-      <a href="#seasons">Seasons</a>
-    </h2>
+    <h2>Seasons</h2>
 
     <div class="card ratio-2-1">
       <canvas id="seasonsChart"></canvas>
@@ -258,7 +222,7 @@
 
           <strong class="text-right">
             {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
-            {{^seasonRank}}TBD{{/seasonRank}}
+            {{^seasonRank}}None{{/seasonRank}}
           </strong>
 
           <span>{{shortName}}</span>
@@ -277,11 +241,13 @@
   </div>
 </section>
 
-<section id="matches">
+<section id="matchScores">
   <div class="x-limit">
-    <h2>
-      <a href="#matches">Matches</a>
-    </h2>
+    <h2>Match Scores</h2>
+
+    <div class="card ratio-2-1">
+      <canvas id="matchScoresChart"></canvas>
+    </div>
 
     <details>
       <summary>Details</summary>
@@ -327,6 +293,32 @@
         </div>
       </figure>
     </details>
+  </div>
+</section>
+
+<section id="badges" class="bg-main">
+  <div class="x-limit">
+    <h2>Badges</h2>
+
+    {{^profile.badges}}
+    <p>This thrower has not earned any badges yet.</p>
+    {{/profile.badges}}
+
+    <p>View the full list of available badges <a href="/badges">here</a>.</p>
+
+    <div class="grid columns-auto-fill">
+      {{#profile.badges}}
+      <div class="card grid sub">
+        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
+
+        <div>
+          <p class="text-h3">{{title}}</p>
+
+          <p>{{description}}</p>
+        </div>
+      </div>
+      {{/profile.badges}}
+    </div>
   </div>
 </section>
 
@@ -462,4 +454,18 @@
       }
     }
   });
+
+  const groupBy = (values, keyFn) => {
+    return values.reduce((x, v) => {
+      const k = keyFn(v);
+
+      return {
+        ...x,
+        [k]: (x[k] || []).concat(v)
+      };
+    }, {});
+  };
+
+  const bySeason = groupBy(matches, x => x.seasonId);
+  const byOpponent = groupBy(matches, x => x.opponentId);
 </script>
