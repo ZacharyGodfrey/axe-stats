@@ -7,16 +7,13 @@
 
       <div class="span-2">
         <hgroup>
-          <p>#{{profile.rank}}</p>
+          <p>#{{profile.rank}} &bull; {{profile.stats.acr.rating}} <a href="/rating-system">Axe Charts Rating</a></p>
           <p class="text-h2">{{profile.name}}</p>
         </hgroup>
 
         <p class="grid columns-auto-fill">
           <strong class="text-upper">Collins Rating</strong>
           <span>{{profile.rating}}</span>
-
-          <strong class="text-upper"><a href="/rating-system">Axe Charts Rating</a></strong>
-          <span>{{profile.stats.acr.rating}}</span>
 
           <strong class="text-upper">Career Record</strong>
           <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
