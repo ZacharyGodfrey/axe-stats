@@ -9,11 +9,9 @@
 }
 
 :root {
-  --hue: 200;
-  --highlight: hsl(var(--hue), 80%, 80%);
-  --light:     hsl(var(--hue), 80%, 60%);
-  --main:      hsl(var(--hue), 50%, 40%);
-  --dark:      hsl(var(--hue), 50%, 20%);
+  --main: hsl(200, 50%, 40%);
+  --light: color-mix(in oklab, var(--main), white 40%);
+  --dark:  color-mix(in oklab, var(--main), black 40%);
   --red:       hsl(0, 60%, 60%);
   --green:     hsl(120, 40%, 40%);
   --neutral: #EEEEEE;
@@ -23,9 +21,6 @@
   font-family: var(--font);
   font-size: 16px;
   line-height: 1.5;
-  --main: hsl(200, 50%, 40%);
-  --lighter: color-mix(in oklab, var(--main), white);
-  --darker: color-mix(in oklab, var(--main), black);
 }
 
 :first-child {
