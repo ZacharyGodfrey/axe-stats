@@ -68,7 +68,7 @@ main {
   display: flex;
   flex-direction: column;
   color: var(--dark);
-  background: var(--light);
+  background: var(--neutral);
 }
 
 main > :last-child {
@@ -96,7 +96,7 @@ header > *,
 section > *,
 footer > * {
   grid-column: content;
-  margin-block: 0;
+  margin-block: 0 !important;
 }
 
 /* Element Styles */
@@ -106,8 +106,7 @@ h1, h2, h3, p, li, th, td, a, summary {
 }
 
 hgroup, h1, h2, h3, p, ul, ol {
-  margin-top: var(--gutter);
-  margin-bottom: var(--gutter);
+  margin-block: var(--gutter);
 }
 
 hgroup > * {
