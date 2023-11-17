@@ -425,6 +425,13 @@ details summary {
     grid-template-columns: 1fr;
   }
 
+  .grid.stack > .span-2,
+  .grid.stack > .span-3,
+  .grid.stack > .shift,
+  .grid.stack > .shift-2 {
+    grid-column: unset;
+  }
+
   .screen-lg {
     display: none !important;
   }
