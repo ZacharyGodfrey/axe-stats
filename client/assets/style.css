@@ -102,7 +102,8 @@ h1, h2, h3, p, li, th, td, a, summary {
   line-height: 1.5;
 }
 
-hgroup, h1, h2, h3, p, ul, ol {
+hgroup, h1, h2, h3, p, ul, ol, hr,
+figure, details, details > summary {
   margin-block: var(--gutter);
 }
 
@@ -173,7 +174,6 @@ ul, ol {
 hr {
   width: 100%;
   height: 2px;
-  margin-block: var(--gutter);
   padding: 0;
   border: none;
   outline: none;
@@ -182,7 +182,6 @@ hr {
 
 figure {
   width: 100%;
-  margin: 1rem auto;
   overflow-x: auto;
 }
 
@@ -215,12 +214,7 @@ th.maximize, td.maximize {
   width: 100%;
 }
 
-details {
-  margin: 1rem auto;
-}
-
 details summary {
-  margin: 1rem auto;
   cursor: pointer;
 }
 
