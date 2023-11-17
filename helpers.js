@@ -247,16 +247,6 @@ exports.badges = (() => {
       title: 'No Cigar',
       description: 'Score 79 points in a match',
       earned: (profile) => profile.matches.some(x => x.total === 79)
-    },
-    {
-      title: 'Mismatch Win',
-      description: 'Win a match with a lower total score than your opponent',
-      earned: (profile) => false
-    },
-    {
-      title: 'Mismatch Loss',
-      description: 'Lose a match with a higher total score than your opponent',
-      earned: (profile) => false
     }
   ].map(x => ({ ...x, type: 'Secret' }));
 
