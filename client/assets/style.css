@@ -393,14 +393,14 @@ details summary {
 .grid.no-gap, .grid.no-gap-x { column-gap: 0; }
 .grid.no-gap, .grid.no-gap-y { row-gap: 0; }
 
+.grid.x-spread { justify-content: space-between; }
+.grid.y-spread { align-content: space-between; }
+
 .grid.items-x-center { justify-items: center; }
 .grid.items-y-center { align-items: center; }
 
 .grid.items-x-stretch { justify-items: stretch; }
 .grid.items-y-stretch { align-items: stretch; }
-
-.grid.items-x-spread { justify-content: space-between; }
-.grid.items-y-spread { align-items: space-between; }
 
 .grid > * { margin: 0 !important; }
 
