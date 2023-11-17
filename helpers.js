@@ -260,18 +260,11 @@ exports.badges = (() => {
     }
   ].map(x => ({ ...x, type: 'Secret' }));
 
-  return {
-    round: roundBadges,
-    match: matchBadges,
-    season: seasonBadges,
-    career: careerBadges,
-    secret: secretBadges,
-    all: [
-      ...roundBadges,
-      ...matchBadges,
-      ...seasonBadges,
-      ...careerBadges,
-      ...secretBadges,
-    ]
-  }
+  return [
+    ...roundBadges,
+    ...matchBadges,
+    ...seasonBadges,
+    ...careerBadges,
+    ...secretBadges,
+  ];
 })();

@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const { render } = require('mustache');
 
 const config = require('../config');
-const { db, badges, logError } = require('../helpers');
+const { db, badges, roundForDisplay, logError } = require('../helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -33,16 +33,21 @@ const getShell = () => {
 
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
-const buildBadgesPage = (shell) => {
+const buildBadgesPage = (shell, profiles) => {
   const data = {
     title: 'Badges',
-    badges: {
-      ...badges,
-      secret: badges.secret.map(() => ({
-        title: 'Secret Badge',
-        description: 'Keep throwing to earn it'
-      }))
-    }
+    badges: badges.map(({ type, title, description }) => {
+      const isSecret = type === 'Secret';
+      const earnedCount = profiles.count(x => x.badges.some(y => y.title === title));
+      const earnedPercent = roundForDisplay(100 * earnedCount / profiles.length);
+
+      return {
+        type,
+        title: isSecret ? 'Secret Badge' : title,
+        description: isSecret ? 'Keep throwing to earn it' : description,
+        earnedPercent
+      };
+    })
   };
 
   return render(shell, data, {
@@ -108,7 +113,6 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     }
 
     fs.emptyDirSync(DIST_DIR);
-    // fs.copySync(`${CLIENT_DIR}/static`, DIST_DIR);
 
     const shell = getShell();
     const profiles = db.rows(`
@@ -154,7 +158,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       profile.stats = JSON.parse(profile.stats);
       profile.matches = validMatches;
       profile.seasons = seasons.map((x, i, { length }) => ({ ...x, order: length - i }));
-      profile.badges = badges.all.filter(x => x.earned(profile));
+      profile.badges = badges.filter(x => x.earned(profile));
 
       writeFile(`${DIST_DIR}/${profile.profileId}.html`, buildProfilePage(shell, profile));
       writeFile(`${DIST_DIR}/${profile.profileId}.json`, JSON.stringify(profile, null, 2));
@@ -164,7 +168,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
     writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'Rating System'));
     writeFile(`${DIST_DIR}/404.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/404.html`), 'Not Found'));
     writeFile(`${DIST_DIR}/500.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/500.html`), 'Error'));
-    writeFile(`${DIST_DIR}/badges.html`, buildBadgesPage(shell));
+    writeFile(`${DIST_DIR}/badges.html`, buildBadgesPage(shell, profiles));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
   } catch (error) {
     logError(error);

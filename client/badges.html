@@ -13,7 +13,7 @@
 <section>
   <div class="x-limit">
     <div class="grid columns-auto-fill">
-      {{#badges.round}}
+      {{#badges}}
       <div class="card grid sub">
         <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
 
@@ -23,43 +23,7 @@
           <p>{{description}}</p>
         </div>
       </div>
-      {{/badges.round}}
-
-      {{#badges.match}}
-      <div class="card grid sub">
-        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
-
-        <div>
-          <p class="text-h3">{{title}}</p>
-
-          <p>{{description}}</p>
-        </div>
-      </div>
-      {{/badges.match}}
-
-      {{#badges.season}}
-      <div class="card grid sub">
-        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
-
-        <div>
-          <p class="text-h3">{{title}}</p>
-
-          <p>{{description}}</p>
-        </div>
-      </div>
-      {{/badges.season}}
-
-      {{#badges.secret}}
-      <div class="card grid sub">
-        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
-
-        <div>
-          <p class="text-h3">{{title}}</p>
-
-          <p>{{description}}</p>
-        </div>
-      </div>
-      {{/badges.secret}}
+      {{/badges}}
     </div>
   </div>
 </section>
