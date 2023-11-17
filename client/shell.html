@@ -39,33 +39,11 @@
     </script>
   </head>
   <body>
-    <header class="bg-white">
-      <div class="x-limit">
-        <a class="text-h3" href="/">Axe Charts</a>
-      </div>
-    </header>
-
-    <main>
-      <nav class="bg-dark">
-        <div class="x-limit grid stack columns-2 text-center">
-          <p>
-            <a href="/badges">Badges</a>
-          </p>
-
-          <p>
-            <a href="/rating-system">Rating System</a>
-          </p>
-        </div>
-      </nav>
-
-      {{>page}}
-    </main>
-
-    <footer class="bg-dark text-right">
-      <div class="x-limit">
-        <h2>
-          <a href="/">Axe Charts</a>
-        </h2>
+    <header>
+      <nav class="grid stack columns-3 text-center">
+        <p>
+          <a class="text-h3" href="/">Axe Charts</a>
+        </p>
 
         <p>
           <a href="/badges">Badges</a>
@@ -74,11 +52,29 @@
         <p>
           <a href="/rating-system">Rating System</a>
         </p>
+      </nav>
+    </header>
 
-        <p>
-          <a class="text-white" href="mailto:info@axecharts.com">info@axecharts.com</a>
-        </p>
-      </div>
+    <main>
+      {{>page}}
+    </main>
+
+    <footer class="text-right">
+      <h2>
+        <a href="/">Axe Charts</a>
+      </h2>
+
+      <p>
+        <a href="/badges">Badges</a>
+      </p>
+
+      <p>
+        <a href="/rating-system">Rating System</a>
+      </p>
+
+      <p>
+        <a class="text-white" href="mailto:info@axecharts.com">info@axecharts.com</a>
+      </p>
     </footer>
   </body>
 </html>
