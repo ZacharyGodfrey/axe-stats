@@ -38,7 +38,7 @@ const buildBadgesPage = (shell, profiles) => {
     title: 'Badges',
     badges: badges.map(({ type, title, description }) => {
       const isSecret = type === 'Secret';
-      const earnedCount = profiles.count(x => x.badges.some(y => y.title === title));
+      const earnedCount = profiles.filter(x => x.badges.some(y => y.title === title)).length;
       const earnedPercent = roundForDisplay(100 * earnedCount / profiles.length);
 
       return {
