@@ -402,7 +402,7 @@ details summary {
 .grid.items-x-stretch { justify-items: stretch; }
 .grid.items-y-stretch { align-items: stretch; }
 
-.grid:not(.stack) > * { margin: 0 !important; }
+.grid > * { margin: 0 !important; }
 
 .grid > .span-2 { grid-column: span 2; }
 .grid > .span-3 { grid-column: span 3; }
@@ -422,7 +422,7 @@ details summary {
 /* Small Screens */
 @media screen and (max-width: 800px) {
   .grid.stack {
-    display: block;
+    grid-template-columns: 1fr;
   }
 
   .screen-lg {
@@ -432,10 +432,6 @@ details summary {
 
 /* Large Screens */
 @media screen and (min-width: 801px) {
-  .grid > * {
-    margin: 0 !important;
-  }
-
   .screen-sm {
     display: none !important;
   }
