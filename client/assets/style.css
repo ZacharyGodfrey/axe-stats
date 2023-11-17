@@ -329,23 +329,23 @@ details summary {
 
 .ring.outer {
   grid-column: 1 / 4;
-  grid-template-columns: var(--ring) 1fr var(--ring);
-  grid-template-rows: var(--ring) 1fr var(--ring);
+  grid-template-columns: var(--ring-width) 1fr var(--ring-width);
+  grid-template-rows: var(--ring-width) 1fr var(--ring-width);
   color: white;
   background: var(--ring-outer);
 }
 
 .ring.inner {
   grid-column: 2;
-  grid-template-columns: var(--ring) 1fr var(--ring);
-  grid-template-rows: var(--ring) 1fr var(--ring);
+  grid-template-columns: var(--ring-width) 1fr var(--ring-width);
+  grid-template-rows: var(--ring-width) 1fr var(--ring-width);
   background: var(--ring-inner);
 }
 
 .ring.center {
   grid-column: 2;
-  grid-template-columns: var(--ring) auto var(--ring);
-  grid-template-rows: var(--ring) auto var(--ring);
+  grid-template-columns: var(--ring-width) auto var(--ring-width);
+  grid-template-rows: var(--ring-width) auto var(--ring-width);
   background: var(--ring-center);
 }
 
