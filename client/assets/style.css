@@ -384,6 +384,8 @@ details summary {
   align-content: start; /* row spacing Y */
 }
 
+.grid.columns-auto { grid-auto-columns: max-content; }
+
 .grid.columns-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid.columns-fill-auto { grid-template-columns: 1fr auto; }
 .grid.columns-auto-fill { grid-template-columns: auto 1fr; }
