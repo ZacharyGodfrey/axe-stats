@@ -6,6 +6,7 @@
 * {
   position: relative;
   box-sizing: border-box;
+  margin: 0;
 }
 
 :root {
@@ -37,7 +38,6 @@
 /* Page Layout */
 
 html, body {
-  margin: 0;
   padding: 0;
   color: white;
   background: var(--dark);
