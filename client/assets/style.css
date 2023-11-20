@@ -11,6 +11,7 @@
 :root {
   --main: rgb(60, 120, 160);
   --dark:  color-mix(in oklab, var(--main), black 40%);
+  --accent: rgb(250, 240, 20);
   --neutral: #EEEEEE;
   --limit: 60rem;
   --gutter: 1rem;
