@@ -1,324 +1,312 @@
 <section id="profile" class="bg-main">
-  <div class="x-limit">
-    <div class="grid stack columns-3 items-y-center">
-      <p>
-        <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
-      </p>
-
-      <div class="span-2">
-        <hgroup>
-          <p>#{{profile.rank}} &bull; {{profile.stats.acr.rating}} <a href="/rating-system">ACR</a></p>
-          <p class="text-h2">{{profile.name}}</p>
-        </hgroup>
-
-        <p class="grid columns-auto-fill">
-          <strong class="text-upper">Collins Rating</strong>
-          <span>{{profile.rating}}</span>
-
-          <strong class="text-upper">Career Record</strong>
-          <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
-        </p>
-      </div>
-    </div>
-
-    {{#profile.about}}
+  <div class="grid stack columns-3 items-y-center">
     <p>
-      <strong class="text-upper">Biography</strong>
+      <img class="profile-image grow" src="data:image/png;base64,{{{profile.image}}}">
     </p>
 
-    <p>{{profile.about}}</p>
-    {{/profile.about}}
+    <div class="span-2">
+      <hgroup>
+        <p>#{{profile.rank}} &bull; {{profile.stats.acr.rating}} <a href="/about#ratings">ACR</a></p>
+        <p class="text-h2">{{profile.name}}</p>
+      </hgroup>
+
+      <p class="grid columns-auto-fill">
+        <strong class="text-upper">Collins Rating</strong>
+        <span>{{profile.rating}}</span>
+
+        <strong class="text-upper">Career Record</strong>
+        <span class="no-wrap">{{profile.stats.match.win}} / {{profile.stats.match.loss}} / {{profile.stats.match.otl}}</span>
+
+        <strong class="text-upper"><a href="#badges">Badges Earned</a></strong>
+        <span class="no-wrap">{{profile.badges.length}}</span>
+      </p>
+    </div>
   </div>
+
+  {{#profile.about}}
+  <p>
+    <strong class="text-upper">Biography</strong>
+  </p>
+
+  <p>{{profile.about}}</p>
+  {{/profile.about}}
 </section>
 
 <section id="stats" class="bg-dark">
-  <div class="x-limit">
-    <div class="grid stack columns-3">
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="averageScoreArc"></canvas>
+  <div class="grid stack columns-3">
+    <div class="card text-center no-break">
+      <canvas class="screen-lg" id="averageScoreArc"></canvas>
 
-        <p class="text-h2">{{profile.stats.match.averageScore}}</p>
+      <p class="text-h2">{{profile.stats.match.averageScore}}</p>
 
-        <p>
-          <strong class="text-upper">Average Score</strong>
-        </p>
+      <p>
+        <strong class="text-upper">Average Score</strong>
+      </p>
 
-        <hr>
+      <hr>
 
-        <p>{{profile.stats.match.totalScore}} Total Points</p>
-      </div>
+      <p>{{profile.stats.match.totalScore}} Total Points</p>
+    </div>
 
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="winPercentArc"></canvas>
+    <div class="card text-center no-break">
+      <canvas class="screen-lg" id="winPercentArc"></canvas>
 
-        <p class="text-h2">{{profile.stats.match.winPercent}}%</p>
+      <p class="text-h2">{{profile.stats.match.winPercent}}%</p>
 
-        <p>
-          <strong class="text-upper">Match Win Rate</strong>
-        </p>
+      <p>
+        <strong class="text-upper">Match Win Rate</strong>
+      </p>
 
-        <hr>
+      <hr>
 
-        <p>{{profile.stats.match.win}} / {{profile.stats.match.count}} Matches</p>
-      </div>
+      <p>{{profile.stats.match.win}} / {{profile.stats.match.count}} Matches</p>
+    </div>
 
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="bigAxeWinArc"></canvas>
+    <div class="card text-center no-break">
+      <canvas class="screen-lg" id="bigAxeWinArc"></canvas>
 
-        <p class="text-h2">{{profile.stats.bigAxe.roundWinPercent}}%</p>
+      <p class="text-h2">{{profile.stats.bigAxe.roundWinPercent}}%</p>
 
-        <p>
-          <strong class="text-upper">Big Axe Win Rate</strong>
-        </p>
+      <p>
+        <strong class="text-upper">Big Axe Win Rate</strong>
+      </p>
 
-        <hr>
+      <hr>
 
-        <p>{{profile.stats.bigAxe.roundWin}} / {{profile.stats.bigAxe.roundCount}} Rounds</p>
-      </div>
+      <p>{{profile.stats.bigAxe.roundWin}} / {{profile.stats.bigAxe.roundCount}} Rounds</p>
     </div>
   </div>
 </section>
 
-<section id="hatchet">
-  <div class="x-limit">
-    <h2>Hatchet</h2>
+<section id="hatchet" class="bg-main">
+  <h2>Hatchet</h2>
 
-    <div class="grid stack columns-3 items-y-stretch">
-      <div class="target">
-        <div class="dot"></div>
+  <div class="grid stack columns-3 items-y-stretch">
+    <div class="target">
+      <div class="dot"></div>
 
-        <div class="label">{{profile.stats.hatchet.clutch.hit}}</div>
+      <div class="label">{{profile.stats.hatchet.clutch.hit}}</div>
 
-        <div class="dot"></div>
+      <div class="dot"></div>
 
-        <div class="ring outer">
-          <div class="ring inner">
-            <div class="ring center">
-              <div class="label">{{profile.stats.hatchet.target.five}}</div>
-            </div>
-
-            <div class="label">{{profile.stats.hatchet.target.three}}</div>
+      <div class="ring outer">
+        <div class="ring inner">
+          <div class="ring center">
+            <div class="label">{{profile.stats.hatchet.target.five}}</div>
           </div>
 
-          <div class="label">{{profile.stats.hatchet.target.one}}</div>
+          <div class="label">{{profile.stats.hatchet.target.three}}</div>
         </div>
 
-        <div class="label">{{profile.stats.hatchet.target.drop}} Drops</div>
+        <div class="label">{{profile.stats.hatchet.target.one}}</div>
       </div>
 
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="hatchetBullseyeChart"></canvas>
+      <div class="label">{{profile.stats.hatchet.target.drop}} Drops</div>
+    </div>
 
-        <p class="text-h2">{{profile.stats.hatchet.target.fivePercent}}%</p>
+    <div class="card grid y-spread text-center no-break">
+      <canvas class="screen-lg" id="hatchetBullseyeChart"></canvas>
 
-        <p>
-          <strong class="text-upper">Bullseye Hit Rate</strong>
-        </p>
+      <p class="text-h2">{{profile.stats.hatchet.target.fivePercent}}%</p>
 
-        <hr>
+      <p>
+        <strong class="text-upper">Bullseye Hit Rate</strong>
+      </p>
 
-        <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
-      </div>
+      <hr>
 
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="hatchetClutchHitChart"></canvas>
+      <p>{{profile.stats.hatchet.target.five}} / {{profile.stats.hatchet.target.throwCount}} Throws</p>
+    </div>
 
-        <p class="text-h2">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
+    <div class="card grid y-spread text-center no-break">
+      <canvas class="screen-lg" id="hatchetClutchHitChart"></canvas>
 
-        <p>
-          <strong class="text-upper">Clutch Hit Rate</strong>
-        </p>
+      <p class="text-h2">{{profile.stats.hatchet.clutch.hitPercent}}%</p>
 
-        <hr>
+      <p>
+        <strong class="text-upper">Clutch Hit Rate</strong>
+      </p>
 
-        <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
-      </div>
+      <hr>
 
-      <div class="card shift-2 grid columns-fill-auto">
-        <span>Clutch Call Rate</span>
-        <strong class="no-wrap">{{profile.stats.hatchet.clutch.callPercent}}%</strong>
-      </div>
+      <p>{{profile.stats.hatchet.clutch.hit}} / {{profile.stats.hatchet.clutch.call}} Calls</p>
+    </div>
+
+    <div class="card shift-2 grid columns-fill-auto">
+      <span>Clutch Call Rate</span>
+      <strong class="no-wrap">{{profile.stats.hatchet.clutch.callPercent}}%</strong>
     </div>
   </div>
 </section>
 
-<section id="bigAxe">
-  <div class="x-limit">
-    <h2>Big Axe</h2>
+<section id="bigAxe" class="bg-main">
+  <h2>Big Axe</h2>
 
-    <div class="grid stack columns-3 items-y-stretch">
-      <div class="target">
-        <div class="dot"></div>
+  <div class="grid stack columns-3 items-y-stretch">
+    <div class="target">
+      <div class="dot"></div>
 
-        <div class="label">{{profile.stats.bigAxe.clutch.hit}}</div>
+      <div class="label">{{profile.stats.bigAxe.clutch.hit}}</div>
 
-        <div class="dot"></div>
+      <div class="dot"></div>
 
-        <div class="ring outer">
-          <div class="ring inner">
-            <div class="ring center">
-              <div class="label">{{profile.stats.bigAxe.target.five}}</div>
-            </div>
-
-            <div class="label">{{profile.stats.bigAxe.target.three}}</div>
+      <div class="ring outer">
+        <div class="ring inner">
+          <div class="ring center">
+            <div class="label">{{profile.stats.bigAxe.target.five}}</div>
           </div>
 
-          <div class="label">{{profile.stats.bigAxe.target.one}}</div>
+          <div class="label">{{profile.stats.bigAxe.target.three}}</div>
         </div>
 
-        <div class="label">{{profile.stats.bigAxe.target.drop}} Drops</div>
+        <div class="label">{{profile.stats.bigAxe.target.one}}</div>
       </div>
 
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="bigAxeBullseyeChart"></canvas>
+      <div class="label">{{profile.stats.bigAxe.target.drop}} Drops</div>
+    </div>
 
-        <p class="text-h2">{{profile.stats.bigAxe.target.fivePercent}}%</p>
+    <div class="card grid y-spread text-center no-break">
+      <canvas class="screen-lg" id="bigAxeBullseyeChart"></canvas>
 
-        <p>
-          <strong class="text-upper">Bullseye Hit Rate</strong>
-        </p>
+      <p class="text-h2">{{profile.stats.bigAxe.target.fivePercent}}%</p>
 
-        <hr>
+      <p>
+        <strong class="text-upper">Bullseye Hit Rate</strong>
+      </p>
 
-        <p>{{profile.stats.bigAxe.target.five}} / {{profile.stats.bigAxe.target.throwCount}} Throws</p>
-      </div>
+      <hr>
 
-      <div class="card text-center no-break">
-        <canvas class="screen-lg" id="bigAxeClutchHitChart"></canvas>
+      <p>{{profile.stats.bigAxe.target.five}} / {{profile.stats.bigAxe.target.throwCount}} Throws</p>
+    </div>
 
-        <p class="text-h2">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
+    <div class="card grid y-spread text-center no-break">
+      <canvas class="screen-lg" id="bigAxeClutchHitChart"></canvas>
 
-        <p>
-          <strong class="text-upper">Clutch Hit Rate</strong>
-        </p>
+      <p class="text-h2">{{profile.stats.bigAxe.clutch.hitPercent}}%</p>
 
-        <hr>
+      <p>
+        <strong class="text-upper">Clutch Hit Rate</strong>
+      </p>
 
-        <p>{{profile.stats.bigAxe.clutch.hit}} / {{profile.stats.bigAxe.clutch.call}} Calls</p>
-      </div>
+      <hr>
+
+      <p>{{profile.stats.bigAxe.clutch.hit}} / {{profile.stats.bigAxe.clutch.call}} Calls</p>
     </div>
   </div>
 </section>
 
-<section id="seasons">
-  <div class="x-limit">
-    <h2>Seasons</h2>
+<section id="seasons" class="bg-dark">
+  <h2>Seasons</h2>
 
-    <div class="card ratio-2-1">
-      <canvas id="seasonsChart"></canvas>
-    </div>
-
-    <details>
-      <summary>Details</summary>
-
-      <div class="grid columns-fill-auto-auto">
-        {{#profile.seasons}}
-        <div class="card grid sub no-gap-y">
-          <span class="span-3">#{{order}}</span>
-
-          <strong>{{name}}</strong>
-
-          <span>Season Rank</span>
-
-          <strong class="text-right">
-            {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
-            {{^seasonRank}}None{{/seasonRank}}
-          </strong>
-
-          <span>{{shortName}}</span>
-
-          <span>Playoff Rank</span>
-
-          <strong class="text-right">
-            {{#playoffRank}}{{playoffRank}}{{/playoffRank}}
-            {{^playoffRank}}TBD{{/playoffRank}}
-          </strong>
-        </div>
-        {{/profile.seasons}}
-      </div>
-    </details>
-
+  <div class="card ratio-2-1">
+    <canvas id="seasonsChart"></canvas>
   </div>
+
+  <details>
+    <summary>Details</summary>
+
+    <div class="grid columns-fill-auto-auto">
+      {{#profile.seasons}}
+      <div class="card grid sub no-gap-y">
+        <span class="span-3">#{{order}}</span>
+
+        <strong>{{name}}</strong>
+
+        <span>Season Rank</span>
+
+        <strong class="text-right">
+          {{#seasonRank}}{{seasonRank}}{{/seasonRank}}
+          {{^seasonRank}}None{{/seasonRank}}
+        </strong>
+
+        <span>{{shortName}}</span>
+
+        <span>Playoff Rank</span>
+
+        <strong class="text-right">
+          {{#playoffRank}}{{playoffRank}}{{/playoffRank}}
+          {{^playoffRank}}TBD{{/playoffRank}}
+        </strong>
+      </div>
+      {{/profile.seasons}}
+    </div>
+  </details>
 </section>
 
-<section id="matchScores">
-  <div class="x-limit">
-    <h2>Match Scores</h2>
+<section id="matchScores" class="bg-dark">
+  <h2>Match Scores</h2>
 
-    <div class="card ratio-2-1">
-      <canvas id="matchScoresChart"></canvas>
-    </div>
-
-    <details>
-      <summary>Details</summary>
-
-      <p><sup>*</sup> Indicates that clutch was called.</p>
-
-      <figure>
-        <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto);">
-          <div class="card grid sub text-center">
-            <div>Match</div>
-            <div>Round 1</div>
-            <div>Round 2</div>
-            <div>Round 3</div>
-            <div>Big Axe</div>
-          </div>
-
-          {{#profile.matches}}
-          <div class="card grid sub text-center">
-            <div>
-              <span class="text-h3">{{outcome}}</span>
-              <br>
-              <strong>{{total}}</strong>
-              <br>
-              <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
-            </div>
-
-            {{#rounds}}
-            <div>
-              <span class="text-h3">{{outcome}}</span>
-              <br>
-              <strong>{{total}}</strong>
-              <br>
-              <span class="no-wrap">
-                {{#throws}}
-                  {{^clutch}}<span>{{score}}</span>{{/clutch}}
-                  {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
-                {{/throws}}
-              </span>
-            </div>
-            {{/rounds}}
-          </div>
-          {{/profile.matches}}
-        </div>
-      </figure>
-    </details>
+  <div class="card ratio-2-1">
+    <canvas id="matchScoresChart"></canvas>
   </div>
+
+  <details>
+    <summary>Details</summary>
+
+    <p><sup>*</sup> Indicates that clutch was called.</p>
+
+    <figure>
+      <div class="grid items-y-center" style="grid-template-columns: repeat(5, auto);">
+        <div class="card grid sub text-center">
+          <div>Match</div>
+          <div>Round 1</div>
+          <div>Round 2</div>
+          <div>Round 3</div>
+          <div>Big Axe</div>
+        </div>
+
+        {{#profile.matches}}
+        <div class="card grid sub text-center">
+          <div>
+            <span class="text-h3">{{outcome}}</span>
+            <br>
+            <strong>{{total}}</strong>
+            <br>
+            <a target="_blank" href="https://axescores.com/player/{{profileId}}/{{matchId}}">View</a>
+          </div>
+
+          {{#rounds}}
+          <div>
+            <span class="text-h3">{{outcome}}</span>
+            <br>
+            <strong>{{total}}</strong>
+            <br>
+            <span class="no-wrap">
+              {{#throws}}
+                {{^clutch}}<span>{{score}}</span>{{/clutch}}
+                {{#clutch}}<span>{{score}}<sup>*</sup></span>{{/clutch}}
+              {{/throws}}
+            </span>
+          </div>
+          {{/rounds}}
+        </div>
+        {{/profile.matches}}
+      </div>
+    </figure>
+  </details>
 </section>
 
 <section id="badges" class="bg-main">
-  <div class="x-limit">
-    <h2>Badges</h2>
+  <h2>Badges</h2>
 
-    {{^profile.badges}}
-    <p>This thrower has not earned any badges yet.</p>
-    {{/profile.badges}}
+  {{^profile.badges}}
+  <p>This thrower has not earned any badges yet.</p>
+  {{/profile.badges}}
 
-    <p>View the full list of available badges <a href="/badges">here</a>.</p>
+  <p>View the full list of available badges <a href="/about#badges">here</a>.</p>
 
-    <div class="grid columns-auto-fill">
-      {{#profile.badges}}
-      <div class="card grid sub">
-        <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
+  <div class="grid columns-auto-fill">
+    {{#profile.badges}}
+    <div class="card grid sub">
+      <img class="icon-4" src="data:image/png;base64,{{> iconBadge }}">
 
-        <div>
-          <p class="text-h3">{{title}}</p>
+      <div>
+        <p class="text-h3">{{title}}</p>
 
-          <p>{{description}}</p>
-        </div>
+        <p>{{description}}</p>
       </div>
-      {{/profile.badges}}
     </div>
+    {{/profile.badges}}
   </div>
 </section>
 

@@ -165,9 +165,9 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
       writeFile(`${DIST_DIR}/${profile.profileId}.txt`, matches.map(x => matchText(x)).join('\n'));
     });
 
-    writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'Rating System'));
     writeFile(`${DIST_DIR}/404.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/404.html`), 'Not Found'));
     writeFile(`${DIST_DIR}/500.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/500.html`), 'Error'));
+    writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'ACR'));
     writeFile(`${DIST_DIR}/badges.html`, buildBadgesPage(shell, profiles));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
   } catch (error) {
