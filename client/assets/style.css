@@ -107,6 +107,10 @@ hgroup > * {
   margin: 0;
 }
 
+h1, .text-h1, h2, .text-h2, h3, .text-h3 {
+  text-wrap: balance;
+}
+
 h1, .text-h1 {
   font-size: 3.5rem;
   font-weight: bold;
