@@ -33,6 +33,19 @@ const getShell = () => {
 
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
+const buildRatingSystemPage = (shell, profiles) => {
+  const slimProfiles = profiles.map(x => ({ ...x, seasons: undefined, matches: undefined }));
+  const data = {
+    title: 'ACR',
+    profiles: slimProfiles,
+    dataJson: JSON.stringify({ profiles: slimProfiles })
+  };
+
+  return render(shell, data, {
+    page: readFile(`${CLIENT_DIR}/rating-system.html`)
+  });
+};
+
 const buildBadgesPage = (shell, profiles) => {
   const data = {
     title: 'Badges',
@@ -167,7 +180,7 @@ const matchText = ({ profileId, matchId, state, outcome, total, rounds }) => {
 
     writeFile(`${DIST_DIR}/404.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/404.html`), 'Not Found'));
     writeFile(`${DIST_DIR}/500.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/500.html`), 'Error'));
-    writeFile(`${DIST_DIR}/rating-system.html`, buildStaticPage(shell, readFile(`${CLIENT_DIR}/rating-system.html`), 'ACR'));
+    writeFile(`${DIST_DIR}/rating-system.html`, buildRatingSystemPage(shell, profiles));
     writeFile(`${DIST_DIR}/badges.html`, buildBadgesPage(shell, profiles));
     writeFile(`${DIST_DIR}/index.html`, buildHomePage(shell, profiles));
   } catch (error) {
