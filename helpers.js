@@ -82,7 +82,7 @@ exports.sequentially = async (items, action) => {
   }, Promise.resolve());
 };
 
-exports.sum = (values) => values.reduce((t, v) => t + v, 0);
+const sum = exports.sum = (values) => values.reduce((t, v) => t + v, 0);
 
 const round = exports.round = (value, places) => {
   const factor = 10 ** places;
