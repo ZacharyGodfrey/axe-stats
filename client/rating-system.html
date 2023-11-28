@@ -41,3 +41,74 @@
 
   <p class="card">ACR = Round((1000 * Points Earned) / (5 * Total Throws))</p>
 </section>
+
+<section class="bg-main">
+  <h2>Global ACR Stats</h2>
+
+  <p class="card grid columns-fill-auto items-y-center">
+    <span>Average Rating</span>
+    <strong class="no-wrap">{{averageRating}} ACR</strong>
+  </p>
+
+  <div class="card ratio-2-1">
+    <canvas id="acrHistogram"></canvas>
+  </div>
+</section>
+
+<script>
+  const { profiles } = {{{dataJson}}};
+
+  const acrHistogram = (() => {
+    const allRatings = profiles.map(x => x.stats.acr.rating).sort();
+    const buckets = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+    const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
+
+    allRatings.forEach(score => {
+      const bucket = [...buckets].reverse().find(b => b <= score);
+
+      histogram[bucket]++;
+    });
+
+    return {
+      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 99}`),
+      values: buckets.map(b => histogram[b])
+    };
+  })();
+
+  new Chart(document.getElementById('acrHistogram'), {
+    type: 'bar',
+    data: {
+      labels: acrHistogram.labels,
+      datasets: [{
+        data: acrHistogram.values,
+        backgroundColor: cssVar('main')
+      }]
+    },
+    options: {
+      aspectRatio: 2,
+      scales: {
+        x: {
+          title: {
+            text: 'ACR Range',
+            display: true
+          },
+          grid: {
+            display: false
+          }
+        },
+        y: {
+          title: {
+            text: 'Number of Throwers',
+            display: true
+          },
+          grid: {
+            display: false
+          },
+          type: 'linear',
+          beginAtZero: true,
+          max: Math.max(...acrHistogram.values)
+        }
+      }
+    }
+  });
+</script>

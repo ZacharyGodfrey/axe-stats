@@ -6,6 +6,7 @@
 * {
   position: relative;
   box-sizing: border-box;
+  margin: 0;
 }
 
 :root {
@@ -37,7 +38,6 @@
 /* Page Layout */
 
 html, body {
-  margin: 0;
   padding: 0;
   color: white;
   background: var(--dark);
@@ -105,6 +105,10 @@ figure, details, details > summary {
 
 hgroup > * {
   margin: 0;
+}
+
+h1, .text-h1, h2, .text-h2, h3, .text-h3 {
+  text-wrap: balance;
 }
 
 h1, .text-h1 {
