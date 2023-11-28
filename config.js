@@ -2,6 +2,14 @@ module.exports = {
   databaseFile: `${__dirname}/database.db`,
   resetAllData: false,
   profileIds: [
+    // Top Throwers
+    494365,
+    263571,
+    607521,
+    1339379,
+    523102,
+    230309,
+    // Local Throwers
     1207260,
     1051409,
     728184,
