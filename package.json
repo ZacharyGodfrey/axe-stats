@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "scrape": "node ./scripts/get-data.js",
-    "build": "node ./scripts/build-pages.js",
-    "build-watch": "nodemon ./scripts/build-pages.js --watch client --watch scripts --ext html,css,js",
+    "scrape": "node ./scripts/scrape.js",
+    "build": "node ./scripts/build.js",
+    "build-watch": "nodemon ./scripts/build.js --watch client --watch scripts --ext html,css,js",
     "local": "http-server ./dist -a localhost -p 3000",
-    "local-watch": "npm run build && concurrently \"npm run build-watch\" \"npm run local\""
+    "local-watch": "concurrently \"npm run build-watch\" \"npm run local\""
   },
   "dependencies": {
     "better-sqlite3": "^9.0.0",
