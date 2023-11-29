@@ -4,11 +4,12 @@ const config = require('../config');
 const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, median, logError } = require('../helpers');
 
 const getProfiles = async (page) => {
-  const rulesetSelector = '.sc-gwVKww.fJdgsF select';
+  const rulesetValue = 'IATF Premier';
+  const rulesetSelector = `select:has(> option[value="${rulesetValue}"])`;
 
   await page.goto('https://axescores.com/players/collins-rating');
   await page.waitForSelector(rulesetSelector);
-  await page.select(rulesetSelector, 'IATF Premier');
+  await page.select(rulesetSelector, rulesetValue);
   await page.waitForNetworkIdle();
 
   const state = await reactPageState(page, '#root');
