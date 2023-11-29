@@ -247,6 +247,11 @@ exports.badges = (() => {
       title: 'No Cigar',
       description: 'Score 79 points in a match',
       earned: (profile) => profile.matches.some(x => x.total === 79)
+    },
+    {
+      title: 'Around the World',
+      description: 'Throw a hatchet round with the scores 1, 3, 5, 3, 1 in that order',
+      earned: (profile) => profile.matches.some(x => x.rounds.slice(0, 3).some(y => y.throws.map(z => z.score).join('') === '13531'))
     }
   ].map(x => ({ ...x, type: 'Secret' }));
 
