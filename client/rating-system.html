@@ -45,10 +45,22 @@
 <section class="bg-main">
   <h2>Global ACR Stats</h2>
 
-  <p class="card grid columns-fill-auto items-y-center">
-    <span>Median Rating</span>
-    <strong class="no-wrap">{{medianRating}} ACR</strong>
-  </p>
+  <div class="grid columns-fill-auto items-y-center">
+    <div class="card grid sub">
+      <span>Highest Rating</span>
+      <strong class="no-wrap">{{highestRating}} ACR</strong>
+    </div>
+
+    <div class="card grid sub">
+      <span>Median Rating</span>
+      <strong class="no-wrap">{{medianRating}} ACR</strong>
+    </div>
+
+    <div class="card grid sub">
+      <span>Lowest Rating</span>
+      <strong class="no-wrap">{{lowestRating}} ACR</strong>
+    </div>
+  </div>
 
   <div class="card ratio-2-1">
     <canvas id="acrHistogram"></canvas>
