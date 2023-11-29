@@ -547,6 +547,8 @@ const getAxeChartsRating = (hatchet, bigAxe) => {
     [...profileIds].forEach((profileId) => analyzeProfile(profileId));
 
     await browser.close();
+
+    db.run(`VACUUM`);
   } catch (error) {
     logError(error);
 
