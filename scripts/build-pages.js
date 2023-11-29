@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const { render } = require('mustache');
 
 const config = require('../config');
-const { db, badges, roundForDisplay, average, logError } = require('../helpers');
+const { db, badges, roundForDisplay, median, logError } = require('../helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -34,12 +34,13 @@ const getShell = () => {
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
 const buildRatingSystemPage = (shell, profiles) => {
-  const slimProfiles = profiles.map(x => ({ ...x, seasons: undefined, matches: undefined }));
+  const ratings = profiles.map(x => x.stats.acr.rating).sort();
   const data = {
     title: 'ACR',
-    profiles: slimProfiles,
-    averageRating: Math.round(average(slimProfiles.map(x => x.stats.acr.rating))),
-    dataJson: JSON.stringify({ profiles: slimProfiles })
+    lowestRating: Math.min(...ratings),
+    medianRating: median(ratings),
+    highestRating: Math.max(...ratings),
+    dataJson: JSON.stringify({ ratings })
   };
 
   return render(shell, data, {

@@ -45,10 +45,22 @@
 <section class="bg-main">
   <h2>Global ACR Stats</h2>
 
-  <p class="card grid columns-fill-auto items-y-center">
-    <span>Average Rating</span>
-    <strong class="no-wrap">{{averageRating}} ACR</strong>
-  </p>
+  <div class="grid columns-fill-auto items-y-center">
+    <div class="card grid sub">
+      <span>Highest Rating</span>
+      <strong class="no-wrap">{{highestRating}} ACR</strong>
+    </div>
+
+    <div class="card grid sub">
+      <span>Median Rating</span>
+      <strong class="no-wrap">{{medianRating}} ACR</strong>
+    </div>
+
+    <div class="card grid sub">
+      <span>Lowest Rating</span>
+      <strong class="no-wrap">{{lowestRating}} ACR</strong>
+    </div>
+  </div>
 
   <div class="card ratio-2-1">
     <canvas id="acrHistogram"></canvas>
@@ -56,21 +68,33 @@
 </section>
 
 <script>
-  const { profiles } = {{{dataJson}}};
+  const { ratings } = {{{dataJson}}};
 
   const acrHistogram = (() => {
-    const allRatings = profiles.map(x => x.stats.acr.rating).sort();
-    const buckets = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+    const buckets = [
+      0, 50,
+      100, 150,
+      200, 250,
+      300, 350,
+      400, 450,
+      500, 550,
+      600, 650,
+      700, 750,
+      800, 850,
+      900, 950,
+      1000
+    ];
+
     const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
 
-    allRatings.forEach(score => {
+    ratings.forEach(score => {
       const bucket = [...buckets].reverse().find(b => b <= score);
 
       histogram[bucket]++;
     });
 
     return {
-      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 99}`),
+      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${a[i + 1] - 1}`),
       values: buckets.map(b => histogram[b])
     };
   })();
