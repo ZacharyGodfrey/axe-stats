@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const { render } = require('mustache');
 
 const config = require('../config');
-const { db, badges, roundForDisplay, average, logError } = require('../helpers');
+const { db, badges, roundForDisplay, median, logError } = require('../helpers');
 
 const CLIENT_DIR = path.resolve(__dirname, '../client');
 const DIST_DIR = path.resolve(__dirname, '../dist');
@@ -38,7 +38,7 @@ const buildRatingSystemPage = (shell, profiles) => {
   const data = {
     title: 'ACR',
     profiles: slimProfiles,
-    averageRating: Math.round(average(slimProfiles.map(x => x.stats.acr.rating))),
+    medianRating: median(slimProfiles.map(x => x.stats.acr.rating)),
     dataJson: JSON.stringify({ profiles: slimProfiles })
   };
 
