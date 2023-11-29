@@ -34,15 +34,13 @@ const getShell = () => {
 const buildStaticPage = (shell, page, title) => render(shell, { title }, { page });
 
 const buildRatingSystemPage = (shell, profiles) => {
-  const slimProfiles = profiles.map(x => ({ ...x, seasons: undefined, matches: undefined }));
-  const ratings = slimProfiles.map(x => x.stats.acr.rating);
+  const ratings = profiles.map(x => x.stats.acr.rating).sort();
   const data = {
     title: 'ACR',
-    profiles: slimProfiles,
     lowestRating: Math.min(...ratings),
     medianRating: median(ratings),
     highestRating: Math.max(...ratings),
-    dataJson: JSON.stringify({ profiles: slimProfiles })
+    dataJson: JSON.stringify({ ratings })
   };
 
   return render(shell, data, {

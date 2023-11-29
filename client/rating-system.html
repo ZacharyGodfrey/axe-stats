@@ -68,21 +68,20 @@
 </section>
 
 <script>
-  const { profiles } = {{{dataJson}}};
+  const { ratings } = {{{dataJson}}};
 
   const acrHistogram = (() => {
-    const allRatings = profiles.map(x => x.stats.acr.rating).sort();
     const buckets = [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
     const histogram = buckets.reduce((h, b) => ({ ...h, [b]: 0 }), {});
 
-    allRatings.forEach(score => {
+    ratings.forEach(score => {
       const bucket = [...buckets].reverse().find(b => b <= score);
 
       histogram[bucket]++;
     });
 
     return {
-      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${b + 99}`),
+      labels: buckets.map((b, i, a) => i === a.length - 1 ? `${b}+` : `${b}-${a[i + 1] - 1}`),
       values: buckets.map(b => histogram[b])
     };
   })();
