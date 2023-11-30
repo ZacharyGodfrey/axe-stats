@@ -33,9 +33,13 @@
 
   <p class="card">ACR = Points Earned / Points Available</p>
 
+  <br>
+
   <p>This division produces a decimal number between 0 and 1. Multiplying this decimal number by 1000 makes it a 3 digit number (or 4 if your accuracy is perfect). The final rating value is that 3 digit number rounded to the nearest integer. These details are reflected in the formula below:</p>
 
   <p class="card">ACR = Round(1000 * Points Earned / Points Available)</p>
+
+  <br>
 
   <p>When clutch is called, technically the number of points available for that throw should be 7. However, adding 7 to the denominator of the formula would penalize throwers more for a missed clutch than for a dropped axe. Instead, the formula treats every throw as if there are only 5 points available. This way, a missed clutch incurs the same penalty as a dropped axe but a hit clutch awards an outsized benefit: gaining 7/5 available points instead of the 5/5 available points for a bullseye. The final form of the formula is shown below:</p>
 
