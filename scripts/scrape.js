@@ -3,19 +3,20 @@ const puppeteer = require('puppeteer');
 const config = require('../config');
 const { db, sequentially, isDesiredResponse, reactPageState, waitMilliseconds, roundForDisplay, median, logError } = require('../helpers');
 
-const getProfiles = async (page, profileIds) => {
-  const profileIdSet = new Set(profileIds);
-  const rulesetSelector = '.sc-gwVKww.fJdgsF select';
+const getProfiles = async (page) => {
+  const rulesetValue = 'IATF Premier';
+  const rulesetSelector = `select:has(> option[value="${rulesetValue}"])`;
 
   await page.goto('https://axescores.com/players/collins-rating');
+  await page.waitForNetworkIdle();
   await page.waitForSelector(rulesetSelector);
-  await page.select(rulesetSelector, 'IATF Premier');
+  await page.select(rulesetSelector, rulesetValue);
   await page.waitForNetworkIdle();
 
   const state = await reactPageState(page, '#root');
   const allProfiles = state.globalStandings.standings.career;
 
-  return allProfiles.filter(x => profileIdSet.has(x.id));
+  return allProfiles.filter(x => x.active);
 };
 
 const processProfile = async (page, { id: profileId, rank, rating }) => {
@@ -532,19 +533,27 @@ const getAxeChartsRating = (hatchet, bigAxe) => {
 
     console.log('********** Getting profiles **********');
 
-    const profiles = await getProfiles(page, config.profileIds);
+    const profiles = await getProfiles(page);
 
-    await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
+    console.log(`Found ${profiles.length} profiles.`);
+
+    // await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
+    console.log('Skipping profile processing for now.');
 
     console.log('********** Getting matches **********');
 
     const { matchIds, profileIds } = getMatches(page);
+    const matchIdsArray = [...matchIds];
 
-    await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds).catch(logError));
+    console.log(`Found ${matchIdsArray.length} new matches.`);
+
+    // await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds).catch(logError));
+    console.log('Skipping match processing for now.');
 
     console.log('********** Analyzing Profiles **********');
 
-    [...profileIds].forEach((profileId) => analyzeProfile(profileId));
+    // [...profileIds].forEach((profileId) => analyzeProfile(profileId));
+    console.log('Skipping profile analysis for now.');
 
     await browser.close();
 
