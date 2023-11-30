@@ -38,7 +38,7 @@ const buildRatingSystemPage = (shell, profiles) => {
   const data = {
     title: 'ACR',
     lowestRating: Math.min(...ratings),
-    medianRating: median(ratings),
+    medianRating: Math.round(median(ratings)),
     highestRating: Math.max(...ratings),
     dataJson: JSON.stringify({ ratings })
   };
