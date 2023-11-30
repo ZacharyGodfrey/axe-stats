@@ -536,7 +536,8 @@ const getAxeChartsRating = (hatchet, bigAxe) => {
 
     console.log(`Found ${profiles.length} profiles.`);
 
-    await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
+    // await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
+    console.log('Skipping profile processing for now.');
 
     console.log('********** Getting matches **********');
 
