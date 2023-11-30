@@ -8,6 +8,7 @@ const getProfiles = async (page) => {
   const rulesetSelector = `select:has(> option[value="${rulesetValue}"])`;
 
   await page.goto('https://axescores.com/players/collins-rating');
+  await page.waitForNetworkIdle();
   await page.waitForSelector(rulesetSelector);
   await page.select(rulesetSelector, rulesetValue);
   await page.waitForNetworkIdle();
