@@ -12,7 +12,7 @@ jobs:
       - name: Install Dependencies
         run: npm i
       - name: Get Data
-        run: node scripts/get-data.js
+        run: node scripts/scrape.js
       - name: Commit File Changes
         run: |
           git config user.name "GitHub Actions Bot"
