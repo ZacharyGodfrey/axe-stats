@@ -526,9 +526,10 @@ const getAxeChartsRating = (hatchet, bigAxe) => {
 
 (async () => {
   try {
+    const start = performance.now();
     console.log('Config: ', JSON.stringify(config, null, 2));
 
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({ headless: false });
     const page = await browser.newPage();
 
     console.log('********** Getting profiles **********');
@@ -537,8 +538,7 @@ const getAxeChartsRating = (hatchet, bigAxe) => {
 
     console.log(`Found ${profiles.length} profiles.`);
 
-    // await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
-    console.log('Skipping profile processing for now.');
+    await sequentially(profiles, async (profile) => processProfile(page, profile).catch(logError));
 
     console.log('********** Getting matches **********');
 
@@ -547,17 +547,20 @@ const getAxeChartsRating = (hatchet, bigAxe) => {
 
     console.log(`Found ${matchIdsArray.length} new matches.`);
 
-    // await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds).catch(logError));
-    console.log('Skipping match processing for now.');
+    await sequentially([...matchIds], async (matchId) => processMatch(page, matchId, profileIds).catch(logError));
 
     console.log('********** Analyzing Profiles **********');
 
-    // [...profileIds].forEach((profileId) => analyzeProfile(profileId));
-    console.log('Skipping profile analysis for now.');
+    [...profileIds].forEach((profileId) => analyzeProfile(profileId));
 
     await browser.close();
 
     db.run(`VACUUM`);
+
+    const end = performance.now();
+    const runningTime = Math.round((end - start) / 1000);
+
+    console.log(`Total running time: ${runningTime} seconds`);
   } catch (error) {
     logError(error);
 
