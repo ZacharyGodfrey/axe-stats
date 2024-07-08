@@ -28,8 +28,7 @@ exports.db = (() => {
       about TEXT DEFAULT '',
       rank INTEGER NOT NULL DEFAULT 0,
       rating INTEGER NOT NULL DEFAULT 0,
-      image TEXT NOT NULL DEFAULT '',
-      stats TEXT NOT NULL DEFAULT '{}'
+      image TEXT NOT NULL DEFAULT ''
     ) WITHOUT ROWID;
   `).run();
 
@@ -46,7 +45,6 @@ exports.db = (() => {
       outcome TEXT NOT NULL DEFAULT '',
       total INTEGER NOT NULL DEFAULT 0,
       rounds TEXT NOT NULL DEFAULT '[]',
-      stats TEXT NOT NULL DEFAULT '{}',
 
       PRIMARY KEY (matchId, profileId)
     ) WITHOUT ROWID;
@@ -62,7 +60,6 @@ exports.db = (() => {
       date TEXT NOT NULL DEFAULT '',
       seasonRank INTEGER NOT NULL DEFAULT 0,
       playoffRank INTEGER NOT NULL DEFAULT 0,
-      stats TEXT NOT NULL DEFAULT '{}',
 
       PRIMARY KEY (seasonId, profileId)
     ) WITHOUT ROWID;
